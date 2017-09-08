@@ -17,5 +17,6 @@
   	<module>Anarmorix_EAR</module>
   	<module>Anarmorix_Entity</module>
   	<module>Anarmorix_FrontWeb</module>
+  	<module>Anarmorix_Exception</module>
   </modules>
 </project>

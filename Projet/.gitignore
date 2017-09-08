@@ -6,6 +6,7 @@ Anarmorix_Data_Api/target/
 Anarmorix_Data_Impl/target/
 Anarmorix_EAR/target/
 Anarmorix_Entity/target/
+Anarmorix_Exception/target/
 Anarmorix_FrontWeb/target/
 
 pom.xml.tag
@@ -50,6 +51,10 @@ Anarmorix_EAR/.settings/
 Anarmorix_Entity/.classpath
 Anarmorix_Entity/.project
 Anarmorix_Entity/.settings/
+
+Anarmorix_Exception/.classpath
+Anarmorix_Exception/.project
+Anarmorix_Exception/.settings/
 
 Anarmorix_FrontWeb/.classpath
 Anarmorix_FrontWeb/.project

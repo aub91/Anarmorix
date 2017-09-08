@@ -18,6 +18,16 @@
   			<version>1.0</version>
   	</dependency>
   	<dependency>
+  			<groupId>fr.afcepf.anarmorix</groupId>
+  			<artifactId>Anarmorix_Exception</artifactId>
+  			<version>1.0</version>
+  	</dependency>
+  	<dependency>
+  			<groupId>fr.afcepf.anarmorix</groupId>
+  			<artifactId>Anarmorix_Exception</artifactId>
+  			<version>1.0</version>
+  	</dependency>
+  	<dependency>
   		<groupId>javax</groupId>
   		<artifactId>javaee-api</artifactId>
   		<version>${jee.version}</version>

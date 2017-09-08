@@ -12,5 +12,10 @@
   			<artifactId>Anarmorix_Entity</artifactId>
   			<version>1.0</version>
   	</dependency>
+  	<dependency>
+  			<groupId>fr.afcepf.anarmorix</groupId>
+  			<artifactId>Anarmorix_Exception</artifactId>
+  			<version>1.0</version>
+  	</dependency>
   </dependencies>
 </project>
