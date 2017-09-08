@@ -24,6 +24,9 @@ buildNumber.properties
 .classpath
 .project
 .settings/
+*.settings/
+*.classpath
+*.project
 Anarmorix_Business_Api/.classpath
 Anarmorix_Business_Api/.project
 Anarmorix_Business_Api/.settings/
