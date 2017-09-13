@@ -11,7 +11,6 @@
   			<groupId>fr.afcepf.anarmorix</groupId>
   			<artifactId>Anarmorix_Entity</artifactId>
   			<version>1.0</version>
-  			dgeg
   	</dependency>
   	<dependency>
   			<groupId>fr.afcepf.anarmorix</groupId>
