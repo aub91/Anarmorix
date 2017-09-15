@@ -1,0 +1,118 @@
+
+body {
+
+
+}
+.navbar {
+  color: #fff;
+  background-image: url(img/fondvioletlight.png);
+}
+.product {
+  width: 200px;
+  height: 200px;
+  font-size: 10px;
+  font-family: 'Arial';
+  margin-bottom: 8px;
+  padding-top: 8px;
+}
+.container .product span {
+  text-transform: uppercase;
+  font-size: 8px;
+  font-family: 'Arial';
+  color: #ccc;
+  display: inline-block;
+  transform: translateY(-16px);
+}
+.add-to-cart {
+  margin-right: 8px;
+}
+.container {
+  display: inline-block;
+  margin: 24px;
+  text-align: center;
+}
+.container span.add-to-cart,
+.container span.add-to-wish {
+  font-size: 10px;
+  font-family: 'Arial';
+  font-weight: 800;
+  color: #666;
+  padding-bottom: 12px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/*css accordeon*/
+
+#AccordeonNiveauPrincipal .list-group-item {
+  display: block;
+    padding: 14px 50px 14px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #a568c8;
+    position: relative;
+    border-bottom: none;
+    border-radius: 20px 20px 20px 20px;
+}
+
+
+/*fin*/
+
+.section-d {
+  margin-top: 50px;
+}
+
+/*css bouton recette*/
+.btn-recettes {
+  width: 300px; height: 300px;
+  position: relative;
+  border: 1px solid #BBB;
+
+
+}
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#7678ED 0%, #6C5CB8 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #6C5CB8;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #6C5CB8;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #6C5CB8;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #6C5CB8;
+}
+
+/*fin*/

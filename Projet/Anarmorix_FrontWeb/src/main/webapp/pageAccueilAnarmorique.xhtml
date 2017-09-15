@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+<meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="css/appdef.css"></link>
+  <link rel="stylesheet" href="css/PageAccueilAnarDef.css"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css"></link>
+</h:head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<!-- Navbar-->
+
+  <nav class="navbar navbar-default navbar-fixed-top" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#myPage"><img src="img/LogoAnarmorique.png" alt = "prout"></img></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="#nosvaleurs">NOS VALEURS</a></li>
+          <li><a href="#historique">HISTORIQUE</a></li>
+          <li><a href="#producteurs">PRODUCTEURS</a></li>
+          <li><a href="#temoignages">TEMOIGNAGES</a></li>
+          <li><a href="#contacts">CONTACTS</a></li>
+          <li><a href="#connexion">CONNEXION</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Fin de la navbar-->
+
+<!-- container pour la video et la barre de recherche-->
+  <header>
+    <div class="header-container">
+      <div class="video-container">
+        <video preload="true" autoplay="autoplay" loop="loop" volume="0" poster="img/nature.jpg">
+        <source src="videos/natureAnar.mp4" type="video/mp4"></source>
+      </video>
+
+      </div>
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+
+          <!-- Search Form -->
+          <form role="form">
+
+            <!-- Search Field -->
+            <div class="row">
+              <h1 class="text-center">Explorez</h1>
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="search" placeholder="Search"/>
+                  <span class="input-group-btn">
+                            <button class="btn" type="submit">
+                              <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                <span>Search</span>
+                  </span>
+                  </button>
+
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </form>
+          <!-- End of Search Form -->
+
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+
+<!--Conteneur connexion-->
+
+<div id="connexion" class="container-fluid" style="background: url(img/fondblancasse.png);background-size: cover;" >
+  <h2 class="text-center">Connectez-vous</h2>
+    <div class="row vertical-align">
+      <div class="col-xs-3">
+        <a href="#" title=""><img src="img/005-man-1.png" class="img-responsive img-circle"></img></a>
+        <h3 class="text-center">Consommateur</h3>
+      </div>
+    <div class="col-xs-3">
+        <a href="#" title=""><img src="img/011-farmer-2.png" class="img-responsive img-circle"></img></a>
+        <h3 class="text-center">Producteur</h3>
+    </div>
+    <div class="col-xs-3">
+        <a href="#" title=""><img src="img/004-food-truck.png" class="img-responsive img-circle"></img></a>
+        <h3 class="text-center">Livreur</h3>
+    </div>
+    <div class="col-xs-3">
+        <a href="#" title=""><img src="img/008-store.png" class="img-responsive img-circle"></img></a>
+        <h3 class="text-center">Point-relais</h3>
+    </div>
+  </div>
+</div>
+
+  <!-- Container nos valeurs -->
+
+
+  <div id="nosvaleurs" class="container-fluid text-center" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+
+    <h2>Nos Valeurs</h2>
+    
+    <div class="row slideanim">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-leaf logo-small"></span>
+        <h4>PRODUITS BIOS</h4>
+        <p>Des producteurs tous entrés dans le circuit bio et permacole pour des produits de grande qualité</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-home logo-small"></span>
+        <h4>COMMERCE LOCAL</h4>
+        <p>Une diminution des intermédiaires pour des produits locaux</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-user logo-small"></span>
+        <h4>L'HUMAIN AU CENTRE</h4>
+        <p>Des entreprises à taille humaine axées sur le bien-être et la dignité</p>
+      </div>
+    </div>
+    
+    <div class="row slideanim">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-gift logo-small"></span>
+        <h4>ENTRAIDE</h4>
+        <p>5% des bénéfices sont reversés à des associations caritatives</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-piggy-bank logo-small"></span>
+        <h4>COMMERCE EQUITABLE</h4>
+        <p>Un revenu juste pour tous les acteurs de la production et de la vente</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-heart logo-small"></span>
+        <h4>PARTAGE</h4>
+        <p>Diffuser les connaissances et recréer du lien social avec des ateliers de découverte chez les producteurs </p>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Container historique-->
+
+<div id="historique" class="container-fluid" style="background: url(img/fondblancasse.png);background-size: cover;">
+  <div class="container">
+    <div class="row">
+        <div class="main-timeline">
+            <div class="col-md-3 col-sm-6 timeline">
+                <div class="timeline-inner">
+                    <div class="year">2014</div>
+                    <div class="timeline-content">
+                        <div class="post">Web Desginer</div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ullamcorper odio. Phasellus congue varius placerat. Quisque vel purus convallis.
+                        </p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 timeline">
+                <div class="timeline-inner">
+                    <div class="year">2015</div>
+                    <div class="timeline-content">
+                        <div class="post">Web Developer</div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ullamcorper odio. Phasellus congue varius placerat. Quisque vel purus convallis.
+                        </p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 timeline">
+                <div class="timeline-inner">
+                    <div class="year">2020</div>
+                    <div class="timeline-content">
+                        <div class="post">prout</div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ullamcorper odio. Phasellus congue varius placerat. Quisque vel purus convallis.
+                        </p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 timeline">
+                <div class="timeline-inner">
+                    <div class="year">2014</div>
+                    <div class="timeline-content">
+                        <div class="post">Web Desginer</div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ullamcorper odio. Phasellus congue varius placerat. Quisque vel purus convallis.
+                        </p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+  <!-- Container Producteurs vedettes -->
+
+
+  <div id="producteurs" class="container-fluid" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+
+    <div class="container">
+      <div class="row text-center">
+        <h2 class="text-center">Nos producteurs vedettes</h2>
+      </div>
+    </div>
+
+    <div class="box-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="box">
+              <div class="pic">
+                <img src="img/peasant1.jpeg" alt=""></img>
+              </div>
+              <div class="content">
+                <h3 class="title"><a href="#">Athanase Bakounine</a></h3>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.?Lorem ipsum dolor sit amet, consectetur adipisicing elit?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="box">
+              <div class="pic">
+                <img src="img/peasant2.jpeg" alt=""></img>
+              </div>
+              <div class="content">
+                <h3 class="title"><a href="#">Eugène Proudhon</a></h3>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.?Lorem ipsum dolor sit amet, consectetur adipisicing elit?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="box">
+              <div class="pic">
+                <img src="img/peasant3.jpg" alt=""></img>
+              </div>
+              <div class="content">
+                <h3 class="title"><a href="#">Norbert Engels</a></h3>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.?Lorem ipsum dolor sit amet, consectetur adipisicing elit?</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 ">
+          <a href="#" class="btn btn-lg ">Voir tous les producteurs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Container testimonial-->
+
+  <div id="temoignages" class="container-fluid" style="background: url(img/fondblancasse.png);background-size: cover;">
+    <h2>Ce que les clients pensent du site</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="testimonial-slider" class="owl-carousel">
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  Je suis venu, j'ai vu et j'ai acheté.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-1.jpg" alt=""></img>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Jules C.</h3>
+                <span>Empereur épileptique</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  Si j'avais su qu'on avait tous ces bons produits chez nous, je n'aurais jamais fait la campagne d'Europe.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-2.jpg" alt=""></img>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Napoléon B.</h3>
+                <span>Empereur à hémorroïdes</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  J'ai trouvé pleins de légumes et j'ai fait une délicieuse macédoine.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-1.jpg" alt=""></img>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Alexandre le G.</h3>
+                <span>Empereur cynique</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit elit porttitor erat rutrum, ac.elit porttitor erat rutrum, ac.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-1.jpg" alt=""/>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Alexandre le G.</h3>
+                <span>Empereur</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit elit porttitor erat rutrum, ac.elit porttitor erat rutrum, ac.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-1.jpg" alt=""/>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Napoleon B.</h3>
+                <span>Empereur</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="content">
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit elit porttitor erat rutrum, ac.elit porttitor erat rutrum, ac.
+                </p>
+              </div>
+              <div class="testimonial-pic">
+                <img src="images/img-3.jpg" alt=""/>
+              </div>
+              <div class="testimonial-review">
+                <h3 class="testimonial-title">Jules C.</h3>
+                <span>Epileptique</span>
+                <ul class="social-links">
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-facebook"></a></li>
+                  <li><a href="#" class="fa fa-pinterest"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Container Contacts -->
+
+
+
+  <div id="contacts" class="container-fluid" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+        <div class="form-bg" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover;">
+                    <span class="heading">Contactez-nous</span>
+                    <div class="form-group">
+                        <input class="form-control" id="inputNom" placeholder="Nom"></input>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="inputPrenom" placeholder="Prénom"/>
+                        <i class="fa fa-user fa-"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input class="form-control" id="inputEmail" placeholder="Adresse courriel" type="email"/>
+                        <i class="fa fa-at"></i>
+                    </div>
+                    <div class="form-group help">
+                        <textarea class="form-control" id="inputCommentaire" placeholder="Commentaires" rows=""></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+      </div>
+
+<!-- Footer-->
+
+  <footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  </footer>
+  <script src="js/PageAccueilAnarDef.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/PageAccueilAnarDef.js"></script>
+
+
+
+
+
+</body>
+
+</html>
