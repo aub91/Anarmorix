@@ -1,6 +1,8 @@
-package afcepf.anarmorix.entity;
+package fr.afcepf.anarmorix.entity;
 
-import java.util.*;
+import java.util.List;
+
+import javax.persistence.ManyToMany;
 
 /**
  * 
@@ -16,11 +18,12 @@ public class SocieteDeLivraison extends Adherent {
     /**
      * 
      */
-    private Set<Livreur> livreurs;
+    private List<Livreur> livreurs;
 
     /**
      * 
      */
-    private Set<Ville> villesLivrees;
+    @ManyToMany(mappedBy = "societesDeLivraison")
+    private List<Ville> villesLivrees;
 
 }

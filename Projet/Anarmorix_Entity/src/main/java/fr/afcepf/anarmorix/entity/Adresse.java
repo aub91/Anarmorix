@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -60,6 +63,19 @@ public class Adresse implements Serializable {
     @Column(name = "voie", nullable = false, length = LONGUEUR_GRANDE)
     private String voie;
 
+    /**
+     * Code Postal de l'adresse.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_code_postal", nullable = false, foreignKey = @ForeignKey(name = "FK_Adresse_CodePostal"))
+    private CodePostal codePostal;
+
+    /**
+     * Ville où est situé l'adresse.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_ville", nullable = false, foreignKey = @ForeignKey(name = "FK_Adresse_Ville"))
+    private Ville ville;
     /**
      * Longitude de l'adresse.
      */
@@ -212,6 +228,37 @@ public class Adresse implements Serializable {
         commerces = paramCommerces;
     }
 
+    /**
+     * @return the codePostal
+     */
+    public CodePostal getCodePostal() {
+        return codePostal;
+    }
+
+
+    /**
+     * @param paramCodePostal the codePostal to set
+     */
+    public void setCodePostal(CodePostal paramCodePostal) {
+        codePostal = paramCodePostal;
+    }
+
+
+    /**
+     * @return the ville
+     */
+    public Ville getVille() {
+        return ville;
+    }
+
+
+    /**
+     * @param paramVille the ville to set
+     */
+    public void setVille(Ville paramVille) {
+        ville = paramVille;
+    }
+
 
     /**
      * Default constructor.
@@ -225,16 +272,20 @@ public class Adresse implements Serializable {
      * @param paramNumero the numero to set
      * @param paramComplementNumero the complementNumero to set
      * @param paramVoie the voie to set
+     * @param paramCodePostal the codePostal to set
+     * @param paramVille the ville to set
      * @param paramLongitude the longitude to set
      * @param paramLatitude the latitude to set
      */
     public Adresse(Integer paramId, Integer paramNumero, String paramComplementNumero, String paramVoie,
-            String paramLongitude, String paramLatitude) {
+            CodePostal paramCodePostal, Ville paramVille, String paramLongitude, String paramLatitude) {
         super();
         id = paramId;
         numero = paramNumero;
         complementNumero = paramComplementNumero;
         voie = paramVoie;
+        codePostal = paramCodePostal;
+        ville = paramVille;
         longitude = paramLongitude;
         latitude = paramLatitude;
     }

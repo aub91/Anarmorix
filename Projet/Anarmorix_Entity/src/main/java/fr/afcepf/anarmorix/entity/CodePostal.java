@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -49,9 +50,14 @@ public class CodePostal implements Serializable {
      */
     @ManyToMany
     @JoinTable(name = "codePostal_ville", joinColumns = @JoinColumn(name = "cp_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "ville_id", referencedColumnName = "id"))
+    inverseJoinColumns = @JoinColumn(name = "ville_codeInsee", referencedColumnName = "codeInsee"))
     private List<Ville> villes;
 
+    /**
+     * Liste des adresses ayant ce code postal.
+     */
+    @OneToMany(mappedBy = "codePostal")
+    private List<Adresse> adresses;
     /**
      * Default constructor.
      */
