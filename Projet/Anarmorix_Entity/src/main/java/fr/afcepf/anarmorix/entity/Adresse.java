@@ -36,7 +36,7 @@ public class Adresse implements Serializable {
      * Grande longueur d'une chaine de caractère.
      */
     @Transient
-    private static final int LONGUEUR_GRANDE = 50;
+    private static final int LONGUEUR_GRANDE = 150;
     /**
      * Id de l'adresse.
      */
