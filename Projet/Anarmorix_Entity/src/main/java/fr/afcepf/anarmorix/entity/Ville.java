@@ -37,7 +37,6 @@ public class Ville implements Serializable {
      */
     @Id
     @Column(name = "codeInsee")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codeInsee;
 
     /**

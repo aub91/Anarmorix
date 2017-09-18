@@ -24,7 +24,7 @@ public class Employe extends Professionnel {
      * Le point relais où travaille l'employé.
      */
     @ManyToOne
-    @JoinColumn(name = "id_relais", nullable = false, foreignKey = @ForeignKey(name = "FK_Employe_Relais"))
+    @JoinColumn(name = "id_relais", nullable = true, foreignKey = @ForeignKey(name = "FK_Employe_Relais"))
     private PointRelais relais;
     /**
      * Default constructor.

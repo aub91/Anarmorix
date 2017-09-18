@@ -105,7 +105,7 @@ public abstract class Adherent implements Serializable {
     /**
      * Numéro de téléphone alternatif de l'adhérent.
      */
-    @Column(name = "tel2", nullable = false, length = LONGUEUR_PETITE)
+    @Column(name = "tel2", nullable = true, length = LONGUEUR_PETITE)
     private String telephone2;
 
     /**

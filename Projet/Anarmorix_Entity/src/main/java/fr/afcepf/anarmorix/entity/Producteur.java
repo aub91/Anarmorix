@@ -1,7 +1,7 @@
 package fr.afcepf.anarmorix.entity;
 
-import java.io.Serializable;
-
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,7 +10,9 @@ import javax.persistence.Transient;
 /**
  * Entité représentant le producteur.
  */
-public class Producteur extends Professionnel implements Serializable {
+@Entity
+@DiscriminatorValue("Producteur")
+public class Producteur extends Professionnel {
 
     /**
      * Numéro pour sérialisation.
@@ -22,7 +24,7 @@ public class Producteur extends Professionnel implements Serializable {
      * Exploitation où travaille e producteur.
      */
     @ManyToOne
-    @JoinColumn(name = "id_exploitation", nullable = false, foreignKey = @ForeignKey(name = "FK_Producteur_Adherent"))
+    @JoinColumn(name = "id_exploitation", nullable = true, foreignKey = @ForeignKey(name = "FK_Producteur_Exploitation"))
     private Exploitation exploitation;
 
     /**

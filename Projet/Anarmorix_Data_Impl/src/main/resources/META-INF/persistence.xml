@@ -33,7 +33,6 @@
 		<class>fr.afcepf.anarmorix.entity.TypeProduit</class>
 		<class>fr.afcepf.anarmorix.entity.UnitePackaging</class>
 		<class>fr.afcepf.anarmorix.entity.Ville</class>
-		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 			<property name="hibernate.show_sql" value="true"/>
