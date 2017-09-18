@@ -79,13 +79,13 @@ public class Adresse implements Serializable {
     /**
      * Longitude de l'adresse.
      */
-    @Column(name = "longitude", nullable = false, length = LONGUEUR_PETITE)
+    @Column(name = "longitude", nullable = true, length = LONGUEUR_PETITE)
     private String longitude;
 
     /**
      * Latitude de l'adresse.
      */
-    @Column(name = "latitude", nullable = false, length = LONGUEUR_PETITE)
+    @Column(name = "latitude", nullable = true, length = LONGUEUR_PETITE)
     private String latitude;
 
 

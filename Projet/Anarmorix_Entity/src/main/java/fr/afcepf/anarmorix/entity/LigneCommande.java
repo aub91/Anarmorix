@@ -41,6 +41,12 @@ public class LigneCommande implements Serializable {
     private Integer id;
 
     /**
+     * Commande associée à la ligne.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_commande", nullable = false, foreignKey = @ForeignKey(name = "FK_LigneCommande_Commande"))
+    private Commande commande;
+    /**
      * Quantite commandée indiquée dans la ligne de commande.
      */
     @Column(name = "quantite_commandee", nullable = false)

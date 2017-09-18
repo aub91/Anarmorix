@@ -47,6 +47,11 @@ public class UnitePackaging implements Serializable {
      */
     @OneToMany(mappedBy = "unite")
     private List<Packaging> packagings;
+    /**
+     * Liste des ingrédients ayant cette unité.
+     */
+    @OneToMany(mappedBy = "unite")
+    private List<Ingredient> ingredients;
 
     /**
      * @return the id
