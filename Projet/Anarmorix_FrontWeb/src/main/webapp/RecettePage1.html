@@ -3,20 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <title>RecettePage1</title>
+
+
 <style type="text/css">
-#recettes img{width:150px;height: 150px}
+#recette {
+	display: grid;
+	grid-template-column: 100px 100px;
+	grid-template-row: 100px;
+	width: 100%;
+	grid-column-gap: 20px;
+}
+
+img {
+	
+}
+
+#image {
+	grid-column: 1;
+	grid-row: 1;
+	width: 100%
+}
+
+img {
+	width: 500px;
+	height: 400px
+}
+
+#info {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+#form_boutons {
+	grid-column: 1;
+	grid-row: 1;
+	float: right;
+	margin-right: 50px;
+}
+
+#btnDetails {
+	width: 150px;
+	height: 45px;
+}
+
+#btnAjouter {
+	width: 150px;
+	height: 45px;
+}
+
+#nom {
+	font-size: 40px;
+}
+</style>
+
 </head>
 <body>
-		<div img src="ratatouille.jpg"/>
-		<span> Ratatouille </span>
-		<p> blablabla </p>
-		<br/>
-		<div img src="fondant.jpg"/>
-		<span> Fondant </span>
-		<p> blablabla </p>
-		</br>
-		<div img src="boeufbourguignon.jpg"/>
-		<span> Boeuf bourguignon </span>
-		<p> blablabla </p>
+
+	<div id="recette">
+		<div id="image">
+			<img src="img/ratatouille.jpg" />
+		</div>
+		<div id="info">
+			<span id="nom"> Ratatouille </span>
+			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+				culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum
+				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+				incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+				ea commodo consequat. Duis aute irure dolor in reprehenderit in
+				voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit
+				amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+				ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+				nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+				cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum."</p>
+
+			</br>
+			<div id="form_boutons">
+				<input type="submit" value="Détails" id="btnDetails" /> <input
+					type="submit" value="Ajouter" id="btnAjouter" />
+			</div>
+
+		</div>
+	</div>
+	<br />
+	<div id="recette">
+		<div id="image">
+			<img src="img\fondant.jpg" />
+		</div>
+		<div id="info">
+			<span id="nom"> Fondant </span>
+			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+				culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum
+				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+				incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+				ea commodo consequat. Duis aute irure dolor in reprehenderit in
+				voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit
+				amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+				ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+				nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+				cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum."</p>
+			</br>
+
+			<div id="form_boutons">
+				<input type="submit" value="Détails" id="btnDetails" /> <input
+					type="submit" value="Ajouter" id="btnAjouter" />
+			</div>
+		</div>
+	</div>
+	</br>
+	<div id="recette">
+		<div id="image">
+			<img src="img\boeufbourguignon.jpg" />
+		</div>
+		<div id="info">
+			<span id="nom"> Boeuf bourguignon </span>
+			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+				culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum
+				dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+				incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+				ea commodo consequat. Duis aute irure dolor in reprehenderit in
+				voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit
+				amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+				ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+				nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+				cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum."</p>
+			</br>
+
+			<div id="form_boutons">
+				<input type="submit" value="Détails" id="btnDetails" /> <input
+					type="submit" value="Ajouter" id="btnAjouter" />
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>
