@@ -31,6 +31,11 @@ public class Horaire implements Serializable {
     @Transient
     private static final int LONGUEUR_PETITE = 20;
     /**
+     * Longueur moyenne d'une chaine de caractère.
+     */
+    @Transient
+    private static final int LONGUEUR_MOYENNE = 50;
+    /**
      * Id de l'horaire.
      */
     @Id
@@ -41,6 +46,7 @@ public class Horaire implements Serializable {
     /**
      * Libellé de l'horaire.
      */
+    @Column(name = "libelle", nullable = false, length = LONGUEUR_MOYENNE)
     private String libelle;
 
     /**

@@ -28,6 +28,7 @@ import javax.persistence.Transient;
 @Table(name = "adherent")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_adherent")
+
 public abstract class Adherent implements Serializable {
 
     /**

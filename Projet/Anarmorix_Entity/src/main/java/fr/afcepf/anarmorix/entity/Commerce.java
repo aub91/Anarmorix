@@ -70,6 +70,11 @@ public abstract class Commerce implements Serializable {
      */
     @Column(name = "codeApe", nullable = false, length = LONGUEUR_PETITE)
     private String codeApe;
+    /**
+     * Numéro IBAN de la société.
+     */
+    @Column(name = "iban", nullable = true, length = LONGUEUR_PETITE)
+    private String iban;
 
     /**
      * Raison sociale du commerce.
@@ -107,17 +112,19 @@ public abstract class Commerce implements Serializable {
      * @param paramNumSiren the numSiren to set
      * @param paramNumNic the numNic to set
      * @param paramCodeApe the codeApe to set
+     * @param paramIban the iban to set
      * @param paramRaisonSociale the raisonSociale to set
      * @param paramAdresse the adresse to set
      * @param paramImagePrincipale the imagePrincipale to set
      */
     public Commerce(Integer paramId, String paramNumSiren, String paramNumNic, String paramCodeApe,
-            String paramRaisonSociale, Adresse paramAdresse, Image paramImagePrincipale) {
+            String paramIban, String paramRaisonSociale, Adresse paramAdresse, Image paramImagePrincipale) {
         super();
         id = paramId;
         numSiren = paramNumSiren;
         numNic = paramNumNic;
         codeApe = paramCodeApe;
+        iban = paramIban;
         raisonSociale = paramRaisonSociale;
         adresse = paramAdresse;
         imagePrincipale = paramImagePrincipale;
@@ -217,6 +224,18 @@ public abstract class Commerce implements Serializable {
      */
     public void setImagePrincipale(Image paramImagePrincipale) {
         imagePrincipale = paramImagePrincipale;
+    }
+    /**
+     * @return the iban
+     */
+    public String getIban() {
+        return iban;
+    }
+    /**
+     * @param paramIban the iban to set
+     */
+    public void setIban(String paramIban) {
+        iban = paramIban;
     }
 
 }

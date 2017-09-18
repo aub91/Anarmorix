@@ -66575,6 +66575,27 @@
 					"visibility": "public"
 				}
 			]
+		},
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFek9ri/fHxlt4=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "DiagDeClasseService",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFek9ri/vHy7hw=",
+					"_parent": {
+						"$ref": "AAAAAAFek9ri/fHxlt4="
+					},
+					"name": "ClassDiagram1",
+					"visible": true,
+					"defaultDiagram": false
+				}
+			],
+			"visibility": "public"
 		}
 	]
 }

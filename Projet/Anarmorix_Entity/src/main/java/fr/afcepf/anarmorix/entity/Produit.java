@@ -1,17 +1,21 @@
-package afcepf.anarmorix.entity;
+package fr.afcepf.anarmorix.entity;
 
-import java.util.*;
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Transient;
 
 /**
- * 
+ * Entité représentant un produit "concret".
  */
+
 public class Produit extends TypeProduit {
 
     /**
-     * Default constructor
+     * Numéro pour sérialisation.
      */
-    public Produit() {
-    }
+    @Transient
+    private static final long serialVersionUID = 1L;
 
     /**
      * 
@@ -43,5 +47,10 @@ public class Produit extends TypeProduit {
      * 
      */
     private Packaging packaging;
+    /**
+     * Default constructor.
+     */
+    public Produit() {
+    }
 
 }

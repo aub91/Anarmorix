@@ -25,7 +25,6 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "indisponibilite")
 public class Indisponibilite implements Serializable {
-
     /**
      * Numéro pour sérialisation.
      */
