@@ -1,4 +1,5 @@
-package afcepf.anarmorix.entity;
+package fr.afcepf.anarmorix.entity;
+
 
 import java.util.*;
 
