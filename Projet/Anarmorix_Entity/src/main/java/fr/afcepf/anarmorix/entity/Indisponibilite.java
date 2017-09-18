@@ -22,14 +22,9 @@ import javax.persistence.Transient;
 /**
  * Entité représentant les indisponibilités.
  */
-<<<<<<< HEAD
-public class Indisponibilite {
-=======
 @Entity
 @Table(name = "indisponibilite")
 public class Indisponibilite implements Serializable {
->>>>>>> eloi
-
     /**
      * Numéro pour sérialisation.
      */
