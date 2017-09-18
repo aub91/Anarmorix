@@ -1,4 +1,8 @@
 package fr.afcepf.anarmorix.entity;
+<<<<<<< HEAD
+=======
+
+>>>>>>> fousseynou
 
 import java.io.Serializable;
 import java.util.List;
