@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-private class Indisponibilite {
+public class Indisponibilite {
 
     /**
      * Default constructor
