@@ -8,6 +8,7 @@
   	<maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<junit.version>4.11</junit.version>
   </properties>
   <modules>
   	<module>Anarmorix_Business_Api</module>
@@ -19,4 +20,12 @@
   	<module>Anarmorix_FrontWeb</module>
   	<module>Anarmorix_Exception</module>
   </modules>
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>${junit.version}</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
 </project>

@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="Anarmorix_Data_Impl">
-	<jta-data-source>java:jboss/datasources/AnarmorixDS</jta-data-source>
-		<class>fr.afcepf.anarmorix.entity.Adherent</class>
-		<class>fr.afcepf.anarmorix.entity.Adresse</class>
-		<class>fr.afcepf.anarmorix.entity.Alea</class>
-		<class>fr.afcepf.anarmorix.entity.Catalogue</class>
-		<class>fr.afcepf.anarmorix.entity.Categorie</class>
-		<class>fr.afcepf.anarmorix.entity.Client</class>
-		<class>fr.afcepf.anarmorix.entity.CodePostal</class>
-		<class>fr.afcepf.anarmorix.entity.Commande</class>
-		<class>fr.afcepf.anarmorix.entity.Commerce</class>
-		<class>fr.afcepf.anarmorix.entity.Employe</class>
-		<class>fr.afcepf.anarmorix.entity.Exploitation</class>
-		<class>fr.afcepf.anarmorix.entity.Horaire</class>
-		<class>fr.afcepf.anarmorix.entity.Image</class>
-		<class>fr.afcepf.anarmorix.entity.Indisponibilite</class>
-		<class>fr.afcepf.anarmorix.entity.Ingredient</class>
-		<class>fr.afcepf.anarmorix.entity.JourOuverture</class>
-		<class>fr.afcepf.anarmorix.entity.LigneCommande</class>
-		<class>fr.afcepf.anarmorix.entity.Livreur</class>
-		<class>fr.afcepf.anarmorix.entity.MotifDesinscription</class>
-		<class>fr.afcepf.anarmorix.entity.Packaging</class>
-		<class>fr.afcepf.anarmorix.entity.PointRelais</class>
-		<class>fr.afcepf.anarmorix.entity.Producteur</class>
-		<class>fr.afcepf.anarmorix.entity.Produit</class>
-		<class>fr.afcepf.anarmorix.entity.Professionnel</class>
-		<class>fr.afcepf.anarmorix.entity.Recette</class>
-		<class>fr.afcepf.anarmorix.entity.SocieteDeLivraison</class>
-		<class>fr.afcepf.anarmorix.entity.TauxTVA</class>
-		<class>fr.afcepf.anarmorix.entity.Tournee</class>
-		<class>fr.afcepf.anarmorix.entity.TypeProduit</class>
-		<class>fr.afcepf.anarmorix.entity.UnitePackaging</class>
-		<class>fr.afcepf.anarmorix.entity.Ville</class>
-		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-			<property name="hibernate.show_sql" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
-		</properties>
-	</persistence-unit>
+<persistence-unit name="Anarmorix_Data_Impl">
+    <jta-data-source>java:jboss/datasources/AnarmorixDS</jta-data-source>
+        <class>fr.afcepf.anarmorix.entity.Adherent</class>
+        <class>fr.afcepf.anarmorix.entity.Adresse</class>
+        <class>fr.afcepf.anarmorix.entity.Alea</class>
+        <class>fr.afcepf.anarmorix.entity.Catalogue</class>
+        <class>fr.afcepf.anarmorix.entity.Categorie</class>
+        <class>fr.afcepf.anarmorix.entity.Client</class>
+        <class>fr.afcepf.anarmorix.entity.CodePostal</class>
+        <class>fr.afcepf.anarmorix.entity.Commande</class>
+        <class>fr.afcepf.anarmorix.entity.Commerce</class>
+        <class>fr.afcepf.anarmorix.entity.Employe</class>
+        <class>fr.afcepf.anarmorix.entity.Exploitation</class>
+        <class>fr.afcepf.anarmorix.entity.Horaire</class>
+        <class>fr.afcepf.anarmorix.entity.Image</class>
+        <class>fr.afcepf.anarmorix.entity.Indisponibilite</class>
+        <class>fr.afcepf.anarmorix.entity.Ingredient</class>
+        <class>fr.afcepf.anarmorix.entity.JourOuverture</class>
+        <class>fr.afcepf.anarmorix.entity.LigneCommande</class>
+        <class>fr.afcepf.anarmorix.entity.Livreur</class>
+        <class>fr.afcepf.anarmorix.entity.MotifDesinscription</class>
+        <class>fr.afcepf.anarmorix.entity.Packaging</class>
+        <class>fr.afcepf.anarmorix.entity.PointRelais</class>
+        <class>fr.afcepf.anarmorix.entity.Producteur</class>
+        <class>fr.afcepf.anarmorix.entity.Produit</class>
+        <class>fr.afcepf.anarmorix.entity.Professionnel</class>
+        <class>fr.afcepf.anarmorix.entity.Recette</class>
+        <class>fr.afcepf.anarmorix.entity.SocieteDeLivraison</class>
+        <class>fr.afcepf.anarmorix.entity.TauxTVA</class>
+        <class>fr.afcepf.anarmorix.entity.Tournee</class>
+        <class>fr.afcepf.anarmorix.entity.TypeProduit</class>
+        <class>fr.afcepf.anarmorix.entity.UnitePackaging</class>
+        <class>fr.afcepf.anarmorix.entity.Ville</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
 </persistence>
