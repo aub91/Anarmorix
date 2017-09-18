@@ -8,7 +8,7 @@ import javax.persistence.Transient;
 /**
  * Entité représentant un produit "concret".
  */
-@
+
 public class Produit extends TypeProduit {
 
     /**
