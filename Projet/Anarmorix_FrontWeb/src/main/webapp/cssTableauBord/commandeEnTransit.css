@@ -231,20 +231,21 @@
     }
 }
 
-#section_general {
+#section-general {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 200px 400px;
+    grid-template-rows: 20% 80%
 }
 
-#container {
-    width: 100%;
-    grid-column: 1;
+#title {
     grid-row: 1;
+    grid-gap: 1;
+    width: 100%
 }
 
 #table {
-    grid-column: 1;
     grid-row: 2;
+    grid-column: 1;
+    border: 2px solid black;
     width: 100%;
 }
