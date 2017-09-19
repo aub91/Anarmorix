@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Horaire;
@@ -68,11 +67,18 @@ public class MapManagedBean {
                 StringBuilder sbJour = new StringBuilder("{'jour': '");
                 sbJour.append(jourOuverture.getLibelle()).append("', 'horaire': [");
                 for (Horaire horaire : jourOuverture.getHorairesOuverture()) {
-                    
+                    StringBuilder sbHoraire = new StringBuilder("{'periode': '");
+                    sbHoraire.append(horaire.getLibelle()).append("', 'ouverture': '").append(horaire.getHeureOuverture())
+                    .append("', 'fermeture': '").append(horaire.getHeureFermeture()).append("'}, ");
+                    sbJour.append(sbHoraire);
                 }
+                sbJour.delete(sbJour.length() - 2, sbJour.length()).append("]}, ");
+                sbJourOuverture.append(sbJour);
             }
-            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'address': '").append(sbAdress).append("', ");
+            sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length()).append("]}, ");
+            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
         }
+        jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
     }
     /**
      * @return the liste
@@ -89,13 +95,13 @@ public class MapManagedBean {
     /**
      * @return the jSonPointRelais
      */
-    public String getjSonPointRelais() {
+    public StringBuilder getjSonPointRelais() {
         return jSonPointRelais;
     }
     /**
      * @param paramJSonPointRelais the jSonPointRelais to set
      */
-    public void setjSonPointRelais(String paramJSonPointRelais) {
+    public void setjSonPointRelais(StringBuilder paramJSonPointRelais) {
         jSonPointRelais = paramJSonPointRelais;
     }
 

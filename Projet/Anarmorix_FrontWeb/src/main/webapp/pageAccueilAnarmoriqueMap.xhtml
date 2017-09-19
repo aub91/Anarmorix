@@ -502,6 +502,15 @@
           var text = document.createElement('text');
           text.textContent = address;
           infowincontent.appendChild(text);
+          infowincontent.appendChild(document.createElement('br'));
+          var horaires = document.createElement('ul');
+          infowincontent.appendChild(horaires);
+          for (var j =0; i<markers.marker[i].jourOuverture.length; j++) {
+            var jour = markers.marker[i].jourOuverture[j].jour;
+            var jourOuverture = document.createElement('li');
+            jourOuverture.textContent = jour;
+            jourOuverture.appendChild(document.createElement('ul'));
+          }
           var markerElem = new google.maps.Marker({
             map: map,
             position: point,
