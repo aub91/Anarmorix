@@ -15,25 +15,25 @@ public interface IDaoAdherent {
      * @param mdp le mot de passe de l'{@link Adherent} se connectant
      * @return l'entity {@link Adherent} connecté
      */
-    Adherent seConnecter(String username, String password);
+    Adherent seConnecter(String username, String password) throws Exception;
 
     /**
      * Méthode permettant de faire persister une entity {@link Adherent} en base.
      * @param adherent l'{@link Adherent} à ajouter.
      * @return l'{@link Adherent} ajouté à la base.
      */
-    Adherent ajouter(Adherent adherent);
+    Adherent ajouter(Adherent adherent) throws Exception;
 
     /**
      * Méthode permettant la suppression d'un {@link Adherent} en base.
      * @param adherent l'{@link Adherent} à supprimer
      */
-    void supprimer(Adherent adherent);
+    void supprimer(Adherent adherent) throws Exception;
 
     /**
      * Méthode permettant de mettre à jour un {@link Adherent} dans la base.
      * @param adherent l'{@link Adherent} à mettre à jour.
      * @return l'entity {@link Adherent} mis à jour avec ses nouvelles informations..
      */
-    Adherent mettreAJour(Adherent adherent);
+    Adherent mettreAJour(Adherent adherent) throws Exception;
 }

@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
  * classe gérant l'accès aux données de l'{@link Adherent}.
@@ -35,7 +36,7 @@ public class DaoAdherent implements IDaoAdherent {
     }
 
     @Override
-    public Adherent seConnecter(String paramUsername, String paramPassword) {
+    public Adherent seConnecter(String paramUsername, String paramPassword) throws AnarmorixException {
         Adherent adherent = null;
         try {
             adherent = em.createQuery(REQ_CNX, Adherent.class)  .setParameter("pusername", paramUsername)
@@ -47,18 +48,18 @@ public class DaoAdherent implements IDaoAdherent {
     }
 
     @Override
-    public Adherent ajouter(Adherent paramAdherent) {
+    public Adherent ajouter(Adherent paramAdherent) throws AnarmorixException {
         em.persist(paramAdherent);
         return paramAdherent;
     }
 
     @Override
-    public void supprimer(Adherent paramAdherent) {
+    public void supprimer(Adherent paramAdherent) throws AnarmorixException {
         em.remove(paramAdherent);
     }
 
     @Override
-    public Adherent mettreAJour(Adherent paramAdherent) {
+    public Adherent mettreAJour(Adherent paramAdherent) throws AnarmorixException {
         Adherent updatedAdherent = em.merge(paramAdherent);
         return updatedAdherent;
     }

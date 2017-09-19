@@ -12,7 +12,7 @@ public class AnarmorixException extends Exception {
     /**
      * Code d'erreur de l'exception.
      */
-    private AnarmorixExceptionEnum codeErreur = AnarmorixExceptionEnum.CA_MARCHE_PAS;
+    private AnarmorixExceptionEnum codeErreur = AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE;
     /**
      * @param paramMessage le message pour l'exception
      * @param paramCodeErreur le code d'erreur de l'exception
