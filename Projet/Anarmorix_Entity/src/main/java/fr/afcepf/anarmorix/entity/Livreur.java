@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -23,6 +26,8 @@ public class Livreur extends Professionnel {
     /**
      * Société de livraison employant le livreur.
      */
+    @ManyToOne
+    @JoinColumn(name = "id_societe", nullable = true, foreignKey = @ForeignKey(name = "FK_Livreur_Societe"))
     private SocieteDeLivraison societe;
 
     /**

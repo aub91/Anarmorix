@@ -86,5 +86,4 @@ public class PointRelais extends Commerce {
     public void setCommandes(List<Commande> paramCommandes) {
         commandes = paramCommandes;
     }
-    
 }

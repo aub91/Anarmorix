@@ -231,22 +231,20 @@
     }
 }
 
-#section-general {
+#section_general {
     display: grid;
-    grid-template-columns: 70% 30%;
-    grid-template-rows: 1 fr;
+    grid-template-columns: 100%;
+    grid-template-rows: 200px 400px;
 }
 
-#colG {
+#container {
     width: 100%;
-    min-height: 100vh;
     grid-column: 1;
     grid-row: 1;
 }
 
-#colD {
+#table {
+    grid-column: 1;
+    grid-row: 2;
     width: 100%;
-    min-height: 100vh;
-    grid-column: 2;
-    grid-row: 1;
 }

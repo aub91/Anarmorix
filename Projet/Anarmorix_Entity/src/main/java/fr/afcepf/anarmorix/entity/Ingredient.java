@@ -17,7 +17,7 @@ import javax.persistence.Transient;
  * Entité représentant les ingredients.
  */
 @Entity
-@Table(name = "ingredients")
+@Table(name = "ingredient")
 public class Ingredient implements Serializable {
 
     /**
@@ -39,6 +39,12 @@ public class Ingredient implements Serializable {
      */
     @Column(name = "quantite", nullable = false)
     private Integer quantite;
+    /**
+     * Unité de quantité de l'ingrédient.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_unite", nullable = true, foreignKey = @ForeignKey(name = "FK_Ingredient_Unite"))
+    private UnitePackaging unite;
 
     /**
      * Recette comprenant l'ingrédient.
@@ -66,11 +72,13 @@ public class Ingredient implements Serializable {
      * @param paramQuantite the quantite to set
      * @param paramRecette the recette to set
      * @param paramTypeProduit the typeProduit to set
+     * @param paramUnite the unite to set
      */
-    public Ingredient(Integer paramId, Integer paramQuantite, Recette paramRecette, TypeProduit paramTypeProduit) {
+    public Ingredient(Integer paramId, Integer paramQuantite, UnitePackaging paramUnite, Recette paramRecette, TypeProduit paramTypeProduit) {
         super();
         id = paramId;
         quantite = paramQuantite;
+        unite = paramUnite;
         recette = paramRecette;
         typeProduit = paramTypeProduit;
     }
@@ -129,6 +137,20 @@ public class Ingredient implements Serializable {
      */
     public void setTypeProduit(TypeProduit paramTypeProduit) {
         typeProduit = paramTypeProduit;
+    }
+
+    /**
+     * @return the unite
+     */
+    public UnitePackaging getUnite() {
+        return unite;
+    }
+
+    /**
+     * @param paramUnite the unite to set
+     */
+    public void setUnite(UnitePackaging paramUnite) {
+        unite = paramUnite;
     }
 
 }
