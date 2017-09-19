@@ -8,7 +8,9 @@ html {
     position: relative;
     min-height: 100%;
 }
-
+body{
+	font: 400 15px Lato, sans-serif;
+}
 body.sticky-footer {
     margin-bottom: 56px;
 }
@@ -274,6 +276,7 @@ body.fixed-nav {
 @media (min-width: 992px) {
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
         background: #343a40;
+        
     }
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
         color: white !important;
@@ -499,29 +502,40 @@ footer.sticky-footer {
 
 #colG {
     width: 100%;
-    min-height: 100vh;
+   min-height:100vh;
     grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 5% 50% 45%;
     text-align: center;
 }
 
 #corps {
     grid-row: 2;
     grid-column: 2;
+    min-height:100vh;
     display: grid;
     grid-template-rows: 100px 100px 100px;
     grid-template-columns: 50% 50%;
     border-radius: 5px;
+}
+
+#carroussel{
+	
+	height:170px;
+	grid-row: 3 ;
+    grid-column: 2/span 3;
+  	display: grid;
+  	grid-template-columns : repeat(4,1fr);
+   
   
 }
 
 #cmdencours {
     grid-row: 1;
     grid-column: 1 / span 2;
-    background-color: cadetblue;
+   
     border: 1px solid white;
     border-radius: 5px;
     height: 100%;
@@ -531,7 +545,7 @@ footer.sticky-footer {
 #compte {
     grid-column: 1;
     grid-row: 2;
-    background-color: cadetblue;
+    
     border: 1px solid white;
     border-radius: 5px;
     height: 100%;
@@ -541,7 +555,7 @@ footer.sticky-footer {
 #pdprefere {
     grid-row: 2;
     grid-column: 2;
-    background-color: cadetblue;
+   
     border: 1px solid white;
     border-radius: 5px;
     height: 100%;
@@ -551,7 +565,7 @@ footer.sticky-footer {
 #suivie {
     grid-column: 1;
     grid-row: 3;
-    background-color: cadetblue;
+   
     border: 1px solid white;
     border-radius: 5px;
     height: 100%;
@@ -561,7 +575,7 @@ footer.sticky-footer {
 #nveauProduit {
     grid-column: 2;
     grid-row: 3;
-    background-color: cadetblue;
+    
     border: 1px solid white;
     border-radius: 5px;
     height: 100%;
@@ -576,8 +590,19 @@ footer.sticky-footer {
     text-transform: uppercase;
     text-align: center;
     padding: 2px;
+    color:white;
+    
 }
 
+ a:link {
+color: white;
+}
+a:visited {
+color: white;
+}
+a:hover {
+color: white;
+} 
 #colD {
     width: 100%;
     min-height: 100vh;
@@ -612,7 +637,12 @@ footer.sticky-footer {
 .nav-link-text{
 	color:white;
 	text-align: center;
+	text-overflow: clip;
 	
+}
+.nav-link:hover {
+
+	background:#3d348b;
 }
 
 

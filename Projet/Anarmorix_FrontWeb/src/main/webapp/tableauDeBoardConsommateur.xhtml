@@ -8,56 +8,36 @@
 <h:head>
  <meta charset="utf-8"></meta>
     <title>Tableau de bord consommateur</title>
-
-
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-
-
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"></link>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
-
-   
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"></link>
-
-   
     <link href="cssTableauBord/tableauBordConsommateur.css" rel="stylesheet" type="text/css"></link>
-   
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"></link>
+    <script type="text/javascript" src="/js/tableauBordConso/tableauBordConso.js"></script>
 </h:head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top"  style="background: url(img/fondvioletlight.png);background-size: cover;">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="#">Tabealu de bord consommateur 
-        </a>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="#">
-
-                        <span class="nav-link-text">
-                TABLEAU DE BORD</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="background: url(img/fondvioletlight.png);background-size: cover;">
+        <a class="navbar-brand" href="#">Mon compte client</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive" >
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion"  style="background: url(img/fondvioletlight.png);background-size: cover;">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" >
+                    <a class="nav-link" href="#"  >
+                        <span class="nav-link-text" onclick="" >Tableau de bord</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="suivieDeCommande.html">
-
-                        <span class="nav-link-text">
-                COMMANDES </span>
+                        <span class="nav-link-text">Commandes</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="#">
-
-                        <span class="nav-link-text">
-                PROFIL</span>
+                        <span class="nav-link-text">Profil</span>
                     </a>
                 </li>
-
-
-
-
-
             </ul>
         </div>
     </nav>
@@ -67,20 +47,28 @@
 
             <section id="colG">
                 <div id="corps">
-                    <div id="cmdencours"><a href="suivieDeCommande.html"><span>Commande en cours</span></a> </div>
-                    <div id="compte"><span class="nav-link-text">Mon Compte</span></div>
+                    <div id="cmdencours"  style="background: url(img/fondvioletdark.png);background-size: cover;"><a href="suivieDeCommande.html"><span>Commande en cours</span></a> </div>
+                    <div id="compte" style="background: url(img/fondvioletdark.png);background-size: cover;"><a href="#"><span class="nav-link-text">Mon Compte</span></a></div>
 
-                    <div id="pdprefere"> <span class="nav-link-text">Mes produits préferes</span></div>
-                    <div id="suivie"><span class="nav-link-text">Suivie de commande</span> </div>
-                    <div id="nveauProduit"><span class="nav-link-text">Nouveau produit à decouvrir</span></div>
+                    <div id="pdprefere" style="background: url(img/fondvioletdark.png);background-size: cover;"><a href="#"><span class="nav-link-text">Mes produits préferes</span></a></div>
+                    <div id="suivie" style="background: url(img/fondvioletdark.png);background-size: cover;"><a href="#"><span class="nav-link-text">Suivie de commande</span> </a></div>
+                    <div id="nveauProduit" style="background: url(img/fondvioletdark.png);background-size: cover;"><a href="#"><span class="nav-link-text">Nouveau produit à decouvrir</span></a></div>
 
                     <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
                 </div>
-
+				<div id="carroussel" style="width:500px; border:2px dotted #FFF; background-color:#FFF;" >
+					<marquee> 
+                	<img src="img/betterave.jpg" id="img1"   width="150px" height="150px"/>
+                	<img src="img/carotte.jpg" id="img2"   width="150px" height="150px"/>
+                	<img src="img/crevettes grises.jpeg" id="img3"  width="150px" height="150px"/>
+                	<img src="img/chou fleur.jpg" id="img3"   width="150px" height="150px"/>
+                	</marquee>
+            	</div>
             </section>
             <section id="colD">
 
             </section>
+
         </div>
 
     </div>
