@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
-import fr.afcepf.anarmorix.data.Api.IDaoAdresse;
+import fr.afcepf.anarmorix.data.api.IDaoAdresse;
 import fr.afcepf.anarmorix.entity.Adresse;
 
 /**

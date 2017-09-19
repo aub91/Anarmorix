@@ -3,8 +3,8 @@ package fr.afcepf.anarmorix.business.impl;
 import java.util.List;
 
 import fr.afcepf.anarmorix.business.api.IBusinessProducteur;
-import fr.afcepf.anarmorix.data.Api.IDaoAlea;
-import fr.afcepf.anarmorix.data.Api.IDaoCatalogue;
+import fr.afcepf.anarmorix.data.api.IDaoAlea;
+import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
 import fr.afcepf.anarmorix.entity.Alea;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Client;

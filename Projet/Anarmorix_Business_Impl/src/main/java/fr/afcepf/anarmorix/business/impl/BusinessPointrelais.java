@@ -1,8 +1,8 @@
 package fr.afcepf.anarmorix.business.impl;
 
 import fr.afcepf.anarmorix.business.api.IBusinessPointRelais;
-import fr.afcepf.anarmorix.data.Api.IDaoAlea;
-import fr.afcepf.anarmorix.data.Api.IDaoCommande;
+import fr.afcepf.anarmorix.data.api.IDaoAlea;
+import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.entity.Alea;
 import fr.afcepf.anarmorix.entity.Commande;
 
