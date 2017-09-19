@@ -15,16 +15,11 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * Test des méthodes du DAO Adhérent.
+ * Test de la méthode supprimer du DAO Adhérent.
  * @author Stagiaire
  *
  */
-public class TestDaoAdherent {
-
-    /**
-     * Id d'une adresse n'existant pas en base.
-     */
-    private static final int ID_ADRESSE_INEXISTANTE = 818418168;
+public class TestConnexionDaoAdherent {
 
     /**
      * Classe contenant les services à tester.
@@ -47,35 +42,23 @@ public class TestDaoAdherent {
     private Adresse adresse = new Adresse(1, 1, null, "rue Hun", cp, ville, "0.0001", "0.0001");
 
     /**
-     * Adresse n'existant pas en base.
-     */
-    private Adresse adresseInexistante = new Adresse(ID_ADRESSE_INEXISTANTE, 1, null, "rue Hun", cp, ville, "0.0001", "0.0001");
-
-    /**
      * Adherent pour test nominal.
      */
     private Adherent adherentNominal = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
                                                   "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
 
     /**
-     * Adhérent pour test de non nullable null.
+     * Cas d'un username non repertorie.
      */
-    private Adherent adherentAttributNull = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
-            "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
+    private Adherent adherentNonRepertorie = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
+            "jm.petitbuisson@mail.fr", "0123456789", null, "petitbuisson", "aaa", null);
 
     /**
-     * Adhérent pour test nom trop long.
+     * Cas d'un mauvais mot de passe.
      */
-    private Adherent adherentTropLong = new Client(1, new Date(0),
-                                                  "Petitbuisson-presquelarbrequicahelaforêt-maisquandmêmepastoutàfait-ceseraitexagéré-nestcepas",
-                                                  "Jean-Marc", new Date(0), adresse,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
+    private Adherent adherentErreurPassword = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
+                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "a", null);
 
-    /**
-     * Adhérent pour test de violation de contrainte d'intégrité.
-     */
-    private Adherent adherentViolationContrainte = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresseInexistante,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
 
     /**
      * Test du cas où l'ajout de l'{@link Adherent } à la base est empêché par une valeur null.
@@ -115,12 +98,29 @@ public class TestDaoAdherent {
             Assert.assertEquals(AnarmorixExceptionEnum.VIOLATION_DE_CONTRAINTE, e.getCodeErreur());
         }
     }
-    
+
     /**
      * Test du cas nominal.
+     * @throws AnarmorixException qui ne doit jamais apparaître dans le test nominal
      */
     @Test
-    public void TestNominalAjout() {
-        
+    public void testNominalAjout() throws AnarmorixException {
+        Adherent retour = daoTest.ajouter(adherentNominal);
+        Assert.assertNotNull(retour.getId());
+        Assert.assertNotNull(retour.getNom());
+        Assert.assertNotNull(retour.getPrenom());
+        Assert.assertNotNull(retour.getDateInscription());
+        Assert.assertNotNull(retour.getTelephone1());
+        Assert.assertNotNull(retour.getMail());
+        Assert.assertNotNull(retour.getUsername());
+        Assert.assertNotNull(retour.getPassword());
+        Assert.assertNotNull(retour.getDateNaissance());
+        Assert.assertEquals("Petitbuisson", retour.getNom());
+        Assert.assertEquals("Jean-Marc", retour.getPrenom());
+        Assert.assertEquals("0123456789", retour.getTelephone1());
+        Assert.assertEquals("jm.petitbuisson@mail.fr", retour.getMail());
+        Assert.assertEquals("jmpetitbuisson", retour.getUsername());
+        Assert.assertEquals("aaa", retour.getPassword());
+        Assert.assertEquals(ID_ADHERENT_FICTIF, retour.getId().intValue());
     }
 }

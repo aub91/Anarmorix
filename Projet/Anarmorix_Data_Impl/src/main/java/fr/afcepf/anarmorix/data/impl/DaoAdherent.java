@@ -49,6 +49,7 @@ public class DaoAdherent implements IDaoAdherent {
 
     @Override
     public Adherent ajouter(Adherent paramAdherent) throws AnarmorixException {
+        //TODO: Vérifier que le mail ou l'userame ne soient pas déjà pris.
         em.persist(paramAdherent);
         return paramAdherent;
     }
