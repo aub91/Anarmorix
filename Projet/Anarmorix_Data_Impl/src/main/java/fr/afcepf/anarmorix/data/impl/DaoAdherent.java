@@ -1,66 +1,52 @@
-package fr.afcepf.anarmorix.data.impl;
+package fr.afcepf.anarmorix.data.Impl;
+
+import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import fr.afcepf.anarmorix.data.api.IDaoAdherent;
+import fr.afcepf.anarmorix.data.Api.IDaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
 
 /**
- * classe gérant l'accès aux données de l'{@link Adherent}.
- * @author Stagiaire
- *
+ * 
  */
-@Remote(IDaoAdherent.class)
-@Stateless
 public class DaoAdherent implements IDaoAdherent {
 
     /**
-     * Entity manager.
-     */
-    @PersistenceContext(unitName = "Anarmorix_Data_Impl")
-    private EntityManager em;
-
-    /**
-     * Requête utilisée pour la connexion d'un {@link Adherent}.
-     */
-    private static final String REQ_CNX = "SELECT a FROM adherent a WHERE a.username = pusername AND a.password = ppassword";
-
-    /**
-     * Default constructor.
+     * Default constructor
      */
     public DaoAdherent() {
     }
 
     @Override
-    public Adherent seConnecter(String paramUsername, String paramPassword) {
-        Adherent adherent = null;
-        try {
-            adherent = em.createQuery(REQ_CNX, Adherent.class)  .setParameter("pusername", paramUsername)
-                                                                .setParameter("ppassword", paramPassword).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Adherent seConnecter(String paramNom, String paramMdp) {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Adherent ajouter(Adherent paramAdherent) {
-        em.persist(paramAdherent);
-        return paramAdherent;
+    public List<Adherent> rechercher(String paramNom) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Adherent ajouter() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
     public void supprimer(Adherent paramAdherent) {
-        em.remove(paramAdherent);
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     public Adherent mettreAJour(Adherent paramAdherent) {
-        Adherent updatedAdherent = em.merge(paramAdherent);
-        return updatedAdherent;
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

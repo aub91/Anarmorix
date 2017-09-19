@@ -1,9 +1,17 @@
-package fr.afcepf.anarmorix.data.api;
+package fr.afcepf.anarmorix.data.Api;
+
+import fr.afcepf.anarmorix.entity.JourOuverture;
+import fr.afcepf.anarmorix.entity.PointRelais;
+
 /**
  * 
- * @author Aubin
- *
  */
 public interface IDaoJourOuverture {
+
+    /**
+     * @param pointRelais 
+     * @return
+     */
+    public JourOuverture recherche(PointRelais pointRelais);
 
 }
