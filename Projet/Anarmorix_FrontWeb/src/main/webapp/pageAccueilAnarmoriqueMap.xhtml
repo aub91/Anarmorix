@@ -468,14 +468,6 @@
   
   <script>
   //<![CDATA[
-  var customLabel = {
-      pointRelais: {
-        label: 'PR'
-      },
-      producteur: {
-        label: 'P'
-      }
-    };
       function initMap() {
           var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(48.856614, 2.352221),
@@ -487,44 +479,55 @@
       
           var markers = #{mbMap.jSonPointRelais};
         
-           for (var i = 0; i<markers.marker.length; i++) {
-                (function(){
-          var name = markers.marker[i].name;
-          var address = markers.marker[i].address;
-          var point = new google.maps.LatLng(
-                    parseFloat(markers.marker[i].lat),
-                    parseFloat(markers.marker[i].lng));
-          var infowincontent = document.createElement('div');
-          var strong = document.createElement('strong');
-          strong.textContent = name;
-          infowincontent.appendChild(strong);
-          infowincontent.appendChild(document.createElement('br'));
-          var text = document.createElement('text');
-          text.textContent = address;
-          infowincontent.appendChild(text);
-          infowincontent.appendChild(document.createElement('br'));
-          var horaires = document.createElement('ul');
-          infowincontent.appendChild(horaires);
-          for (var j =0; i<markers.marker[i].jourOuverture.length; j++) {
-            var jour = markers.marker[i].jourOuverture[j].jour;
-            var jourOuverture = document.createElement('li');
-            jourOuverture.textContent = jour;
-            jourOuverture.appendChild(document.createElement('ul'));
-          }
-          var markerElem = new google.maps.Marker({
-            map: map,
-            position: point,
-          });
-          markerElem.addListener('click', function() {
-            infoWindow.setContent(infowincontent);
-            infoWindow.open(map, markerElem);
-          });
-          markerTab.push(markerElem);
-          }());
+          for (var i = 0; i<markers.marker.length; i++) {
+            (function(){
+              var name = markers.marker[i].name;
+              var address = markers.marker[i].address;
+              var point = new google.maps.LatLng(
+                        parseFloat(markers.marker[i].lat),
+                        parseFloat(markers.marker[i].lng));
+              
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = name;
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+              var text = document.createElement('text');
+              text.textContent = address;
+              infowincontent.appendChild(text);
+            infowincontent.appendChild(document.createElement('br'));
+            var horaires = document.createElement('ul');
+            for (var j = 0; j<markers.marker[i].jourOuverture.length; j++) {
+              var jour = markers.marker[i].jourOuverture[j].jour;
+              var jourTravail = document.createElement('li');
+              jourTravail.textContent = jour;
+              var heures = document.createElement('ul');
+              for (var k = 0; k < markers.marker[i].jourOuverture[j].horaire.length; k++){
+                var periode = markers.marker[i].jourOuverture[j].horaire[k].periode;
+                var ouverture = markers.marker[i].jourOuverture[j].horaire[k].ouverture;
+                var fermeture = markers.marker[i].jourOuverture[j].horaire[k].fermeture;
+                var heure = document.createElement('li');
+                heure.textContent = periode + ": " + ouverture + " - " + fermeture;
+                heures.appendChild(heure); 
+              };
+              jourTravail.appendChild(heures);
+              horaires.appendChild(jourTravail);
+            };
+            infowincontent.appendChild(horaires);
+            var markerElem = new google.maps.Marker({
+                map: map,
+                position: point,
+            });
+            markerElem.addListener('click', function() {
+                infoWindow.setContent(infowincontent);
+                infoWindow.open(map, markerElem);
+            });
+            markerTab.push(markerElem);
+           }());
         }
         var mcOptions = {imagePath: 'resources/img/m'};
         var markerCluster = new MarkerClusterer(map, markerTab, mcOptions);
-       };
+       }
       //]]>
   </script>
 </body>
