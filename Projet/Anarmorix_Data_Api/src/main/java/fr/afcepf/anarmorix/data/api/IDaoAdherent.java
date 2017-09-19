@@ -14,28 +14,21 @@ public interface IDaoAdherent {
      * @param mdp 
      * @return
      */
-    public Adherent seConnecter(String nom, String mdp);
+    Adherent seConnecter(String username, String password) throws Exception;
 
     /**
      * @param nom 
      * @return
      */
-    public List<Adherent> rechercher(String nom);
+    Adherent ajouter(Adherent adherent) throws Exception;
 
     /**
      * @return
      */
-    public Adherent ajouter();
+    void supprimer(Adherent adherent) throws Exception;
 
     /**
      * @param adherent
      */
-    public void supprimer(Adherent adherent);
-
-    /**
-     * @param adherent 
-     * @return
-     */
-    public Adherent mettreAJour(Adherent adherent);
-
+    Adherent mettreAJour(Adherent adherent) throws Exception;
 }
