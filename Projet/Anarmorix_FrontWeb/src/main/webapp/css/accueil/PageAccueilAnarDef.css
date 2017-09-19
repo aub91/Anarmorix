@@ -134,8 +134,7 @@ body {
 
   .navbar {
     margin-bottom: 0;
-    /*background-color: #6c5cb8;*/
-    background-image: url(img/fondvioletlight.png);
+    
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -475,21 +474,21 @@ body {
 
   .btn {
     border-radius: 5px 30px;
-    color: #6c5cb8;
+    color: #fff;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
   }
 
   .btn-lg {
     padding: 6px 22px;
-    background-color: #edebe6;
+    background-color: #6c5cb8;
     margin-top: 50px;
     margin-left: 30px;
   }
 
   .btn:hover {
     border-radius: 30px 5px;
-    color: #fff;
+    color: #edebe6;
     background-color: #3d348b;
   }
   }
@@ -840,7 +839,16 @@ body {
 header .container form h1 {
   color: #edebe6;
 }
-
+.input-group-btn .btn {
+	padding: 6px 22px;
+    background-color: #6c5cb8;
+    color: #fff;
+}
+.input-group-btn .btn:hover {
+	
+    color: #edebe6;
+    background-color: #3d348b;
+}
 
 
 #nosvaleurs h2{
