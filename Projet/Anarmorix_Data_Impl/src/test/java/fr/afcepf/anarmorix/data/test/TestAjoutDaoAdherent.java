@@ -121,6 +121,8 @@ public class TestAjoutDaoAdherent {
         }
     }
 
+    //TODO : Cas du mail ou de l'username existant.
+
     /**
      * Test du cas nominal.
      * @throws AnarmorixException qui ne doit jamais apparaître dans le test nominal
