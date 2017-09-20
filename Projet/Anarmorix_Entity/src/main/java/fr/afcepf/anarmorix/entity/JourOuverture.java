@@ -122,4 +122,17 @@ public class JourOuverture implements Serializable {
         relais = paramRelais;
     }
 
+    /**
+     * @return the horairesOuverture
+     */
+    public List<Horaire> getHorairesOuverture() {
+        return horairesOuverture;
+    }
+
+    /**
+     * @param paramHorairesOuverture the horairesOuverture to set
+     */
+    public void setHorairesOuverture(List<Horaire> paramHorairesOuverture) {
+        horairesOuverture = paramHorairesOuverture;
+    }
 }

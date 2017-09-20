@@ -32,7 +32,11 @@ public class SocieteDeLivraison extends Commerce {
      */
     @ManyToMany(mappedBy = "societesDeLivraison")
     private List<Ville> villesLivrees;
-
+    /**
+     * Liste des tournées de livraison attribuées à la société.
+     */
+    @OneToMany(mappedBy = "societe")
+    private List<Tournee> tournees;
     /**
      * Default constructor.
      */
@@ -56,4 +60,45 @@ public class SocieteDeLivraison extends Commerce {
                 paramImagePrincipale);
     }
 
+    /**
+     * @return the livreurs
+     */
+    public List<Livreur> getLivreurs() {
+        return livreurs;
+    }
+
+    /**
+     * @param paramLivreurs the livreurs to set
+     */
+    public void setLivreurs(List<Livreur> paramLivreurs) {
+        livreurs = paramLivreurs;
+    }
+
+    /**
+     * @return the villesLivrees
+     */
+    public List<Ville> getVillesLivrees() {
+        return villesLivrees;
+    }
+
+    /**
+     * @param paramVillesLivrees the villesLivrees to set
+     */
+    public void setVillesLivrees(List<Ville> paramVillesLivrees) {
+        villesLivrees = paramVillesLivrees;
+    }
+
+    /**
+     * @return the tournees
+     */
+    public List<Tournee> getTournees() {
+        return tournees;
+    }
+
+    /**
+     * @param paramTournees the tournees to set
+     */
+    public void setTournees(List<Tournee> paramTournees) {
+        tournees = paramTournees;
+    }
 }

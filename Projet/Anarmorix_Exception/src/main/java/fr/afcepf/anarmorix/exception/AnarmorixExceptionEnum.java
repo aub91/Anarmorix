@@ -6,11 +6,15 @@ package fr.afcepf.anarmorix.exception;
  */
 public enum AnarmorixExceptionEnum {
     /**
-     * Cas générique, erreur non identifiée.
+     * Cas générique.
      */
-    CA_MARCHE_PAS,
+    ERREUR_NON_IDENTIFIEE,
     /**
-     * Au cas où on enregistre une valeur null obligatoire.
+     * Cas où la couche métier voit que le mail existe déjà dans le systeme.
+     */
+    MAIL_EXISTANT,
+    /**
+     * Cas où on enregistre une valeur null obligatoire.
      */
     NULL_DATA,
     /**
@@ -18,11 +22,11 @@ public enum AnarmorixExceptionEnum {
      */
     TOO_LONG_DATA,
     /**
-     * Le serveur de données ne répond pas.
+     * Cas où le serveur de données ne répond pas.
      */
     MYSQL_HS,
     /**
-     * contraintes d'intégrité de données.
+     * Cas des contraintes d'intégrité
      */
     VIOLATION_DE_CONTRAINTE
 }
