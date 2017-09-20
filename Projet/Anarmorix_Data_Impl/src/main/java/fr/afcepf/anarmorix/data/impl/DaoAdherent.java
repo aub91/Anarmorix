@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
  * classe gérant l'accès aux données de l'{@link Adherent}.
@@ -29,9 +30,9 @@ public class DaoAdherent implements IDaoAdherent {
     /**
      * Requête utilisée pour la connexion d'un {@link Adherent}.
      */
-    private static final String REQ_CNX = "SELECT a FROM adherent a WHERE a.username = pusername AND a.password = ppassword";
+    private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
     
-    private static final String REQ_REGISTER = "SELECT a FROM adherent a WHERE a.username = pusername OR a.mail = pmail";
+    private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
 
     /**
      * Default constructor.
@@ -51,14 +52,26 @@ public class DaoAdherent implements IDaoAdherent {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Adherent ajouter(Adherent paramAdherent) throws AnarmorixException {
-        List<List> verifListe = em.createQuery(REQ_REGISTER, List.class).setParameter("pusername", paramAdherent.getUsername())
+        List<Adherent> verifListe = em.createQuery(REQ_REGISTER).setParameter("pusername", paramAdherent.getUsername())
                                     .setParameter("pmail", paramAdherent.getMail()).getResultList();
         if (verifListe.isEmpty()) {
-            em.persist(paramAdherent);
+            try {
+                em.persist(paramAdherent);
+            } catch (Exception e) {
+                if (e.getMessage().contains("DataException")) {
+                    AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.TOO_LONG_DATA);
+                    throw exc;
+                }
+                if (e.getMessage().contains("ConstraintViolationException")) {
+                    AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.VIOLATION_DE_CONTRAINTE);
+                    throw exc;
+                }
+            }
         } else {
-            AnarmorixException exc = new AnarmorixException();
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MAIL_EXISTANT);
             throw exc;
         }
         return paramAdherent;

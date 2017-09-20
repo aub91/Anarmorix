@@ -27,46 +27,32 @@ public class TestConnexionDaoAdherent {
     private DaoAdherent daoTest = new DaoAdherent();
 
     /**
-     * Ville de l'adresse de l'adhérent.
+     * Username pour le test du cas d'un username non répertorié.
      */
-    private Ville ville = new Ville("1", "Guingamp");
+    private String usernameInexistant = "test";
 
     /**
-     * Code postal de l'adresse de l'adhérent.
+     * Username valide.
      */
-    private CodePostal cp = new CodePostal(1, "22200");
+    private String usernameExistant = "grandarbre";
+    
+    /**
+     * Password pour le test du cas d'un mauvais password.
+     */
+    private String passwordInvalide = "test";
+    
+    /**
+     * Password valide correspondant à l'username valide.
+     */
+    private String passwordValide = "aaa";
 
     /**
-     * Adresse de l'adhérent.
-     */
-    private Adresse adresse = new Adresse(1, 1, null, "rue Hun", cp, ville, "0.0001", "0.0001");
-
-    /**
-     * Adherent pour test nominal.
-     */
-    private Adherent adherentNominal = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
-
-    /**
-     * Cas d'un username non repertorie.
-     */
-    private Adherent adherentNonRepertorie = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
-            "jm.petitbuisson@mail.fr", "0123456789", null, "petitbuisson", "aaa", null);
-
-    /**
-     * Cas d'un mauvais mot de passe.
-     */
-    private Adherent adherentErreurPassword = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "a", null);
-
-
-    /**
-     * Test du cas où l'ajout de l'{@link Adherent } à la base est empêché par une valeur null.
+     * Test du cas où la connexion de l'{@link Adherent } est empêché par un mauvais username.
      */
     @Test
-    public void testEchecAttributNullAjout() {
+    public void testEchecAttributNullConnexion() {
         try {
-            daoTest.ajouter(adherentAttributNull);
+            daoTest.seConnecter(usernameInexistant, passwordValide);
             Assert.fail("Test d'echec (attribut null), mais ça marche. Il y a un petit problème... !");
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.NULL_DATA, e.getCodeErreur());

@@ -28,6 +28,14 @@
   		<version>${jee.version}</version>
   		<scope>provided</scope>
   	</dependency>
+  	<dependency>
+  	<groupId>org.jboss.eap</groupId>
+  	<artifactId>wildfly-ejb-client-bom</artifactId>
+  	<version>7.0.0.GA-redhat-2</version>
+  	<scope>test</scope>
+  	<type>pom</type>
+  	
+  	</dependency>
   </dependencies>
   <build>
   	<plugins>

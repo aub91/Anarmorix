@@ -26,7 +26,15 @@ public enum AnarmorixExceptionEnum {
      */
     MYSQL_HS,
     /**
-     * Cas des contraintes d'intégrité
+     * Cas des contraintes d'intégrité.
      */
-    VIOLATION_DE_CONTRAINTE
+    VIOLATION_DE_CONTRAINTE,
+    /**
+     * Cas d'un username inexistant.
+     */
+    USERNAME_INEXISTANT,
+    /**
+     * Cas d'un mot de passe invalide
+     */
+    MOT_DE_PASSE_INVALIDE
 }
