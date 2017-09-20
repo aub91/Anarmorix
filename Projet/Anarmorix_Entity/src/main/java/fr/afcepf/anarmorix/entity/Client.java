@@ -66,7 +66,6 @@ public class Client extends Adherent {
             String paramTelephone2, String paramUsername, String paramPassword, Image paramImage) {
         super(paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, paramMail,
                 paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
-        // TODO Auto-generated constructor stub
     }
 
 }

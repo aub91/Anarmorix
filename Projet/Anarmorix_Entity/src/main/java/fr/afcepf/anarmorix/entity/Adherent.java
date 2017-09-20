@@ -123,7 +123,7 @@ public abstract class Adherent implements Serializable {
     /**
      * Date de désinscription de l'adhérent.
      */
-    @Column(name = "dateDesinscription", nullable = false)
+    @Column(name = "dateDesinscription", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDesinscription;
 

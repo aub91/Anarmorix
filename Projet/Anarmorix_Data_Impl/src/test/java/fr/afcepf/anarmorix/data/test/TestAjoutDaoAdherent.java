@@ -1,10 +1,11 @@
 package fr.afcepf.anarmorix.data.test;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.data.impl.DaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Adresse;
@@ -34,7 +35,8 @@ public class TestAjoutDaoAdherent {
     /**
      * Classe contenant les services à tester.
      */
-    private DaoAdherent daoTest = new DaoAdherent();
+    private IDaoAdherent daoTest = (IDaoAdherent) CreateProxyEJB.getProxy(
+            "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoAdherent!fr.afcepf.anarmorix.data.api.IDaoAdherent");
 
     /**
      * Ville de l'adresse de l'adhérent.
@@ -59,28 +61,28 @@ public class TestAjoutDaoAdherent {
     /**
      * Adherent pour test nominal.
      */
-    private Adherent adherentNominal = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
+    private Adherent adherentNominal = new Client(null, new Date(), "Petitbuisson", "Jean-Marc", new Date(), adresse,
                                                   "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
 
     /**
      * Adhérent pour test de non nullable null.
      */
-    private Adherent adherentAttributNull = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresse,
-            "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
+    private Adherent adherentAttributNull = new Client(null, new Date(), "Petitbuisson", "Jean-Marc", new Date(), adresse,
+            "jm.petitbuisson1@mail.fr", null, null, "jmpetitbuisson1", "aaa", null);
 
     /**
      * Adhérent pour test nom trop long.
      */
-    private Adherent adherentTropLong = new Client(1, new Date(0),
+    private Adherent adherentTropLong = new Client(null, new Date(),
                                                   "Petitbuisson-presquelarbrequicahelaforêt-maisquandmêmepastoutàfait-ceseraitexagéré-nestcepas",
-                                                  "Jean-Marc", new Date(0), adresse,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
+                                                  "Jean-Marc", new Date(), adresse,
+                                                  "jm.petitbuisson2@mail.fr", "0123456789", null, "jmpetitbuisson2", "aaa", null);
 
     /**
      * Adhérent pour test de violation de contrainte d'intégrité.
      */
-    private Adherent adherentViolationContrainte = new Client(1, new Date(0), "Petitbuisson", "Jean-Marc", new Date(0), adresseInexistante,
-                                                  "jm.petitbuisson@mail.fr", "0123456789", null, "jmpetitbuisson", "aaa", null);
+    private Adherent adherentViolationContrainte = new Client(null, new Date(), "Petitbuisson", "Jean-Marc", new Date(0), adresseInexistante,
+                                                  "jm.petitbuisson3@mail.fr", "0123456789", null, "jmpetitbuisson3", "aaa", null);
 
     /**
      * Test du cas où l'ajout de l'{@link Adherent } à la base est empêché par une valeur null.
@@ -91,7 +93,7 @@ public class TestAjoutDaoAdherent {
             daoTest.ajouter(adherentAttributNull);
             Assert.fail("Test d'echec (attribut null), mais ça marche. Il y a un petit problème... !");
         } catch (AnarmorixException e) {
-            Assert.assertEquals(AnarmorixExceptionEnum.NULL_DATA, e.getCodeErreur());
+            Assert.assertEquals(AnarmorixExceptionEnum.VIOLATION_DE_CONTRAINTE, e.getCodeErreur());
         }
     }
 
@@ -125,10 +127,10 @@ public class TestAjoutDaoAdherent {
 
     /**
      * Test du cas nominal.
-     * @throws AnarmorixException qui ne doit jamais apparaître dans le test nominal
+     * @throws AnarmorixException lblakfl aklfaz laz.
      */
     @Test
-    public void testNominalAjout() throws AnarmorixException {
+    public void testNominalAjout() throws AnarmorixException  {
         Adherent retour = daoTest.ajouter(adherentNominal);
         Assert.assertNotNull(retour.getId());
         Assert.assertNotNull(retour.getNom());
