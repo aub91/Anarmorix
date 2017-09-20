@@ -30,7 +30,22 @@ public class MapManagedBean {
      * Message JSon permettant d'afficher les point-relais sur la map.
      */
     private StringBuilder jSonPointRelais = new StringBuilder("{'marker': [");
-
+    /**
+     * Valeur du champ recherche.
+     */
+    private String centre;
+    /**
+     * Latitude du centre de la carte.
+     */
+    private String lat = "47.577512";
+    /**
+     * Longitude du centre de la carte.
+     */
+    private String longi = "2.387635";
+    /**
+     * Niveau de zoom de la carte.
+     */
+    private String zoom = "6";
     /**
      * Méthode recherchant les point-relais de la base.
      */
@@ -86,11 +101,13 @@ public class MapManagedBean {
                 sbJourOuverture.append(sbJour);
             }
             sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length()).append("]}, ");
-            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
+            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'id': '").append(pr.getId())
+            .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
         }
         jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
         System.out.println(jSonPointRelais);
     }
+
     /**
      * @return the liste
      */
@@ -116,4 +133,60 @@ public class MapManagedBean {
         jSonPointRelais = paramJSonPointRelais;
     }
 
+    /**
+     * @return the centre
+     */
+    public String getCentre() {
+        return centre;
+    }
+
+    /**
+     * @param paramCentre the centre to set
+     */
+    public void setCentre(String paramCentre) {
+        centre = paramCentre;
+    }
+
+    /**
+     * @return the lat
+     */
+    public String getLat() {
+        return lat;
+    }
+
+    /**
+     * @param paramLat the lat to set
+     */
+    public void setLat(String paramLat) {
+        lat = paramLat;
+    }
+
+    /**
+     * @return the longi
+     */
+    public String getLongi() {
+        return longi;
+    }
+
+    /**
+     * @param paramLongi the longi to set
+     */
+    public void setLongi(String paramLongi) {
+        longi = paramLongi;
+    }
+
+    /**
+     * @return the zoom
+     */
+    public String getZoom() {
+        return zoom;
+    }
+
+    /**
+     * @param paramZoom the zoom to set
+     */
+    public void setZoom(String paramZoom) {
+        zoom = paramZoom;
+    }
+    
 }
