@@ -30,11 +30,7 @@ public enum AnarmorixExceptionEnum {
      */
     VIOLATION_DE_CONTRAINTE,
     /**
-     * Cas d'un username inexistant.
+     * Cas d'un username inexistant ou d'un mot de passe invalide.
      */
-    USERNAME_INEXISTANT,
-    /**
-     * Cas d'un mot de passe invalide
-     */
-    MOT_DE_PASSE_INVALIDE
+    ERREUR_IDENTIFIANTS_CONNEXION
 }
