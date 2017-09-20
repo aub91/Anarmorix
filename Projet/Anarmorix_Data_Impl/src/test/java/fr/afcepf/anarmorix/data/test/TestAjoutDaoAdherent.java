@@ -30,7 +30,7 @@ public class TestAjoutDaoAdherent {
     /**
      * Id d'un adhérent fictif.
      */
-    private static final int ID_ADHERENT_FICTIF = 2;
+    private static final int ID_ADHERENT_FICTIF = 1;
 
     /**
      * Classe contenant les services à tester.
