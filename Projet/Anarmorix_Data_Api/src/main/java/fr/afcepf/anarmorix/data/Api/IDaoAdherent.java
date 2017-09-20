@@ -3,6 +3,7 @@ package fr.afcepf.anarmorix.data.Api;
 import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
  * 
@@ -14,21 +15,21 @@ public interface IDaoAdherent {
      * @param mdp 
      * @return
      */
-    Adherent seConnecter(String username, String password) throws Exception;
+    Adherent seConnecter(String username, String password) throws AnarmorixException;
 
     /**
      * @param nom 
      * @return
      */
-    Adherent ajouter(Adherent adherent) throws Exception;
+    Adherent ajouter(Adherent adherent) throws AnarmorixException;
 
     /**
      * @return
      */
-    void supprimer(Adherent adherent) throws Exception;
+    void supprimer(Adherent adherent) throws AnarmorixException;
 
     /**
      * @param adherent
      */
-    Adherent mettreAJour(Adherent adherent) throws Exception;
+    Adherent mettreAJour(Adherent adherent) throws AnarmorixException;
 }
