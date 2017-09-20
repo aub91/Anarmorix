@@ -1,11 +1,17 @@
 package fr.afcepf.anarmorix.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
 
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.CodePostal;
@@ -19,7 +25,7 @@ import fr.afcepf.anarmorix.entity.Ville;
  * @author Aubin
  *
  */
-@SessionScoped
+@Stateless
 @ManagedBean(name = "mbMap")
 public class MapManagedBean {
     /**
@@ -46,6 +52,10 @@ public class MapManagedBean {
      * Niveau de zoom de la carte.
      */
     private String zoom = "6";
+    /**
+     * Api Key pour googleMap API.
+     */
+    private String apiKey = "AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc";
     /**
      * Méthode recherchant les point-relais de la base.
      */
@@ -107,7 +117,30 @@ public class MapManagedBean {
         jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
         System.out.println(jSonPointRelais);
     }
-
+    /**
+     * Méthode pour rechercher un point particulier.
+     */
+    public void rechercherPoint() {
+        if (centre != null && centre != "") {
+            GeoApiContext context = new GeoApiContext.Builder().apiKey(apiKey).build();
+                GeocodingResult[] results;
+                try {
+                    results = GeocodingApi.geocode(context, centre).region("fr").await();
+                    lat = String.valueOf(results[0].geometry.location.lat);
+                    longi = String.valueOf(results[0].geometry.location.lng);
+                    zoom = "14";
+                } catch (ApiException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+    }
     /**
      * @return the liste
      */
@@ -188,5 +221,5 @@ public class MapManagedBean {
     public void setZoom(String paramZoom) {
         zoom = paramZoom;
     }
-    
+
 }

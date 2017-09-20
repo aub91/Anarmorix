@@ -102,22 +102,24 @@
 <div id="connexion" class="container-fluid row" style="background: url(resources/img/fondblancasse.png);background-size: cover;" >
   <div id="map" class="col-sm-12"></div>
   <!-- Search Form -->
-          <h:form role="form">
+          <h:form id="mapForm" role="form">
 
             <!-- Search Field -->
             <div class="row">
               <h1 class="text-center">Explorez</h1>
               <div class="form-group">
                 <div class="input-group">
-                  <h:inputText value="#{mb.centre}" styleClass="form-control"/>
-                  <!--  <input class="form-control" type="text" name="search" placeholder="Search"/>-->
+                  <h:inputText value="#{mbMap.centre}" styleClass="form-control"/>
                   <span class="input-group-btn">
-                            <button class="btn" type="submit">
-                              <span class="glyphicon glyphicon-search" aria-hidden="true">
-                                <span>Search</span>
-                  </span>
-                  </button>
+                  <h:commandButton type="button" styleClass="btn" value="Search">
+                      <f:ajax listener="#{mbMap.rechercherPoint()}" execute="@form" render="toto" onevent="centrer"></f:ajax>
+                   </h:commandButton>
 
+    <h:panelGroup id="toto">
+      <h:inputHidden value="#{mbMap.lat}" id="lati"/>
+      <h:inputHidden value="#{mbMap.longi}" id="longi"/>
+      <h:inputHidden value="#{mbMap.zoom}" id="zoom"/>
+    </h:panelGroup>
                   </span>
                 </div>
               </div>
@@ -492,8 +494,9 @@
   
   <script type="text/javascript">
   //<![CDATA[
+      var map;
       function initMap() {
-          var map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(#{mbMap.lat}, #{mbMap.longi}),
             zoom: #{mbMap.zoom}
           });
@@ -561,6 +564,13 @@
         var mcOptions = {imagePath: 'resources/img/m'};
         var markerCluster = new MarkerClusterer(map, markerTab, mcOptions);
        }
+
+      function centrer(data){
+    	  if(data.status == "success") {
+            var zoom = document.getElementById("zoom").val();
+            map.setZoom(zoom);
+  		  }
+      }
       //]]>
   </script>
 </body>
