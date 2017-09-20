@@ -47,6 +47,7 @@ body {
   .col-md-3 img {
   	height : 200px;
   	width :  290px;
+  	border-radius : 5px;
   }
 
   .dropdown-menu { 
@@ -79,6 +80,11 @@ body {
 	font-size: 22px !important;
 	
 }
+
+.navbar ul span {
+	
+	color: #fff;
+}
 .section-catalogue #cart {
 	float: right;
 	cursor: pointer;
@@ -96,12 +102,47 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
-    background: #6c5cb8;
+    /*background: #6c5cb8;*/
     position: relative;
     border-bottom: none;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 5px 5px 5px 5px;
     
 }
+
+#AccordeonNiveauPrincipal .list-group-item:hover {
+  	background-color: #fff;
+    color: #000;
+    
+    
+}
+#AccordeonNiveauPrincipal .list-group-item:focus {
+  	background-color: #fff;
+    color: #000;
+    
+    
+}
+#AccordeonNiveauPrincipal .list-group-item i {
+	float: right;
+		
+}	
+.bg-secondaire {
+	
+	background-color: #6c5cb8;
+}
+
+.bg-tertiaire {
+	
+	background-color : #5a536d;
+	
+}
+
+.bg-quaternaire {
+	
+	background-color : #ff69b4;
+	
+}
+
+
 
 
 /*fin*/

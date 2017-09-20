@@ -14,7 +14,7 @@ $(function () {
     };
 
     $('.my-cart-btn').myCart({
-      currencySymbol: '$',
+      currencySymbol: '€',
       classCartIcon: 'my-cart-icon',
       classCartBadge: 'my-cart-badge',
       classProductQuantity: 'my-product-quantity',
@@ -24,9 +24,7 @@ $(function () {
       showCheckoutModal: true,
       numberOfDecimals: 2,
       cartItems: [
-        {id: 1, name: 'product 1', summary: 'summary 1', price: 10, quantity: 1, image: 'images/img_1.png'},
-        {id: 2, name: 'product 2', summary: 'summary 2', price: 20, quantity: 2, image: 'images/img_2.png'},
-        {id: 3, name: 'product 3', summary: 'summary 3', price: 30, quantity: 1, image: 'images/img_3.png'}
+        
       ],
       clickOnAddToCart: function($addTocart){
         goToCartIcon($addTocart);
@@ -52,5 +50,12 @@ $(function () {
       }
     });
 
-    
+    $( "#AccordeonNiveauPrincipal .list-group-item" ).click(function() {
+    	var panneauOuvert = $(this).next();
+    	
+    	var caret = panneauOuvert.prev().find("i");
+        
+        caret.toggleClass('fa-caret-up fa-caret-down');
+        
+    	});
   });
