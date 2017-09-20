@@ -8,6 +8,9 @@ html {
     position: relative;
     min-height: 100%;
 }
+body{
+	font: 400 15px Lato, sans-serif;
+}
 
 body.sticky-footer {
     margin-bottom: 56px;
@@ -579,8 +582,18 @@ footer.sticky-footer {
     text-underline-position: auto;
     text-transform: uppercase;
     text-align: inherit;
+    color:white;
 }
 
+ a:link {
+color: white;
+}
+a:visited {
+color: white;
+}
+a:hover {
+color: white;
+} 
 #colD {
     width: 100%;
     min-height: 100vh;

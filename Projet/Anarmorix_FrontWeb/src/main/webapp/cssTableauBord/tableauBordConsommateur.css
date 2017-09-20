@@ -593,6 +593,9 @@ footer.sticky-footer {
     color:white;
     
 }
+img{
+	margin: 10px;
+}
 
  a:link {
 color: white;
