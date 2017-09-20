@@ -1,1 +1,0 @@
-insert into adherent (id_adresse, dateDesinscription, dateInscription, dateNaissance, id_image, mail, id_motif_desinscription, nom, password, prenom, tel1, tel2, username, type_adherent) values (1, null, '2017-09-19 00:00:00', '2017-08-17 00:00:00', null, 'jj.grandarbre@mail.fr', null, 'Grandarbre', 'aaa', 'Jean-Jacques', '0666666666', null,'grandarbre' , 'Client')

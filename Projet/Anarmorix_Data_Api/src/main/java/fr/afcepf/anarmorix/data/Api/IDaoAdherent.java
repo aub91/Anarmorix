@@ -1,5 +1,8 @@
 package fr.afcepf.anarmorix.data.api;
+<<<<<<< HEAD
 
+=======
+>>>>>>> joel
 
 import java.util.List;
 

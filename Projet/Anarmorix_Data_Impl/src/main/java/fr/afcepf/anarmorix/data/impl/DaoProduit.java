@@ -26,7 +26,9 @@ public class DaoProduit implements IDaoProduit {
 
     @Override
     public List<Produit> rechercher(Integer id) {
-        System.out.println("test" + em);
+        
+        /* em.find(Produit.class, id)*/
+
         return em.createQuery(
                 "SELECT p FROM Produit p "
                 + "WHERE p.id like :pid", Produit.class)
