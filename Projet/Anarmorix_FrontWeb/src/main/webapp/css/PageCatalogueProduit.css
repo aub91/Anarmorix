@@ -1,84 +1,91 @@
 body {
   margin-top: 50px;
-}
-.product {
-  width: 200px;
-  height: 200px;
-  font-size: 10px;
-  font-family: 'Arial';
-  margin-bottom: 8px;
-  padding-top: 8px;
-}
-.container .product span {
-  text-transform: uppercase;
-  font-size: 8px;
-  font-family: 'Arial';
-  color: #ccc;
-  display: inline-block;
-  transform: translateY(-16px);
-}
-.add-to-cart {
-  margin-right: 8px;
-}
-.container {
-  display: inline-block;
-  margin: 24px;
-  text-align: center;
-}
-.container span.add-to-cart,
-.container span.add-to-wish {
-  font-size: 10px;
-  font-family: 'Arial';
-  font-weight: 800;
-  color: #666;
-  padding-bottom: 12px;
-  display: inline-block;
-  cursor: pointer;
+  font-family: Lato, sans-serif;
 }
 
+#connexion {
+	 border: 0;
+    font-size: 16px !important;
+	color : #fff;
+    letter-spacing: 4px;
+    border-radius: 0;
+    
+   
+}
+
+.btn {
+    border-radius: 5px 30px;
+    color: #fff;
+    background-color: #6c5cb8;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+  }
+
+  
+
+  .btn:hover {
+    border-radius: 30px 5px;
+    color: #edebe6;
+    background-color: #3d348b;
+  }
+  }
 
 
+  @media only screen and (max-width: 767px) {
+  .btn {
+    margin-bottom: 15px;
+  }
+  }
 
+  .col-md-3 {
+  	border: 1px solid #6c5cb8;
+  	border-radius: 5px;
+  	margin: 10px 10px 10px 10px;
+  	padding: 10px 0px 10px 0px;
+  }
+  
+  .col-md-3 img {
+  	height : 200px;
+  	width :  290px;
+  }
 
+  .dropdown-menu { 
+	height: 20vh;
+	width: 30 vh;
+	border-radius: 5px 5px 5px 5px;
+}
 
-
+  #connexion:hover {
+	 
+	color : #b8b4aa;
+    background-color: #3d348b;
+    
+    
+   
+}
 .navbar {
-  color: #fff;
-  background-image: url(img/fondvioletlight.png);
+	margin-bottom: 0;
+    /*background-color: #6c5cb8;*/
+    background-image: url(img/fondvioletlight.png);
+    z-index: 9999;
+   
 }
-.product {
-  width: 200px;
-  height: 200px;
-  font-size: 10px;
-  font-family: 'Arial';
-  margin-bottom: 8px;
-  padding-top: 8px;
+
+
+.navbar-brand {
+	float: center;
+	color: #ff69b4;
+	font-family: Pacifico, sans-serif;
+	font-size: 22px !important;
+	
 }
-.container .product span {
-  text-transform: uppercase;
-  font-size: 8px;
-  font-family: 'Arial';
-  color: #ccc;
-  display: inline-block;
-  transform: translateY(-16px);
+.section-catalogue #cart {
+	float: right;
+	cursor: pointer;
 }
-.add-to-cart {
-  margin-right: 8px;
-}
-.container {
-  display: inline-block;
-  margin: 24px;
-  text-align: center;
-}
-.container span.add-to-cart,
-.container span.add-to-wish {
-  font-size: 10px;
-  font-family: 'Arial';
-  font-weight: 800;
-  color: #666;
-  padding-bottom: 12px;
-  display: inline-block;
-  cursor: pointer;
+
+.section-catalogue .page-header .text-center {
+	font-family: Pacifico, sans-serif;
 }
 
 /*css accordeon*/
@@ -86,13 +93,14 @@ body {
 #AccordeonNiveauPrincipal .list-group-item {
   display: block;
     padding: 14px 50px 14px 30px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     color: #fff;
-    background: #a568c8;
+    background: #6c5cb8;
     position: relative;
     border-bottom: none;
     border-radius: 20px 20px 20px 20px;
+    
 }
 
 
@@ -101,13 +109,17 @@ body {
 .section-d {
   margin-top: 50px;
 }
+.col-lg-offset-1 {
+	margin-top: 20px;
+}
+
 
 /*css bouton recette*/
 .btn-recettes {
   width: 300px; height: 300px;
   position: relative;
-  border: 1px solid #BBB;
-
+  border: 1px solid #6c5cb8;
+  
 
 }
 .ribbon {
@@ -115,7 +127,7 @@ body {
   right: -5px; top: -5px;
   z-index: 1;
   overflow: hidden;
-  width: 75px; height: 75px;
+  width: 150px; height: 150px;
   text-align: right;
 }
 .ribbon span {
@@ -155,4 +167,7 @@ body {
 }
 
 /*fin*/
+
+
+
 

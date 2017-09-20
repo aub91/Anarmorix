@@ -59,6 +59,13 @@ public class Tournee implements Serializable {
     private List<LigneCommande> lignesCmd;
 
     /**
+     * Société de livraison responsable de la livraison.
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_societe", nullable = true, foreignKey = @ForeignKey(name = "FK_Tournee_SocieteLivraison"))
+    private SocieteDeLivraison societe;
+
+    /**
      * Livreur effectuant la livraison.
      */
     @ManyToOne
@@ -75,14 +82,14 @@ public class Tournee implements Serializable {
      * @param paramId the id to set
      * @param paramDateHeureDebut the dateHeureDebut to set
      * @param paramDateHeureFin the dateHeureFin to set
-     * @param paramLivreur the livreur to set
+     * @param paramSociete the societeLivraison to set
      */
-    public Tournee(Integer paramId, Date paramDateHeureDebut, Date paramDateHeureFin, Livreur paramLivreur) {
+    public Tournee(Integer paramId, Date paramDateHeureDebut, Date paramDateHeureFin, SocieteDeLivraison paramSociete) {
         super();
         id = paramId;
         dateHeureDebut = paramDateHeureDebut;
         dateHeureFin = paramDateHeureFin;
-        livreur = paramLivreur;
+        societe = paramSociete;
     }
     /**
      * @return the id
@@ -144,5 +151,16 @@ public class Tournee implements Serializable {
     public void setLivreur(Livreur paramLivreur) {
         livreur = paramLivreur;
     }
-
+    /**
+     * @return the societeDeLivraison
+     */
+    public SocieteDeLivraison getSociete() {
+        return societe;
+    }
+    /**
+     * @param paramSociete the societeDeLivraison to set
+     */
+    public void setSociete(SocieteDeLivraison paramSociete) {
+        societe = paramSociete;
+    }
 }
