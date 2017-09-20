@@ -1,7 +1,5 @@
 package fr.afcepf.anarmorix.data.Api;
 
-import java.util.List;
-
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
