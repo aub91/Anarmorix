@@ -115,7 +115,6 @@ public class MapManagedBean {
             .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
         }
         jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
-        System.out.println(jSonPointRelais);
     }
     /**
      * Méthode pour rechercher un point particulier.

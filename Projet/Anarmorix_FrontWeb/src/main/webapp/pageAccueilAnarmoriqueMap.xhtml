@@ -567,8 +567,14 @@
 
       function centrer(data){
     	  if(data.status == "success") {
-            var zoom = document.getElementById("zoom").val();
-            map.setZoom(zoom);
+            var newZoom = document.getElementById("mapForm:zoom").value;
+            var newLat = document.getElementById("mapForm:lati").value;
+            var newLong = document.getElementById("mapForm:longi").value;
+            var newPoint = new google.maps.LatLng(
+                    parseFloat(newLat),
+                    parseFloat(newLong));
+            map.setZoom(Number.parseInt(newZoom));
+            map.setCenter(newPoint);
   		  }
       }
       //]]>
