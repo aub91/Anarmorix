@@ -45,6 +45,25 @@ public class PointRelais extends Commerce {
     public PointRelais() {
     }
 
+
+    /**
+     * Constructeur surchargé.
+     * @param paramId the id to set
+     * @param paramNumSiren the numSiren to set
+     * @param paramNumNic the numNic to set
+     * @param paramCodeApe the codeApe to set
+     * @param paramIban the iban to set
+     * @param paramRaisonSociale the raisonSociale to set
+     * @param paramAdresse the Adrese to set
+     * @param paramImagePrincipale the imagePrincipale to set
+     */
+    public PointRelais(Integer paramId, String paramNumSiren, String paramNumNic, String paramCodeApe, String paramIban,
+            String paramRaisonSociale, Adresse paramAdresse, Image paramImagePrincipale) {
+        super(paramId, paramNumSiren, paramNumNic, paramCodeApe, paramIban, paramRaisonSociale, paramAdresse,
+                paramImagePrincipale);
+    }
+
+
     /**
      * @return the joursOuverture
      */
