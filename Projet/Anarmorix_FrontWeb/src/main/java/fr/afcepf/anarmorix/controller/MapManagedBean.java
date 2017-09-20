@@ -1,11 +1,17 @@
 package fr.afcepf.anarmorix.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
 
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.CodePostal;
@@ -19,7 +25,7 @@ import fr.afcepf.anarmorix.entity.Ville;
  * @author Aubin
  *
  */
-@SessionScoped
+@Stateless
 @ManagedBean(name = "mbMap")
 public class MapManagedBean {
     /**
@@ -30,7 +36,26 @@ public class MapManagedBean {
      * Message JSon permettant d'afficher les point-relais sur la map.
      */
     private StringBuilder jSonPointRelais = new StringBuilder("{'marker': [");
-
+    /**
+     * Valeur du champ recherche.
+     */
+    private String centre;
+    /**
+     * Latitude du centre de la carte.
+     */
+    private String lat = "47.577512";
+    /**
+     * Longitude du centre de la carte.
+     */
+    private String longi = "2.387635";
+    /**
+     * Niveau de zoom de la carte.
+     */
+    private String zoom = "6";
+    /**
+     * Api Key pour googleMap API.
+     */
+    private String apiKey = "AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc";
     /**
      * Méthode recherchant les point-relais de la base.
      */
@@ -86,10 +111,35 @@ public class MapManagedBean {
                 sbJourOuverture.append(sbJour);
             }
             sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length()).append("]}, ");
-            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
+            jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'id': '").append(pr.getId())
+            .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
         }
         jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
         System.out.println(jSonPointRelais);
+    }
+    /**
+     * Méthode pour rechercher un point particulier.
+     */
+    public void rechercherPoint() {
+        if (centre != null && centre != "") {
+            GeoApiContext context = new GeoApiContext.Builder().apiKey(apiKey).build();
+                GeocodingResult[] results;
+                try {
+                    results = GeocodingApi.geocode(context, centre).region("fr").await();
+                    lat = String.valueOf(results[0].geometry.location.lat);
+                    longi = String.valueOf(results[0].geometry.location.lng);
+                    zoom = "14";
+                } catch (ApiException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
     }
     /**
      * @return the liste
@@ -114,6 +164,62 @@ public class MapManagedBean {
      */
     public void setjSonPointRelais(StringBuilder paramJSonPointRelais) {
         jSonPointRelais = paramJSonPointRelais;
+    }
+
+    /**
+     * @return the centre
+     */
+    public String getCentre() {
+        return centre;
+    }
+
+    /**
+     * @param paramCentre the centre to set
+     */
+    public void setCentre(String paramCentre) {
+        centre = paramCentre;
+    }
+
+    /**
+     * @return the lat
+     */
+    public String getLat() {
+        return lat;
+    }
+
+    /**
+     * @param paramLat the lat to set
+     */
+    public void setLat(String paramLat) {
+        lat = paramLat;
+    }
+
+    /**
+     * @return the longi
+     */
+    public String getLongi() {
+        return longi;
+    }
+
+    /**
+     * @param paramLongi the longi to set
+     */
+    public void setLongi(String paramLongi) {
+        longi = paramLongi;
+    }
+
+    /**
+     * @return the zoom
+     */
+    public String getZoom() {
+        return zoom;
+    }
+
+    /**
+     * @param paramZoom the zoom to set
+     */
+    public void setZoom(String paramZoom) {
+        zoom = paramZoom;
     }
 
 }

@@ -1,8 +1,11 @@
 package fr.afcepf.anarmorix.data.api;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> joel
+=======
+>>>>>>> aubin
 
 import java.util.List;
 

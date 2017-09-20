@@ -39,14 +39,14 @@ public class Packaging implements Serializable {
      * Id du packaging.
      */
     @Id
-    @Column(name = "packaging")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /**
      * Valeur unitaire du produit.
      */
-    @Column(name = "valeur_unitaire", nullable = false)
+    @Column(name = "valeur_unitaire", nullable = true)
     private Double valeurUnitaire;
 
     /**

@@ -97,10 +97,36 @@
   </header>
 
 
-<!--Conteneur connexion-->
+<!--Conteneur map-->
 
 <div id="connexion" class="container-fluid row" style="background: url(resources/img/fondblancasse.png);background-size: cover;" >
   <div id="map" class="col-sm-12"></div>
+  <!-- Search Form -->
+          <h:form id="mapForm" role="form">
+
+            <!-- Search Field -->
+            <div class="row">
+              <h1 class="text-center">Explorez</h1>
+              <div class="form-group">
+                <div class="input-group">
+                  <h:inputText value="#{mbMap.centre}" styleClass="form-control"/>
+                  <span class="input-group-btn">
+                  <h:commandButton type="button" styleClass="btn" value="Search">
+                      <f:ajax listener="#{mbMap.rechercherPoint()}" execute="@form" render="toto" onevent="centrer"></f:ajax>
+                   </h:commandButton>
+
+    <h:panelGroup id="toto">
+      <h:inputHidden value="#{mbMap.lat}" id="lati"/>
+      <h:inputHidden value="#{mbMap.longi}" id="longi"/>
+      <h:inputHidden value="#{mbMap.zoom}" id="zoom"/>
+    </h:panelGroup>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </h:form>
+          <!-- End of Search Form -->
 </div>
 
   <!-- Container nos valeurs -->
@@ -466,12 +492,13 @@
   <script type="text/javascript" src="resources/js/accueil/PageAccueilAnarDef.js">
   </script>
   
-  <script>
+  <script type="text/javascript">
   //<![CDATA[
+      var map;
       function initMap() {
-          var map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng(48.856614, 2.352221),
-            zoom: 6
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: new google.maps.LatLng(#{mbMap.lat}, #{mbMap.longi}),
+            zoom: #{mbMap.zoom}
           });
   
           var infoWindow = new google.maps.InfoWindow;
@@ -496,6 +523,9 @@
               text.textContent = address;
               infowincontent.appendChild(text);
             infowincontent.appendChild(document.createElement('br'));
+            var souligne = document.createElement('u');
+            souligne.textContent = "Horaires d'ouverture: ";
+            infowincontent.appendChild(souligne);
             var horaires = document.createElement('ul');
             for (var j = 0; j<markers.marker[i].jourOuverture.length; j++) {
               var jour = markers.marker[i].jourOuverture[j].jour;
@@ -514,6 +544,12 @@
               horaires.appendChild(jourTravail);
             };
             infowincontent.appendChild(horaires);
+            var id = markers.marker[i].id;
+            var bouton = document.createElement('a');
+            bouton.className = "btn btn-info btn-block";
+            bouton.textContent = "Voir le catalogue";
+            bouton.href = "https://www.google.fr/";
+            infowincontent.appendChild(bouton);
             var markerElem = new google.maps.Marker({
                 map: map,
                 position: point,
@@ -528,6 +564,13 @@
         var mcOptions = {imagePath: 'resources/img/m'};
         var markerCluster = new MarkerClusterer(map, markerTab, mcOptions);
        }
+
+      function centrer(data){
+    	  if(data.status == "success") {
+            var zoom = document.getElementById("zoom").val();
+            map.setZoom(zoom);
+  		  }
+      }
       //]]>
   </script>
 </body>
