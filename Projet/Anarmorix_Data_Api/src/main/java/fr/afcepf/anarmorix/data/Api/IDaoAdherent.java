@@ -1,4 +1,5 @@
-package fr.afcepf.anarmorix.data.Api;
+package fr.afcepf.anarmorix.data.api;
+
 
 import java.util.List;
 

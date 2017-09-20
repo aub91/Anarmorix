@@ -8,6 +8,9 @@ html {
     position: relative;
     min-height: 100%;
 }
+body{
+	font: 400 15px Lato, sans-serif;
+}
 
 body.sticky-footer {
     margin-bottom: 56px;
@@ -450,6 +453,7 @@ body.sidenav-toggled .navbar-sidenav {
 
 body.sidenav-toggled .navbar-sidenav .nav-link-text {
     display: none;
+    color:white;
 }
 
 body.sidenav-toggled .navbar-sidenav .nav-item,
@@ -578,5 +582,17 @@ footer.sticky-footer {
 #cmdencours {
     text-underline-position: auto;
     text-transform: uppercase;
-    text-align: inherit;
+    text-align: center;
+    padding: 2px;
+    color:white;
+    
 }
+ a:link {
+color: white;
+}
+a:visited {
+color: white;
+}
+a:hover {
+color: white;
+} 

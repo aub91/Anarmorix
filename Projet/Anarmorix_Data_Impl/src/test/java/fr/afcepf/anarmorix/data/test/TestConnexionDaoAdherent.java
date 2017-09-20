@@ -108,5 +108,6 @@ public class TestConnexionDaoAdherent {
         Assert.assertEquals("jmpetitbuisson", retour.getUsername());
         Assert.assertEquals("aaa", retour.getPassword());
         Assert.assertEquals(ID_ADHERENT_FICTIF, retour.getId().intValue());
+        
     }
 }
