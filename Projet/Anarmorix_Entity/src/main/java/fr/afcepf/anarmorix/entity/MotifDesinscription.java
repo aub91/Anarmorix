@@ -19,7 +19,7 @@ import javax.persistence.Transient;
  * Entité représentant le motif de désinscription.
  */
 @Entity
-@Table(name = "image")
+@Table(name = "motifDesinscription")
 public class MotifDesinscription implements Serializable {
 
     /**
