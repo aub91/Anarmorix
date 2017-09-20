@@ -15,13 +15,47 @@
 	width: 150px;
 	background-color: #D2CAEC;
 	height: 35px;
+	margin-bottom: 40px;
+}
+
+#etapeRecette {
+	grid-template-column: 50px 50px;
+	grid-template-row: 50px 50px 50px 50px;
+	display: grid;
+	grid-row-gap: 25px;
+}
+
+#etape1 {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+#etape2 {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+#etape3 {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+#etape4 {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+#etape5 {
+	grid-column: 1;
+	grid-row: 3;
+}
+
+#etape6 {
+	grid-column: 2;
+	grid-row: 3;
 }
 
 
-#preparationrecette {
-grid-template-column: 50px 50px;
-grid-template-row: 50px 50px 50px 50px;
-}
 
 #motPreparation {
 	font-size: 23px;
@@ -29,10 +63,96 @@ grid-template-row: 50px 50px 50px 50px;
 
 #recette {
 	display: grid;
-	grid-template-column: 100px 100px;
+	grid-template-column:  50% 50%;
 	grid-template-row: 120px;
 	width: 100%;
+	
 }
+
+#premierProduit {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+#deuxiemeProduit {
+	grid-column: 3;
+	grid-row: 2;
+}
+
+#troisiemeProduit {
+	grid-column: 1;
+	grid-row: 3;
+}
+
+#quatriemeProduit {
+	grid-column: 3;
+	grid-row: 3;
+}
+
+#cinquiemeProduit {
+	grid-column: 1;
+	grid-row: 4;
+}
+
+#sixiemeProduit {
+	grid-column: 3;
+	grid-row: 4;
+}
+
+#septiemeProduit {
+grid-column: 1;
+	grid-row: 5;
+
+}
+
+#huitiemeProduit {
+grid-column: 3;
+	grid-row: 5;
+
+}
+
+#checkbox1 {
+grid-column: 2;
+	grid-row: 2;
+
+}
+
+#checkbox2 {
+grid-column: 4;
+	grid-row: 2;
+
+}
+#checkbox3 {
+grid-column: 2;
+	grid-row: 3;
+
+}
+#checkbox4 {
+grid-column: 4;
+	grid-row: 3;
+
+}
+#checkbox5 {
+grid-column: 2;
+	grid-row: 4;
+
+}
+#checkbox6 {
+grid-column: 4;
+	grid-row: 4;
+
+}
+#checkbox7 {
+grid-column: 2;
+	grid-row: 5;
+
+}
+#checkbox8 {
+grid-column: 4;
+	grid-row: 5;
+
+}
+
 
 #inforecette {
 	display: grid;
@@ -80,19 +200,26 @@ grid-template-row: 50px 50px 50px 50px;
 	grid-column: 1;
 	grid-row: 1;
 	width: 100%;
+	height: 100%;
 }
 
 img {
 	width: 500px;
-	height: 400px
-	
+	height: 400px;
 }
+
+
 
 #info {
 	grid-column: 2;
 	grid-row: 1;
-	margin-right: 275px;
+	margin-right: 550px;
 	width: 100%;
+	display: grid;
+	grid-template-column: 25% 5% 25% 5%;
+	grid-template-row: 50px 50px 50px 50px 50px 50px;
+	background-color: #9683EC;
+	grid-row-gap: 25px;
 }
 
 #btnAjouter {
@@ -110,6 +237,8 @@ img {
 	font-size: 25px;
 	color: purple;
 	font-weight: bold;
+	grid-column:1;
+	grid-row: 1;
 }
 </style>
 
@@ -118,121 +247,152 @@ img {
 
 	<div id="recette">
 		<div id="image">
-			<img src="img/ratatouille.jpg" />
+			<img id="image" src="resources/img/ratatouille.jpg" />
 		</div>
-		<div id="info" data-img="img/fondvioletlight.png" style="background: url(img/fondvioletlight.png);background-size: cover>
-			<p>
-				<span id="ingredient">Ingrédients</span> <br> <br>
-				 <img
-					src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
-
-				 <img
-					src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
-
-			</p>
-
-
-
-			<p>
-				<img src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
-
-				<img
-					src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
-
-			</p>
-
+		<div id="info">
+			
+				<span id="ingredient"> Ingrédients</span> <br> <br>
+				<div id="premierProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox1" value="checkbox1"
+						checked="checked">
+				</div>
+				<br>
+				<div id="deuxiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox2" value="checkbox2"
+						checked="checked">
+				</div>
+				<p>
+				<p>
+				
+				<div id="troisiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox3" value="checkbox3"
+						checked="checked">
+				</div>
+				<div id="quatriemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox4" value="checkbox4"
+						checked="checked">
+				</div>
 
 
-			<p>
-				<img src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
- <img
-					src="img/ratatouille.jpg" class="images_petit" /> quantité et
-				produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox"
-					checked="checked">
+				<p>
+				<div id="cinquiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox5" value="checkbox5"
+						checked="checked">
+				</div>
+				<div id="sixiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox6" value="checkbox6"
+						checked="checked">
+				</div>
+				<p>
+				
+				<p>
+				<div id="septiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox7" value="checkbox7"
+						checked="checked">
+				</div>
+				<div id="huitiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" /> quantité et
+					produit de la recette
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="checkbox8" value="checkbox8"
+						checked="checked">
+				</div>
+				<p>
 
-			</p>
-			<br> <br> Ajouter la totalité des produits de la recette
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp; <input type="checkbox" name="checkbox2" value="checkbox"
-				checked="checked"> <br> <br> <br> <input
-				type="submit" value="Valider" id="btnValider" />
+					<br> <br>
+				<div id="Ajouter_totalite">
+					Ajouter la totalité des produits de la recette
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp; <input type="checkbox" name="checkbox2"
+						value="checkbox" checked="checked">
+				</div>
+				<br> <br> <br> <input type="submit" value="Valider"
+					id="btnValider" />
 
-
-		</div>
-
+			</div>
+	
 	</div>
+
+<br>
 	<br>
 	<div id="inforecette">
 		<div id="temps">Temps</div>
 		<br> <br>
 		<div id="minutes">15 minutes</div>
-		<br>
-		<br>
+		<br> <br>
 		<div id="personnes">Personnes</div>
-		<br>
-		<br>
+		<br> <br>
 		<div id="quantite">8</div>
-		<br>
-		<br>
+		<br> <br>
 		<div id="facilite">Très facile</div>
-		<br>
-		<br>
+		<br> <br>
 		<div id="prix">Bon marché</div>
-		<br>
-		<br>
+		<br> <br>
 
 	</div>
 	<br>
-<br>
+	<br>
 	<div>
 		<span style="font-weight: bold" id="motPreparation">Préparation
 			de la recette</span>
 	</div>
-	</div>
-	<br>
-	
 
-	<div style="font-weight: bold">
-		Etape 1: 
-	</div>
-	<div>cuire les légumes à feu doux blablabla blablabla
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	cuire les légumes à feu doux blablabla blablabla</div>
 	<br>
-	<div style="font-weight: bold">
-		Etape 2: 
+
+	<div id="etapeRecette">
+		<div id="etape1" >
+			Etape 1:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br>
+		<div id="etape2" >
+			Etape 2:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br>
+		<div id="etape3" >
+			Etape 3:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br>
+		<div id="etape4">
+			Etape 4:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br>
+		<div id="etape5" >
+			Etape 5:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br>
+		<div id="etape6" >
+			Etape 6:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
 	</div>
-	<div>cuire les légumes à feu doux blablabla blablabla</div>
-	<br>
-	<div style="font-weight: bold">
-		Etape 3: 
-	</div>
-	<div>cuire les légumes à feu doux blablabla blablabla</div>
-	<br>
-	
-	
+
+
 
 	<br>
 	<br>
