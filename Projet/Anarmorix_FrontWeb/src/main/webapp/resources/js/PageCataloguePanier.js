@@ -248,7 +248,7 @@
       $cartTable.append(products.length ?
         '<tr>' +
         '<td></td>' +
-        '<td><strong>Total</strong></td>' +
+        '<td>Total</td>' +
         '<td></td>' +
         '<td></td>' +
         '<td><strong id="' + idGrandTotal + '"></strong></td>' +
@@ -262,7 +262,7 @@
         $cartTable.append(
           '<tr style="color: red">' +
           '<td></td>' +
-          '<td><strong>Total (including discount)</strong></td>' +
+          '<td>Total (including discount)</td>' +
           '<td></td>' +
           '<td></td>' +
           '<td><strong id="' + idDiscountPrice + '"></strong></td>' +
