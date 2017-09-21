@@ -8,6 +8,7 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Ville;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
  * 
@@ -25,7 +26,7 @@ public interface IBusinessClient {
      * @param quantite 
      * @return
      */
-    public Commande ajouterLigneCommande(Commande commande);
+    public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
 
     /**
      * @param produit 
