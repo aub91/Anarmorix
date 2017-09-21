@@ -182,4 +182,7 @@ INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) 
 INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) VALUES ('22362', 13);
 INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) VALUES ('35238', 13);
 
+INSERT INTO `tournee` (`id`, `dateHeureDebut`, `dateHeureFin`, `id_livreur`, `id_societe`) VALUES (1, '2017-09-10 09:00:00', '2017-09-10 12:00:00', 8, 13);
+INSERT INTO `commande` (`id`, `codeValidation`, `dateCreation`, `dateValidation`, `statut`, `id_client`, `id_relais`) VALUES (1, '12345', '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'TERMINE', 1, 4);
+INSERT INTO `lignecommande` (`id`, `dateDebutPreparation`, `dateFinPreparation`, `dateLivraisonPtRel`, `dateRetraitProducteur`, `dateRetraitPtRel`, `quantite_commandee`, `quantite_delivree`, `quantite_livree`, `quantite_preparee`, `id_commande`, `id_produit`, `id_tournee`) VALUES (1, '2017-09-08 00:00:00', '2017-09-09 00:00:00', '2017-09-10 00:00:00', '2017-09-10 00:00:00', '2017-09-11 00:00:00', 1, 1, 1, 1, 1, 1, 1);
 commit;
