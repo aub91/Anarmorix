@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tauxTva")
-public class TauxTVA {
+public class TauxTVA implements Serializable {
 
     /**
      * Id de l'adhérent.
