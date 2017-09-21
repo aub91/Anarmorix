@@ -32,5 +32,9 @@ public enum AnarmorixExceptionEnum {
     /**
      * Cas d'un username inexistant ou d'un mot de passe invalide.
      */
-    ERREUR_IDENTIFIANTS_CONNEXION
+    ERREUR_IDENTIFIANTS_CONNEXION,
+    /**
+     * Cas d'un argument de méthode inexistant.
+     */
+    ARGUMENT_INEXISTANT
 }

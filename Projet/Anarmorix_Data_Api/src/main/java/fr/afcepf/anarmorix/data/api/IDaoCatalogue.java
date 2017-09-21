@@ -11,23 +11,23 @@ public interface IDaoCatalogue {
      * @param catalogue 
      * @return
      */
-    public Catalogue ajouter(Catalogue catalogue);
+    public Catalogue ajouter(Catalogue catalogue) throws Exception;
 
     /**
      * @param id 
      * @return
      */
-    public Boolean supprimer(Integer id);
+    public Boolean supprimer(Integer id) throws Exception;
 
     /**
      * @param id 
      * @return
      */
-    public Catalogue mettreAJour(Integer id);
+    public Catalogue mettreAJour(Integer id) throws Exception;
 
     /**
      * @return
      */
-    public Catalogue rechercher();
+    public Catalogue rechercher() throws Exception;
 
 }

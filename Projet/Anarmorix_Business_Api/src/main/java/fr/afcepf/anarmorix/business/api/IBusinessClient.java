@@ -25,7 +25,7 @@ public interface IBusinessClient {
      * @param quantite 
      * @return
      */
-    public LigneCommande ajouter(Produit produit, Double quantite);
+    public Commande ajouterLigneCommande(Commande commande);
 
     /**
      * @param produit 

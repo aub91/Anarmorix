@@ -15,24 +15,24 @@ public interface IDaoAdresse {
      * @param voie 
      * @return
      */
-    public List<Ville> rechercher(Integer numero, String voie);
+    public List<Ville> rechercher(Integer numero, String voie) throws Exception;
 
     /**
      * @param adresse 
      * @return
      */
-    public Adresse ajouter(Adresse adresse);
+    public Adresse ajouter(Adresse adresse) throws Exception;
 
     /**
      * @param id 
      * @return
      */
-    public Boolean supprimer(Integer id);
+    public Boolean supprimer(Integer id) throws Exception;
 
     /**
      * @param id 
      * @return
      */
-    public Adresse mettreAJour(Integer id);
+    public Adresse mettreAJour(Integer id) throws Exception;
 
 }

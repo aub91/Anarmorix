@@ -202,4 +202,17 @@ public class Commande implements Serializable {
     public void setStatut(Statut paramStatut) {
         statut = paramStatut;
     }
+    /**
+     * @return the lignesCommande
+     */
+    public List<LigneCommande> getLignesCommande() {
+        return lignesCommande;
+    }
+    /**
+     * @param paramLignesCommande the lignesCommande to set
+     */
+    public void setLignesCommande(List<LigneCommande> paramLignesCommande) {
+        lignesCommande = paramLignesCommande;
+    }
+    
 }

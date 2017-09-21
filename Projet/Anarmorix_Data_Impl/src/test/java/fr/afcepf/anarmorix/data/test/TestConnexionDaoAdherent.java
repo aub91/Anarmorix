@@ -110,10 +110,6 @@ public class TestConnexionDaoAdherent {
         Assert.assertEquals("jj.grandarbre@mail.fr", retour.getMail());
         Assert.assertEquals("grandarbre", retour.getUsername());
         Assert.assertEquals("aaa", retour.getPassword());
-
-        
-
         Assert.assertEquals(ID_ADHERENT_CNX, retour.getId().intValue());
-
     }
 }
