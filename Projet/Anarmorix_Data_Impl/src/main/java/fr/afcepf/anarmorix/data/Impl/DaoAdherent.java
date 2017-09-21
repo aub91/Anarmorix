@@ -34,9 +34,12 @@ public class DaoAdherent implements IDaoAdherent {
     private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
     
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
+<<<<<<< HEAD
 
+=======
+>>>>>>> alex
 
-    /**
+     /**
      * Default constructor.
      */
     public DaoAdherent() {
