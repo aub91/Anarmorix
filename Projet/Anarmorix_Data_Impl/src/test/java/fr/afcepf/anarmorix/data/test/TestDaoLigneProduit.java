@@ -52,63 +52,20 @@ public class TestDaoLigneProduit {
     /**
      * Point relais entré dans les commandes test.
      */
-<<<<<<< HEAD
-<<<<<<< HEAD
-//    private static final PointRelais RELAIS = 
-//            new PointRelais(paramId, paramNumSiren, paramNumNic, paramCodeApe, paramIban, paramRaisonSociale, paramAdresse, paramImagePrincipale);
-//
-//    /**
-//     * Id du point relais entré dans les commandes test.
-//     */
-//    private static final Adherent CLIENT = 
-//            new Client( paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, 
-//                        paramMail, paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
-//
-//    /**
-//     * Commande pour le test du cas d'une commande inexistante.
-//     */
-//    private Commande commandeInexistante = new Commande(ID_INEXISTANT, new Date(), null, null, ID_RELAIS, ID_CLIENT, null);
-//    
-//    @Test
-//    public void testEchecCommandeInexistante(){
-//        try {
-//            dao.rechercher(commandeInexistante);
-//        } catch (AnarmorixException e ) {
-//            
-//        }
-//    }
-=======
-    /*private static final PointRelais RELAIS = 
-            new PointRelais(paramId, paramNumSiren, paramNumNic, paramCodeApe, paramIban, paramRaisonSociale, paramAdresse, paramImagePrincipale);
-    */
-=======
     private static final PointRelais RELAIS = new PointRelais();
 
->>>>>>> eloi
     /**
      * Client entré dans les commandes test.
      */
-<<<<<<< HEAD
-    /*private static final Adherent CLIENT = 
-            new Client( paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, 
-                        paramMail, paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
-    */
-    /**
-     * Commande pour le test du cas d'une commande inexistante.
-     */
-    //private Commande commandeInexistante = new Commande(ID_INEXISTANT, new Date(), null, null, ID_RELAIS, ID_CLIENT, null);
-    /*
-=======
     private static final Client CLIENT =  new Client(15, new Date(117, 9, 18) , "Scarlatti",
-                                        "Gustave", new Date(117, 8, 17), ADRESSE,
-                        "épanorthose@ovh.fr", "0666666666", null, "Wildcatgalileo", "aaa", null);
+            "Gustave", new Date(117, 8, 17), ADRESSE,
+            "épanorthose@ovh.fr", "0666666666", null, "Wildcatgalileo", "aaa", null);
 
     /**
      * Commande pour le test du cas d'une commande inexistante.
      */
     private Commande commandeInexistante = new Commande(ID_INEXISTANT, new Date(), new Date(), null, RELAIS, CLIENT, Statut.EN_ATTENTE_DE_PREPARATION);
 
->>>>>>> eloi
     @Test
     public void testEchecCommandeInexistante(){
         try {
@@ -117,6 +74,4 @@ public class TestDaoLigneProduit {
             
         }
     }
-    */
->>>>>>> aubin
 }

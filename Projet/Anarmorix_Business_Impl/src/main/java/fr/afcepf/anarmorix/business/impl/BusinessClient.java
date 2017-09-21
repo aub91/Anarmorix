@@ -22,10 +22,8 @@ import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
-<<<<<<< HEAD
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
-=======
->>>>>>> eloi
+
 
 /**
  * Implémentation des méthodes clients de la couche business.
@@ -97,22 +95,10 @@ public class BusinessClient implements IBusinessClient {
      * @return
      */
 /*Note : Modifiée.*/
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public Commande ajouterLigneCommande(Commande commande) {
-   //     commande.setLignesCommande(daoLignecommande.rechercher(commande));
-=======
     public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException {
         commande.setLignesCommande(daoLignecommande.rechercher(commande));
->>>>>>> eloi
         return null;
     }
-=======
-//    public Commande ajouterLigneCommande(Commande commande) {
-//        commande.setLignesCommande(daoLignecommande.rechercher(commande));
-//        return null;
-//    }
->>>>>>> aubin
 
     /**
      * @param produit 
@@ -179,7 +165,6 @@ public class BusinessClient implements IBusinessClient {
     }
 
     @Override
-<<<<<<< HEAD
     public List<Produit> choisirCategorieProduit() throws AnarmorixException {
         List<Produit> produits = null;
         try {
@@ -190,11 +175,4 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
-=======
-    public Commande ajouterLigneCommande(Commande paramCommande) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
->>>>>>> aubin
 }

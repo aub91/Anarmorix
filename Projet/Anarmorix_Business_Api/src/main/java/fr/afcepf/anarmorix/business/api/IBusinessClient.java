@@ -25,12 +25,7 @@ public interface IBusinessClient {
      * @param quantite 
      * @return
      */
-<<<<<<< HEAD
-    Commande ajouterLigneCommande(Commande commande);
-=======
-    public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
-
->>>>>>> eloi
+    Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
     /**
      * @param produit 
      * @param quantite 
