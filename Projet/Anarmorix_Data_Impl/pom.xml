@@ -29,11 +29,11 @@
   		<scope>provided</scope>
   	</dependency>
   	<dependency>
-  	<groupId>org.jboss.eap</groupId>
-  	<artifactId>wildfly-ejb-client-bom</artifactId>
-  	<version>7.0.0.GA-redhat-2</version>
-  	<type>pom</type>
-  	<scope>test</scope>
+	  	<groupId>org.jboss.eap</groupId>
+	  	<artifactId>wildfly-ejb-client-bom</artifactId>
+	  	<version>7.0.0.GA-redhat-2</version>
+	  	<type>pom</type>
+	  	<scope>test</scope>
   	</dependency>
   	<dependency>
 	  	<groupId>org.hibernate</groupId>

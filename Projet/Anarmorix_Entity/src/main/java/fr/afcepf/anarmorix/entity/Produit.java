@@ -32,19 +32,12 @@ public class Produit implements Serializable {
     @Transient
     private static final long serialVersionUID = 1L;
     /**
-     * Id du catalogue.
+     * Id du produit.
      */
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer paramId) {
-        id = paramId;
-    }
     /**
      * Type du produit.
      */
@@ -69,7 +62,16 @@ public class Produit implements Serializable {
      */
     @Column(name = "quantite", nullable = false, columnDefinition = "DECIMAL(12,2)")
     private Double quantiteEnStock;
-
+    /**
+     * Petite longueur d'une chaîne de caractères.
+     */
+    @Transient
+    private static final int LONGUEUR_DESCRIPTIF = 200;
+    /**
+     * Description du produit.
+     */
+    @Column(name = "descriptif", nullable = true, length = LONGUEUR_DESCRIPTIF)
+    private String descriptif;
     /**
      * Liste des lignes de commandes correspondant à ce produit.
      */
@@ -120,7 +122,18 @@ public class Produit implements Serializable {
         image = paramImage;
         packaging = paramPackaging;
     }
-
+    /**
+     * @return the id.
+     */
+    public Integer getId() {
+        return id;
+    }
+    /**
+     * @param paramId the paramId to set.
+     */
+    public void setId(Integer paramId) {
+        id = paramId;
+    }
     /**
      * @return the dateDeProduction
      */
@@ -193,5 +206,4 @@ public class Produit implements Serializable {
     public void setPackaging(Packaging paramPackaging) {
         packaging = paramPackaging;
     }
-
 }

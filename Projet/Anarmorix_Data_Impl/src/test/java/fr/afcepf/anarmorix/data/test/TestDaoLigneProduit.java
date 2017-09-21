@@ -31,27 +31,27 @@ public class TestDaoLigneProduit {
     /**
      * Point relais entré dans les commandes test.
      */
-    private static final PointRelais RELAIS = 
-            new PointRelais(paramId, paramNumSiren, paramNumNic, paramCodeApe, paramIban, paramRaisonSociale, paramAdresse, paramImagePrincipale);
-
-    /**
-     * Id du point relais entré dans les commandes test.
-     */
-    private static final Adherent CLIENT = 
-            new Client( paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, 
-                        paramMail, paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
-
-    /**
-     * Commande pour le test du cas d'une commande inexistante.
-     */
-    private Commande commandeInexistante = new Commande(ID_INEXISTANT, new Date(), null, null, ID_RELAIS, ID_CLIENT, null);
-    
-    @Test
-    public void testEchecCommandeInexistante(){
-        try {
-            dao.rechercher(commandeInexistante);
-        } catch (AnarmorixException e ) {
-            
-        }
-    }
+//    private static final PointRelais RELAIS = 
+//            new PointRelais(paramId, paramNumSiren, paramNumNic, paramCodeApe, paramIban, paramRaisonSociale, paramAdresse, paramImagePrincipale);
+//
+//    /**
+//     * Id du point relais entré dans les commandes test.
+//     */
+//    private static final Adherent CLIENT = 
+//            new Client( paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, 
+//                        paramMail, paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
+//
+//    /**
+//     * Commande pour le test du cas d'une commande inexistante.
+//     */
+//    private Commande commandeInexistante = new Commande(ID_INEXISTANT, new Date(), null, null, ID_RELAIS, ID_CLIENT, null);
+//    
+//    @Test
+//    public void testEchecCommandeInexistante(){
+//        try {
+//            dao.rechercher(commandeInexistante);
+//        } catch (AnarmorixException e ) {
+//            
+//        }
+//    }
 }

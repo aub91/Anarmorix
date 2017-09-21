@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
  * 
@@ -18,22 +19,72 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 @Remote(IDaoProduit.class)
 @Stateless
 public class DaoProduit implements IDaoProduit {
+    /**
+     * Le contexte de persisntence.
+     */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoProduit() {
     }
-
+    /**
+     * Implémentation méthode recherche par ID de produit.
+     * @param id l'id to set.
+     * @return une liste de produits.
+     * @throws AnarmorixException Le serveur ne répond pas.
+     */
     @Override
-    public List<Produit> rechercherParID (Integer id) throws AnarmorixException {
-        List<Produit> liste = new ArrayList<Produit>();
-        liste = em.createQuery(
-                "SELECT p FROM Produit p "
-                        + "WHERE p.id = :pid" , Produit.class)
-                .setParameter("pid", id)
-                .getResultList();
+    public List<Produit> rechercherParID(Integer id) throws AnarmorixException {
+        List<Produit> liste = null;
+        try {
+            liste = em.createQuery(
+                    "SELECT p FROM Produit p "
+                            + "WHERE p.id = :pid", Produit.class)
+                    .setParameter("pid", id)
+                    .getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return liste;
+    }
+    /**
+     * Implémentation méthode recherche par ID de type de produit.
+     * @param paramId du type de produit to set.
+     * @return une liste de produits.
+     * @throws AnarmorixException Le serveur ne répond pas.
+     */
+    @Override
+    public List<Produit> rechercherParIDTypeProduit(Integer paramId) throws AnarmorixException {
+        List<Produit> liste = null;
+        try {
+            liste = em.createQuery(
+                    "SELECT p FROM Produit p "
+                            + "WHERE p.type.id = :pid", Produit.class)
+                    .setParameter("pid", paramId)
+                    .getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return liste;
+    }
+    /**
+     * Implémentation méthode recherche tous les produits.
+     * @return une liste de produits.
+     * @throws AnarmorixException Le serveur ne répond pas.
+     */
+    @Override
+    public List<Produit> rechercherTousLesProduits() throws AnarmorixException {
+        List<Produit> liste = null;
+        try {
+            liste = em.createQuery("SELECT p FROM Produit p", Produit.class).getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
         return liste;
     }
 
@@ -55,15 +106,5 @@ public class DaoProduit implements IDaoProduit {
         return null;
     }
 
-    @Override
-    public List<Produit> rechercherParIDTypeProduit(Integer paramId) throws AnarmorixException {
-        List<Produit> liste = new ArrayList<Produit>();
-        liste = em.createQuery(
-                "SELECT p FROM Produit p "
-                        + "WHERE p.type.id = :pid" , Produit.class)
-                .setParameter("pid", paramId)
-                .getResultList();
-        return liste;
-    }
 
 }

@@ -2,6 +2,7 @@ package fr.afcepf.anarmorix.business.impl;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
@@ -20,14 +21,15 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Ville;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
+import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * 
+ * Implémentation des méthodes clients de la couche business.
  */
 @Remote(IBusinessClient.class)
 @Stateless
 public class BusinessClient implements IBusinessClient {
-
     /**
      * Default constructor
      */
@@ -57,6 +59,7 @@ public class BusinessClient implements IBusinessClient {
     /**
      * Interface d'accès aux données {@link Produit}
      */
+    @EJB
     private IDaoProduit daoProduit;
 
     /**
@@ -92,7 +95,7 @@ public class BusinessClient implements IBusinessClient {
      */
 /*Note : Modifiée.*/
     public Commande ajouterLigneCommande(Commande commande) {
-        commande.setLignesCommande(daoLignecommande.rechercher(commande));
+   //     commande.setLignesCommande(daoLignecommande.rechercher(commande));
         return null;
     }
 
@@ -160,4 +163,15 @@ public class BusinessClient implements IBusinessClient {
         return null;
     }
 
+    @Override
+    public List<Produit> choisirCategorieProduit() throws AnarmorixException {
+        List<Produit> produits = null;
+        try {
+            produits = daoProduit.rechercherTousLesProduits();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
+    }
 }
