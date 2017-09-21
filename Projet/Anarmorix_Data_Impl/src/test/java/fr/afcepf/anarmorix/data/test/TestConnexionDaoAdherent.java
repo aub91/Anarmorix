@@ -114,6 +114,7 @@ public class TestConnexionDaoAdherent {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         
@@ -131,5 +132,8 @@ public class TestConnexionDaoAdherent {
         Assert.assertEquals(ID_ADHERENT_CNX, retour.getId().intValue());
 
 >>>>>>> eloi
+=======
+        Assert.assertEquals(ID_ADHERENT_CNX, retour.getId().intValue());
+>>>>>>> aubin
     }
 }

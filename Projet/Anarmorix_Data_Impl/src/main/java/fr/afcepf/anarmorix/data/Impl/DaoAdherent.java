@@ -32,12 +32,16 @@ public class DaoAdherent implements IDaoAdherent {
      */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> eloi
+=======
+>>>>>>> aubin
 
     private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
 
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -52,6 +56,8 @@ public class DaoAdherent implements IDaoAdherent {
 >>>>>>> joel
 =======
 >>>>>>> eloi
+=======
+>>>>>>> aubin
 
 >>>>>>> mouloud
 

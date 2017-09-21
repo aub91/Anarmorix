@@ -163,7 +163,13 @@ body {
     border-color: transparent;
     color: #fff !important;
   }
-
+/*map*/
+	#map{
+      height:75vh;
+    }
+    #mapContainer {
+      padding: 10px 50px;
+    }
 
   /*fin*/
 

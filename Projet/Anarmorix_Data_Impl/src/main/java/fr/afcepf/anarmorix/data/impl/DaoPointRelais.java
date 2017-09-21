@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import fr.afcepf.anarmorix.data.api.IDaoPointRelais;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 /**
  * Fonctionnalités liées à l'entité {@link PointRelais}.
  * @author Aubin
@@ -27,9 +28,16 @@ public class DaoPointRelais implements IDaoPointRelais {
     @SuppressWarnings("unchecked")
     @Override
     public List<PointRelais> getAll() throws AnarmorixException {
-        String hql = "SELECT pr FROM PointRelais";
-        Query queryHql = em.createQuery(hql);
-        return queryHql.getResultList();
+        List<PointRelais> liste = null;
+        try {
+            String hql = "SELECT pr FROM PointRelais pr";
+            Query queryHql = em.createQuery(hql);
+            liste = queryHql.getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return liste;
     }
 
 
