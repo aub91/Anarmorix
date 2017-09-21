@@ -4,6 +4,7 @@ import fr.afcepf.anarmorix.entity.Produit;
 
 public class ProduitVue {
 	private Produit prodt ;
+	
 
 	public ProduitVue() {
 		super();

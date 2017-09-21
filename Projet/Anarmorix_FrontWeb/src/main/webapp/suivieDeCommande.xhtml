@@ -120,16 +120,15 @@
                             <th>TOTAL</th>
                         </tr>
                     </thead>
-                    <ui:repeat var="produitvue" value="#{mbProduit.produitVue}">
-                   
+                    <ui:repeat var="prodtvue" value="#{mbProduit.produitVue}">           
                     <tr>
                     
-							<td>#{produitvue.id}</td>
-							<td><p>les tommates de guingamp </p></td>
-							<td><div>25kg</div></td>
-							<td>55kg</td>
+							<td><img src="#{prodtvue.prodt.image.chemin}" style="width:20px"/></td>
+							<td>#{prodtvue.prodt.prixUnitaire}</td>
+							<td>#{prodtvue.prodt.quantiteEnStock}</td>
+							<td>#{prodtvue.prodt.prixUnitaire}</td>
 				
-					<tr>
+					</tr>
 					</ui:repeat>
                 </table>
 
