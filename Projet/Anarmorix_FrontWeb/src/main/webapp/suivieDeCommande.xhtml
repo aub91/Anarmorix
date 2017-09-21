@@ -111,7 +111,10 @@
 
                     <thead>
                         <tr>
-                            <th colspan="4">N° COMMANDE </th>
+                            <th colspan="4">N° COMMANDE:
+                          
+                            </th>
+                              <td>5</td>
                         </tr>
                         <tr>
                             <th>IMAGE</th>
@@ -120,10 +123,11 @@
                             <th>TOTAL</th>
                         </tr>
                     </thead>
+                    
                     <ui:repeat var="prodtvue" value="#{mbProduit.produitVue}">           
                     <tr>
                     
-							<td><img src="#{prodtvue.prodt.image.chemin}" style="width:20px"/></td>
+							<td><img src="#{prodtvue.prodt.image.chemin}" style="width:50px; height: 50px"/></td>
 							<td>#{prodtvue.prodt.prixUnitaire}</td>
 							<td>#{prodtvue.prodt.quantiteEnStock}</td>
 							<td>#{prodtvue.prodt.prixUnitaire}</td>

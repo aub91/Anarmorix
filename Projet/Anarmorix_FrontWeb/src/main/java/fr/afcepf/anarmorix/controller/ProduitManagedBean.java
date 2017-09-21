@@ -19,7 +19,7 @@ public class ProduitManagedBean {
 	private List<Produit> liste = new ArrayList<>();
 	private List<ProduitVue> produitVue = new ArrayList<>();
 
-	TypeProduit type = new TypeProduit();
+	
 
 	
 
@@ -27,6 +27,7 @@ public class ProduitManagedBean {
 	public void ajouterProduits() {
 		
 		Image img = new Image(1,"carotte.jpg",null,null,null);
+		TypeProduit type = new TypeProduit(1,"fruit",null,null,null,img);
 		Produit P1= new Produit(1,type,new Date(01/01/2015),15.5,25.32,img,null);
 		
 		Produit P2= new Produit(2,type,new Date(01/01/2015),15.5,25.32,img,null);
@@ -60,14 +61,6 @@ public class ProduitManagedBean {
 	}
 
 
-	public TypeProduit getType() {
-		return type;
-	}
-
-
-	public void setType(TypeProduit type) {
-		this.type = type;
-	}
 
 
 
