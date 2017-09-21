@@ -18,11 +18,6 @@
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css"></link>
   <h:outputScript library="js" name="markerclusterer.js"/>
   <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc&amp;callback=initMap"></script>
-  <style>
-    #map{
-            height:75vh;
-        }
-  </style>
 </h:head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -99,11 +94,9 @@
 
 <!--Conteneur map-->
 
-<div id="connexion" class="container-fluid row" style="background: url(resources/img/fondblancasse.png);background-size: cover;" >
-  <div id="map" class="col-sm-12"></div>
+<div id="mapContainer" class="row" style="background: url(resources/img/fondblancasse.png);background-size: cover;" >
   <!-- Search Form -->
           <h:form id="mapForm" role="form">
-
             <!-- Search Field -->
             <div class="row">
               <h1 class="text-center">Explorez</h1>
@@ -111,21 +104,20 @@
                 <div class="input-group">
                   <h:inputText value="#{mbMap.centre}" styleClass="form-control"/>
                   <span class="input-group-btn">
-                  <h:commandButton type="button" styleClass="btn" value="Search">
+                    <h:commandButton type="button" styleClass="btn" value = "Search">
                       <f:ajax listener="#{mbMap.rechercherPoint()}" execute="@form" render="toto" onevent="centrer"></f:ajax>
-                   </h:commandButton>
-
-    <h:panelGroup id="toto">
-      <h:inputHidden value="#{mbMap.lat}" id="lati"/>
-      <h:inputHidden value="#{mbMap.longi}" id="longi"/>
-      <h:inputHidden value="#{mbMap.zoom}" id="zoom"/>
-    </h:panelGroup>
+                    </h:commandButton>
+                    <h:panelGroup id="toto">
+                      <h:inputHidden value="#{mbMap.lat}" id="lati"/>
+                      <h:inputHidden value="#{mbMap.longi}" id="longi"/>
+                      <h:inputHidden value="#{mbMap.zoom}" id="zoom"/>
+                    </h:panelGroup>
                   </span>
                 </div>
               </div>
             </div>
-
           </h:form>
+          <div id="map" class="col-sm-12"></div>
           <!-- End of Search Form -->
 </div>
 
