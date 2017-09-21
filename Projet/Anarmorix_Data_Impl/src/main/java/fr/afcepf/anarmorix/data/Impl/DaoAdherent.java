@@ -30,6 +30,7 @@ public class DaoAdherent implements IDaoAdherent {
     /**
      * Requête utilisée pour la connexion d'un {@link Adherent}.
      */
+<<<<<<< HEAD
 
     private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
     
@@ -40,6 +41,11 @@ public class DaoAdherent implements IDaoAdherent {
 =======
 >>>>>>> alex
 =======
+=======
+    private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
+    
+    private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
+>>>>>>> joel
 
 >>>>>>> mouloud
 

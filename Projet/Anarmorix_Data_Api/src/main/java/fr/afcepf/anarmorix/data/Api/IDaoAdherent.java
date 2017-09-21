@@ -1,9 +1,12 @@
 package fr.afcepf.anarmorix.data.api;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> mouloud
 
+=======
+>>>>>>> joel
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 

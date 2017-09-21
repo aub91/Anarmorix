@@ -112,6 +112,7 @@ public class TestConnexionDaoAdherent {
         Assert.assertEquals("aaa", retour.getPassword());
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         
@@ -122,5 +123,8 @@ public class TestConnexionDaoAdherent {
 =======
         Assert.assertEquals(ID_ADHERENT_CNX, retour.getId().intValue());
 >>>>>>> mouloud
+=======
+        Assert.assertEquals(ID_ADHERENT_CNX, retour.getId().intValue());
+>>>>>>> joel
     }
 }
