@@ -1,9 +1,10 @@
 package fr.afcepf.anarmorix.data.api;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 >>>>>>> mouloud
+=======
+>>>>>>> eloi
 
 =======
 >>>>>>> joel

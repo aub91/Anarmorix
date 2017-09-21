@@ -2,6 +2,9 @@ package fr.afcepf.anarmorix.business.impl;
 
 import java.util.List;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
@@ -21,57 +24,60 @@ import fr.afcepf.anarmorix.entity.Ville;
 /**
  * 
  */
+@Remote(IBusinessClient.class)
+@Stateless
 public class BusinessClient implements IBusinessClient {
 
     /**
      * Default constructor
      */
-    public BusinessClient() {
+    private BusinessClient() {
     }
 
     /**
-     * 
+     * Interface d'accès aux données {@link Horaire}
      */
-    public IDaoHoraire daoHoraire;
+    private IDaoHoraire daoHoraire;
 
     /**
-     * 
+     * Interface d'accès aux données {@link JourOuverture}
      */
     public IDaoJourOuverture daoJourOverture;
 
     /**
-     * 
+     * Interface d'accès aux données {@link Ville}
      */
     private IDaoVille daoVille;
 
     /**
-     * 
+     * Interface d'accès aux données {@link Commerce}
      */
     private IDaoCommerce daoCommerce;
 
     /**
-     * 
+     * Interface d'accès aux données {@link Produit}
      */
     private IDaoProduit daoProduit;
 
     /**
-     * 
+     * Interface d'accès aux données {@link LigneCommande}
      */
     private IDaoLigneCommande daoLignecommande;
 
     /**
-     * 
+     * Interface d'accès aux données {@link Commande}
      */
     public IDaoCommande daoCommande;
 
     /**
-     * 
+     * Interface d'accès aux données {@link Adresse}
      */
     public IDaoAdherent daoAdresse;
 
     /**
+     * Méthode permettant de de trouver la liste des {@link PointRelais} d'une {@link Ville}.
      * @param ville 
-     * @return
+     * @return List<PointRelais>, la liste des poitns relais d'une ville.
      */
     public List<PointRelais> rechercherPointRelais(Ville ville) {
         // TODO implement here
@@ -79,12 +85,14 @@ public class BusinessClient implements IBusinessClient {
     }
 
     /**
+     * Méthode permettant de créer une ligne de commande.
      * @param produit 
      * @param quantite 
      * @return
      */
-    public LigneCommande ajouter(Produit produit, Double quantite) {
-        // TODO implement here
+/*Note : Modifiée.*/
+    public Commande ajouterLigneCommande(Commande commande) {
+        commande.setLignesCommande(daoLignecommande.rechercher(commande));
         return null;
     }
 
@@ -140,7 +148,7 @@ public class BusinessClient implements IBusinessClient {
      */
     public Client sinscrire(Client client) {
         // TODO implement here
-        return null;
+        return client;
     }
 
     /**
