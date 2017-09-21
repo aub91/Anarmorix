@@ -1,16 +1,5 @@
 package fr.afcepf.anarmorix.data.api;
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
->>>>>>> mouloud
-=======
->>>>>>> eloi
-=======
->>>>>>> aubin
-
-=======
->>>>>>> joel
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
