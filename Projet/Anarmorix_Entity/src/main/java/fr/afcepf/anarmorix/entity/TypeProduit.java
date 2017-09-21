@@ -59,7 +59,7 @@ public class TypeProduit implements Serializable {
      * Taux de TVA applicable au tupe de produit.
      */
     @ManyToOne
-    @JoinColumn(name = "id_tva", nullable = false, foreignKey = @ForeignKey(name = "FK_TypeProduit_Tva"))
+    @JoinColumn(name = "id_tva", nullable = true, foreignKey = @ForeignKey(name = "FK_TypeProduit_Tva"))
     private TauxTVA tva;
 
     /**

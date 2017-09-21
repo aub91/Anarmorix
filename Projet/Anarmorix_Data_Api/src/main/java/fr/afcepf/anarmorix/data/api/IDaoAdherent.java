@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.data.api;
 
+
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 

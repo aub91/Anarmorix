@@ -120,6 +120,17 @@
                             <th>TOTAL</th>
                         </tr>
                     </thead>
+                    <ui:repeat var="produitvue" value="#{mbProduit.produitVue}">
+                   
+                    <tr>
+                    
+							<td>#{produitvue.id}</td>
+							<td><p>les tommates de guingamp </p></td>
+							<td><div>25kg</div></td>
+							<td>55kg</td>
+				
+					<tr>
+					</ui:repeat>
                 </table>
 
             </div>
