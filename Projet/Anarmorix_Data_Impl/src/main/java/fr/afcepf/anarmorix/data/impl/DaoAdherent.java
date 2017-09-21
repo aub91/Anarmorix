@@ -35,9 +35,13 @@ public class DaoAdherent implements IDaoAdherent {
     
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> alex
+=======
+
+>>>>>>> mouloud
 
      /**
      * Default constructor.

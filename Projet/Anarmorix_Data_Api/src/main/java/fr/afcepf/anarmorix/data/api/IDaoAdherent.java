@@ -1,5 +1,8 @@
 package fr.afcepf.anarmorix.data.api;
+<<<<<<< HEAD
 
+=======
+>>>>>>> mouloud
 
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
