@@ -26,12 +26,15 @@ public class ProduitManagedBean {
 	@PostConstruct
 	public void ajouterProduits() {
 		
-		Image img = new Image(1,"carotte.jpg",null,null,null);
+		Image img = new Image(1,"resources/img/carotte.jpg",null,null,null);
+		Image img2 = new Image(1,"resources/img/chou_fleur.jpg",null,null,null);
+		Image img3 = new Image(1,"resources/img/betterave.jpg",null,null,null);
+		
 		TypeProduit type = new TypeProduit(1,"fruit",null,null,null,img);
 		Produit P1= new Produit(1,type,new Date(01/01/2015),15.5,25.32,img,null);
 		
-		Produit P2= new Produit(2,type,new Date(01/01/2015),15.5,25.32,img,null);
-		Produit P3= new Produit(3,type,new Date(01/01/2015),15.5,25.32,img,null);
+		Produit P2= new Produit(2,type,new Date(01/01/2015),15.5,25.32,img2,null);
+		Produit P3= new Produit(3,type,new Date(01/01/2015),15.5,25.32,img3,null);
 		liste.add(P1);
 		liste.add(P2);
 		liste.add(P3);
