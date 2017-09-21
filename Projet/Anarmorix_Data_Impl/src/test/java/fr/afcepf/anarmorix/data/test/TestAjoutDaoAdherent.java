@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
-import fr.afcepf.anarmorix.data.impl.DaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.Client;

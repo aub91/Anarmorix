@@ -1,6 +1,10 @@
 package fr.afcepf.anarmorix.data.api;
 
+import java.util.List;
+
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
  * 
@@ -10,7 +14,7 @@ public interface IDaoLigneCommande {
     /**
      * @return
      */
-    public LigneCommande rechercher();
+    public List<LigneCommande> rechercher(Commande commande) throws AnarmorixException;
 
     /**
      * @param ligneCommande 

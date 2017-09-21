@@ -2,6 +2,9 @@ package fr.afcepf.anarmorix.business.impl;
 
 import java.util.List;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
@@ -21,6 +24,8 @@ import fr.afcepf.anarmorix.entity.Ville;
 /**
  * 
  */
+@Remote(IBusinessClient.class)
+@Stateless
 public class BusinessClient implements IBusinessClient {
 
     /**
@@ -87,7 +92,7 @@ public class BusinessClient implements IBusinessClient {
      */
 /*Note : Modifiée.*/
     public Commande ajouterLigneCommande(Commande commande) {
-        // TODO implement here
+        commande.setLignesCommande(daoLignecommande.rechercher(commande));
         return null;
     }
 
