@@ -33,6 +33,7 @@
   		<version>${jee.version}</version>
   		<scope>provided</scope>
   	</dependency>
+<<<<<<< HEAD
   	<dependency>
 	  	<groupId>org.jboss.eap</groupId>
 	  	<artifactId>wildfly-ejb-client-bom</artifactId>
@@ -45,6 +46,14 @@
 	  	<artifactId>hibernate-core</artifactId>
 	  	<version>4.3.8.Final</version>
   	</dependency>
+=======
+    <dependency>
+            <groupId>fr.afcepf.anarmorix</groupId>
+            <artifactId>Anarmorix_Data_Impl</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+    </dependency>
+>>>>>>> aubin
   </dependencies>
   <build>
   	<plugins>

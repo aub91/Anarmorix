@@ -94,10 +94,17 @@ public class BusinessClient implements IBusinessClient {
      * @return
      */
 /*Note : Modifiée.*/
+<<<<<<< HEAD
     public Commande ajouterLigneCommande(Commande commande) {
    //     commande.setLignesCommande(daoLignecommande.rechercher(commande));
         return null;
     }
+=======
+//    public Commande ajouterLigneCommande(Commande commande) {
+//        commande.setLignesCommande(daoLignecommande.rechercher(commande));
+//        return null;
+//    }
+>>>>>>> aubin
 
     /**
      * @param produit 
@@ -164,6 +171,7 @@ public class BusinessClient implements IBusinessClient {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Produit> choisirCategorieProduit() throws AnarmorixException {
         List<Produit> produits = null;
         try {
@@ -174,4 +182,11 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
+=======
+    public Commande ajouterLigneCommande(Commande paramCommande) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+>>>>>>> aubin
 }

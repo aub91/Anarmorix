@@ -4,9 +4,17 @@ import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-public class CreateProxyEJB {
+/**
+ * Classe de création de proxy.
+ * @author Aubin
+ *
+ */
+public final class CreateProxyEJB {
+    /**
+     * Méthode pour retourner un proxy.
+     * @param JNDI chemin JNDI
+     * @return null
+     */
     public static Object getProxy(String JNDI) {
         Properties props = new Properties();
         props.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:18080");
@@ -17,7 +25,7 @@ public class CreateProxyEJB {
         props.put("jboss.naming.client.ejb.context", true);
             try {
                 Context ctx = new InitialContext(props);
-                Object proxy =ctx.lookup(JNDI);
+                Object proxy = ctx.lookup(JNDI);
                 System.out.println(proxy);
                 return proxy;
             } catch (Exception e) {
