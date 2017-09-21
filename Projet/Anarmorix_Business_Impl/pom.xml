@@ -33,6 +33,12 @@
   		<version>${jee.version}</version>
   		<scope>provided</scope>
   	</dependency>
+    <dependency>
+            <groupId>fr.afcepf.anarmorix</groupId>
+            <artifactId>Anarmorix_Data_Impl</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
   	<plugins>

@@ -91,10 +91,10 @@ public class BusinessClient implements IBusinessClient {
      * @return
      */
 /*Note : Modifiée.*/
-    public Commande ajouterLigneCommande(Commande commande) {
-        commande.setLignesCommande(daoLignecommande.rechercher(commande));
-        return null;
-    }
+//    public Commande ajouterLigneCommande(Commande commande) {
+//        commande.setLignesCommande(daoLignecommande.rechercher(commande));
+//        return null;
+//    }
 
     /**
      * @param produit 
@@ -157,6 +157,12 @@ public class BusinessClient implements IBusinessClient {
      */
     public Client modifierProfil(Client client) {
         // TODO implement here
+        return null;
+    }
+
+    @Override
+    public Commande ajouterLigneCommande(Commande paramCommande) {
+        // TODO Auto-generated method stub
         return null;
     }
 

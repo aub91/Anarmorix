@@ -18,7 +18,7 @@ public class TestGetAllDaoPointRelais {
      * Classe contenant les services à tester.
      */
     private IDaoPointRelais daoTest = (IDaoPointRelais) CreateProxyEJB.getProxy(
-            "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoAdherent!fr.afcepf.anarmorix.data.api.IDaoPointRelais");
+            "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoPointRelais!fr.afcepf.anarmorix.data.api.IDaoPointRelais");
     /**
      * Taille atendue de la liste pour le test nominal.
      */
