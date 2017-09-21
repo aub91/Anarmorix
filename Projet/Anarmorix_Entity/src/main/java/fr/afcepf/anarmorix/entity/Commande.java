@@ -57,14 +57,14 @@ public class Commande implements Serializable {
     /**
      * Date de validation de la commande.
      */
-    @Column(name = "dateValidation", nullable = false)
+    @Column(name = "dateValidation", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateValidation;
 
     /**
      * Code de validation de la commande.
      */
-    @Column(name = "codeValidation", nullable = false, length = LONGUEUR_PETITE)
+    @Column(name = "codeValidation", nullable = true, length = LONGUEUR_PETITE)
     private String codeValidation;
 
 

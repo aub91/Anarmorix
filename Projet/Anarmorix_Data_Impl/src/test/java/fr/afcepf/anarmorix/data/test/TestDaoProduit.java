@@ -32,7 +32,6 @@ public class TestDaoProduit {
      * prix unitaire.
      */
     private static final int PRIX_UNITAIRE = 25;
-
     /**
      * methde rechercher produit par ID.
      */
@@ -65,7 +64,7 @@ public class TestDaoProduit {
      * methode rechercher produit par ID du type produit.
      */
     @Test
-    public void testRechercheProduitParCatalogue() {
+    public void testRechercheProduitParTypeDeProduit() {
         try {
             List<Produit> produits = daoProduit.rechercherParIDTypeProduit(ID_TYPE_PRODUIT);
             Assert.assertEquals(produits.size(), 1);
@@ -73,6 +72,23 @@ public class TestDaoProduit {
             Assert.assertEquals(produits.get(0).getQuantiteEnStock().intValue(), QUANTITE_EN_STOCK);
             Assert.assertEquals(produits.get(0).getPackaging().getLibelle(), "Vrac");
             Assert.assertEquals(produits.get(0).getPrixUnitaire().intValue(), PRIX_UNITAIRE2);
+        } catch (AnarmorixException e) {
+            Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
+        }
+    }
+    /**
+     * le nombre de produits dans la liste.
+     */
+    private static final int TAILLE_LISTE = 3;
+    /**
+     * test de recherche de tous les produits.
+     */
+    @Test
+    public void testRechercheTousLesProduits() {
+        try {
+            List<Produit> produits = daoProduit.rechercherTousLesProduits();
+            Assert.assertNotNull(produits);
+            Assert.assertEquals(TAILLE_LISTE, produits.size());
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
         }

@@ -4,7 +4,7 @@ import fr.afcepf.anarmorix.entity.Alea;
 import fr.afcepf.anarmorix.entity.Commande;
 
 /**
- * 
+ * Interface contenant les méthodes liés au point-relais de la couche business.
  */
 public interface IBusinessPointRelais {
 

@@ -1,20 +1,16 @@
-package fr.afcepf.anarmorix.data.test;
+package fr.afcepf.anarmorix.business.test;
 
 import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+
 /**
- * Classe de création de proxy.
- * @author Aubin
+ * Proxy qui permet de creer la couche business dans les tests.
+ * @author joel
  *
  */
-public final class CreateProxyEJB {
-    /**
-     * Méthode pour retourner un proxy.
-     * @param JNDI chemin JNDI
-     * @return null
-     */
+public class CreateProxyEJB {
     public static Object getProxy(String JNDI) {
         Properties props = new Properties();
         props.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:18080");

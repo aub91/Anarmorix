@@ -15,8 +15,32 @@ public interface IDaoProduit {
      * @param id ID to Set id produit.
      * @return une liste de produit.
      * @throws AnarmorixException
+     *<ul>
+     *  <li>Le serveur de données ne répond pas</li>
+     * </ul>
      */
-    public List<Produit> rechercherParID(Integer id) throws AnarmorixException;
+    List<Produit> rechercherParID(Integer id) throws AnarmorixException;
+
+    /**
+     * methode qui retourne une liste de produit par IDtypeProduit.
+     * @param id ID to Set id produit.
+     * @return une liste de produit.
+     * @throws AnarmorixException
+     * <ul>
+     *  <li>Le serveur de données ne répond pas</li>
+     * </ul>
+     */
+    List<Produit> rechercherParIDTypeProduit(Integer id) throws AnarmorixException;
+
+    /**
+     * Méthode qui retourne la liste de tous les produits.
+     * @return une liste de produit.
+     * @throws AnarmorixException
+     * <ul>
+     *  <li>Le serveur de données ne répond pas</li>
+     * </ul>
+     */
+    List<Produit> rechercherTousLesProduits() throws AnarmorixException;
 
     /**
      * @param produit 
@@ -35,12 +59,5 @@ public interface IDaoProduit {
      * @return
      */
     public Produit mettreAJour(Integer id) throws AnarmorixException;
-    /**
-     * methode qui retroune une liste de produit par IDtypeProduit.
-     * @param id ID to Set id produit.
-     * @return une liste de produit.
-     * @throws AnarmorixException
-     */
-    public List<Produit> rechercherParIDTypeProduit(Integer id) throws AnarmorixException;
 
 }
