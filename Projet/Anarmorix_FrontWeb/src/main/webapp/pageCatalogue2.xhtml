@@ -598,13 +598,32 @@
 				<div class="section-catalogue">
 
 					<div class="page-header">
+						
+						<div class= "row">
+							
+						    
+						
 						<h1 class="text-center">
-							Nos Produits
+						<div class = "col-lg-5">
+							<form class="searchbox">
+						        <input type="search" placeholder="Quel produit voulez-vous ?" 
+						        name="search" class="searchbox-input" onkeyup="buttonUp();" required="required"></input>
+						        <input type="submit" class="searchbox-submit" value="Recherchez"></input><span class="searchbox-icon">Recherchez</span>
+						       
+						        
+						    </form>
+						    </div>
+						    <div class = "col-lg-7">
+							<span id="titlecatalogue">Nos Produits</span> 
 							<div id="cart">
 								<span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span
 									class="badge badge-notify my-cart-badge"></span></span>
 							</div>
+							</div>
 						</h1>
+						
+						</div>
+						
 					</div>
 
 					<div class="row">
