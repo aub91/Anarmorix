@@ -64,7 +64,7 @@ INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (13, '48.740593', '-2.964513', 27, 'Poul Rouzigou', 10, '22214');
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (14, '45.838292', '1.249233', 16, 'Rue Marc Antoine Muret', 11, '87085');
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (15, '43.703757', '7.264550', 22, 'Rue d Angleterre', 12, '06088');
-INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (16, '44.846476', '-0.597124', 71, 'Rue de Caudéran', 13, '33063');
+INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (16, '44.846476', '-0.597124', 71, 'Rue de Cauderan', 13, '33063');
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (17, '46.159375', '-1.163280', 36, 'avenue Jeau Guiton', 14, '17300');
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (18, '47.593167', '-3.066101', 36, 'chemin de Kerluir', 15, '56034');
 INSERT INTO `adresse`(`id`, `latitude`, `longitude`, `numero`, `voie`, `id_code_postal`, `id_ville`) VALUES (19, '45.852200', '6.632303', 3164, 'Route Edmond de Rothschild', 16, '74173');
@@ -89,23 +89,27 @@ INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_explo
 
 INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'test', NULL, NULL, NULL);
 
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Charcuterie', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Autres boissons alcoolisées', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Fruits rouges', 1);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (5, 'Pâté/Terrine', 2);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (6, 'Bière', 3);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Fraise', 4);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Pâté', 5);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'Bière blonde', 6);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, légumes et féculents', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Viandes, charcuteries et produits de la mer', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Produits laitiers', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Boissons', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (5, 'Fruits', 1);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (6, 'Charcuterie', 2);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Autres boissons alcoolisées', 4);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Fruits rouges', 5);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'Pâté/Terrine', 6);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (10, 'Bière', 7);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (11, 'Fraise', 8);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (12, 'Pâté', 9);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (13, 'Bière blonde', 10);
 
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '5.50');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '10.00');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '20.00');
 
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1, 8);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1, 9);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1, 10);
 
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (1, 'kilogramme');
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (2, 'litre');
@@ -156,7 +160,7 @@ INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_
 
 
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (1, 1, null, '2017-09-18 00:00:00', '2017-08-17 00:00:00', null, 'jj.grandarbre@mail.fr', null, 'Grandarbre', 'aaa', 'Jean-Jacques', '0666666666', null,'grandarbre' , 'Client', null, null, null);
-insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (2, 2, null, '2016-12-17 00:00:00', '2017-08-17 00:00:00', null, 'guillaumedemachaut@mailoo.org', null, 'Gramsci', 'aaa', 'Aubin', '0666666666', null,'Renéshinycastle' , 'Producteur', null, null, 1);
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (2, 2, null, '2016-12-17 00:00:00', '2017-08-17 00:00:00', null, 'guillaumedemachaut@mailoo.org', null, 'Gramsci', 'aaa', 'Aubin', '0666666666', null,'Renshinycastle' , 'Producteur', null, null, 1);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (3, 3, null, '2017-01-14 00:00:00', '2017-08-17 00:00:00', null, 'jamesosterberg@zaclys.org', null, 'Kropotkine', 'aaa', 'Alexandre', '0666666666', null,'Marbeufmiroton' , 'Producteur', null, null, 2);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (4, 4, null, '2017-02-10 00:00:00', '2017-08-17 00:00:00', null, 'loureed@gandi.org', null, 'Luxemburg', 'aaa', 'Christina', '0666666666', null,'Platontondubled' , 'Producteur', null, null, 3);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (5, 5, null, '2017-03-05 00:00:00', '2017-08-17 00:00:00', null, 'archangelocorelli@vivaldi.org', null, 'Considérant', 'aaa', 'Eloi', '0666666666', null,'Diogeneegoiste' , 'Employe', 4, null, null);
@@ -166,10 +170,10 @@ insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscripti
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (9, 9, null, '2017-07-04 00:00:00', '2017-08-17 00:00:00', null, 'samcooke@fastmail.com', null, 'Michel', 'aaa', 'Cunégonde', '0666666666', null,'Kantbuymelove' , 'Livreur', null, 13, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (10, 10, null, '2017-07-29 00:00:00', '2017-08-17 00:00:00', null, 'carlhall@posteo.fr', null, 'Proudhon', 'aaa', 'Norbert', '0666666666', null,'Hobbesecration' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (11, 11, null, '2017-08-12 00:00:00', '2017-08-17 00:00:00', null, 'anadiplose@mailoo.org', null, 'Fourier', 'aaa', 'Athanase', '0666666666', null,'Genevoixdughetto' , 'Client', null, null, null);
-insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (12, 12, null, '2017-08-16 00:00:00', '2017-08-17 00:00:00', null, 'épenthèse@autistici.org', null, 'Brassens', 'aaa', 'Eugène', '0666666666', null,'Keplerdelateci' , 'Client', null, null, null);
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (12, 12, null, '2017-08-16 00:00:00', '2017-08-17 00:00:00', null, 'Epenthèse@autistici.org', null, 'Brassens', 'aaa', 'Eugène', '0666666666', null,'Keplerdelateci' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (13, 1, null, '2017-09-11 00:00:00', '2017-08-17 00:00:00', null, 'hyperchleuasme@zaclys.fr', null, 'Thoreau', 'aaa', 'Celestin', '0666666666', null,'Bergsonindaplace' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (14, 2, null, '2017-09-13 00:00:00', '2017-08-17 00:00:00', null, 'synecdoque@openmailbox.com', null, 'Bloy', 'aaa', 'Achille', '0666666666', null,'Funkstergauss' , 'Client', null, null, null);
-insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (15, 3, null, '2017-09-18 00:00:00', '2017-08-17 00:00:00', null, 'épanorthose@ovh.fr', null, 'Scarlatti', 'aaa', 'Gustave', '0666666666', null,'Wildcatgalileo' , 'Client', null, null, null);
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (15, 3, null, '2017-09-18 00:00:00', '2017-08-17 00:00:00', null, 'Epanorthose@ovh.fr', null, 'Scarlatti', 'aaa', 'Gustave', '0666666666', null,'Wildcatgalileo' , 'Client', null, null, null);
 
 INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) VALUES ('22070', 13);
 INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) VALUES ('22113', 13);
@@ -183,6 +187,6 @@ INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) 
 INSERT INTO `ville_societelivraison` (`ville_codeInsee`, `societeLivraison_id`) VALUES ('35238', 13);
 
 INSERT INTO `tournee` (`id`, `dateHeureDebut`, `dateHeureFin`, `id_livreur`, `id_societe`) VALUES (1, '2017-09-10 09:00:00', '2017-09-10 12:00:00', 8, 13);
-INSERT INTO `commande` (`id`, `codeValidation`, `dateCreation`, `dateValidation`, `statut`, `id_client`, `id_relais`) VALUES (1, '12345', '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'TERMINE', 1, 4);
+INSERT INTO `commande` (`id`, `codeValidation`, `dateCreation`, `dateValidation`, `statut`, `id_client`, `id_relais`) VALUES (1, '12345', '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'TERMINEE', 15, 4);
 INSERT INTO `lignecommande` (`id`, `dateDebutPreparation`, `dateFinPreparation`, `dateLivraisonPtRel`, `dateRetraitProducteur`, `dateRetraitPtRel`, `quantite_commandee`, `quantite_delivree`, `quantite_livree`, `quantite_preparee`, `id_commande`, `id_produit`, `id_tournee`) VALUES (1, '2017-09-08 00:00:00', '2017-09-09 00:00:00', '2017-09-10 00:00:00', '2017-09-10 00:00:00', '2017-09-11 00:00:00', 1, 1, 1, 1, 1, 1, 1);
 commit;

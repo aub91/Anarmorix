@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -46,8 +47,11 @@ public class Livreur extends Professionnel {
      * Constructeur surchargé.
      * @param paramSociete the societe to set
      */
-    public Livreur(SocieteDeLivraison paramSociete) {
-        super();
+    public Livreur(Integer paramId, Date paramDateInscription, String paramNom, String paramPrenom,
+            Date paramDateNaissance, Adresse paramAdresse, String paramMail, String paramTelephone1,
+            String paramTelephone2, String paramUsername, String paramPassword, Image paramImage, SocieteDeLivraison paramSociete) {
+        super(paramId, paramDateInscription, paramNom, paramPrenom, paramDateNaissance, paramAdresse, paramMail,
+                paramTelephone1, paramTelephone2, paramUsername, paramPassword, paramImage);
         societe = paramSociete;
     }
 
