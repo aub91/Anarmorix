@@ -63,7 +63,7 @@ public class TypeProduit implements Serializable {
     private TauxTVA tva;
     
     /**
-     * 
+     * Catégorie du type produit.
      */
     @ManyToOne
     @JoinColumn(name = "id_Categorie", nullable = false, foreignKey = @ForeignKey(name = "FK_TypeProduit_Categorie"))
@@ -98,18 +98,32 @@ public class TypeProduit implements Serializable {
      * @param paramLibelle the libelle to set
      * @param paramDureeDeConservation the dureeConservation to set
      * @param paramTva the tva to set
+     * @param parmaCategorie the categorie to set
      * @param paramUniteConservation the uniteConservation to set
      * @param paramImageParDefaut the imageParDefaut to set
      */
-    public TypeProduit(Integer paramId, String paramLibelle, Integer paramDureeDeConservation, TauxTVA paramTva,
+    public TypeProduit(Integer paramId, String paramLibelle, Integer paramDureeDeConservation, TauxTVA paramTva, Categorie paramCategorie,
             UniteDureeConservation paramUniteConservation, Image paramImageParDefaut) {
         super();
         id = paramId;
         libelle = paramLibelle;
         dureeDeConservation = paramDureeDeConservation;
         tva = paramTva;
+        categorie = paramCategorie;
         uniteConservation = paramUniteConservation;
         imageParDefaut = paramImageParDefaut;
+    }
+    /**
+     * @return the categorie
+     */
+    public Categorie getCategorie() {
+        return categorie;
+    }
+    /**
+     * @param paramCategorie the categorie to set
+     */
+    public void setCategorie(Categorie paramCategorie) {
+        categorie = paramCategorie;
     }
     /**
      * @return the id

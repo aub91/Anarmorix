@@ -126,12 +126,12 @@ public class TestDaoLigneProduit {
     /**
      * {@link TypeProduit} du {@link Produit}.
      */
-    private static final TypeProduit TYPE = new TypeProduit(1, "Fraise gariguette", null, TVA, null, IMAGE/*, 8*/);
+    private static final TypeProduit TYPE = new TypeProduit(1, "Fraise gariguette", null, TVA, CATEGORIE_4, null, IMAGE);
 
     /**
      * Ligne commande retournée.
      */
-    private static final LigneCommande LIGNE = 
+    private static final LigneCommande LIGNE =
                     new LigneCommande()/*(1, 1, 1, 1, 1, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
                     new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE)*/;
 
