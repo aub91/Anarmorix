@@ -1,25 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"></meta>
 <title>RecettePage1</title>
 <script type="text/javascript" src="js/jquery.js">
 </script>
 <script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
 </script>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.0.min.js</script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
+btn {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+	border-radius: 30px 5px;
+	color: #edebe6;
+	background-color: #3d348b;
+}
+
+}
+@media only screen and (max-width: 767px) {
+	.btn {
+		margin-bottom: 15px;
+	}
+}
+
 #btnValider {
 	margin-left: 300px;
-	height: 35px;
-	width: 150px;
-	background-color: #D2CAEC;
-	height: 35px;
+	background-color: #9683EC;
 	margin-bottom: 40px;
 }
 
@@ -28,7 +51,7 @@
 	grid-template-row: 50px 50px 50px 50px;
 	display: grid;
 	grid-row-gap: 25px;
-	background-color: #DCDCDC;
+	background-color: #9683EC;
 }
 
 #etape1 {
@@ -69,14 +92,13 @@
 #motPreparation {
 	font-size: 23px;
 	color: purple;
-	background-color: #DCDCDC;
+	background-color: #9683EC;
 }
 
 #recette {
 	width: 100%;
 	display: grid;
-	grid-template-column: 70% 30%;
-	grid-template-row: 120px;
+	grid-template-column: 20px 400px;
 }
 
 #premierProduit {
@@ -175,16 +197,23 @@
 #inforecette {
 	display: grid;
 	grid-template-column: 20px 20px 20px 20px;
-	grid-template-row: 60px 60 px;
+	grid-template-row: 60px 60px;
 	width: 100%;
 	grid-row-gap: 20px;
+}
+
+#info {
+	grid-column: 2;
+	grid-row: 1;
+	padding-row: 95px;
+	background-color: #D2CAEC;
 }
 
 #temps {
 	grid-column: 1;
 	grid-row: 1;
 	margin-left: 25px;
-	margin-top: 25px;
+	margin-top: 15px;
 }
 
 #minutes {
@@ -195,7 +224,7 @@
 
 #personnes {
 	margin-left: 25px;
-	margin-top: 25px;
+	margin-top: 15px;
 	grid-column: 2;
 	grid-row: 1;
 }
@@ -204,19 +233,18 @@
 	grid-column: 3;
 	grid-row: 1;
 	margin-left: 25px;
-	margin-top: 25px;
+	margin-top: 15px;
 }
 
 #prix {
 	grid-column: 4;
 	grid-row: 1;
 	margin-left: 25px;
-	margin-top: 25px;
+	margin-top: 15px;
 }
 
 #Ajouter_totalite {
-	margin-left: 40px;
-	margin-bottom: 20px;
+	margin-left: 100px;
 }
 
 #quantite {
@@ -231,28 +259,26 @@
 
 #image {
 	grid-column: 1;
-	grid-row: 1;
 	width: 100%;
 	height: 100%;
 }
 
-img {
-	
+#enbas_info {
+	background-color: #D2CAEC;
 }
 
-#info {
+#enhaut_info {
 	grid-column: 2;
-	grid-row: 1;
-	padding-left: 35px; width : 100%;
+	padding-left: 35px;
+	width: 100%;
 	display: grid;
-	grid-template-column: 25% 5% 25% 5%;
+	grid-template-column: 35% 15% 35% 15%;
 	grid-template-row: 50px 50px 50px 50px 50px 50px;
-	background-color: #9683EC;
-	grid-template-row: 50px 50px 50px 50px 50px 50px;
-	background-color: #9683EC;
+	background-color: #D2CAEC;
 	grid-row-gap: 25px;
 	display: grid;
 	width: 100%;
+	grid-template-row: 50px 50px 50px 50px 50px 50px;
 }
 
 #btnAjouter {
@@ -284,87 +310,71 @@ img {
 			<img id="image" src="resources/img/ratatouille.jpg" />
 		</div>
 		<div id="info">
+			<div id="enhaut_info">
+				<span id="ingredient"> Ingrédients</span> <br /> <br />
+				<div id="premierProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox1" value="checkbox1" checked="checked"></input>
+				</div>
+				<br />
 
-			<span id="ingredient"> Ingrédients</span> <br> <br>
-			<div id="premierProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox1" value="checkbox1"
-					checked="checked">
-			</div>
-			<br>
-			<div id="deuxiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox2" value="checkbox2"
-					checked="checked">
-			</div>
-			<p>
-			<p>
-			<div id="troisiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox3" value="checkbox3"
-					checked="checked">
-			</div>
-			<div id="quatriemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox4" value="checkbox4"
-					checked="checked">
-			</div>
+				<div id="deuxiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox2" value="checkbox2" checked="checked"></input>
+				</div>
+
+				<div id="troisiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox3" value="checkbox3" checked="checked"></input>
+				</div>
+				<div id="quatriemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox4" value="checkbox4" checked="checked"></input>
+				</div>
 
 
-			<p>
-			<div id="cinquiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox5" value="checkbox5"
-					checked="checked">
-			</div>
-			<div id="sixiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox6" value="checkbox6"
-					checked="checked">
-			</div>
-			<p>
-			<p>
-			<div id="septiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox7" value="checkbox7"
-					checked="checked">
-			</div>
-			<div id="huitiemeProduit">
-				<img src="resources/img/ratatouille.jpg" class="images_petit" />
-				quantité et produit de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" name="checkbox8" value="checkbox8"
-					checked="checked">
-			</div>
-			<p>
 
-				<br> <br>
-			<div id="Ajouter_totalite">
-				Ajouter la totalité des produits de la recette
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp; <input type="checkbox" name="checkbox2"
-					value="checkbox" checked="checked">
-			</div>
-			<br> <br> <br> <input type="submit" value="Valider"
-				id="btnValider" />
+				<div id="cinquiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox5" value="checkbox5" checked="checked"></input>
+				</div>
+				<div id="sixiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox6" value="checkbox6" checked="checked"></input>
+				</div>
 
+
+				<div id="septiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox7" value="checkbox7" checked="checked"></input>
+				</div>
+
+				<div id="huitiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit" />
+					quantité et produit de la recette <input type="checkbox"
+						id="checkbox8" value="checkbox8" checked="checked"></input>
+				</div>
+			</div>
+			<br />
+			<div id="enbas_info">
+
+				<div id="Ajouter_totalite">
+					Ajouter la totalité des produits de la recette <input
+						type="checkbox" name="checkbox2" value="checkbox"
+						checked="checked"></input> <br /> <br /> <br /> <input
+						type="submit" class="btn" value="Valider" id="btnValider"></input>
+				</div>
+			</div>
 		</div>
-
 	</div>
+
 
 
 	<div id="inforecette">
@@ -372,13 +382,13 @@ img {
 
 		<div id="minutes">15 minutes</div>
 		<div></div>
-		<br> <br>
+		<br /> <br />
 		<div id="personnes">Personnes</div>
-		<br> <br>
+		<br /> <br />
 		<div id="quantite">8</div>
-		<br> <br>
+		<br /> <br />
 		<div id="facilite">Très facile</div>
-		<br>
+
 		<div id="container">
 			<div class="row">
 
@@ -389,14 +399,15 @@ img {
 						class="progress-bar progress-bar-info progress-bar-striped active"
 						role="progressbar" aria-valuenow="45" aria-valuemin="0"
 						aria-valuemax="100" style="width: 75%;">
-						<span></span>
+						
+						
 					</div>
 				</div>
 			</div>
 		</div>
-		<br> <br>
+		<br /> <br />
 		<div id="prix">Bon marché</div>
-		<br> <br>
+
 		<div id="container2">
 			<div class="row">
 
@@ -407,7 +418,7 @@ img {
 						class="progress-bar progress-bar-info progress-bar-striped active"
 						role="progressbar" aria-valuenow="45" aria-valuemin="0"
 						aria-valuemax="100" style="width: 75%;">
-						<span></span>
+						
 					</div>
 				</div>
 			</div>
@@ -415,8 +426,8 @@ img {
 
 	</div>
 
-	<div style="font-weight: bold" style="margin-left :25px"
-		id="motPreparation">Préparation de la recette</div>
+	<div style="font-weight: bold" id="motPreparation">Préparation de
+		la recette</div>
 
 
 
@@ -425,36 +436,33 @@ img {
 			Etape 1:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
-		<br>
+		<br />
 		<div id="etape4">
 			Etape 4:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
-		<br>
+		<br />
 		<div id="etape2">
 			Etape 2:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
-		<br>
+		<br />
 		<div id="etape5">
 			Etape 5:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
-		<br>
+		<br />
 		<div id="etape3">
 			Etape 3:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
-		<br>
+		<br />
 		<div id="etape6">
 			Etape 6:
 			<div>cuire les légumes à feu doux blablabla blablabla</div>
 		</div>
 	</div>
-
-
-
-	<br>
-	<br>
+	<br />
+	<br />
 </body>
 </html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<meta charset="UTF-8"></meta>
+<title>RecettePage1</title>
+<script type="text/javascript" src="js/jquery.js">
+</script>
+<script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
+</script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style type="text/css">
+#commande {
+	display: grid;
+	grid-template-column: 25% 25% 25% 25%;
+	grid-template-row: 120px;
+}
+
+#commande_numero {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.btn {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+	border-radius: 30px 5px;
+	color: #edebe6;
+	background-color: #3d348b;
+}
+
+@media only screen and (max-width: 767px) {
+	.btn {
+		margin-bottom: 15px;
+	}
+}
+
+#checkbox1 {
+	margin-left: 50px;
+}
+
+#numero {
+	margin-left: 50px;
+}
+
+#btnValider {
+	margin-left: 650px;
+}
+
+#commande_livree {
+	grid-column: 4;
+	grid-row: 1;
+}
+
+#numero_livraison {
+	margin-bottom: 60px;
+	font-size: 30px;
+	margin-left: 30px;
+	color: purple;
+	font-style:georgia;
+}
+
+#nom_pointrelais {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+#adresse_pointrelais {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+#livraison_totale {
+	margin-left: 550px;
+}
+
+#liste_commande {
+	height: 60px;
+	text-align: center;
+	font-size: 23px;
+	font-weight: bold;
+	background-color: #9683EC;
+}
+
+#numero {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<div class="content-wrapper">
+		<div id="section-general">
+			<div class="title">
+				<h1 id="numero_livraison">Livraison numéro 9</h1>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th colspan="1"></th>
+					</tr>
+					<tr>
+						<th id="liste_commande">Liste des commandes</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td>
+							<div id="commande">
+								<div id="commande_numero">
+									Commande numéro <span id="numero">519</span>
+								</div>
+								<div id="nom_pointrelais">nom du point relais</div>
+								<div id="adresse_pointrelais">adresse du point relais</div>
+								<div id="commande_livree">
+									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+						<td>
+							<div id="commande">
+								<div id="commande_numero">
+									Commande numéro <span id="numero">519</span>
+								</div>
+								<div id="nom_pointrelais">nom du point relais</div>
+								<div id="adresse_pointrelais">adresse du point relais</div>
+								<div id="commande_livree">
+									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							<div id="commande">
+								<div id="commande_numero">
+									Commande numéro <span id="numero">519</span>
+								</div>
+								<div id="nom_pointrelais">nom du point relais</div>
+								<div id="adresse_pointrelais">adresse du point relais</div>
+								<div id="commande_livree">
+									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+				</tbody>
+				<tfoot>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+	<br />
+	<div>
+		<span id="livraison_totale">Livraison de la totalité de la
+			commande</span><input type="checkbox" id="checkbox1" value="checkbox1"></input>
+	</div>
+
+	<br />
+	<br />
+	<input type="button" class="btn" id="btnValider" value="Valider"></input>
+</body>
+</html>

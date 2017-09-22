@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<meta charset="UTF-8"></meta>
+<title>Préparation d'une commande</title>
+<script type="text/javascript" src="js/jquery.js">
+</script>
+<script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
+</script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
+<style type="text/css">
+.btn {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+
+.btn1 {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	height: 40px;
+	width: 90px;
+}
+
+.btn2 {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	height: 40px;
+	width: 300px;
+	margin-left: 700px;
+}
+
+.btn:hover {
+	border-radius: 30px 5px;
+	color: #edebe6;
+	background-color: #3d348b;
+}
+
+@media only screen and (max-width: 767px) {
+	.btn {
+		margin-bottom: 15px;
+	}
+}
+
+#dateDebut {
+	margin-left: 50px;
+}
+
+#commande {
+	display: grid;
+	grid-template-column: 20% 20% 20% 20% 20%;
+}
+
+#image {
+	height: 100px;
+	width: 140px;
+	grid-column: 1;
+	grid-row: 1;
+	margin-left: 10px;
+}
+
+#intituleProduit {
+	grid-column: 2;
+	grid-row: 1;
+	font-weight: bold;
+}
+
+#quantiteCommandee {
+	grid-column: 3;
+	grid-row: 1;
+	font-weight: bold;
+}
+
+#quantitePreparee {
+	grid-column: 4;
+	grid-row: 1;
+	font-weight: bold;
+}
+
+#btnValider2 {
+	grid-column: 5;
+	grid-row: 1;
+	background-color: #D2CAEC;
+	color: black;
+}
+
+#commandeNumero {
+	font-size: 23px;
+	color: purple;
+	margin-left: 15px;
+}
+
+#btnValider {
+	margin-left: 60px;
+}
+</style>
+</head>
+<body>
+	<br />
+	<div id="commandeNumero">Commande numéro 50</div>
+	<br />
+	<br />
+	<div id="dateDebut">
+
+		Date de début de préparation : <input type="text" id="datepicker"></input><input
+			type="button" class="btn" id="btnValider" value="Valider"></input>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div id="commande">
+		<div id="image">
+			<img id="image" src="resources/img/Huitre.jpg" />
+		</div>
+		<div id="intituleProduit">intitulé produit</div>
+		<div id="quantiteCommandee">
+			<span>Quantité commandée</span>
+
+		</div>
+		<div id="quantitePreparee">
+			<span>Quantité préparée :</span> <input type="text" name="quantity"
+				style="width: 50px"></input>
+		</div>
+		<input type="button" class="btn1" id="btnValider2" value="Valider"></input>
+	</div>
+
+	<div>
+		<hr class="separation" />
+	</div>
+
+	<div id="commande">
+		<div id="image">
+			<img id="image" src="resources/img/Huitre.jpg" />
+		</div>
+		<div id="intituleProduit">intitulé produit</div>
+		<div id="quantiteCommandee">
+			<span>Quantité commandée</span>
+
+		</div>
+		<div id="quantitePreparee">
+			<span>Quantité préparée :</span> <input type="text" name="quantity"
+				style="width: 50px"></input>
+		</div>
+		<input type="button" class="btn1" id="btnValider2" value="Valider"></input>
+	</div>
+
+	<div>
+		<hr class="separation" />
+	</div>
+
+
+	<div id="commande">
+		<div id="image">
+			<img id="image" src="resources/img/Huitre.jpg" />
+		</div>
+		<div id="intituleProduit">intitulé produit</div>
+		<div id="quantiteCommandee">
+			<span>Quantité commandée</span>
+		</div>
+		<div id="quantitePreparee">
+			<span>Quantité préparée :</span> <input type="text" name="quantity"
+				style="width: 50px"></input>
+		</div>
+		<input type="button" class="btn1" id="btnValider2" value="Valider"></input>
+	</div>
+	<br />
+	<br />
+	<div>
+	<input type="button" class="btn2" id="btnValiderPreparation"
+		value="Valider la préparation" style="width: 300px"></input>
+	</div>
+
+
+</body>
+</html>
