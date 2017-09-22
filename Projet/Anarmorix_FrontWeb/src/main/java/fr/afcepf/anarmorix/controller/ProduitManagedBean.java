@@ -25,7 +25,7 @@ public class ProduitManagedBean {
 	
 
 
-	private List<ProduitVue> produitVue = new ArrayList<>();
+	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
 	
 	@EJB
@@ -49,12 +49,11 @@ public class ProduitManagedBean {
 		//liste.add(P2);
 		//liste.add(P3);
 		try {
+		cmde.setId(1);
+		liste=bu.afficherLigneCommande(cmde);
 			System.out.println(liste.size());
-			cmde.setId(1);
-			liste=bu.afficherLigneCommande(cmde);
-			System.out.println(liste.size());
-		} catch (AnarmorixException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 	
@@ -66,15 +65,6 @@ public class ProduitManagedBean {
 
 
 
-
-	public List<ProduitVue> getProduitVue() {
-		return produitVue;
-	}
-
-
-	public void setProduitVue(List<ProduitVue> produitVue) {
-		this.produitVue = produitVue;
-	}
 
 
 	public Commande getCmde() {

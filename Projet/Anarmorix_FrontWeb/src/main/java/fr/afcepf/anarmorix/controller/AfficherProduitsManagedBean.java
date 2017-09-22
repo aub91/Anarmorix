@@ -26,7 +26,7 @@ public class AfficherProduitsManagedBean {
     
     @PostConstruct
     public void init() throws AnarmorixException {
-        produits = businessCLient.choisirCategorieProduit();
+      //  produits = businessCLient.choisirCategorieProduit();
     }
     
     
