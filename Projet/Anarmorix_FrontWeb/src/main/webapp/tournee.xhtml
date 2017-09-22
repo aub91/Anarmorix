@@ -8,23 +8,23 @@
 
 <ui:composition template="WEB-INF/templates/masterPageLivreur.xhtml">
 	<ui:define name="content">
-		<div id="section-general">
-            <section id="colG">
-                <div id="corpsPr">
-                    <div id="cmdentransit" style="background: url(resources/img/fondvioletdark.png);background-size: cover;">
-                    <a href="tournee.xhtml"><span>Tournee</span></a> </div>
-                    <div id="comptePR" style="background: url(resources/img/fondvioletdark.png);background-size: cover;">
-                    <span>Mon Compte</span></div>
+		<<div id="section-general">
+            <div class="title">
+                <h1>Liste des commandes en transit</h1>
+            </div>
 
-                    <div id="absence" style="background: url(resources/img/fondvioletdark.png);background-size: cover;"> 
-                    <span>Mes Absences</span></div>
-                    <div id="horaire" style="background: url(resources/img/fondvioletdark.png);background-size: cover;">
-                    <span>Mes horaires d'ouverture</span> </div> 
-                </div>
-            </section>
-            <section id="colD">
-
-            </section>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="3">N° COMMANDE </th>
+                    </tr>
+                    <tr>
+                        <th>IMAGE</th>
+                        <th>DESCRIPTIF</th>
+                        <th>QUANTITE</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
 	</ui:define>
 </ui:composition>
