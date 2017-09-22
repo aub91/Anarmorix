@@ -15,12 +15,9 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
-import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Horaire;
 import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.PointRelais;
-import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
@@ -98,7 +95,6 @@ public class MapManagedBean {
 //        liste.add(pr1);
 //        liste.add(pr2);
 
-        liste = new ArrayList<>();
         try {
             liste = busMap.getAllPointRelais();
         } catch (AnarmorixException e) {
@@ -107,7 +103,7 @@ public class MapManagedBean {
         }
 
         for (PointRelais pr : liste) {
-
+            
             StringBuilder sbAdress = new StringBuilder();
             sbAdress.append(pr.getAdresse().getNumero()).append(" ").append(pr.getAdresse().getVoie()).append(", ")
             .append(pr.getAdresse().getCodePostal().getCodePostal()).append(" ").append(pr.getAdresse().getVille().getNomVille()).append(", France', 'lat': '")

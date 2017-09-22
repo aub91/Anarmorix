@@ -3,35 +3,37 @@ package fr.afcepf.anarmorix.data.api;
 import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Horaire;
+import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.PointRelais;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Fonctionnalités métier liés à la gestion de l'entité {@link Horaire} dans le système.
  */
 public interface IDaoHoraire {
-
-    /**
-     * @param pointRelais 
-     * @return
-     */
-    public List<Horaire> rechercher(PointRelais pointRelais);
 
     /**
      * @param horaire 
      * @return
      */
-    public Horaire ajouter(Horaire horaire);
+    Horaire ajouter(Horaire horaire);
 
     /**
      * @param id 
      * @return
      */
-    public boolean supprimer(Integer id);
+    boolean supprimer(Integer id);
 
     /**
      * @param id 
      * @return
      */
-    public Horaire mettreAJour(Integer id);
+    Horaire mettreAJour(Integer id);
+    /**
+     * @param paramJourOuverture {@link JourOuverture} dont on cherche les horaires
+     * @return {@link JourOuverture} avec sa liste d'horaire.
+     * @throws AnarmorixException une exception
+     */
+    JourOuverture getHoraireByJourOuverture(JourOuverture paramJourOuverture) throws AnarmorixException;
 
 }

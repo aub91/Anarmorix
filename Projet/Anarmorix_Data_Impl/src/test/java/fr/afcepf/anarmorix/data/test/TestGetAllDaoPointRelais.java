@@ -25,7 +25,7 @@ public class TestGetAllDaoPointRelais {
     private static final int TAILLE_LISTE = 9;
     /**
      * Test du cas nominal.
-     * @throws AnarmorixException lblakfl aklfaz laz.
+     * @throws AnarmorixException non attendu
      */
     @Test
     public void testNominalGetAll() throws AnarmorixException  {
