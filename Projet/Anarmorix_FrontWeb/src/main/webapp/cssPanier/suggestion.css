@@ -1,0 +1,75 @@
+@charset "utf-8";
+#monPanier{
+    font-family: 'Pacifico', sans-serif, fantasy;
+}
+
+.suggestionProduit{
+    height: inherit;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    float: left;
+    
+}
+
+.suggestionProduitImage{
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.box-fix{
+    position: static;
+}
+.imgProduit {
+    display: block;
+    margin: 5px;
+    width: 120px;
+    height: 90px;
+}
+
+.fort{
+    
+    font-family: montserrat;
+    font-size: 14px ;
+}
+.fort U{
+    color: black;
+    font-family: 'Pacifico',sans-serif;
+    font-size: 22px;
+}
+
+
+
+.validation{
+    align-content: center;
+}
+.priceProduit {
+    float: left;
+    margin-top: 10px;
+}
+.priceProduit p{
+    float: left;
+    display: block;
+    text-align: center;
+    font-size: 17px;
+}
+
+.addCart btn btn-primary{
+    float: right;
+}
+
+.col-md-4 #basket{
+    padding-left: 0px;
+}
+
+#conM {
+  padding-right: 15px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: 30px;
+}
+.pull-center  {
+    text-align: center;
+}
+.vendre {
+    font-family: 'Pacifico', sans-serif, fantasy;
+}

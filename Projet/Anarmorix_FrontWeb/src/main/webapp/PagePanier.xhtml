@@ -4,4 +4,265 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+	<meta charset="utf-8"></meta>
+	<meta name="robots" content="all,follow"></meta>
+	<meta name="googlebot" content="index,follow,snippet,archive"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<title>Panier Basket</title>
+
+	<meta name="keywords" content=""></meta>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,500,700,300,100'	rel='stylesheet' type='text/css'></link>
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"></link>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link href="cssPanier/style.default.css" rel="stylesheet" id="theme-stylesheet"></link>
+		<!-- your stylesheet with modifications -->
+	<link rel="stylesheet" href="cssPanier/suggestion.css"></link>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"></link>
+	<style>
+	body {
+    margin: 10px;
+    padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-image: url(resources/img/fondvioletlight.png);
+  background-size: cover;
+}
+	</style>
 </h:head>
+<body>
+	<div id="content">
+		<div class="container" id="conM">
+			<div class="row">
+				<div class="col-md-9" id="basket">
+
+					<div class="box">
+
+						<h1 id="monPanier"> Mon panier</h1>
+
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th colspan="2">Produit</th>
+										<th>Prix unitaire</th>
+										<th colspan="2">Total</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<td><a href="#"> <img src="resources/img/Nectar-de-poire.png" alt="produit selectionné"></img></a></td>
+										<td><a href="#"><strong><U>carottes </U></strong>c'est
+												bon</a></td>
+										<td><input type="number" value="1" class="form-control"></input></td>
+										<td>$200.00</td>
+										<td>$400.00</td>
+										<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th colspan="5">Total</th>
+										<th colspan="2">$446.00</th>
+									</tr>
+								</tfoot>
+							</table>
+
+						</div>
+						<!-- /.table-responsive -->
+
+						<div class="box-footer">
+							<div class="pull-left">
+								<a href="basket.html" class="btn btn-default"><i
+									class="fa fa-chevron-left"></i> Continuer mes achats</a>
+							</div>
+							<div class="pull-right">
+								<button type="submit" class="btn btn-primary">
+									commander <i class="fa fa-chevron-right"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-3" id="basket">
+					<div class="box">
+						<div class="row">
+							<div class="pull-center">
+								<h3>Nom point relais</h3>
+								<span>Adresse</span><br /> <span>Horraires d'ouverture</span>
+							</div>
+							<div class="row">
+								<div class="pull-center">
+									<h3>Total : 542114€</h3>
+								</div>
+							</div>
+						</div>
+						<div class="box-footer">
+							<div class="row">
+								<div class="pull-center">
+									<button type="submit" class="btn btn-primary">
+										Commander <i class="fa fa-chevron-right"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-9" id="basket">
+					<div class="box">
+
+						<h3 class="vendre">vous aimerez peut etre aussi...</h3>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- Partie propostion de produits : -->
+
+
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<div class="box-fix" id="basket ">
+						<div class="box">
+
+							<div class="row">
+
+								<div class=" col-md-4 suggestionProduitImage">
+									<a href="http://www.google.fr"><img class="imgProduit"
+										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+								</div>
+
+								<div class="col-md-7 suggestionProduit">
+
+									<a class="fort" href="http://www.google.fr"><strong><U>Produit
+												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
+										adipiscing elit, sed do eiusmod Lorem m</a>
+
+								</div>
+							</div>
+							<div class="box-footer">
+								<div class="row validation">
+									<div class="col-md-5 priceProduit p">
+										<p>
+											<b><u> prix : 13 € </u></b>
+										</p>
+									</div>
+
+
+									<div class="col-md-5 validerBtn">
+										<button type="submit" class="addCart btn btn-primary">Ajouter
+											au panier</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="box-fix" id="basket ">
+						<div class="box">
+
+							<div class="row">
+
+								<div class=" col-md-4 suggestionProduitImage">
+									<a href="http://www.google.fr"><img class="imgProduit"
+										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+								</div>
+
+								<div class="col-md-7 suggestionProduit">
+
+									<a class="fort" href="http://www.google.fr"><strong><U>Produit
+												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
+										adipiscing elit, sed do eiusmod Lorem m</a>
+
+								</div>
+							</div>
+							<div class="box-footer">
+								<div class="row validation">
+									<div class="col-md-5 priceProduit p">
+										<p>
+											<b><u> prix : 13 € </u></b>
+										</p>
+									</div>
+									<div class="col-md-5 validerBtn">
+										<button type="submit" class="addCart btn btn-primary">Ajouter
+											au panier</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-4">
+					<div class="box-fix" id="basket ">
+						<div class="box">
+
+							<div class="row">
+
+								<div class=" col-md-4 suggestionProduitImage">
+									<a href="http://www.google.fr"><img class="imgProduit"
+										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+								</div>
+
+								<div class="col-md-7 suggestionProduit">
+
+									<a class="fort" href="http://www.google.fr"><strong><U>Produit
+												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
+										adipiscing elit, sed do eiusmod Lorem m</a>
+
+								</div>
+							</div>
+							<div class="box-footer">
+								<div class="row validation">
+									<div class="col-md-5 priceProduit p">
+										<p>
+											<b><u> prix : 13 € </u></b>
+										</p>
+									</div>
+
+
+									<div class="col-md-5 validerBtn">
+										<button type="submit" class="addCart btn btn-primary">Ajouter
+											au panier</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/bootstrap-hover-dropdown.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/front.js"></script>
+
+</body>
+</html>
