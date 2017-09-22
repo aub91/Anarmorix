@@ -81,14 +81,26 @@ public class DaoAdresse implements IDaoAdresse {
 
     @Override
     public Boolean supprimer(Integer paramId) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Adresse adresse = (Adresse) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
+            em.remove(adresse);
+            return true;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @Override
     public Adresse mettreAJour(Integer paramId) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            Adresse adresse = (Adresse) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
+            Adresse updated = em.merge(adresse);
+            return updated;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
 }

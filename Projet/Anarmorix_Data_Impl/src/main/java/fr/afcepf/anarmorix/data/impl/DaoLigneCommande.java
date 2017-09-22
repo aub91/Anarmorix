@@ -79,7 +79,7 @@ public class DaoLigneCommande implements IDaoLigneCommande {
 
     @Override
     public Boolean supprimer(Integer paramId) throws AnarmorixException {
-        try{
+        try {
             LigneCommande ligne = (LigneCommande) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
             em.remove(ligne);
             return true;
