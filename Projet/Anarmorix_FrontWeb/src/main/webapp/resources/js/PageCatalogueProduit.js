@@ -64,30 +64,12 @@ $(function () {
     $(document).ready(function(){
 
     	var quantitiy=0;
-    	   $('.quantity-right-plus').click(function(e){
-    	        
-    		   var $this = $(this);
-    	        var $input = $this.closest('input');
-    		   
-    		   
-    	        // Stop acting like a button
-    	        e.preventDefault();
-    	        // Get the field name
-    	        var quantity = parseInt($input.val());
-    	        
-    	        // If is not undefined
-    	            
-    	            $input.val(quantity + 1);
-
-    	          
-    	            // Increment
-    	        
-    	    });
+    	   
 
     	     $('.quantity-left-minus').click(function(e){
     	        
     	    	 var $this = $(this);
-     	        var $input = $this.find('input');
+     	        var $input = $this.closest('span').next('input');
     	    	 
     	    	 
     	    	 // Stop acting like a button
@@ -102,6 +84,26 @@ $(function () {
     	            $input.val(quantity - 1);
     	            }
     	    });
+    	     
+    	     $('.quantity-right-plus').click(function(e){
+     	        
+      		   var $this = $(this);
+      	        var $input = $this.closest('div').find('input');
+      		   
+      		   
+      	        // Stop acting like a button
+      	        e.preventDefault();
+      	        // Get the field name
+      	        var quantity = parseInt($input.val());
+      	        
+      	        // If is not undefined
+      	            
+      	            $input.val(quantity + 1);
+
+      	          
+      	            // Increment
+      	        
+      	    });
     	    
     	});
     /*fin*/
