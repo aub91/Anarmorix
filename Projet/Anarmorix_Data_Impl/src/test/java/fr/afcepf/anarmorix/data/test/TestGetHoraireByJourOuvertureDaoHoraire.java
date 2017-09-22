@@ -36,7 +36,7 @@ public class TestGetHoraireByJourOuvertureDaoHoraire {
      */
     private JourOuverture jourOuvertureNonExistant = new JourOuverture(ID_NON_EXISTANT, "Dimanche", null);
     /**
-     * Test avec point-relais non existant en base de données.
+     * Test avec jour ouverture non existant en base de données.
      * @throws AnarmorixException exception
      */
     @Test

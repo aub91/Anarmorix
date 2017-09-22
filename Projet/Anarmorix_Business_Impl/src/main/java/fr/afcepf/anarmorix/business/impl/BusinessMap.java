@@ -45,7 +45,7 @@ public class BusinessMap implements IBusinessMap {
      * Classe contenant une méthode à appeler pour alimenterAdresse.
      */
     @EJB
-    private IDaoCodePostal daoCodepostal;
+    private IDaoCodePostal daoCodePostal;
     /**
      * Classe contenant une méthode à appeler pour alimenterPointRelais.
      */
@@ -83,7 +83,7 @@ public class BusinessMap implements IBusinessMap {
     }
     @Override
     public Adresse alimenterAdresse(Adresse paramAdresse) throws AnarmorixException {
-        paramAdresse = daoCodepostal.getByAdress(paramAdresse);
+        paramAdresse = daoCodePostal.getByAdress(paramAdresse);
         paramAdresse = daoVille.getByAdress(paramAdresse);
         return paramAdresse;
     }
