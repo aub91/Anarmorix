@@ -68,7 +68,6 @@ public class BusinessMap implements IBusinessMap {
                 PointRelais prTmp = new PointRelais();
                 prTmp = alimenterPointRelais(pr);
                 prTmp.setAdresse(alimenterAdresse(pr.getAdresse()));
-                //pr.setJoursOuverture(new ArrayList<>());
                 List<JourOuverture> listeJO = new ArrayList<>();
                 for (JourOuverture jourOuverture : prTmp.getJoursOuverture()) {
                     listeJO.add(alimenterJourOuverture(jourOuverture));
@@ -81,7 +80,6 @@ public class BusinessMap implements IBusinessMap {
             AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
-        System.out.println("OUT");
         return retour;
     }
     @Override
