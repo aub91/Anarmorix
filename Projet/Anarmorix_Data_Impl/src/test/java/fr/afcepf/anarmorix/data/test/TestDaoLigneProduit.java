@@ -14,11 +14,15 @@ import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Image;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Livreur;
+import fr.afcepf.anarmorix.entity.Packaging;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
+import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.entity.TauxTVA;
 import fr.afcepf.anarmorix.entity.TypeProduit;
+import fr.afcepf.anarmorix.entity.UnitePackaging;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -60,13 +64,13 @@ public class TestDaoLigneProduit {
      *  {@link Adresse} du {@link Client} utilisé pour les tests.
      */
     private static final Adresse ADRESSE = new Adresse(3, 15, null, "rue Becot", CODEPOSTAL,
-                                            VILLE, "3.051375", "48.779062");
+                                            VILLE, "-3.051375", "48.779062");
 
     /**
      *  {@link Adresse} du {@link PointRelais} utilisé pour les tests.
      */
     private static final Adresse ADRESSE_RELAIS = new Adresse(4, 1, null, "Rue Gardenn Toul Ar Verzhid", CODEPOSTAL,
-                                            VILLE, "3.059167", "48.782303");
+                                            VILLE, "-3.059167", "48.782303");
 
     /**
      * Point relais entré dans les commandes test.
@@ -127,6 +131,66 @@ public class TestDaoLigneProduit {
      * {@link TypeProduit} du {@link Produit}.
      */
     private static final TypeProduit TYPE = new TypeProduit(1, "Fraise gariguette", null, TVA, CATEGORIE_4, null, IMAGE);
+
+    /**
+     * {@link UnitePackaging} du {@link Produit}.
+     */
+    private static final UnitePackaging UNITE_PACK = new UnitePackaging(1, "kilogramme");
+
+    /**
+     * {@link Packaging} du {@link Produit}.
+     */
+    private static final Packaging PACK = new Packaging(2, null, "Vrac", UNITE_PACK, null);
+
+    /**
+     * Produit attaché à la ligne de commande.
+     */
+    private static final Produit PRODUIT =
+            new Produit(2, TYPE, null, 25D, 50D, IMAGE, PACK);
+
+    /**
+     * Ville de l'adresse de la societe de livraison.
+     */
+    private static final Ville VILLE_1 = new Ville("22070", "Guingamp");
+
+    /**
+     * Ville de l'adresse du livreur.
+     */
+    private static final Ville VILLE_2 = new Ville("22195", "Pleubian");
+
+    /**
+     * CodePostal de l'adresse de la societe de livraison.
+     */
+    private static final CodePostal CP_1 = new CodePostal(4, "22200");
+
+    /**
+     * Code postal de l'adresse du livreur.
+     */
+    private static final CodePostal CP_2 = new CodePostal(5, "22610");
+
+    /**
+     * Aresse de la societe de livraison.
+     */
+    private static final Adresse ADRESSE_SOCIETE =
+            new Adresse(7, 15, null, "rue Paul Girard", CP_1, VILLE_1, "-3.157254", "48.565012");
+
+    /**
+     * Adresse du livreur.
+     */
+    private static final Adresse ADRESSE_LIVREUR =
+            new Adresse(8, 7, null, "rue Saint-Andtoine", CP_2, VILLE_2, "-3.121430", "48.851137");
+
+    /**
+     * Société de livraison prenant en charge la torunée.
+     */
+    private static final SocieteDeLivraison SOCIETE =
+            new SocieteDeLivraison(13, "422260208", "00026", "47111D", null, "Michel SARL", ADRESSE_SOCIETE, null);
+
+    /**
+     * Livreur effectuant la tournée.
+     */
+    private static final Livreur LIVREUR = new Livreur(8, new Date(117, 6, 23), "Bakounine", "Mouloud", new Date(117, 8, 17),
+                    ADRESSE_LIVREUR, "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, SOCIETE);
 
     /**
      * Ligne commande retournée.
