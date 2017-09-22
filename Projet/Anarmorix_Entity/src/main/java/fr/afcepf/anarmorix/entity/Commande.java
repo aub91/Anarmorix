@@ -214,5 +214,4 @@ public class Commande implements Serializable {
     public void setLignesCommande(List<LigneCommande> paramLignesCommande) {
         lignesCommande = paramLignesCommande;
     }
-    
 }

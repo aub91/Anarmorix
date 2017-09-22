@@ -17,7 +17,7 @@ public enum Statut {
      */
     EN_COURS_DE_PREPARATION,
     /**
-     * Préparation terminée
+     * Préparation terminée.
      */
     PRETE,
     /**

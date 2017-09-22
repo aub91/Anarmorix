@@ -6,24 +6,36 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+<<<<<<< HEAD
+=======
+import javax.persistence.Query;
+>>>>>>> aubin
 
 import fr.afcepf.anarmorix.data.api.IDaoAdresse;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Adresse;
+<<<<<<< HEAD
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+=======
+import fr.afcepf.anarmorix.entity.Commerce;
+>>>>>>> aubin
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
+<<<<<<< HEAD
  * Classe permettant la gestion des {@link Adresse}s.
+=======
+ * Implémentation des fonctionnalités métier liés à l'entité {@link Adresse}.
+>>>>>>> aubin
  */
 @Remote(IDaoAdresse.class)
 @Stateless
 public class DaoAdresse implements IDaoAdresse {
-
     /**
+<<<<<<< HEAD
      * Entity manager.
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
@@ -39,6 +51,12 @@ public class DaoAdresse implements IDaoAdresse {
      */
     private static final String REQ_LIGNE_ID = "Select a FROM Adresse a WHERE a.id = :pId";
 
+=======
+     * Entity Manager.
+     */
+    @PersistenceContext(unitName = "Anarmorix_Data_Impl")
+    private EntityManager em;
+>>>>>>> aubin
     /**
      * Default constructor.
      */
@@ -101,6 +119,20 @@ public class DaoAdresse implements IDaoAdresse {
             AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
+    }
+
+    @Override
+    public Commerce getByCommerce(Commerce paramCommerce) throws AnarmorixException {
+        try {
+            String hql = "SELECT c.adresse FROM Commerce c WHERE c.id = :paramId";
+            Query queryHql = em.createQuery(hql);
+            queryHql.setParameter("paramId", paramCommerce.getId());
+            paramCommerce.setAdresse((Adresse) queryHql.getSingleResult());
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
+        return paramCommerce;
     }
 
 }

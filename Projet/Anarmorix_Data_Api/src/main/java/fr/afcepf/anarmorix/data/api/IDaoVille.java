@@ -2,35 +2,43 @@ package fr.afcepf.anarmorix.data.api;
 
 import java.util.List;
 
+import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.Ville;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Fonctionnalités métier liés à la gestion de l'entité {@link Ville} dans le système.
  */
 public interface IDaoVille {
 
     /**
-     * @param nom 
-     * @return
+     * @param nom le nom de ville à chercher
+     * @return la liste de ville contenant le nom recherché
      */
-    public List<Ville> rechercher(String nom);
+   List<Ville> rechercher(String nom);
 
     /**
-     * @param ville 
-     * @return
+     * @param ville la ville à ajouter
+     * @return la ville ajouté avec son id
      */
-    public Ville ajouter(Ville ville);
+    Ville ajouter(Ville ville);
 
     /**
-     * @param id 
-     * @return
+     * @param id id de la ville à supprimer
+     * @return vrai si suppression réussi
      */
-    public Boolean supprimer(Integer id);
+    Boolean supprimer(Integer id);
 
     /**
-     * @param id 
-     * @return
+     * @param id id de la ville à mettre à jour
+     * @return la ville avec ses informations mise à jour
      */
-    public Ville mettreAJour(Integer id);
+    Ville mettreAJour(Integer id);
+    /**
+     * @param paramAdresse l'adresse dont on cherche la ville
+     * @return l'adresse avec sa ville
+     * @throws AnarmorixException exception
+     */
+    Adresse getByAdress(Adresse paramAdresse) throws AnarmorixException;
 
 }

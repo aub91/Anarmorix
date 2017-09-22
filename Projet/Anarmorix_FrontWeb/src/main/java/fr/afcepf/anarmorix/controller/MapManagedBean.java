@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
@@ -15,12 +15,9 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
-import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Horaire;
 import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.PointRelais;
-import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
@@ -28,7 +25,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
  * @author Aubin
  *
  */
-@Stateless
+@SessionScoped
 @ManagedBean(name = "mbMap")
 public class MapManagedBean {
     /**
@@ -69,6 +66,7 @@ public class MapManagedBean {
      */
     @PostConstruct
     public void rechercherPointRelais() {
+<<<<<<< HEAD
         CodePostal cp1 = new CodePostal(null, "75012");
         Ville ville1 = new Ville(null, "Paris");
         CodePostal cp2 = new CodePostal(null, "75014");
@@ -131,6 +129,41 @@ public class MapManagedBean {
             .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
         }
         jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
+=======
+        try {
+            liste = busMap.getAllPointRelais();
+            for (PointRelais pr : liste) {
+                StringBuilder sbAdress = new StringBuilder();
+                sbAdress.append(pr.getAdresse().getNumero()).append(" ").append(pr.getAdresse().getVoie()).append(", ")
+                .append(pr.getAdresse().getCodePostal().getCodePostal()).append(" ").append(pr.getAdresse().getVille().getNomVille())
+                .append(", France', 'lat': '").append(pr.getAdresse().getLatitude()).append("', 'lng': '").append(pr.getAdresse().getLongitude());
+
+                StringBuilder sbJourOuverture = new StringBuilder("'jourOuverture': [");
+                for (JourOuverture jourOuverture : pr.getJoursOuverture()) {
+                    StringBuilder sbJour = new StringBuilder("{'jour': '");
+                    sbJour.append(jourOuverture.getLibelle()).append("', 'horaire': [");
+                    for (Horaire horaire : jourOuverture.getHorairesOuverture()) {
+                        StringBuilder sbHoraire = new StringBuilder("{'periode': '");
+                        sbHoraire.append(horaire.getLibelle()).append("', 'ouverture': '").append(horaire.getHeureOuverture())
+                        .append("', 'fermeture': '").append(horaire.getHeureFermeture()).append("'}, ");
+                        sbJour.append(sbHoraire);
+                    }
+                    sbJour.delete(sbJour.length() - 2, sbJour.length()).append("]}, ");
+                    sbJourOuverture.append(sbJour);
+                }
+                if (pr.getJoursOuverture().size() != 0) {
+                sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length());
+                }
+                sbJourOuverture.append("]}, ");
+                jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'id': '").append(pr.getId())
+                .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
+            }
+            jSonPointRelais.delete(jSonPointRelais.length() - 2, jSonPointRelais.length()).append("]}");
+        } catch (AnarmorixException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+>>>>>>> aubin
     }
     /**
      * Méthode pour rechercher un point particulier.
