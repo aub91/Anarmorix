@@ -21,6 +21,7 @@ import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.entity.TauxTVA;
+import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.entity.TypeProduit;
 import fr.afcepf.anarmorix.entity.UnitePackaging;
 import fr.afcepf.anarmorix.entity.Ville;
@@ -193,11 +194,16 @@ public class TestDaoLigneProduit {
                     ADRESSE_LIVREUR, "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, SOCIETE);
 
     /**
+     * Tournée prenant en charge la ligne de commande.
+     */
+    private static final Tournee TOURNEE = new Tournee(1, new Date(/*debut*/), new Date(/*fin*/), SOCIETE, LIVREUR);
+
+    /**
      * Ligne commande retournée.
      */
     private static final LigneCommande LIGNE =
-                    new LigneCommande()/*(1, 1, 1, 1, 1, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
-                    new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE)*/;
+                    new LigneCommande(1, 1D, 1D, 1D, 1D, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
+                    new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE);
 
     /**
      * Test du cas d'un argument inexistant en base.
