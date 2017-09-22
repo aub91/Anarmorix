@@ -20,18 +20,18 @@ public interface IDaoLigneCommande {
      * @param ligneCommande 
      * @return
      */
-    public LigneCommande ajouter(LigneCommande ligneCommande);
+    public LigneCommande ajouter(LigneCommande ligneCommande) throws AnarmorixException;
 
     /**
      * @param id 
      * @return
      */
-    public Boolean supprimer(Integer id);
+    public Boolean supprimer(Integer id) throws AnarmorixException ;
 
     /**
      * @param id 
      * @return
      */
-    public LigneCommande mettreAJour(Integer id);
+    public LigneCommande mettreAJour(Integer id) throws AnarmorixException;
 
 }

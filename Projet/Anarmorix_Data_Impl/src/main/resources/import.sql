@@ -107,9 +107,9 @@ INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '5.50');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '10.00');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '20.00');
 
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1, 8);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1, 9);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1, 10);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1, 8);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1, 9);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1, 10);
 
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (1, 'kilogramme');
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (2, 'litre');

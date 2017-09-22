@@ -66,7 +66,7 @@ public class TypeProduit implements Serializable {
      * Catégorie du type produit.
      */
     @ManyToOne
-    @JoinColumn(name = "id_Categorie", nullable = false, foreignKey = @ForeignKey(name = "FK_TypeProduit_Categorie"))
+    @JoinColumn(name = "id_categorie", nullable = false, foreignKey = @ForeignKey(name = "FK_TypeProduit_Categorie"))
     private Categorie categorie;
 
     /**

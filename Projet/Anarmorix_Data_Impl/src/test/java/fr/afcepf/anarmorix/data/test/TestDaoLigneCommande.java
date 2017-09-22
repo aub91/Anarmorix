@@ -33,7 +33,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
  * @author Stagiaire
  *
  */
-public class TestDaoLigneProduit {
+public class TestDaoLigneCommande {
 
     /**
      * Classe contenant les services à tester.
@@ -54,7 +54,7 @@ public class TestDaoLigneProduit {
     /**
      * ID d'une commande inexistante.
      */
-    private static final Integer ID_INEXISTANT = -1;
+    private static final Integer ID_INEXISTANT = 2227272;
 
     /**
      * ID d'une commande existante.
@@ -212,9 +212,13 @@ public class TestDaoLigneProduit {
     @Test
     public void testEchecArgumentInexistant() throws AnarmorixException {
         try {
-            dao.rechercher(COMMANDE_INEXISTANTE);
+            List<LigneCommande> retour = dao.rechercher(COMMANDE_INEXISTANTE);
+            System.out.println("Size echec :");
+            System.out.println(retour.size());
             Assert.fail("Test d'echec (Argument invalide), mais ça marche. Il y a un petit problème... !");
         } catch (AnarmorixException e) {
+            System.out.println("Erreur :");
+            System.out.println(e.getMessage());
             Assert.assertEquals(AnarmorixExceptionEnum.ARGUMENT_INEXISTANT, e.getCodeErreur());
         }
     }
@@ -227,6 +231,15 @@ public class TestDaoLigneProduit {
     public void testNominal() throws AnarmorixException {
         List<LigneCommande> retour = dao.rechercher(COMMANDE);
         Assert.assertEquals(1, retour.size());
-        Assert.assertEquals(LIGNE,  retour.toArray()[0]);
+        Assert.assertEquals(LIGNE.getId(), retour.get(0).getId());
+//        Assert.assertEquals(LIGNE.getDateDebutPreparation(), retour.get(0).getDateDebutPreparation());
+//        Assert.assertEquals(LIGNE.getDateFinPreparation(), retour.get(0).getDateFinPreparation());
+//        Assert.assertEquals(LIGNE.getDateLivraisonPtRel(), retour.get(0).getDateLivraisonPtRel());
+//        Assert.assertEquals(LIGNE.getDateRetraitProducteur(), retour.get(0).getDateRetraitProducteur());
+//        Assert.assertEquals(LIGNE.getDateRetraitPtRel(), retour.get(0).getDateRetraitPtRel());
+        Assert.assertEquals(LIGNE.getQuantiteCommandee(), retour.get(0).getQuantiteCommandee());
+        Assert.assertEquals(LIGNE.getQuantiteDelivree(), retour.get(0).getQuantiteDelivree());
+        Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.get(0).getQuantiteLivree());
+        Assert.assertEquals(LIGNE.getQuantitePreparee(), retour.get(0).getQuantitePreparee());
     }
 }
