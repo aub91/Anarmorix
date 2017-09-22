@@ -252,3 +252,20 @@ body{
     border: 2px solid black;
     width: 100%;
 }
+.btn { 
+	border-radius: 30px 5px; 
+color: #fff;
+ background-color: #6c5cb8;
+  
+  transition: all 0.3s ease 0s; } 
+  .btn:hover {
+   border-radius: 30px 5px; 
+  color: #fff; 
+  background-color: #3d348b;
+  
+   } } 
+  @media only screen and (max-width: 767px) {
+   .btn 
+   { 
+   margin-bottom: 15px; 
+   } }

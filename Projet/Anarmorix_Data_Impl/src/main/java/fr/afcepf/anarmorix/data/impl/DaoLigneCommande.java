@@ -31,6 +31,7 @@ public class DaoLigneCommande implements IDaoLigneCommande {
      */
     private static final String REQ_RECHERCHE =
             "SELECT c.lignesCommande FROM Commande c WHERE c.id = :pId";
+    
 
     /**
      * Default constructor.
@@ -41,7 +42,8 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     /**
      * Méthode retournant l'ensemble des lignes d'une {@link Commande}.
      */
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<LigneCommande> rechercher(Commande commande) throws AnarmorixException {
        try {
            return em.createQuery(REQ_RECHERCHE).setParameter("pId", commande.getId()).getResultList();
@@ -56,8 +58,9 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     }
 
     @Override
-    public LigneCommande ajouter(LigneCommande paramLigneCommande) {
-        // TODO Auto-generated method stub
+    public LigneCommande ajouter(LigneCommande LigneCommande) {
+    
+      
         return null;
     }
 
