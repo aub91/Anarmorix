@@ -18,46 +18,30 @@ public interface IDaoAdresse {
      * @param voie
      * @return
      */
-<<<<<<< HEAD
-    public List<Adresse> rechercher(Ville ville) throws AnarmorixException;
-=======
-   List<Ville> rechercher(Integer numero, String voie) throws Exception;
->>>>>>> aubin
+    List<Adresse> rechercher(Ville ville) throws AnarmorixException;
 
     /**
      * @param adresse
      * @return
      */
-<<<<<<< HEAD
-    public Adresse ajouter(Adresse adresse) throws AnarmorixException;
-=======
-    Adresse ajouter(Adresse adresse) throws Exception;
->>>>>>> aubin
+    Adresse ajouter(Adresse adresse) throws AnarmorixException;
 
     /**
      * @param id
      * @return
      */
-<<<<<<< HEAD
-    public Boolean supprimer(Integer id) throws AnarmorixException;
-=======
-    Boolean supprimer(Integer id) throws Exception;
->>>>>>> aubin
+    Boolean supprimer(Integer id) throws AnarmorixException;
 
     /**
      * @param id
      * @return
      */
-<<<<<<< HEAD
-    public Adresse mettreAJour(Integer id) throws AnarmorixException;
-=======
-    Adresse mettreAJour(Integer id) throws Exception;
+    Adresse mettreAJour(Integer id) throws AnarmorixException;
     /**
      * @param paramCommerce le commerce dont on cherche l'adresse
      * @return le commerce avec son adresse
      * @throws AnarmorixException exception
      */
     Commerce getByCommerce(Commerce paramCommerce) throws AnarmorixException;
->>>>>>> aubin
 
 }

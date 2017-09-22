@@ -29,18 +29,12 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     /**
      * Requête permettant de trouver l'ensemble des lignes d'une {@link Commande}.
      */
-<<<<<<< HEAD
     private static final String REQ_RECHERCHE =
             "SELECT c.lignesCommande FROM Commande c WHERE c.id = :pId";
-    
-=======
-    private static final String REQ_RECHERCHE = "SELECT c.lignesCommande FROM Commande c WHERE c.id = :pId";
-
     /**
      * Requête permettant de récupérer une ligne commande en fonction de son Id.
      */
     private static final String REQ_LIGNE_ID = "Select l FROM LigneCommande l WHERE l.id = :pId";
->>>>>>> eloi
 
     /**
      * Default constructor.
@@ -48,12 +42,12 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     public DaoLigneCommande() {
     }
 
-//Attention, l'exception argument inexistant devrait sans doute être côté business.    
+//Attention, l'exception argument inexistant devrait sans doute être côté business.
     /**
      * Méthode retournant l'ensemble des lignes d'une {@link Commande}.
      */
     @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public List<LigneCommande> rechercher(Commande commande) throws AnarmorixException {
        try {
            List<LigneCommande> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", commande.getId()).getResultList();
@@ -74,21 +68,14 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     }
 
     @Override
-<<<<<<< HEAD
-    public LigneCommande ajouter(LigneCommande LigneCommande) {
-    
-      
-        return null;
-=======
     public LigneCommande ajouter(LigneCommande paramLigneCommande) throws AnarmorixException {
         try {
             em.persist(paramLigneCommande);
             return paramLigneCommande;
-        } catch (Exception e){
+        } catch (Exception e) {
             AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
->>>>>>> eloi
     }
 
     @Override
@@ -105,7 +92,7 @@ public class DaoLigneCommande implements IDaoLigneCommande {
 
     @Override
     public LigneCommande mettreAJour(Integer paramId) throws AnarmorixException {
-        try{
+        try {
             LigneCommande ligne = (LigneCommande) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
             LigneCommande updated = em.merge(ligne);
             return updated;

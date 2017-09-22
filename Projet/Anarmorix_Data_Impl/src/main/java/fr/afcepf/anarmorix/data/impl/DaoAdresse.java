@@ -6,41 +6,26 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-<<<<<<< HEAD
-=======
 import javax.persistence.Query;
->>>>>>> aubin
 
 import fr.afcepf.anarmorix.data.api.IDaoAdresse;
-import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Adresse;
-<<<<<<< HEAD
-import fr.afcepf.anarmorix.entity.Commande;
-import fr.afcepf.anarmorix.entity.LigneCommande;
-=======
 import fr.afcepf.anarmorix.entity.Commerce;
->>>>>>> aubin
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
-<<<<<<< HEAD
- * Classe permettant la gestion des {@link Adresse}s.
-=======
  * Implémentation des fonctionnalités métier liés à l'entité {@link Adresse}.
->>>>>>> aubin
  */
 @Remote(IDaoAdresse.class)
 @Stateless
 public class DaoAdresse implements IDaoAdresse {
     /**
-<<<<<<< HEAD
      * Entity manager.
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
-    
     /**
      * Requête permettant de trouver l'ensemble des lignes d'une {@link Commande}.
      */
@@ -51,12 +36,6 @@ public class DaoAdresse implements IDaoAdresse {
      */
     private static final String REQ_LIGNE_ID = "Select a FROM Adresse a WHERE a.id = :pId";
 
-=======
-     * Entity Manager.
-     */
-    @PersistenceContext(unitName = "Anarmorix_Data_Impl")
-    private EntityManager em;
->>>>>>> aubin
     /**
      * Default constructor.
      */
@@ -66,6 +45,7 @@ public class DaoAdresse implements IDaoAdresse {
     /**
      * Méthode retournant l'ensembles des {@link Adresse}s d'une {@link Ville}.
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Adresse> rechercher(Ville paramVille) throws AnarmorixException {
         try {
