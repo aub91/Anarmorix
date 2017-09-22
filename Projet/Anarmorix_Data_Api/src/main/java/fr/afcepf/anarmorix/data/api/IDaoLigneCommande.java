@@ -15,6 +15,13 @@ public interface IDaoLigneCommande {
      * @return
      */
     public List<LigneCommande> rechercher(Commande commande) throws AnarmorixException;
+    
+    /**
+     * @param paramId l'id de la ligne de commande recherchée.
+     * @return la ligne de commande identifiée par l'id.
+     * @throws AnarmorixException, l'exception spécifique éventuellement levée.
+     */
+    public LigneCommande rechercher(Integer paramId) throws AnarmorixException;
 
     /**
      * @param ligneCommande 
