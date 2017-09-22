@@ -49,7 +49,7 @@ $(function () {
         return totalPrice * 0.5;
       }
     });
-
+/*caret haut et bas*/
     $( "#AccordeonNiveauPrincipal .list-group-item" ).click(function() {
     	var panneauOuvert = $(this).next();
     	
@@ -58,4 +58,42 @@ $(function () {
         caret.toggleClass('fa-caret-up fa-caret-down');
         
     	});
+    /*fin*/
+    
+    /*sélecteur de quantité*/
+    $(document).ready(function(){
+
+    	var quantitiy=0;
+    	   $('.quantity-right-plus').click(function(e){
+    	        
+    	        // Stop acting like a button
+    	        e.preventDefault();
+    	        // Get the field name
+    	        var quantity = parseInt($('#quantity').val());
+    	        
+    	        // If is not undefined
+    	            
+    	            $('#quantity').val(quantity + 1);
+
+    	          
+    	            // Increment
+    	        
+    	    });
+
+    	     $('.quantity-left-minus').click(function(e){
+    	        // Stop acting like a button
+    	        e.preventDefault();
+    	        // Get the field name
+    	        var quantity = parseInt($('#quantity').val());
+    	        
+    	        // If is not undefined
+    	      
+    	            // Increment
+    	            if(quantity>0){
+    	            $('#quantity').val(quantity - 1);
+    	            }
+    	    });
+    	    
+    	});
+    /*fin*/
   });
