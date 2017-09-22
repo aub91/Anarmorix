@@ -6,14 +6,14 @@ INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22195', 'Pleubian');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22113', 'Lannion');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22168', 'Perros-Guirrec');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22127', 'Lezardrieux');
-INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22362', 'Tréguier');
+INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22362', 'TrÃ©guier');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('22214', 'Pouezec');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('87085', 'Limoges');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('06088', 'Nice');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('33063', 'Bordeaux');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('17300', 'La Rochelle');
 INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('56034', 'Carnac');
-INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('74173', 'Megève');
+INSERT INTO `ville` (`codeInsee`, `nom`) VALUES ('74173', 'MegÃ¨ve');
 
 INSERT INTO `codepostal`(`id`, `codePostal`) VALUES (1, '22500');
 INSERT INTO `codepostal`(`id`, `codePostal`) VALUES (2, '35000');
@@ -75,7 +75,7 @@ INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `num
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 4, '4711D', NULL, '00026', '422260208', 'Kantbuymelove SARL', 4, NULL);
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 5, '4711D', NULL, '00026', '422260208', 'Kropotkine SARL', 5, NULL);
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 6, '4711D', NULL, '00026', '422260208', 'Onnyvoitgoethe SARL', 6, NULL);
-INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 7, '4711D', NULL, '00026', '422260208', 'Célestin SARL', 15, NULL);
+INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 7, '4711D', NULL, '00026', '422260208', 'CÃ©lestin SARL', 15, NULL);
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 8, '4711D', NULL, '00026', '422260208', 'Norbert SARL', 16, NULL);
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 9, '4711D', NULL, '00026', '422260208', 'Johnny SARL', 17, NULL);
 INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `numSiren`, `raisonSociale`, `id_adresse`, `id_image`) VALUES ('PointRelais', 10, '4711D', NULL, '00026', '422260208', 'Shop SARL', 18, NULL);
@@ -87,14 +87,23 @@ INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_explo
 INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_exploitation`) VALUES (2, '2017-09-04 00:00:00', '2017-09-05 00:00:00', NULL, 2);
 INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_exploitation`) VALUES (3, '2017-09-05 00:00:00', '2017-09-06 00:00:00', NULL, 3);
 
+<<<<<<< HEAD
 INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'test', NULL, NULL, NULL);
 
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, légumes et féculents', NULL);
+=======
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Fraise.jpg', NULL, NULL, NULL);
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Homard.jpg', NULL, NULL, NULL);
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Huitre.jpg', NULL, NULL, NULL);
+
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, lÃ©gumes et fÃ©culents', NULL);
+>>>>>>> joel
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Viandes, charcuteries et produits de la mer', NULL);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Produits laitiers', NULL);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Boissons', NULL);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (5, 'Fruits', 1);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (6, 'Charcuterie', 2);
+<<<<<<< HEAD
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Autres boissons alcoolisées', 4);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Fruits rouges', 5);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'Pâté/Terrine', 6);
@@ -102,18 +111,32 @@ INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (10, 'Bièr
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (11, 'Fraise', 8);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (12, 'Pâté', 9);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (13, 'Bière blonde', 10);
+=======
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Autres boissons alcoolisÃ©es', 4);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Fruits rouges', 5);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'PÃ¢tÃ©/Terrine', 6);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (10, 'BiÃ¨re', 7);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (11, 'Fraise', 8);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (12, 'PÃ¢tÃ©', 9);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (13, 'BiÃ¨re blonde', 10);
+>>>>>>> joel
 
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '5.50');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '10.00');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '20.00');
 
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1, 8);
+<<<<<<< HEAD
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1, 9);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1, 10);
+=======
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (2, NULL, 'PÃ¢tÃ© de campagne', NULL, 1, 1, 9);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (3, NULL, 'BiÃ¨re blonde sans gluten', NULL, 1, 1, 10);
+>>>>>>> joel
 
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (1, 'kilogramme');
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (2, 'litre');
-INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (3, 'pièce');
+INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (3, 'piÃ¨ce');
 
 INSERT INTO `packaging` (`id`, `libelle`, `valeur_unitaire`, `packaging_pere`, `unite`) VALUES (NULL, 'Bouteille', 1, NULL, 2);
 INSERT INTO `packaging` (`id`, `libelle`, `valeur_unitaire`, `packaging_pere`, `unite`) VALUES (NULL, 'Vrac', NULL, NULL, 1);
@@ -142,20 +165,20 @@ INSERT INTO `jourouverture` (`id`, `libelle`, `id_pointRelais`) VALUES (13, 'Mer
 INSERT INTO `jourouverture` (`id`, `libelle`, `id_pointRelais`) VALUES (14, 'Jeudi', 6);
 INSERT INTO `jourouverture` (`id`, `libelle`, `id_pointRelais`) VALUES (15, 'Vendredi', 6);
 
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (1, '20h', '14h', 'Après-midi', 1);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (2, '19h', '8h', 'Journée', 2);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (3, '19h', '8h', 'Journée', 3);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (4, '19h', '8h', 'Journée', 4);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (5, '19h', '8h', 'Journée', 5);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (6, '19h', '8h', 'Journée', 6);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (7, '19h', '8h', 'Journée', 7);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (8, '19h', '8h', 'Journée', 8);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (9, '19h', '8h', 'Journée', 9);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (10, '19h', '8h', 'Journée', 10);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (11, '19h', '8h', 'Journée', 11);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (12, '19h', '8h', 'Journée', 12);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (13, '19h', '8h', 'Journée', 13);
-INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (14, '19h', '8h', 'Journée', 14);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (1, '20h', '14h', 'AprÃ¨s-midi', 1);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (2, '19h', '8h', 'JournÃ©e', 2);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (3, '19h', '8h', 'JournÃ©e', 3);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (4, '19h', '8h', 'JournÃ©e', 4);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (5, '19h', '8h', 'JournÃ©e', 5);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (6, '19h', '8h', 'JournÃ©e', 6);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (7, '19h', '8h', 'JournÃ©e', 7);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (8, '19h', '8h', 'JournÃ©e', 8);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (9, '19h', '8h', 'JournÃ©e', 9);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (10, '19h', '8h', 'JournÃ©e', 10);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (11, '19h', '8h', 'JournÃ©e', 11);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (12, '19h', '8h', 'JournÃ©e', 12);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (13, '19h', '8h', 'JournÃ©e', 13);
+INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (14, '19h', '8h', 'JournÃ©e', 14);
 INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES (15, '12h30', '8h', 'Matin', 15);
 
 
@@ -163,14 +186,18 @@ insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscripti
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (2, 2, null, '2016-12-17 00:00:00', '2017-08-17 00:00:00', null, 'guillaumedemachaut@mailoo.org', null, 'Gramsci', 'aaa', 'Aubin', '0666666666', null,'Renshinycastle' , 'Producteur', null, null, 1);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (3, 3, null, '2017-01-14 00:00:00', '2017-08-17 00:00:00', null, 'jamesosterberg@zaclys.org', null, 'Kropotkine', 'aaa', 'Alexandre', '0666666666', null,'Marbeufmiroton' , 'Producteur', null, null, 2);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (4, 4, null, '2017-02-10 00:00:00', '2017-08-17 00:00:00', null, 'loureed@gandi.org', null, 'Luxemburg', 'aaa', 'Christina', '0666666666', null,'Platontondubled' , 'Producteur', null, null, 3);
-insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (5, 5, null, '2017-03-05 00:00:00', '2017-08-17 00:00:00', null, 'archangelocorelli@vivaldi.org', null, 'Considérant', 'aaa', 'Eloi', '0666666666', null,'Diogeneegoiste' , 'Employe', 4, null, null);
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (5, 5, null, '2017-03-05 00:00:00', '2017-08-17 00:00:00', null, 'archangelocorelli@vivaldi.org', null, 'ConsidÃ©rant', 'aaa', 'Eloi', '0666666666', null,'Diogeneegoiste' , 'Employe', 4, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (6, 6, null, '2017-04-11 00:00:00', '2017-08-17 00:00:00', null, 'marcbolan@openmailbox.com', null, 'Blanqui', 'aaa', 'Fousseynou', '0666666666', null,'Spinozeabond' , 'Employe', 5, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (7, 7, null, '2017-05-18 00:00:00', '2017-08-17 00:00:00', null, 'sergioleone@autistici.org', null, 'Marx', 'aaa', 'Joel', '0666666666', null,'Marxisterique' , 'Employe', 6, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (8, 8, null, '2017-06-23 00:00:00', '2017-08-17 00:00:00', null, 'patrickdewaere@mailoo.org', null, 'Bakounine', 'aaa', 'Mouloud', '0666666666', null,'Onnyvoitgoethe' , 'Livreur', null, 13, null);
-insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (9, 9, null, '2017-07-04 00:00:00', '2017-08-17 00:00:00', null, 'samcooke@fastmail.com', null, 'Michel', 'aaa', 'Cunégonde', '0666666666', null,'Kantbuymelove' , 'Livreur', null, 13, null);
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (9, 9, null, '2017-07-04 00:00:00', '2017-08-17 00:00:00', null, 'samcooke@fastmail.com', null, 'Michel', 'aaa', 'CunÃ©gonde', '0666666666', null,'Kantbuymelove' , 'Livreur', null, 13, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (10, 10, null, '2017-07-29 00:00:00', '2017-08-17 00:00:00', null, 'carlhall@posteo.fr', null, 'Proudhon', 'aaa', 'Norbert', '0666666666', null,'Hobbesecration' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (11, 11, null, '2017-08-12 00:00:00', '2017-08-17 00:00:00', null, 'anadiplose@mailoo.org', null, 'Fourier', 'aaa', 'Athanase', '0666666666', null,'Genevoixdughetto' , 'Client', null, null, null);
+<<<<<<< HEAD
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (12, 12, null, '2017-08-16 00:00:00', '2017-08-17 00:00:00', null, 'Epenthèse@autistici.org', null, 'Brassens', 'aaa', 'Eugène', '0666666666', null,'Keplerdelateci' , 'Client', null, null, null);
+=======
+insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (12, 12, null, '2017-08-16 00:00:00', '2017-08-17 00:00:00', null, 'EpenthÃ¨se@autistici.org', null, 'Brassens', 'aaa', 'EugÃ¨ne', '0666666666', null,'Keplerdelateci' , 'Client', null, null, null);
+>>>>>>> joel
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (13, 1, null, '2017-09-11 00:00:00', '2017-08-17 00:00:00', null, 'hyperchleuasme@zaclys.fr', null, 'Thoreau', 'aaa', 'Celestin', '0666666666', null,'Bergsonindaplace' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (14, 2, null, '2017-09-13 00:00:00', '2017-08-17 00:00:00', null, 'synecdoque@openmailbox.com', null, 'Bloy', 'aaa', 'Achille', '0666666666', null,'Funkstergauss' , 'Client', null, null, null);
 insert into `adherent` (`id`, `id_adresse`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `id_image`, `mail`, `id_motif_desinscription`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `type_adherent`, `id_relais`, `id_societe`, `id_exploitation`) values (15, 3, null, '2017-09-18 00:00:00', '2017-08-17 00:00:00', null, 'Epanorthose@ovh.fr', null, 'Scarlatti', 'aaa', 'Gustave', '0666666666', null,'Wildcatgalileo' , 'Client', null, null, null);

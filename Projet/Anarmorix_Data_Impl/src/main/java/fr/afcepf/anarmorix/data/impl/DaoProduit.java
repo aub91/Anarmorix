@@ -14,7 +14,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * 
+ * Implémentation du DAO produit.
  */
 @Remote(IDaoProduit.class)
 @Stateless
@@ -80,7 +80,7 @@ public class DaoProduit implements IDaoProduit {
     public List<Produit> rechercherTousLesProduits() throws AnarmorixException {
         List<Produit> liste = null;
         try {
-            liste = em.createQuery("SELECT p FROM Produit p", Produit.class).getResultList();
+            liste = em.createQuery("SELECT p FROM Produit p JOIN p.image i").getResultList();
         } catch (Exception e) {
             AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
             throw exc;
