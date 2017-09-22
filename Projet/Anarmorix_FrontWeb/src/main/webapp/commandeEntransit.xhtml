@@ -62,8 +62,8 @@
                  <ui:repeat var="prodTrans" value="#{mbProduit.liste}"> 
                 
                 <tr>	
-                	<td ><img src="resources/img/carotte.jpg" width="50px" height="50px"/></td>
-                	<td>#{prodTrans.produit.id}</td>
+                	<td ><img src="#{prodTrans.produit.image.chemin}"  width="50px" height="50px"/></td>
+                	<td>#{prodTrans.produit.prixUnitaire}</td>
                 	<td>#{prodTrans.quantiteLivree}</td>
                 	            
                 </tr>
