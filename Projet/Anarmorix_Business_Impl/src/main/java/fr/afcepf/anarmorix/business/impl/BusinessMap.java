@@ -8,10 +8,16 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
 import fr.afcepf.anarmorix.data.api.IDaoPointRelais;
+import fr.afcepf.anarmorix.entity.Adresse;
+import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
-
+/**
+ * Classe implémentant les méthodes de {@link IBusinessMap}.
+ * @author Aubin
+ *
+ */
 @Remote(IBusinessMap.class)
 @Stateless
 public class BusinessMap implements IBusinessMap {
@@ -30,5 +36,20 @@ public class BusinessMap implements IBusinessMap {
             throw exc;
         }
         return liste;
+    }
+    @Override
+    public PointRelais alimenterPointRelais(PointRelais paramPointRelais) throws AnarmorixException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Adresse alimenterAdresse(Adresse paramAdresse) throws AnarmorixException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public JourOuverture alimenterJourOuverture(JourOuverture paramJourOuverture) throws AnarmorixException {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
