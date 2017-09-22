@@ -3,11 +3,8 @@ package fr.afcepf.anarmorix.business.api;
 import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.CodePostal;
-import fr.afcepf.anarmorix.entity.Horaire;
 import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.PointRelais;
-import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 /**
  * Interface contenant les méthodes de la map.
