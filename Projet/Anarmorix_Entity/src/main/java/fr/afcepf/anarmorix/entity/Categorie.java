@@ -47,6 +47,12 @@ public class Categorie implements Serializable {
     private String libelle;
 
     /**
+     * Liste des Types produits rattachés à la catégorie.
+     */
+    @OneToMany(mappedBy = "categorie")
+    private List<TypeProduit> typesProduits;
+
+    /**
      * Liste des catégories filles.
      */
     @OneToMany(mappedBy = "categorieMere")

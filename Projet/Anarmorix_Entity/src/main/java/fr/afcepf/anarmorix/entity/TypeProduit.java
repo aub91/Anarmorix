@@ -61,6 +61,13 @@ public class TypeProduit implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_tva", nullable = true, foreignKey = @ForeignKey(name = "FK_TypeProduit_Tva"))
     private TauxTVA tva;
+    
+    /**
+     * 
+     */
+    @ManyToOne
+    @JoinColumn(name = "id_Categorie", nullable = false, foreignKey = @ForeignKey(name = "FK_TypeProduit_Categorie"))
+    private Categorie categorie;
 
     /**
      * Unité de la durée de conservation.
