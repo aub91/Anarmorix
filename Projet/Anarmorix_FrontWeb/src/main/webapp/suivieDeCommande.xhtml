@@ -124,13 +124,13 @@
                         </tr>
                     </thead>
                     
-                    <ui:repeat var="prodtvue" value="#{mbProduit.produitVue}">           
+                    <ui:repeat var="prodtvue" value="#{mbProduit.cmde}">           
                     <tr>
                     
-							<td><img src="#{prodtvue.prodt.image.chemin}" style="width:50px; height: 50px"/></td>
-							<td>#{prodtvue.prodt.id}</td>
-							<td>#{prodtvue.prodt.quantiteEnStock}</td>
-							<td>#{prodtvue.prodt.prixUnitaire}</td>
+							
+							<td>#{mbProduit.liste.produit.id}</td>
+							<td>#{prodtvue.id}</td>
+							<td>#{prodtvue.codeValidation}</td>
 				
 					</tr>
 					</ui:repeat>
