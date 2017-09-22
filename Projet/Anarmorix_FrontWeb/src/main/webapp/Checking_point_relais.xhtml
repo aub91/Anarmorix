@@ -60,11 +60,13 @@
 }
 
 #btnValider {
-	margin-left: 650px;
+	
+	grid-column: 4;
+	grid-row: 1;
 }
 
-#commande_livree {
-	grid-column: 4;
+#commande_recuperee {
+	grid-column: 3;
 	grid-row: 1;
 }
 
@@ -73,21 +75,12 @@
 	font-size: 30px;
 	margin-left: 30px;
 	color: purple;
-	font-style:georgia;
+	font-style: georgia;
 }
 
-#nom_pointrelais {
+#nomprenom_consommateur {
 	grid-column: 2;
 	grid-row: 1;
-}
-
-#adresse_pointrelais {
-	grid-column: 3;
-	grid-row: 1;
-}
-
-#livraison_totale {
-	margin-left: 550px;
 }
 
 #liste_commande {
@@ -115,7 +108,7 @@
 						<th colspan="1"></th>
 					</tr>
 					<tr>
-						<th id="liste_commande">Liste des commandes</th>
+						<th id="liste_commande">Liste des commandes à récupérer</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -126,11 +119,16 @@
 								<div id="commande_numero">
 									Commande numéro <span id="numero">519</span>
 								</div>
-								<div id="nom_pointrelais">nom du point relais</div>
-								<div id="adresse_pointrelais">adresse du point relais</div>
-								<div id="commande_livree">
-									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								<div id="nomprenom_consommateur">nom et prénom du
+									consommateur</div>
+								<div id="commande_recuperee">
+									Commande récupérée <input type="checkbox" id="checkbox1"
+										value="checkbox1"></input>
 								</div>
+								
+									<input type="button" class="btn" id="btnValider" style="width:90px"
+										value="Valider"></input>
+								
 							</div>
 						</td>
 
@@ -142,11 +140,16 @@
 								<div id="commande_numero">
 									Commande numéro <span id="numero">519</span>
 								</div>
-								<div id="nom_pointrelais">nom du point relais</div>
-								<div id="adresse_pointrelais">adresse du point relais</div>
-								<div id="commande_livree">
-									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								<div id="nomprenom_consommateur">nom et prénom du
+									consommateur</div>
+								<div id="commande_recuperee">
+									Commande récupérée <input type="checkbox" id="checkbox1"
+										value="checkbox1"></input>
 								</div>
+								
+									<input type="button" class="btn" id="btnValider" style="width:90px"
+										value="Valider"></input>
+								
 							</div>
 						</td>
 
@@ -157,11 +160,16 @@
 								<div id="commande_numero">
 									Commande numéro <span id="numero">519</span>
 								</div>
-								<div id="nom_pointrelais">nom du point relais</div>
-								<div id="adresse_pointrelais">adresse du point relais</div>
-								<div id="commande_livree">
-									Commande livrée <input type="checkbox" id="checkbox1" value="checkbox1"></input>
+								<div id="nomprenom_consommateur">nom et prénom du
+									consommateur</div>
+								<div id="commande_recuperee">
+									Commande récupérée <input type="checkbox" id="checkbox1"
+										value="checkbox1"></input>
 								</div>
+								
+									<input type="button" class="btn" id="btnValider" style="width:90px"
+										value="Valider"></input>
+								
 							</div>
 						</td>
 
@@ -173,13 +181,6 @@
 		</div>
 	</div>
 	<br />
-	<div>
-		<span id="livraison_totale">Livraison de la totalité de la
-			commande</span><input type="checkbox" id="checkbox1" value="checkbox1"></input>
-	</div>
 
-	<br />
-	<br />
-	<input type="button" class="btn" id="btnValider" value="Valider"></input>
 </body>
 </html>
