@@ -53,7 +53,7 @@ public class DaoAdresse implements IDaoAdresse {
             if (liste.size() == 0) {
                 AnarmorixException exc = new AnarmorixException("La ville demandée n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
                 throw exc;
-            }
+            } else
             return liste;
         } catch (Exception e) {
             if (e.getMessage() == "La ville demandée n'existe pas.") {
@@ -67,7 +67,6 @@ public class DaoAdresse implements IDaoAdresse {
 
     @Override
     public Adresse ajouter(Adresse paramAdresse) throws AnarmorixException {
-        // TODO Auto-generated method stub
         try {
             em.persist(paramAdresse);
             return paramAdresse;
