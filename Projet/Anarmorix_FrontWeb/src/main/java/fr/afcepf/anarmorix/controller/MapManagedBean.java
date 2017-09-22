@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
@@ -25,7 +25,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
  * @author Aubin
  *
  */
-@Stateless
+@SessionScoped
 @ManagedBean(name = "mbMap")
 public class MapManagedBean {
     /**
@@ -66,35 +66,6 @@ public class MapManagedBean {
      */
     @PostConstruct
     public void rechercherPointRelais() {
-//        CodePostal cp1 = new CodePostal(null, "75012");
-//        Ville ville1 = new Ville(null, "Paris");
-//        CodePostal cp2 = new CodePostal(null, "75014");
-//        Adresse adresse1 = new Adresse(null, 1, null, "route de Pesage", cp1, ville1, "2.444399", "48.822477");
-//        Adresse adresse2 = new Adresse(null, 1, null, "Boulevard Brune", cp2, ville1, "2.323553", "48.823423");
-//        PointRelais pr1 = new PointRelais(null, null, null, null, null, "Ferme de Paris", adresse1, null);
-//        PointRelais pr2 = new PointRelais(null, null, null, null, null, "Supérette d Orléans", adresse2, null);
-//
-//        JourOuverture jour1 = new JourOuverture(null, "Lundi", null);
-//        JourOuverture jour2 = new JourOuverture(null, "Mardi", null);
-//        Horaire horaire1 = new Horaire(null, "matin", "9h00", "12h00", jour1);
-//        Horaire horaire2 = new Horaire(null, "après-midi", "13h00", "19h00", jour1);
-//        Horaire horaire3 = new Horaire(null, "journée", "9h00", "21h00", jour2);
-//        List<Horaire> horaires = new ArrayList<>();
-//        List<Horaire> horaires2 = new ArrayList<>();
-//        horaires.add(horaire1);
-//        horaires.add(horaire2);
-//        jour1.setHorairesOuverture(horaires);
-//        horaires2.add(horaire3);
-//        jour2.setHorairesOuverture(horaires);
-//        List<JourOuverture> jourOuvertures = new ArrayList<>();
-//        List<JourOuverture> jourOuvertures2 = new ArrayList<>();
-//        jourOuvertures.add(jour1);
-//        jourOuvertures2.add(jour2);
-//        pr1.setJoursOuverture(jourOuvertures);
-//        pr2.setJoursOuverture(jourOuvertures2);
-//        liste.add(pr1);
-//        liste.add(pr2);
-
         try {
             liste = busMap.getAllPointRelais();
             for (PointRelais pr : liste) {
@@ -116,7 +87,10 @@ public class MapManagedBean {
                     sbJour.delete(sbJour.length() - 2, sbJour.length()).append("]}, ");
                     sbJourOuverture.append(sbJour);
                 }
-                sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length()).append("]}, ");
+                if (pr.getJoursOuverture().size() != 0) {
+                sbJourOuverture.delete(sbJourOuverture.length() - 2, sbJourOuverture.length());
+                }
+                sbJourOuverture.append("]}, ");
                 jSonPointRelais.append("{'name': '").append(pr.getRaisonSociale()).append("', 'id': '").append(pr.getId())
                 .append("', 'address': '").append(sbAdress).append("', ").append(sbJourOuverture);
             }

@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -60,20 +61,28 @@ public class BusinessMap implements IBusinessMap {
     @Override
     public List<PointRelais> getAllPointRelais() throws AnarmorixException {
         List<PointRelais> liste = null;
+        List<PointRelais> retour = new ArrayList<>();
         try {
             liste = daoPointRelais.getAll();
             for (PointRelais pr : liste) {
-                alimenterPointRelais(pr);
-                alimenterAdresse(pr.getAdresse());
-                for (JourOuverture jourOuverture : pr.getJoursOuverture()) {
-                    alimenterJourOuverture(jourOuverture);
+                PointRelais prTmp = new PointRelais();
+                prTmp = alimenterPointRelais(pr);
+                prTmp.setAdresse(alimenterAdresse(pr.getAdresse()));
+                //pr.setJoursOuverture(new ArrayList<>());
+                List<JourOuverture> listeJO = new ArrayList<>();
+                for (JourOuverture jourOuverture : prTmp.getJoursOuverture()) {
+                    listeJO.add(alimenterJourOuverture(jourOuverture));
                 }
+                prTmp.setJoursOuverture(listeJO);
+                retour.add(prTmp);
             }
         } catch (Exception e) {
-            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            e.printStackTrace();
+            AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
-        return liste;
+        System.out.println("OUT");
+        return retour;
     }
     @Override
     public PointRelais alimenterPointRelais(PointRelais paramPointRelais) throws AnarmorixException {
