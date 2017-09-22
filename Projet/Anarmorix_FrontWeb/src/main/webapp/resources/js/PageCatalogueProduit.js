@@ -64,35 +64,46 @@ $(function () {
     $(document).ready(function(){
 
     	var quantitiy=0;
-    	   $('.quantity-right-plus').click(function(e){
-    	        
-    	        // Stop acting like a button
-    	        e.preventDefault();
-    	        // Get the field name
-    	        var quantity = parseInt($('#quantity').val());
-    	        
-    	        // If is not undefined
-    	            
-    	            $('#quantity').val(quantity + 1);
-
-    	          
-    	            // Increment
-    	        
-    	    });
+    	   
 
     	     $('.quantity-left-minus').click(function(e){
-    	        // Stop acting like a button
+    	        
+    	    	 var $this = $(this);
+     	        var $input = $this.closest('span').next('input');
+    	    	 
+    	    	 
+    	    	 // Stop acting like a button
     	        e.preventDefault();
     	        // Get the field name
-    	        var quantity = parseInt($('#quantity').val());
+    	        var quantity = parseInt($input.val());
     	        
     	        // If is not undefined
     	      
     	            // Increment
     	            if(quantity>0){
-    	            $('#quantity').val(quantity - 1);
+    	            $input.val(quantity - 1);
     	            }
     	    });
+    	     
+    	     $('.quantity-right-plus').click(function(e){
+     	        
+      		   var $this = $(this);
+      	        var $input = $this.closest('div').find('input');
+      		   
+      		   
+      	        // Stop acting like a button
+      	        e.preventDefault();
+      	        // Get the field name
+      	        var quantity = parseInt($input.val());
+      	        
+      	        // If is not undefined
+      	            
+      	            $input.val(quantity + 1);
+
+      	          
+      	            // Increment
+      	        
+      	    });
     	    
     	});
     /*fin*/

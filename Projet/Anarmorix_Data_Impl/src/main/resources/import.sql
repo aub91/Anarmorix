@@ -87,25 +87,31 @@ INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_explo
 INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_exploitation`) VALUES (2, '2017-09-04 00:00:00', '2017-09-05 00:00:00', NULL, 2);
 INSERT INTO `catalogue` (`id`, `dateCreation`, `dateDebut`, `dateFin`, `id_exploitation`) VALUES (3, '2017-09-05 00:00:00', '2017-09-06 00:00:00', NULL, 3);
 
-INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'test', NULL, NULL, NULL);
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Fraise.jpg', NULL, NULL, NULL);
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Homard.jpg', NULL, NULL, NULL);
+INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES (NULL, 'resources/img/Huitre.jpg', NULL, NULL, NULL);
 
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Charcuterie', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Autres boissons alcoolisées', NULL);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Fruits rouges', 1);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (5, 'Pâté/Terrine', 2);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (6, 'Bière', 3);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Fraise', 4);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Pâté', 5);
-INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'Bière blonde', 6);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, légumes et féculents', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Viandes, charcuteries et produits de la mer', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Produits laitiers', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Boissons', NULL);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (5, 'Fruits', 1);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (6, 'Charcuterie', 2);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (7, 'Autres boissons alcoolisées', 4);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (8, 'Fruits rouges', 5);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (9, 'Pâté/Terrine', 6);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (10, 'Bière', 7);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (11, 'Fraise', 8);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (12, 'Pâté', 9);
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (13, 'Bière blonde', 10);
 
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '5.50');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '10.00');
 INSERT INTO `tauxtva` (`id`, `taux`) VALUES (NULL, '20.00');
 
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1);
-INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (1, NULL, 'Fraise gariguette', NULL, 1, 1, 11);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (2, NULL, 'Pâté de campagne', NULL, 1, 1, 12);
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (3, NULL, 'Bière blonde sans gluten', NULL, 1, 1, 13);
 
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (1, 'kilogramme');
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES (2, 'litre');

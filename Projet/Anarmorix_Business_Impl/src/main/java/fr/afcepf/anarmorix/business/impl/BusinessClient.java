@@ -34,7 +34,7 @@ public class BusinessClient implements IBusinessClient {
     /**
      * Default constructor
      */
-    private BusinessClient() {
+    public BusinessClient() {
     }
 
     /**
@@ -48,35 +48,34 @@ public class BusinessClient implements IBusinessClient {
     public IDaoJourOuverture daoJourOverture;
 
     /**
-     * Interface d'accès aux données {@link Ville}
+     * Interface d'accès aux données {@link Ville}.
      */
     private IDaoVille daoVille;
 
     /**
-     * Interface d'accès aux données {@link Commerce}
+     * Interface d'accès aux données {@link Commerce}.
      */
     private IDaoCommerce daoCommerce;
 
     /**
-     * Interface d'accès aux données {@link Produit}
+     * Interface d'accès aux données {@link Produit}.
      */
     @EJB
     private IDaoProduit daoProduit;
-
     /**
-     * Interface d'accès aux données {@link LigneCommande}
+     * Interface d'accès aux données {@link LigneCommande}.
      */
     private IDaoLigneCommande daoLignecommande;
 
     /**
-     * Interface d'accès aux données {@link Commande}
+     * Interface d'accès aux données {@link Commande}.
      */
-    public IDaoCommande daoCommande;
+    private IDaoCommande daoCommande;
 
     /**
-     * Interface d'accès aux données {@link Adresse}
+     * Interface d'accès aux données {@link Adresse}.
      */
-    public IDaoAdherent daoAdresse;
+    private IDaoAdherent daoAdresse;
 
     /**
      * Méthode permettant de de trouver la liste des {@link PointRelais} d'une {@link Ville}.

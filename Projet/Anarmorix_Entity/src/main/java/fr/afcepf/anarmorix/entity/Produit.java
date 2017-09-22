@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -92,7 +93,7 @@ public class Produit implements Serializable {
     /**
      * Packaging du produit.
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_packaging", nullable = true, foreignKey = @ForeignKey(name = "FK_Produit_Packaging"))
     private Packaging packaging;
     /**

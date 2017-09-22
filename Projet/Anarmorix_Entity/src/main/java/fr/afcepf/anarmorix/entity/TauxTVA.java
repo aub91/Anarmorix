@@ -19,6 +19,11 @@ import javax.persistence.Table;
 public class TauxTVA implements Serializable {
 
     /**
+     * Numéro pour la sérialisation.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Id de l'adhérent.
      */
     @Id

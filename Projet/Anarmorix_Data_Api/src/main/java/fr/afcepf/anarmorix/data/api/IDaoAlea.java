@@ -1,6 +1,9 @@
 package fr.afcepf.anarmorix.data.api;
 
+import java.util.List;
+
 import fr.afcepf.anarmorix.entity.Alea;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 
 /**
  * 
@@ -11,7 +14,7 @@ public interface IDaoAlea {
      * @param descriptionAlea 
      * @return
      */
-    public Alea rechercher(String descriptionAlea) throws Exception;
+    public List<Alea> rechercher(LigneCommande ligne) throws Exception;
 
     /**
      * @param id 
