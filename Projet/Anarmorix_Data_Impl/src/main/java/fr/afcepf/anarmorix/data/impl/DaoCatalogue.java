@@ -31,7 +31,7 @@ public class DaoCatalogue implements IDaoCatalogue {
      * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
      */
     private static final String REQ_RECHERCHE =
-            "SELECT e.cataloguess FROM Exploitation e WHERE e.id = :pId";
+            "SELECT e.catalogues FROM Exploitation e WHERE e.id = :pId";
 
     /**
      * Requête permettant de récupérer un catalogue en fonction de son Id.
