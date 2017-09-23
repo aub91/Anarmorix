@@ -14,7 +14,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * Classe implémentant les méthodes de l'{@link IDaoCommande}
+ * Classe implémentant les méthodes de l'{@link IDaoCommande}.
  */
 @Remote(IDaoCommande.class)
 @Stateless
