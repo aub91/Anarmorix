@@ -38,7 +38,7 @@ public class DaoCodePostal implements IDaoCodePostal {
     /**
      * Requête permettant de récupérer un catalogue en fonction de son Id.
      */
-    private static final String REQ_CATALOGUE_ID = "Select c FROM CodePostal c WHERE c.id = :pId";
+    private static final String REQ_CP_ID = "Select c FROM CodePostal c WHERE c.id = :pId";
     
     /**
      * Default constructor.
@@ -57,7 +57,7 @@ public class DaoCodePostal implements IDaoCodePostal {
             }
             return liste;
         } catch (Exception e) {
-            if (e.getMessage() == "L'exploitation n'existe pas.") {
+            if (e.getMessage() == "La ville n'existe pas.") {
                 throw e;
             } else {
                 AnarmorixException exc = new AnarmorixException("Message : " + e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
@@ -80,7 +80,7 @@ public class DaoCodePostal implements IDaoCodePostal {
     @Override
     public Boolean supprimer(Integer paramId) throws AnarmorixException {
         try {
-            CodePostal cp = (CodePostal) em.createQuery(REQ_CATALOGUE_ID).setParameter("pId", paramId).getSingleResult();
+            CodePostal cp = (CodePostal) em.createQuery(REQ_CP_ID).setParameter("pId", paramId).getSingleResult();
             em.remove(cp);
             return true;
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class DaoCodePostal implements IDaoCodePostal {
     @Override
     public CodePostal MettreAJour(Integer paramId) throws AnarmorixException {
         try {
-            CodePostal cp = (CodePostal) em.createQuery(REQ_CATALOGUE_ID).setParameter("pId", paramId).getSingleResult();
+            CodePostal cp = (CodePostal) em.createQuery(REQ_CP_ID).setParameter("pId", paramId).getSingleResult();
             CodePostal updated = em.merge(cp);
             return updated;
         } catch (Exception e) {
