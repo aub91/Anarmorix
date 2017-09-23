@@ -16,19 +16,19 @@ public interface IDaoHoraire {
      * @param horaire 
      * @return
      */
-    Horaire ajouter(Horaire horaire);
+    Horaire ajouter(Horaire horaire) throws AnarmorixException;
 
     /**
      * @param id 
      * @return
      */
-    boolean supprimer(Integer id);
+    boolean supprimer(Integer id) throws AnarmorixException;
 
     /**
      * @param id 
      * @return
      */
-    Horaire mettreAJour(Integer id);
+    Horaire mettreAJour(Integer id) throws AnarmorixException;
     /**
      * @param paramJourOuverture {@link JourOuverture} dont on cherche les horaires
      * @return {@link JourOuverture} avec sa liste d'horaire.
