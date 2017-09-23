@@ -7,23 +7,15 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.afcepf.anarmorix.business.api.IBusinessClient;
-import fr.afcepf.anarmorix.business.api.IBusinessMap;
 import fr.afcepf.anarmorix.business.api.IBusinessPanier;
-import fr.afcepf.anarmorix.business.impl.BusinessMap;
 import fr.afcepf.anarmorix.business.impl.BusinessPanier;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.impl.DaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
-import fr.afcepf.anarmorix.entity.PointRelais;
-import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
-import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 public class TestAfficherLigneCommandePanier {
-	private IBusinessPanier businessPanier = (IBusinessPanier) CreateProxyEJB.getProxy(
-			"Anarmorix_EAR-1.0/Anarmorix_Business_Impl-1.0/BusinessPanier!fr.afcepf.anarmorix.business.api.IBusinessPanier");
 	/**
 	 * La classe contenant la méthode à tester.
 	 */
@@ -59,7 +51,7 @@ public class TestAfficherLigneCommandePanier {
 		};
 		try {
 			Class<?> clazz = busPanier.getClass();
-			Field attDaoLigneCommande = clazz.getDeclaredField("businessPanier");
+			Field attDaoLigneCommande = clazz.getDeclaredField("dao");
 			attDaoLigneCommande.setAccessible(true);
 			attDaoLigneCommande.set(busPanier, mockLigneCommande);
 
