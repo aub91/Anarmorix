@@ -8,14 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
-import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * Classe immplémentant les méthodes de l'{@link IDaoCommande}
+ * Classe implémentant les méthodes de l'{@link IDaoCommande}
  */
 @Remote(IDaoCommande.class)
 @Stateless
@@ -31,7 +30,7 @@ public class DaoCommande implements IDaoCommande {
      * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
      */
     private static final String REQ_RECHERCHE =
-            "SELECT c.catalogues FROM Client c WHERE c.id = :pId";
+            "SELECT c.commandes FROM Client c WHERE c.id = :pId";
 
     /**
      * Requête permettant de récupérer un catalogue en fonction de son Id.
