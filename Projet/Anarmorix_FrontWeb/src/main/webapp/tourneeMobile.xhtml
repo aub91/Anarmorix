@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/> 
+  <h:outputScript library="js" name="markerclusterer.js"/>
+  <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc&amp;callback=initMap"></script>
+</h:head>
+<body>
+  <header class="w3-bar w3-card w3-purple w3-mobile">
+    <button class="w3-bar-item w3-button w3-hover-purple w3-xxxlarge" onclick="openSidebar()">&#9776;</button>
+    <h4 class="w3-bar-item"> Tournée n°1 du 24/09/2017</h4>
+  </header>
+  <script type="text/javascript">
+  //<![CDATA[
+      var map;
+      function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: new google.maps.LatLng(#{mbMap.lat}, #{mbMap.longi}),
+            zoom: #{mbMap.zoom}
+          });
+  
+          var infoWindow = new google.maps.InfoWindow;
+          var markerTab = [];
+      
+          var markers = #{mbMap.jSonPointRelais};
+        
+          for (var i = 0; i<markers.marker.length; i++) {
+            (function(){
+              var name = markers.marker[i].name;
+              var address = markers.marker[i].address;
+              var point = new google.maps.LatLng(
+                        parseFloat(markers.marker[i].lat),
+                        parseFloat(markers.marker[i].lng));
+              
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = name;
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+              var text = document.createElement('text');
+              text.textContent = address;
+              infowincontent.appendChild(text);
+            infowincontent.appendChild(document.createElement('br'));
+            var souligne = document.createElement('u');
+            souligne.textContent = "Horaires d'ouverture: ";
+            infowincontent.appendChild(souligne);
+            var horaires = document.createElement('ul');
+            for (var j = 0; j<markers.marker[i].jourOuverture.length; j++) {
+              var jour = markers.marker[i].jourOuverture[j].jour;
+              var jourTravail = document.createElement('li');
+              jourTravail.textContent = jour;
+              var heures = document.createElement('ul');
+              for (var k = 0; k < markers.marker[i].jourOuverture[j].horaire.length; k++){
+                var periode = markers.marker[i].jourOuverture[j].horaire[k].periode;
+                var ouverture = markers.marker[i].jourOuverture[j].horaire[k].ouverture;
+                var fermeture = markers.marker[i].jourOuverture[j].horaire[k].fermeture;
+                var heure = document.createElement('li');
+                heure.textContent = periode + ": " + ouverture + " - " + fermeture;
+                heures.appendChild(heure); 
+              };
+              jourTravail.appendChild(heures);
+              horaires.appendChild(jourTravail);
+            };
+            infowincontent.appendChild(horaires);
+            var id = markers.marker[i].id;
+            var bouton = document.createElement('a');
+            bouton.className = "btn btn-info btn-block";
+            bouton.textContent = "Voir le catalogue";
+            bouton.href = "https://www.google.fr/";
+            infowincontent.appendChild(bouton);
+            var markerElem = new google.maps.Marker({
+                map: map,
+                position: point,
+            });
+            markerElem.addListener('click', function() {
+                infoWindow.setContent(infowincontent);
+                infoWindow.open(map, markerElem);
+            });
+            markerTab.push(markerElem);
+           }());
+        }
+        var mcOptions = {imagePath: 'resources/img/m'};
+        var markerCluster = new MarkerClusterer(map, markerTab, mcOptions);
+       }
+
+      function centrer(data){
+        if(data.status == "success") {
+            var newZoom = document.getElementById("mapForm:zoom").value;
+            var newLat = document.getElementById("mapForm:lati").value;
+            var newLong = document.getElementById("mapForm:longi").value;
+            var newPoint = new google.maps.LatLng(
+                    parseFloat(newLat),
+                    parseFloat(newLong));
+            map.setZoom(Number.parseInt(newZoom));
+            map.setCenter(newPoint);
+        }
+      }
+      //]]>
+  </script>
+</body>
+
+</html>
