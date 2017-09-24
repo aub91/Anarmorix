@@ -25,13 +25,12 @@ public class BusinessPanier implements IBusinessPanier {
      * Interface d'accès aux données {@link LigneCommande}
      */
 	@EJB 
-    private IDaoLigneCommande daoLignecommande;
-	@EJB
-    private IDaoCommande dao;
+    private IDaoLigneCommande daoLigneCommande;
+	
 	 
 	@Override
 	public List<LigneCommande> rechercher(Commande commande) throws AnarmorixException {
-		  	List<LigneCommande> nbCommande = daoLignecommande.rechercher(commande);
+		  	List<LigneCommande> nbCommande = daoLigneCommande.rechercher(commande);
 	    	return nbCommande;
 	}
     
