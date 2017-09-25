@@ -40,18 +40,11 @@ public class DaoTypeProduit implements IDaoTypeProduit {
     @Override
     public List<TypeProduit> rechercher(Categorie paramCategorie) throws AnarmorixException {
         try {
-            List<TypeProduit> types = null;
+            List<TypeProduit> types = paramCategorie.getTypesProduits();
             List<Categorie> descendantes = paramCategorie.getCategoriesFilles();
             for (Categorie categorie : descendantes) {
-                if (!categorie.getCategoriesFilles().isEmpty()) {
-                    descendantes.addAll(categorie.getCategoriesFilles());
-                } else {
-                    if (types == null) {
-                        types = categorie.getTypesProduits();
-                    } else {
-                        types.addAll(categorie.getTypesProduits());
-                    }
-                }
+                descendantes.addAll(categorie.getCategoriesFilles());
+                types.addAll(categorie.getTypesProduits());
             }
             return types;
         } catch (Exception e) {
