@@ -18,7 +18,7 @@
   </header>
   <div class="w3-container w3-col s12">
     <div class="w3-row">
-      <div id="map" class="w3-col s12" style="height:200px"></div>
+      <div id="map" class="w3-col s12" style="height:50vh"></div>
       <button onclick="show('itineraire')" class="w3-button w3-block w3-purple w3-hover-purple">Itinéraire</button>
       <div id="itineraire" class="w3-col s12 w3-hide"></div>
       <button onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple">Points d'arrêts</button>
@@ -28,15 +28,54 @@
             <th>Nom</th>
             <th>Produits à récupérer/déposer</th>
           </thead>
-          <tr class="w3-hover-purple">
+          <tr class="w3-hover-purple" onclick="document.getElementById('producteur').style.display='block'">
             <td>Producteur 1</td>
             <td>2</td>
           </tr>
-          <tr class="w3-hover-purple">
+          <tr class="w3-hover-purple" onclick="document.getElementById('producteur').style.display='block'">
             <td>Point-relais 1</td>
             <td>2</td>
           </tr>
         </table>
+        <div id="producteur" class="w3-modal">
+          <div class="w3-modal-content">
+            <header class="w3-bar w3-red">
+              <h4 class="w3-bar-item">Producteur 1</h4>
+              <button class="w3-bar-item w3-button w3-green w3-margin-top">Tout récupérer</button>
+              <span onclick="document.getElementById('producteur').style.display='none'" class="w3-button w3-right w3-bar-item w3-xxlarge">X</span>
+            </header>
+            <ul class="w3-ul w3-card-4">
+              <li>
+                <div class="w3-row">
+                  <span class="w3-col s4">Produit1</span>
+                  <div class="w3-col s4">
+                    <span>Qté à récupérer:</span>
+                    <span>5kg</span>
+                  </div>
+                  <div class="w3-col s4">
+                    <button class="w3-button w3-green">OK</button>
+                    <button class="w3-button w3-yellow">!</button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="w3-row">
+                  <div class="w3-col s4">
+                    <span>Bière blonde</span>
+                  </div>
+                  <div class="w3-col s4">
+                    <span>Qté à récupérer:</span>
+                    <span>2kg</span>
+                  </div>
+                  <div class="w3-col s4">
+                    <button class="w3-button w3-green">OK</button>
+                    <button class="w3-button w3-yellow">!</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
