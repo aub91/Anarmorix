@@ -1,6 +1,9 @@
 package fr.afcepf.anarmorix.data.api;
 
+import java.util.List;
+
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
@@ -8,6 +11,10 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
  */
 public interface IDaoAdherent {
 
+	 /**
+     * @return id
+     */
+    public List<Adherent> rechercher(Commande commande) throws AnarmorixException;
     /**
      * @param nom 
      * @param mdp 
@@ -30,4 +37,5 @@ public interface IDaoAdherent {
      * @param adherent
      */
     Adherent mettreAJour(Adherent adherent) throws AnarmorixException;
+
 }

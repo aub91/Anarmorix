@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
@@ -89,5 +90,10 @@ public class DaoAdherent implements IDaoAdherent {
         Adherent updatedAdherent = em.merge(paramAdherent);
         return updatedAdherent;
     }
+
+	@Override
+	public List<Adherent> rechercher(Commande commande) throws AnarmorixException {
+		return null;
+	}
 
 }

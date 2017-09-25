@@ -111,13 +111,13 @@
 						<th id="liste_commande">Liste des commandes à récupérer</th>
 					</tr>
 				</thead>
-				<tbody>
+				<ui:repeat var="prodPR" value="#{mbPR.liste}">
 
 					<tr>
 						<td>
 							<div id="commande">
 								<div id="commande_numero">
-									Commande numéro <span id="numero">519</span>
+									Commande numéro <span id="numero"> <span>#{prodPR.id}</span></span>
 								</div>
 								<div id="nomprenom_consommateur">nom et prénom du
 									consommateur</div>
@@ -156,9 +156,10 @@
 					</tr>
 					<tr>
 						<td>
+						
 							<div id="commande">
 								<div id="commande_numero">
-									Commande numéro <span id="numero">519</span>
+									Commande numéro <span id="numero"></span>
 								</div>
 								<div id="nomprenom_consommateur">nom et prénom du
 									consommateur</div>
@@ -174,7 +175,7 @@
 						</td>
 
 					</tr>
-				</tbody>
+				</ui:repeat>
 				<tfoot>
 				</tfoot>
 			</table>

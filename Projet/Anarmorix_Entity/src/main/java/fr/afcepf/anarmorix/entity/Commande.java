@@ -118,19 +118,19 @@ public class Commande implements Serializable {
         client = paramClient;
         statut = paramStatut;
     }
-    /**
-     * @return the id
-     */
+   /**
+    * @return the id
+    */
     public Integer getId() {
-        return id;
-    }
+		return id;
+	}
     /**
-     * @param paramId the id to set
+     * @param id paramId the id to set
      */
     public void setId(Integer paramId) {
-        id = paramId;
-    }
-    /**
+		id = paramId;
+	}
+	/**
      * @return the dateCreation
      */
     public Date getDateCreation() {
