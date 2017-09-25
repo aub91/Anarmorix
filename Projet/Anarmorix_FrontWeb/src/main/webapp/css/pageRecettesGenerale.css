@@ -77,6 +77,9 @@ body {
 }
 
 #titlecatalogue {
+	
+	padding-bottom: 30px;
+	display: inline-block;
 	float: left;
 	font-family: Pacifico, sans-serif;
 }
@@ -424,6 +427,13 @@ body {
 	padding-top: 7px ;
 	display: inline-block;
 }
+
+
+.group-boutonrecettes {
+	
+	padding-left: 45px;
+}
+
 
 
 /*footer*/
