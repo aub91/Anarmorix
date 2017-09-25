@@ -50,14 +50,14 @@ $(function () {
       }
     });
 /*caret haut et bas*/
-    $( "#AccordeonNiveauPrincipal .list-group-item" ).click(function() {
-    	var panneauOuvert = $(this).next();
-    	
-    	var caret = panneauOuvert.prev().find("i");
-        
-        caret.toggleClass('fa-caret-up fa-caret-down');
-        
-    	});
+//    $( "#AccordeonNiveauPrincipal .list-group-item" ).click(function() {
+//    	var panneauOuvert = $(this).next();
+//    	
+//    	var caret = panneauOuvert.prev().find("i");
+//        
+//        caret.toggleClass('fa-caret-up fa-caret-down');
+//        
+//    	});
     /*fin*/
     
     /*sélecteur de quantité*/
@@ -150,4 +150,29 @@ $(function () {
             }
         }
     /*fin*/
+        $("a[href*='Accordeon']").on('click', function () {
+        	let i =0;
+        	$("i.fa").each(function(){
+        		if($(this).hasClass("fa-caret-up")){
+        			$(this).toggleClass('fa-caret-up fa-caret-down');
+        			i++;
+        		}
+        	});
+        	
+        	if($(this).find("i.fa").hasClass("fa-caret-down") &&  i===0){
+    			$(this).find("i.fa").removeClass("fa-caret-down");
+    			$(this).find("i.fa").addClass("fa-caret-up");
+    		}
+        	
+        	//var eltAvantImage = document.getEmementById()
+        	
+        });
   });
+
+
+
+
+
+
+
+

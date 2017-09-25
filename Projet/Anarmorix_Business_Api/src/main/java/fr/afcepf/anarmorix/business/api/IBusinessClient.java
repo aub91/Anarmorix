@@ -2,6 +2,7 @@ package fr.afcepf.anarmorix.business.api;
 
 import java.util.List;
 
+import fr.afcepf.anarmorix.entity.Categorie;
 import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
@@ -71,5 +72,30 @@ public interface IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     List<Produit> choisirCategorieProduit() throws AnarmorixException;
-
+    /**
+     * @return une liste de categorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> recupererToutesLesCategories() throws AnarmorixException;
+    /**
+     * @return une liste de categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> recupererCategoriesPrimaires() throws AnarmorixException;
+    /**
+     * @return une liste de categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> recupererCategoriesSecondaires() throws AnarmorixException;
+    /**
+     * @return une liste de categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> recupererCategoriesTertiaires() throws AnarmorixException;
+    /**
+     * @param idCatgorieMere l'id de la catégorie mère.
+     * @return une liste de categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException;
 }

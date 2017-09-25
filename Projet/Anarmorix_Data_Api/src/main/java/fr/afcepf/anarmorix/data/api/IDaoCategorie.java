@@ -3,6 +3,7 @@ package fr.afcepf.anarmorix.data.api;
 import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Categorie;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
  * 
@@ -10,11 +11,18 @@ import fr.afcepf.anarmorix.entity.Categorie;
 public interface IDaoCategorie {
 
     /**
-     * @param nom 
-     * @return
+     * recupere toutes les catéogories.
+     * @return une liste categories.
+     * @throws AnarmorixException exception serveur.
      */
-    public List<Categorie> rechercher(String nom) throws Exception;
-
+    List<Categorie> rechercherTous() throws AnarmorixException;
+    /**
+     * recupere les categorie par id.
+     * @param idCategorie l'id dune categorie.
+     * @return une liste categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> rechercherParId(Integer idCategorie) throws AnarmorixException;
     /**
      * @return
      */

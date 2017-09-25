@@ -31,15 +31,89 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-md-12">
-
+							
+							
+									<!-- <div class="row">
+										<ui:repeat var="cat" value="#{mbAfficheProduits.categoriesSecondaires}">
+											<h:outputLabel value="#{cat.libelle}"/>
+										</ui:repeat> 
+									</div>	 -->
+									
+															
 									<div id="AccordeonNiveauPrincipal">
 										<div class="list-group panel">
+										
+										<!-- PRIMAIRE -->	
+										
+										<ui:repeat var="catPrimaire" value="#{mbAfficheProduits.categoriesPrimaires}" varStatus="statusPrimaire">
+											<h:outputLink  value = "#AccordeonNiveauSecondaire#{statusPrimaire.index + 1}"
+													 	   class="list-group-item list-group-item-success bg-secondaire">
+											<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+											<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
+											<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
+													<h:outputText value="#{catPrimaire.libelle}" />
+													<i class="fa fa-caret-down"></i> 
+											</h:outputLink>
+											
+											<!-- SECONDAIRE -->	
+											
+											<h:panelGroup layout="block" class="collapse">
+											<f:passThroughAttribute name = "aria-expanded" value="true" /> 
+											<f:passThroughAttribute name = "id" value = "AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" /> 
+												<!-- <ui:repeat var="catSecondaires" value="#{mbAfficheProduits.categoriesSecondaires}" varStatus="statusSecondaire"> -->
+												<ui:repeat var="catSecondaires" value="#{mbAfficheProduits.recupererCategorieFilles(catPrimaire.id)}" varStatus="statusSecondaire">
+												<h:outputLink  value = "#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"
+														 	   class="list-group-item bg-tertiaire">
+												<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"/>
+												<f:passThroughAttribute name = "aria-expanded" value="false" />  
+													<h:outputText value="#{catSecondaires.libelle}" />
+													<i class="fa fa-caret-down"></i>
+												</h:outputLink>
+												
+												<!-- TERTIAIRE -->	
+												
+												<h:panelGroup layout="block" class="collapse list-group-submenu">
+												<f:passThroughAttribute name = "aria-expanded" value="false" /> 
+												<f:passThroughAttribute name = "id" value = "AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
+													<!-- <ui:repeat var="catTertiaires" value="#{mbAfficheProduits.categoriesTertiaires}" varStatus="statusTertiaire"> -->
+													<ui:repeat var="catTertiaires" value="#{mbAfficheProduits.recupererCategorieFilles(catSecondaires.id)}" varStatus="statusTertiaire">
+													<h:outputLink  value = "#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"
+														 	   class="list-group-item bg-quaternaire">
+													<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+													<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauQuaternaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}-#{statusTertiaire.index + 1}"/>
+													<f:passThroughAttribute name = "aria-expanded" value="false" />  
+														<h:outputText value="#{catTertiaires.libelle}" />
+														<!-- <i class="fa fa-caret-down"></i> -->
+													</h:outputLink>
+													</ui:repeat> 
+												</h:panelGroup>
+												
+												</ui:repeat> 
+											</h:panelGroup>
+										</ui:repeat> 
+											<!--  												
+											<div class="collapse list-group-submenu"
+													id="AccordeonNiveauTertiaire1-1">
 
+													<a href="#AccordeonNiveauQuaternaire1-1-1"
+														class="list-group-item bg-quaternaire"
+														data-toggle="collapse"
+														data-parent="#AccordeonNiveauQuaternaire1-1-1">Pâté <i
+														class="fa fa-caret-down"></i></a>
+												</div>	
+											-->
+											
+											
+									
+											<!-- 
+											
 											<a href="#AccordeonNiveauSecondaire1"
 												class="list-group-item list-group-item-success bg-secondaire"
 												data-toggle="collapse"
 												data-parent="#AccordeonNiveauPrincipal">Viandes <i
 												class="fa fa-caret-down"></i></a>
+												
 											<div class="collapse" id="AccordeonNiveauSecondaire1">
 
 												<a href="#AccordeonNiveauTertiaire1-1"
@@ -556,10 +630,13 @@
 														data-parent="#AccordeonNiveauTertiaire4-3">Autruche</a>
 												</div>
 											</div>
+											-->
 										</div>
+										 
 									</div>
 
 								</div>
+								
 							</div>
 						</div>
 
@@ -592,7 +669,7 @@
 			</div>
 			<div class="col-lg-9">
 				<div class="section-catalogue">
-					<div class="page-header">
+					<div class="page-header" id = "blocAvantImage">
 						<div class="row">
 							<h1 class="text-center">
 								<div class="col-lg-5">
@@ -614,14 +691,16 @@
 							</h1>
 						</div>
 					</div>
-
+					
+	
+					
 					<!-- début bloc images produits -->
-					<div class="row">
+					<div class="row" id = "blocImage">
 						<ui:repeat var="pdt" value="#{mbAfficheProduits.produits}">
 							<div class="col-md-3 text-center">
 								 <div class="box">
 									<div class="box-img">
-								 		<img src="resources/img/Andouille_de_guemene.jpg"></img> 
+										<h:graphicImage value="#{pdt.image.chemin}"/>
 									</div>
 								</div>
 								<!-- <h:outputLabel value="#{pdt.image.chemin}"/> -->

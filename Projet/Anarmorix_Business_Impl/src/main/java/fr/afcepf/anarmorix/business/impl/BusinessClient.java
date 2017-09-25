@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -8,6 +9,7 @@ import javax.ejb.Stateless;
 
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
+import fr.afcepf.anarmorix.data.api.IDaoCategorie;
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.data.api.IDaoHoraire;
@@ -15,8 +17,13 @@ import fr.afcepf.anarmorix.data.api.IDaoJourOuverture;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.data.api.IDaoVille;
+import fr.afcepf.anarmorix.entity.Adresse;
+import fr.afcepf.anarmorix.entity.Categorie;
 import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
+import fr.afcepf.anarmorix.entity.Commerce;
+import fr.afcepf.anarmorix.entity.Horaire;
+import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
@@ -62,6 +69,11 @@ public class BusinessClient implements IBusinessClient {
      */
     @EJB
     private IDaoProduit daoProduit;
+    /**
+     * Interface d'accès aux données {@link LigneCommande}.
+     */
+    @EJB
+    private IDaoCategorie daoCategorie;
     /**
      * Interface d'accès aux données {@link LigneCommande}.
      */
@@ -162,7 +174,11 @@ public class BusinessClient implements IBusinessClient {
         // TODO implement here
         return null;
     }
-
+    /**
+     * Methode pour récupérer tous les produits.
+     * @return une liste de produits.
+     * @throws AnarmorixException exception serveur.
+     */
     @Override
     public List<Produit> choisirCategorieProduit() throws AnarmorixException {
         List<Produit> produits = null;
@@ -173,5 +189,100 @@ public class BusinessClient implements IBusinessClient {
             throw exc;
         }
         return produits;
+    }
+    /**
+     * Methode pour récupérer toutes les catégories.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererToutesLesCategories() throws AnarmorixException {
+        List<Categorie> categories = null;
+        try {
+            categories = daoCategorie.rechercherTous();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return categories;
+    }
+    /**
+     * Methode pour récupérer les catégories primaires.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererCategoriesPrimaires() throws AnarmorixException {
+        List<Categorie> categories = recupererToutesLesCategories();
+        List<Categorie> categoriesPrimaires = new ArrayList<>();
+        for (Categorie categorie : categories) {
+            if (categorie.getCategorieMere() == null) {
+                categoriesPrimaires.add(categorie);
+            }
+        }
+        return categoriesPrimaires;
+    }
+    /**
+     * Methode pour récupérer toutes les catégories secondaires.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererCategoriesSecondaires() throws AnarmorixException {
+        List<Categorie> categories = recupererToutesLesCategories();
+        List<Categorie> categoriesSecondaires = new ArrayList<>();
+        for (Categorie categorie : categories) {
+            int nbParents = 0;
+            Categorie categorieTemp = categorie.getCategorieMere();
+            while (categorieTemp != null) {
+                categorieTemp = categorieTemp.getCategorieMere();
+                nbParents++;
+            }
+            if (nbParents == 1) {
+                categoriesSecondaires.add(categorie);
+            }
+        }
+        return categoriesSecondaires;
+    }
+    /**
+     * Methode pour récupérer toutes les catégories t.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException {
+        List<Categorie> categories = recupererToutesLesCategories();
+        List<Categorie> categoriesFilles = new ArrayList<>();
+        for (Categorie categorie : categories) {
+            if (categorie.getCategorieMere() != null) {
+                if (categorie.getCategorieMere().getId() == idCatgorieMere) {
+                    categoriesFilles.add(categorie);
+                    System.out.println(categorie.getLibelle());
+                }
+            }
+        }
+        return categoriesFilles;
+    }
+    /**
+     * Methode pour récupérer toutes les catégories tertiaires.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererCategoriesTertiaires() throws AnarmorixException {
+        List<Categorie> categories = recupererToutesLesCategories();
+        List<Categorie> categoriesTertiaires = new ArrayList<>();
+        for (Categorie categorie : categories) {
+            int nbParents = 0;
+            Categorie categorieTemp = categorie.getCategorieMere();
+            while (categorieTemp != null) {
+                categorieTemp = categorieTemp.getCategorieMere();
+                nbParents++;
+            }
+            if (nbParents == 2) {
+                categoriesTertiaires.add(categorie);
+            }
+        }
+        return categoriesTertiaires;
     }
 }
