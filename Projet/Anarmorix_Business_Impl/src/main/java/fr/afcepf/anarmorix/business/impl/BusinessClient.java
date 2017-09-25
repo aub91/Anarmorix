@@ -245,25 +245,6 @@ public class BusinessClient implements IBusinessClient {
         return categoriesSecondaires;
     }
     /**
-     * Methode pour récupérer toutes les catégories t.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
-    @Override
-    public List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException {
-        List<Categorie> categories = recupererToutesLesCategories();
-        List<Categorie> categoriesFilles = new ArrayList<>();
-        for (Categorie categorie : categories) {
-            if (categorie.getCategorieMere() != null) {
-                if (categorie.getCategorieMere().getId() == idCatgorieMere) {
-                    categoriesFilles.add(categorie);
-                    System.out.println(categorie.getLibelle());
-                }
-            }
-        }
-        return categoriesFilles;
-    }
-    /**
      * Methode pour récupérer toutes les catégories tertiaires.
      * @return une liste de catgégorie.
      * @throws AnarmorixException exception serveur.
@@ -284,5 +265,23 @@ public class BusinessClient implements IBusinessClient {
             }
         }
         return categoriesTertiaires;
+    }
+    /**
+     * Methode pour récupérer toutes les catégories t.
+     * @return une liste de catgégorie.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException {
+        List<Categorie> categories = recupererToutesLesCategories();
+        List<Categorie> categoriesFilles = new ArrayList<>();
+        for (Categorie categorie : categories) {
+            if (categorie.getCategorieMere() != null) {
+                if (categorie.getCategorieMere().getId() == idCatgorieMere) {
+                    categoriesFilles.add(categorie);
+                }
+            }
+        }
+        return categoriesFilles;
     }
 }

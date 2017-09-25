@@ -164,10 +164,43 @@ $(function () {
     			$(this).find("i.fa").addClass("fa-caret-up");
     		}
         	
+        	setTimeout(function(){
+        		var eltCollapseInSecondaire = $('[id*="Secondaire"].collapse.in')
+               //	var eltCollapseInTertiaire = $('[id*="Secondaire"].collapse.in.[id*="Tertiaire"].collapse.in');//document.querySelector(".collapse .in");//document.getElementsByClassName("collapse in");
+            	if(eltCollapseInSecondaire.length > 0) {
+            		var eltCollapseInTertiaire  = eltCollapseInSecondaire.find();
+            		
+            		/*
+            		if(eltCollapseInTertiaire.length > 0) {
+                       	var first = eltCollapseInTertiaire[0].firstChild;
+                    	console.log(first.textContent)
+            		} else {
+                     	var first = eltCollapseInSecondaire[0].firstChild;
+                    	console.log(first.textContent)
+            		}*/
+            	}
+        	}, 500);
+ 
+        	/*var first = eltCollapseIn[eltCollapseIn.length].firstChild;
+        	console.log(first.textContent);*/
+            //x[0].innerHTML = "Hello World!";
+        	
+        	/*var eltCollapseIn = document.querySelector(".collapse in");
+        	);	*/
+        	/*
+        	 * var first = paragraph.firstChild;
+        var last = paragraph.lastChild;
+
+        alert(first.nodeValue);
+        alert(last.firstChild.data);
+        	 */
+        	
         	//var eltAvantImage = document.getEmementById()
         	
         });
   });
+
+
 
 
 
