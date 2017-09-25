@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -214,4 +215,6 @@ public class Commande implements Serializable {
     public void setLignesCommande(List<LigneCommande> paramLignesCommande) {
         lignesCommande = paramLignesCommande;
     }
+    
+    
 }

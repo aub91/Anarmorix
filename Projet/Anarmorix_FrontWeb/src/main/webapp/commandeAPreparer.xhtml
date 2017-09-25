@@ -58,11 +58,23 @@
             <div class="title">
                 <h1>Liste des commandes à préparer</h1>
             </div>
+            
+            <div id="dateDebut">
+			Date de début de préparation : 
+			<h:inputText value="#{mbProduit.cmde.dateCreation}" >
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
+			 </h:inputText>
+			
+			
+			<input type="button" class="btn" id="btnValider" value="Valider"  style="color:white;"></input>
+			</div>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="3">N° COMMANDE </th>
+                        <th >N° COMMANDE : 
+                        <h:outputLabel value="#{mbProduit.cmde.id}"  />
+                         </th>
                     </tr>
                     <tr>
                         <th>IMAGE</th>
@@ -72,12 +84,13 @@
                         <th></th>
                     </tr>
                 </thead>
-                <ui:repeat var="prodPrep" value="#{mbProduit.produitVue}">
+                <ui:repeat var="prodPrep" value="#{mbProduit.liste}">
                 
                 <tr>
-                	<td><img src="#{prodPrep.prodt.image.chemin}" style="width:50px; height: 50px"/></td>
-                	<td>#{prodPrep.prodt.id}</td>
-                	<td>#{prodPrep.prodt.quantiteEnStock}
+                	<td><img src="#{prodPrep.produit.image.chemin}"  width="50px" height="50px"/></td>
+                	<td>#{prodPrep.produit.type.libelle}</td>
+                	<td>#{prodPrep.quantitePreparee}
+                	<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}"  />
                 	 <input type="number" name="quantity" value="text" style="width:50px"/>
                 	</td>
                 	<td><input type="button" class="btn" id="btnValider2" value="Valider"  style="color:white;"/></td>

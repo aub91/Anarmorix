@@ -10,10 +10,14 @@ import javax.ejb.Stateless;
 
 
 import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
-
+import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
+import fr.afcepf.anarmorix.data.api.IDaoPackaging;
+import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Packaging;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
@@ -22,6 +26,9 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 public class BusinessConsommateur implements IBusinessConsommateur {
 	@EJB
 	  private IDaoLigneCommande daoLignecommande;
+	@EJB
+	private IDaoAdherent daoAdherent;
+	
 	
 	
 
@@ -31,5 +38,19 @@ public class BusinessConsommateur implements IBusinessConsommateur {
 		
 		return daoLignecommande.rechercher(commande);
 	}
+
+
+
+
+
+	@Override
+	public Client afficherClient(Commande commande) throws AnarmorixException {
+		
+		return (Client) daoAdherent.afficherAdherent(commande);
+	}
+
+
+
+
 
 }

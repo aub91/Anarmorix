@@ -93,7 +93,7 @@ public class Produit implements Serializable {
     /**
      * Packaging du produit.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_packaging", nullable = true, foreignKey = @ForeignKey(name = "FK_Produit_Packaging"))
     private Packaging packaging;
     /**
@@ -207,4 +207,29 @@ public class Produit implements Serializable {
     public void setPackaging(Packaging paramPackaging) {
         packaging = paramPackaging;
     }
+
+	public TypeProduit getType() {
+		return type;
+	}
+
+	public void setType(TypeProduit type) {
+		this.type = type;
+	}
+
+	public String getDescriptif() {
+		return descriptif;
+	}
+
+	public void setDescriptif(String descriptif) {
+		this.descriptif = descriptif;
+	}
+
+	public List<Catalogue> getCatalogues() {
+		return catalogues;
+	}
+
+	public void setCatalogues(List<Catalogue> catalogues) {
+		this.catalogues = catalogues;
+	}
+    
 }

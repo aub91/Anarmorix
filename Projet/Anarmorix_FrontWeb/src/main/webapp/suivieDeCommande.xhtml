@@ -72,7 +72,7 @@
 
                     <div class="col-md-3 col-sm-6 timeline">
                         <div class="timeline-inner">
-                            <div class="year">EN cours de livraison</div>
+                            <div class="year">En cours de livraison</div>
                             <div class="timeline-content">
 
 
@@ -114,12 +114,12 @@
                 </div>
 
                 <table class="table">
-
-                    <thead style="background-color:aqua;">
+ 					   
+                    <thead>
                         <tr>
-                            <th colspan="4">N° COMMANDE :<span>5</span>
-                          
-                            </th>
+                            <th>N° COMMANDE : <h:outputLabel value="#{mbProduit.cmde.id}" /></th>
+                            <th>client: <h:inputText value="#{mbProduit.cmde.client.nom}" /></th>
+                            <th><h:inputText value="#{mbProduit.cmde['client'].prenom}" /></th>
                              
                         </tr>
                         <tr>
@@ -130,13 +130,15 @@
                         </tr>
                     </thead>
                     
-                    <ui:repeat var="prodtvue" value="#{mbProduit.cmde}">           
+                         <ui:repeat var="prodtvue" value="#{mbProduit.liste}">  
                     <tr>
                     
-							
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><img src="#{prodtvue.produit.image.chemin}"  width="50px" height="50px"/></td>
+							<td>#{prodtvue.produit.type.libelle}</td>
+							<td>#{prodtvue.quantiteCommandee}
+							<h:outputLabel value="#{prodtvue.produit.packaging.unite.unite}"  />
+							</td>
+							<td>#{prodtvue.produit.prixUnitaire}</td>
 				
 					</tr>
 					</ui:repeat>

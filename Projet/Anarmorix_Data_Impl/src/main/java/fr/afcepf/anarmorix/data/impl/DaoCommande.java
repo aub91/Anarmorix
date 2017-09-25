@@ -30,12 +30,12 @@ public class DaoCommande implements IDaoCommande {
      * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
      */
     private static final String REQ_RECHERCHE =
-            "SELECT c.commandes FROM Client c WHERE c.id = :pId";
+            "SELECT c.commandes  FROM Client c WHERE c.id = :pId ";
 
     /**
      * Requête permettant de récupérer un catalogue en fonction de son Id.
      */
-    private static final String REQ_COMMANDE_ID = "Select c FROM Commande c WHERE c.id = :pId";
+    private static final String REQ_COMMANDE_ID = "Select c FROM Commande c WHERE c.id = :pId ";
 
     /**
      * Default constructor

@@ -209,4 +209,5 @@ public class TypeProduit implements Serializable {
     public void setImageParDefaut(Image paramImageParDefaut) {
         imageParDefaut = paramImageParDefaut;
     }
+    
 }

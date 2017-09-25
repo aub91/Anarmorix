@@ -6,30 +6,37 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ViewScoped;
 
-
 import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
+
+import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
 
 
-import fr.afcepf.anarmorix.exception.AnarmorixException;
 
-@ViewScoped
+
 @ManagedBean(name="mbProduit")
+@ViewScoped
+
 public class ProduitManagedBean {
 	private List<LigneCommande> liste = new ArrayList<>();
-	
-
-
+	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
+
 	
+
 	@EJB
 	private IBusinessConsommateur bu;
+	
+	
+	
 	
 	
 
@@ -49,9 +56,14 @@ public class ProduitManagedBean {
 		//liste.add(P2);
 		//liste.add(P3);
 		try {
+		
 		cmde.setId(1);
+		
+	
 		liste=bu.afficherLigneCommande(cmde);
-			System.out.println(liste.size());
+		
+		System.out.println(liste.size());
+
 		} catch (Exception e) {
 			
 			e.printStackTrace();

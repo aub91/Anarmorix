@@ -1,6 +1,7 @@
 package fr.afcepf.anarmorix.data.api;
 
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
@@ -30,4 +31,7 @@ public interface IDaoAdherent {
      * @param adherent
      */
     Adherent mettreAJour(Adherent adherent) throws AnarmorixException;
+    
+   Adherent afficherAdherent(Commande commande)throws AnarmorixException;
 }
+
