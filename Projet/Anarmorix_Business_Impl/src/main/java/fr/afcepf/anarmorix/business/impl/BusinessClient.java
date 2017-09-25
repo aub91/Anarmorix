@@ -20,6 +20,7 @@ import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
+import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -82,9 +83,8 @@ public class BusinessClient implements IBusinessClient {
      * @param ville 
      * @return List<PointRelais>, la liste des poitns relais d'une ville.
      */
-    public List<PointRelais> rechercherPointRelais(Ville ville) {
-        // TODO implement here
-        return null;
+    public List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException {
+        return daoCommerce.rechercherPointsRelais(ville);
     }
 
     /**
@@ -93,10 +93,9 @@ public class BusinessClient implements IBusinessClient {
      * @param quantite 
      * @return
      */
-/*Note : Modifiée.*/
     public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException {
         commande.setLignesCommande(daoLignecommande.rechercher(commande));
-        return null;
+        return commande;
     }
 
     /**
@@ -104,18 +103,35 @@ public class BusinessClient implements IBusinessClient {
      * @param quantite 
      * @return
      */
-    public LigneCommande retirer(Produit produit, Double quantite) {
+    public LigneCommande retirer(Produit produit, Double quantite) throws AnarmorixException  {
         // TODO implement here
         return null;
     }
 
     /**
      * @param commande 
-     * @return
+     * @return true si la commande est annulée.
+     * @throws AnarmorixException COMMANDE NON ANNULABLE si la préparation a commencé.
+     * @throws AnarmorixException ERREUR NON IDENTIFIEE dans les autres cas d'erreur.
      */
-    public Boolean annulerCommande(Commande commande) {
-        // TODO implement here
-        return null;
+    public Boolean annulerCommande(Commande commande) throws AnarmorixException {
+        try {
+            if (commande.getStatut() == Statut.CREEE || commande.getStatut() == Statut.EN_ATTENTE_DE_PREPARATION) {
+                daoCommande.supprimer(commande.getId());
+                return true;
+            } else {
+                AnarmorixException exc =
+                new AnarmorixException("La commande ne peut plus être annulée", AnarmorixExceptionEnum.COMMANDE_NON_ANNULABLE);
+                throw exc;
+            }
+        } catch (Exception e) {
+            if (e.getMessage() == "La commande ne peut plus être annulée") {
+                throw e;
+            } else {
+                AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+                throw exc;
+            }
+        }
     }
 
     /**

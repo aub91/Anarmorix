@@ -36,5 +36,9 @@ public enum AnarmorixExceptionEnum {
     /**
      * Cas d'un argument de méthode inexistant.
      */
-    ARGUMENT_INEXISTANT
+    ARGUMENT_INEXISTANT,
+    /**
+     * Cas d'une commande qui n'est plus annulable.
+     */
+    COMMANDE_NON_ANNULABLE
 }

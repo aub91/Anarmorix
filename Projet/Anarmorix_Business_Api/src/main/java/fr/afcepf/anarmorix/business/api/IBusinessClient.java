@@ -19,7 +19,7 @@ public interface IBusinessClient {
      * @param ville 
      * @return
      */
-    List<PointRelais> rechercherPointRelais(Ville ville);
+    List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException ;
     /**
      * @param produit 
      * @param quantite 
@@ -31,40 +31,40 @@ public interface IBusinessClient {
      * @param quantite 
      * @return
      */
-    LigneCommande retirer(Produit produit, Double quantite);
+    LigneCommande retirer(Produit produit, Double quantite) throws AnarmorixException ;
     /**
      * @param commande 
      * @return
      */
-    Boolean annulerCommande(Commande commande);
+    Boolean annulerCommande(Commande commande) throws AnarmorixException ;
     /**
      * @param commande 
      * @return
      */
-    Commande valider(Commande commande);
+    Commande valider(Commande commande) throws AnarmorixException ;
     /**
      * @param prix 
      * @return
      */
-    Boolean payer(Double prix);
+    Boolean payer(Double prix) throws AnarmorixException ;
 
     /**
      * @param listeProduit 
      * @return
      */
-    List<LigneCommande> ajouterProduitRecette(List<Produit> listeProduit);
+    List<LigneCommande> ajouterProduitRecette(List<Produit> listeProduit) throws AnarmorixException ;
 
     /**
      * @param client 
      * @return
      */
-    Client sinscrire(Client client);
+    Client sinscrire(Client client) throws AnarmorixException ;
 
     /**
      * @param client 
      * @return
      */
-    Client modifierProfil(Client client);
+    Client modifierProfil(Client client) throws AnarmorixException ;
     
     /**
      * @return une liste de produits.
