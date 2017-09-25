@@ -1,14 +1,14 @@
 package fr.afcepf.anarmorix.data.impl;
 
-import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoTournee;
-import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -17,6 +17,8 @@ import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 /**
  * Classe implémentant les méthode de persistence de {@link IDaoTournee}.
  */
+@Remote(IDaoTournee.class)
+@Stateless
 public class DaoTournee implements IDaoTournee {
 
     /**
@@ -49,17 +51,18 @@ public class DaoTournee implements IDaoTournee {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Tournee> rechercherBySocieteDeLivraison(SocieteDeLivraison paramSocieteDeLivraison) throws AnarmorixException {
+    public SocieteDeLivraison rechercherBySocieteDeLivraison(SocieteDeLivraison paramSocieteDeLivraison) throws AnarmorixException {
         List<Tournee> liste = null;
         try {
-            String hql = "SELECT sd.tournee FROM SocieteDeLivraison sd JOIN FETCH sd.lignesCmd WHERE sd.id = :paramId";
+            String hql = "SELECT sd.tournees FROM SocieteDeLivraison sd WHERE sd.id = :paramId";
             Query queryHql = em.createQuery(hql).setParameter("paramId", paramSocieteDeLivraison.getId());
             liste = queryHql.getResultList();
+            paramSocieteDeLivraison.setTournees(liste);
         } catch (Exception e) {
             AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.MYSQL_HS);
             throw exc;
         }
-        return liste;
+        return paramSocieteDeLivraison;
     }
 
 }

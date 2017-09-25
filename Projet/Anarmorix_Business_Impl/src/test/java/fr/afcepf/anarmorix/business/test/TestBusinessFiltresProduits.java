@@ -61,20 +61,4 @@ public class TestBusinessFiltresProduits {
             e.printStackTrace();
         }
     }
-/*    @Test
-    public void testRecupererTousLesProduits() {
-      List<Produit> produits = new ArrayList<>();
-        try {
-           // produits = daoProduit.rechercherTousLesProduits();
-            produits = businessCLient.choisirCategorieProduit();
-            for (Produit p : produits) {
-                System.out.println("test prix : " + p.getPrixUnitaire().intValue());
-                System.out.println("test chemin image : " + p.getImage().getChemin());
-            }
-            Assert.assertNotNull(produits);
-            Assert.assertEquals(TAILLE_LISTE, produits.size());
-        } catch (AnarmorixException e) {
-            Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
-        }
-    }*/
 }

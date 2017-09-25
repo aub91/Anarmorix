@@ -31,5 +31,5 @@ public enum Statut {
     /**
      * Commande retirée par le client.
      */
-    TERMINEE
+    TERMINE
 }

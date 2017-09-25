@@ -6,10 +6,12 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
@@ -66,7 +68,7 @@ public class DaoLigneCommande implements IDaoLigneCommande {
            }
        }
     }
-
+    @Override
     public LigneCommande rechercher(Integer paramId) throws AnarmorixException {
         try {
             LigneCommande ligne = (LigneCommande) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
@@ -110,6 +112,22 @@ public class DaoLigneCommande implements IDaoLigneCommande {
             AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Tournee rechercherByTournee(Tournee paramTournee) throws AnarmorixException {
+        List<LigneCommande> liste = null;
+        try {
+            String hql = "SELECT to.lignesCmd FROM Tournee to WHERE to.id = :paramId";
+            Query queryHql = em.createQuery(hql).setParameter("paramId", paramTournee.getId());
+            liste = queryHql.getResultList();
+            paramTournee.setLignesCmd(liste);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return paramTournee;
     }
 
 }

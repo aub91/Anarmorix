@@ -96,7 +96,7 @@ public class TestDaoLigneCommande {
      * Commande pour le test du cas nominal.
      */
     private static final Commande COMMANDE =
-            new Commande(ID_EXISTANT, new Date(117, 9, 7), new Date(117, 9, 8), "12345", RELAIS, CLIENT, Statut.TERMINEE);
+            new Commande(ID_EXISTANT, new Date(117, 9, 7), new Date(117, 9, 8), "12345", RELAIS, CLIENT, Statut.TERMINE);
 
     /**
      * Catégorie la plus générale de produits.
@@ -210,7 +210,7 @@ public class TestDaoLigneCommande {
      * @throws AnarmorixException l'exception attendue, argument inexistant.
      */
     @Test
-    public void testEchecArgumentInexistant() throws AnarmorixException {
+    public void testEchecRechercherByCommandeArgumentInexistant() throws AnarmorixException {
         try {
             List<LigneCommande> retour = dao.rechercher(COMMANDE_INEXISTANTE);
             System.out.println("Size echec :");
@@ -228,7 +228,7 @@ public class TestDaoLigneCommande {
      * @throws AnarmorixException une exception que l'on ne doit pas avoir dans le test nominal.
      */
     @Test
-    public void testNominal() throws AnarmorixException {
+    public void testRechercheByCommandeNominal() throws AnarmorixException {
         List<LigneCommande> retour = dao.rechercher(COMMANDE);
         Assert.assertEquals(1, retour.size());
         Assert.assertEquals(LIGNE.getId(), retour.get(0).getId());
@@ -242,4 +242,5 @@ public class TestDaoLigneCommande {
         Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.get(0).getQuantiteLivree());
         Assert.assertEquals(LIGNE.getQuantitePreparee(), retour.get(0).getQuantitePreparee());
     }
+    
 }

@@ -1,7 +1,5 @@
 package fr.afcepf.anarmorix.data.api;
 
-import java.util.List;
-
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -13,10 +11,10 @@ public interface IDaoTournee {
 
     /**
      * @param paramSocieteDeLivraison une société de livraison
-     * @return la liste des tournées de livraison de la société
+     * @return la société de livraison avec sa liste des tournées
      * @throws AnarmorixException une exception
      */
-    List<Tournee> rechercherBySocieteDeLivraison(SocieteDeLivraison paramSocieteDeLivraison) throws AnarmorixException;
+    SocieteDeLivraison rechercherBySocieteDeLivraison(SocieteDeLivraison paramSocieteDeLivraison) throws AnarmorixException;
 
     /**
      * @param tournee
