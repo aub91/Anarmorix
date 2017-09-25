@@ -30,18 +30,36 @@ public class DaoCommerce implements IDaoCommerce {
     private EntityManager em;
 
     /**
-     * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
+     * Requête permettant de trouver l'ensemble des {@link Commerce}s d'une ville.
      */
     private static final String REQ_RECHERCHE_COMMERCE =
-            "SELECT a.commerces FROM Adresse a AND Ville v WHERE a.ville = v AND v.id = :pId";
+            "SELECT a.commerces FROM Adresse a AND Ville v WHERE a.ville = :vId";
 
     /**
-     * Requête permettant de récupérer un catalogue en fonction de son Id.
+     * Requête permettant de trouver l'ensemble des {@link PointRelais} d'une ville.
+     */
+    private static final String REQ_PT_REL =
+            "SELECT pr FROM PointRelais pr, Adresse a WHERE pr.adresse = a AND a.ville = :pV";
+
+    /**
+     * Requête permettant de trouver l'ensemble des {@link Exploitation}s d'une ville.
+     */
+    private static final String REQ_EXPLOITATION =
+            "SELECT e FROM Exploitation e, Adresse a WHERE e.adresse = a AND a.ville = :pV";
+
+    /**
+     * Requête permettant de trouver l'ensemble des {@link PointRelais} d'une ville.
+     */
+    private static final String REQ_SOCIETE =
+            "SELECT se FROM SocieteDeLivraison s, Adresse a WHERE s.adresse = a AND a.ville = :pV";
+
+    /**
+     * Requête permettant de récupérer un commerce en fonction de son Id.
      */
     private static final String REQ_COMMERCE_ID = "Select c FROM Commerce c WHERE c.id = :pId";
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoCommerce() {
     }
@@ -49,7 +67,7 @@ public class DaoCommerce implements IDaoCommerce {
     @Override
     public List<Commerce> rechercherCommerces(Ville paramVille) throws AnarmorixException {
         try {
-            List<Commerce> liste =  em.createQuery(REQ_RECHERCHE_COMMERCE).setParameter("pId", paramVille.getCodeInsee()).getResultList();
+            List<Commerce> liste =  em.createQuery(REQ_RECHERCHE_COMMERCE).setParameter("vId", paramVille).getResultList();
             if (liste.size() == 0) {
                 AnarmorixException exc = new AnarmorixException("La ville n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
                 throw exc;
@@ -67,20 +85,59 @@ public class DaoCommerce implements IDaoCommerce {
 
     @Override
     public List<Exploitation> rechercherExploitations(Ville paramVille) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            List<Exploitation> liste =  em.createQuery(REQ_EXPLOITATION).setParameter("pV", paramVille).getResultList();
+            if (liste.size() == 0) {
+                AnarmorixException exc = new AnarmorixException("La ville n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
+                throw exc;
+            }
+            return liste;
+        } catch (Exception e) {
+            if (e.getMessage() == "La ville n'existe pas.") {
+                throw e;
+            } else {
+                AnarmorixException exc = new AnarmorixException("Message : " + e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+                throw exc;
+            }
+        }
     }
 
     @Override
     public List<PointRelais> rechercherPointsRelais(Ville paramVille) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            List<PointRelais> liste =  em.createQuery(REQ_PT_REL).setParameter("pV", paramVille).getResultList();
+            if (liste.size() == 0) {
+                AnarmorixException exc = new AnarmorixException("La ville n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
+                throw exc;
+            }
+            return liste;
+        } catch (Exception e) {
+            if (e.getMessage() == "La ville n'existe pas.") {
+                throw e;
+            } else {
+                AnarmorixException exc = new AnarmorixException("Message : " + e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+                throw exc;
+            }
+        }
     }
 
     @Override
     public List<SocieteDeLivraison> rechercherSocietesDeLivraison(Ville paramVille) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            List<SocieteDeLivraison> liste =  em.createQuery(REQ_SOCIETE).setParameter("pV", paramVille).getResultList();
+            if (liste.size() == 0) {
+                AnarmorixException exc = new AnarmorixException("La ville n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
+                throw exc;
+            }
+            return liste;
+        } catch (Exception e) {
+            if (e.getMessage() == "La ville n'existe pas.") {
+                throw e;
+            } else {
+                AnarmorixException exc = new AnarmorixException("Message : " + e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+                throw exc;
+            }
+        }
     }
 
     @Override
