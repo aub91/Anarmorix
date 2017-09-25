@@ -5,12 +5,656 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 	<ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
-	</ui:composition>
+	
 	
 	<ui:define name="script">
 		<script type="text/javascript"
-			src="resources/js/PageCataloguePanier.js"></script>
-		<script type="text/javascript"
-			src="resources/js/PageCatalogueProduit.js"></script>
+			src="resources/js/PageRecettesGenerale.js"></script>
+		
 	</ui:define>
+	
+	<ui:define name="css">
+		<link href="css/pageRecettesGenerale.css" rel="stylesheet"
+		type="text/css" ></link>
+	</ui:define>
+	
+	<ui:define name="content">
+		<div class="container">
+			<div class="col-lg-12">
+
+
+				<div class="section-catalogue">
+
+					<div class="page-header">
+						
+						<div class= "row">
+							
+						    
+						
+						<h1 class="text-center">
+						
+						    <div class = "col-lg-offset-5">
+							<span id="titlecatalogue">Nos Recettes</span> 
+							
+							</div>
+						</h1>
+						
+						</div>
+						
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/aligot.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">ALIGOT</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="1"
+								data-name="aligot" 
+								data-image="resources/img/aligot.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/baklava.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">BAKLAVA</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="2"
+								data-name="baklava" 
+								data-image="resources/img/baklava.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/bouillondehomard.jpeg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">ENTRÉE</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">BOUILLON DE HOMARD</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="3"
+								data-name="bouillondehomard" 
+								data-image="resources/img/bouillondehomard.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/caponata.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">CAPONATA</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="4"
+								data-name="caponata" 
+								data-image="resources/img/caponata.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/cassoulet.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">CASSOULET</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="5"
+								data-name="cassoulet" 
+								data-image="resources/img/cassoulet.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/cotriade.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">COTRIADE</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="6"
+								data-name="cotriade" 
+								data-image="resources/img/cotriade.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/croquant.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">ENTRÉE</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">CROQUANT AU TOURTEAU ET POIREAUX</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="7"
+								data-name="croquant" 
+								data-image="resources/img/croquant.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/croustillant.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">CROUSTILLANT PRALINÉ</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="8"
+								data-name="croustillant" 
+								data-image="resources/img/croustillant.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/gateaubasque.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">GÂTEAU BASQUE AUX CERISES NOIRES</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="9"
+								data-name="gateaubasque" 
+								data-image="resources/img/gateaubasque.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/huitreschaudes.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">ENTRÉE</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">HUÎTRES CHAUDES AU BEURRE DE FENOUIL</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="10"
+								data-name="huitreschaudes" 
+								data-image="resources/img/huitreschaudes.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/kighafarz.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">KIG HA FARZ</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="11"
+								data-name="kighafarz" 
+								data-image="resources/img/kighafarz.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/kouignamann.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">KOUIGN AMANN AUX POMMES SAFRANÉES</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="12"
+								data-name="kouignamann" 
+								data-image="resources/img/kouignamann.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/marquise-au-chocolat.jpeg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">MARQUISE AU CHOCOLAT</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="13"
+								data-name="marquise-au-chocolat" 
+								data-image="resources/img/marquise-au-chocolat.jpeg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/oiefarcie.jpeg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">OIE FARCIE AUX FRUITS SECS</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="14"
+								data-name="oiefarcie" 
+								data-image="resources/img/oiefarcie.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/Ossobuco.jpeg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">ENTRÉE</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">OSSO BUCO DE SOLE AUX ASPERGES</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="15"
+								data-name="Ossobuco" 
+								data-image="resources/img/Ossobuco.jpeg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/parisbrest.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">PARIS-BREST</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="16"
+								data-name="parisbrest" 
+								data-image="resources/img/parisbrest.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/potaufeu.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">POT-AU-FEU</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="17"
+								data-name="potaufeu" 
+								data-image="resources/img/potaufeu.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/ratatouille.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">PLAT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">RATATOUILLE</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="18"
+								data-name="ratatouille" 
+								data-image="resources/img/ratatouille.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/sachertorte.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">SACHERTORTE</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="19"
+								data-name="sachertorte" 
+								data-image="resources/img/sachertorte.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/tartelettefoie.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">ENTRÉE</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">TARTELETTE AU FOIE GRAS</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="20"
+								data-name="tartelettefoie" 
+								data-image="resources/img/tartelettefoie.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/teurgoule.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+									
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">TEURGOULE</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="21"
+								data-name="teurgoule" 
+								data-image="resources/img/teurgoule.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/tiramisu.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">DESSERT</h3>
+								
+								</div>
+							</div>
+							<div class = "row row-nom">
+								<div class = "col-lg-12 text-center">
+							 <span id="nomRecette">TIRAMISU AUX FRUITS ROUGES</span>  
+							 	</div>
+							 </div>
+							 <div class = "row row-bouton">
+								
+                                <div class = "col-lg-12">
+                                
+							<button class="btn recette-btn text-center" data-id="22"
+								data-name="tiramisu" 
+								data-image="resources/img/tiramisu.jpg">Voir la recette
+							</button>
+							</div>
+							</div>
+
+						</div>
+						
+						
+						
+					</div>
+			</div>
+			</div>
+		</div>
+	</ui:define>
+	</ui:composition>
 </html>
