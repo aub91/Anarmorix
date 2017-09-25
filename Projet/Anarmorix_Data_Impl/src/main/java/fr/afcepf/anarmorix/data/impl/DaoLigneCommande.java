@@ -67,6 +67,16 @@ public class DaoLigneCommande implements IDaoLigneCommande {
        }
     }
 
+    public LigneCommande rechercher(Integer paramId) throws AnarmorixException {
+        try {
+            LigneCommande ligne = (LigneCommande) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
+            return ligne;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
+    }
+
     @Override
     public LigneCommande ajouter(LigneCommande paramLigneCommande) throws AnarmorixException {
         try {

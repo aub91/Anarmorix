@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoHoraire;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Horaire;
 import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -23,6 +24,12 @@ public class DaoHoraire implements IDaoHoraire {
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
+
+    /**
+     * Requête permettant de récupérer un catalogue en fonction de son Id.
+     */
+    private static final String REQ_HORAIRE_ID = "Select h FROM Horaire c WHERE h.id = :pId";
+
     /**
      * Default constructor.
      */
@@ -30,21 +37,38 @@ public class DaoHoraire implements IDaoHoraire {
     }
 
     @Override
-    public Horaire ajouter(Horaire paramHoraire) {
-        // TODO Auto-generated method stub
-        return null;
+    public Horaire ajouter(Horaire paramHoraire) throws AnarmorixException {
+        try {
+            em.persist(paramHoraire);
+            return paramHoraire;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @Override
-    public boolean supprimer(Integer paramId) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean supprimer(Integer paramId) throws AnarmorixException{
+        try {
+            Horaire horaire = (Horaire) em.createQuery(REQ_HORAIRE_ID).setParameter("pId", paramId).getSingleResult();
+            em.remove(horaire);
+            return true;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @Override
-    public Horaire mettreAJour(Integer paramId) {
-        // TODO Auto-generated method stub
-        return null;
+    public Horaire mettreAJour(Integer paramId) throws AnarmorixException{
+        try {
+            Horaire horaire = (Horaire) em.createQuery(REQ_HORAIRE_ID).setParameter("pId", paramId).getSingleResult();
+            Horaire updated = em.merge(horaire);
+            return updated;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @SuppressWarnings("unchecked")
