@@ -409,6 +409,12 @@ body {
 
 /*fin*/
 
+#conditionnementQuantite {
+	
+	padding-top: 7px ;
+	display: inline-block;
+}
+
 
 /*footer*/
 
@@ -432,8 +438,8 @@ body {
 
 #myFooter img {
 	
-	height :50px;
-	width: 50px;
+	height :350px;
+	width: 400px;
 }
 
 
