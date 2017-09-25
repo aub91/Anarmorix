@@ -1,10 +1,10 @@
 package fr.afcepf.anarmorix.controller;
 
-import fr.afcepf.anarmorix.entity.Produit;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 
 public class PanierVue {
 
-	private Produit prodt ;
+	private LigneCommande lgnCom ;
 
 	
 
@@ -12,17 +12,17 @@ public class PanierVue {
 		super();
 	}
 
-	public PanierVue(Produit prodt) {
+	public PanierVue(LigneCommande lgnCom) {
 		
-		this.prodt = prodt;
+		this.lgnCom = lgnCom;
 	}
 
-	public Produit getProdt() {
-		return prodt;
+	public LigneCommande getlgnCom() {
+		return lgnCom;
 	}
 
-	public void setProdt(Produit prodt) {
-		this.prodt = prodt;
+	public void setLgnCom(LigneCommande lgnCom) {
+		this.lgnCom = lgnCom;
 	}
 
 

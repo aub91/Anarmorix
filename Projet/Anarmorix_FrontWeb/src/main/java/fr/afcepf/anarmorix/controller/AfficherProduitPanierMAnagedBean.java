@@ -19,24 +19,49 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 public class AfficherProduitPanierMAnagedBean {
 	@EJB
 	private IBusinessPanier busPanier;
-	Commande commande = new Commande();
-	List<LigneCommande> ligneproduits = new ArrayList<LigneCommande>();
+	Produit produits = new Produit();
+	List<Produit> listeProduits = new ArrayList<Produit>();
+	
 	public AfficherProduitPanierMAnagedBean() {
 	}
-    @PostConstruct
-    public void init() throws AnarmorixException {
-        ligneproduits = busPanier.rechercher(commande);
-    }
-    
-    
-    
-    public List<LigneCommande> getProduits() {
-        return ligneproduits;
-    }
-
-    public void setProduits(List<LigneCommande> paramLigneProduits) {
-    	ligneproduits = paramLigneProduits;
-    }
 	
+    public Produit getProduits() {
+		return produits;
+	}
 
+	public void setProduits(Produit produits) {
+		this.produits = produits;
+	}
+
+
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
+	}
+
+	@PostConstruct
+    public void init() throws AnarmorixException {
+    	produits.setId(250); 
+    	produits.setPrixUnitaire(12.4);
+    	produits.setQuantiteEnStock(10.1);
+    	Produit produit1 = new Produit();
+    	produit1.setId(251); 
+    	produit1.setPrixUnitaire(110.71);
+    	produit1.setQuantiteEnStock(210.1);
+    	listeProduits.add(produit1);
+    	listeProduits.add(produits);
+    	
+    }
+
+	public IBusinessPanier getBusPanier() {
+		return busPanier;
+	}
+
+	public void setBusPanier(IBusinessPanier busPanier) {
+		this.busPanier = busPanier;
+	}
+	
 }

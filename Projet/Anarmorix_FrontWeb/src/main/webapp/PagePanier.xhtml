@@ -53,21 +53,22 @@
 								</thead>
 								<!-- partie a remplir dans le panier-->
 								<tbody>
-
-									<tr>
+									<ui:repeat var="prodCom" value="#{mbLigneProduitPanier.listeProduits}"> 
+									<tr class="ligneProduit">
 										<td><a href="#"> <img src="resources/img/Nectar-de-poire.png" alt="produit selectionné"></img></a></td>
 										<td><a href="#"><strong><U>carottes </U></strong>c'est
 												bon</a></td>
-										<td><input type="number" value="1" class="form-control"></input></td>
-										<td>$200.00</td>
-										<td>$400.00</td>
-										<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+										<td><input id="quantiteProduit" type="number" value="#{prodCom.id}" class="form-control"></input></td>
+                						<td id="prixProduit">#{prodCom.prixUnitaire}</td>
+										<td ><i id="totalProduit"></i></td>
 									</tr>
+									</ui:repeat>
+									
 								</tbody>
 								<tfoot>
-									<tr>
+									<tr class="ligneProduit">
 										<th colspan="5">Total</th>
-										<th colspan="2">$446.00</th>
+										<th  colspan="2"><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
 							</table>
@@ -77,7 +78,7 @@
 
 						<div class="box-footer">
 							<div class="pull-left">
-								<a href="basket.html" class="btn btn-default"><i
+								<a href="pageCatalogue2.xhtml" class="btn btn-default"><i
 									class="fa fa-chevron-left"></i> Continuer mes achats</a>
 							</div>
 							<div class="pull-right">
@@ -99,7 +100,7 @@
 							</div>
 							<div class="row">
 								<div class="pull-center">
-									<h3>Total : 542114€</h3>
+									<h3 id="totaux"></h3>
 								</div>
 							</div>
 						</div>
@@ -258,13 +259,36 @@
 
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.cookie.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/bootstrap-hover-dropdown.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/front.js"></script>
+	<script src="resources/js/jquery-1.11.0.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.cookie.js"></script>
+	<script src="resources/js/waypoints.min.js"></script>
+	<script src="resources/js/bootstrap-hover-dropdown.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/front.js"></script>
+	<script type="text/javascript">
+	 //<![CDATA[
+	 
+	 $(".ligneProduit").each(function() {
+		var qt = $(this).find('#quantiteProduit').val();
+		var prix = $(this).find("#prixProduit").html();
+		var cout = qt * prix;
+		var totaux =+ cout;
+		 $(this).find('#totalProduit').html(cout+' €');
+		 $(this).find('#totaux').html(totaux+' €');
+		 $(this).find('#quantiteProduit').on('change', function(){
+			var qt = $(this).val();
+			var prix = $(this).closest('.ligneProduit').find("#prixProduit").html();
+			var cout = qt * prix;
+			cout = Math.trunc(cout*100)/100;
+			$(this).closest('.ligneProduit').find('#totalProduit').html(cout+' €');
+		});
+	 });
+
+	  //]]>
+	
+
+	</script>
 
 </body>
 </html>
