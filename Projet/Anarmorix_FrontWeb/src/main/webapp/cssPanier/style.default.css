@@ -710,7 +710,7 @@ h1 {
 #content #checkout .table tbody tr td input,
 #content #basket .table tbody tr td input,
 #content #customer-order .table tbody tr td input {
-  width: 70px;
+  width: 90px;
   text-align: left;
 }
 #content #checkout .table tbody tr td img,

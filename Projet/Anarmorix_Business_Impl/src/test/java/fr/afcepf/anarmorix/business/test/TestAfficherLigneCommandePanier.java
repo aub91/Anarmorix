@@ -2,7 +2,6 @@ package fr.afcepf.anarmorix.business.test;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,15 +11,8 @@ import fr.afcepf.anarmorix.business.api.IBusinessPanier;
 import fr.afcepf.anarmorix.business.impl.BusinessPanier;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.impl.DaoLigneCommande;
-import fr.afcepf.anarmorix.data.test.CreateProxyEJB;
-import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.Client;
-import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
-import fr.afcepf.anarmorix.entity.PointRelais;
-import fr.afcepf.anarmorix.entity.Statut;
-import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 public class TestAfficherLigneCommandePanier {
