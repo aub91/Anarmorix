@@ -25,6 +25,7 @@ public class AfficherProduitsManagedBean {
     List<Categorie> categoriesSecondaires =  new ArrayList<>();
     List<Categorie> categoriesTertiaires =  new ArrayList<>();
     List<Categorie> categoriesFilles =  new ArrayList<>();
+    List<Produit> produitsFiltresParCategorie =  new ArrayList<>();
     Integer idCategorieMere;
 
     public AfficherProduitsManagedBean() {
@@ -33,7 +34,7 @@ public class AfficherProduitsManagedBean {
     @PostConstruct
     public void init(){
         try {
-            produits = businessCLient.choisirCategorieProduit();
+            produits = businessCLient.recupererTousLesProduits();
             categories = businessCLient.recupererToutesLesCategories();
             categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
             categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
@@ -45,6 +46,10 @@ public class AfficherProduitsManagedBean {
     
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
         return businessCLient.recupererCategoriesFilles(idCategorieMere);
+    }
+    
+    public  List<Produit> recupererProduitsFiltres(String libelleCategorie) throws AnarmorixException {
+        return businessCLient.recupererLesProduitsParCategorie(libelleCategorie);
     }
     
     public List<Categorie> getCategoriesTertiaires() {

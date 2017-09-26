@@ -31,7 +31,15 @@ public interface IDaoProduit {
      * </ul>
      */
     List<Produit> rechercherParIDTypeProduit(Integer id) throws AnarmorixException;
-
+    
+    /**
+     * Implémentation méthode recherche de produits par libelle de categorie pour accordeon.
+     * @param libelleCategorie le libelle de la categoire.
+     * @return une liste de produits.
+     * @throws AnarmorixException Le serveur ne répond pas.
+     */
+    List<Produit> rechercherParCategorie(String  libelleCategorie) throws AnarmorixException;
+    
     /**
      * Méthode qui retourne la liste de tous les produits.
      * @return une liste de produit.

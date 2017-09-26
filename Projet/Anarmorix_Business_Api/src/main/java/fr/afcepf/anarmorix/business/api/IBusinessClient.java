@@ -71,7 +71,18 @@ public interface IBusinessClient {
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
-    List<Produit> choisirCategorieProduit() throws AnarmorixException;
+    List<Produit> recupererTousLesProduits() throws AnarmorixException;
+    /**
+     * @return une liste de produits.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException;
+    /**
+     * Methode pour récupérer  les produits par libelle de categorie.
+     * @return une liste de produits.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException;
     /**
      * @return une liste de categorie.
      * @throws AnarmorixException exception serveur.

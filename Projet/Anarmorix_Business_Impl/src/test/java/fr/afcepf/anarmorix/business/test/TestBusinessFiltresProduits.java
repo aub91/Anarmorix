@@ -36,7 +36,7 @@ public class TestBusinessFiltresProduits {
      */
     @Test
     public void testNominal() throws AnarmorixException {
-        List<Produit> produits = businessCLient.choisirCategorieProduit();
+        List<Produit> produits = businessCLient.recupererTousLesProduits();
         Assert.assertNotNull(produits);
         Assert.assertEquals(TAILLE_LISTE, produits.size());
      }

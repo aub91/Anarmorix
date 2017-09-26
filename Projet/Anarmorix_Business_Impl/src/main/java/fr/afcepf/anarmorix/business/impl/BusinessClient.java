@@ -180,7 +180,7 @@ public class BusinessClient implements IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     @Override
-    public List<Produit> choisirCategorieProduit() throws AnarmorixException {
+    public List<Produit> recupererTousLesProduits() throws AnarmorixException {
         List<Produit> produits = null;
         try {
             produits = daoProduit.rechercherTousLesProduits();
@@ -190,6 +190,39 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
+    /**
+     * Methode pour récupérer  les produits par type.
+     * @return une liste de produits.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {      
+		List<Produit> produits = null;
+		try {
+			produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
+		} catch (Exception e) {
+			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+			throw exc;
+		}
+		return produits;
+    }
+    /**
+     * Methode pour récupérer  les produits par type.
+     * @return une liste de produits.
+     * @throws AnarmorixException exception serveur.
+     */
+    @Override
+    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {      
+		List<Produit> produits = null;
+		try {
+			produits = daoProduit.rechercherParCategorie(libelleCategorie);
+		} catch (Exception e) {
+			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+			throw exc;
+		}
+		return produits;
+    }
+    
     /**
      * Methode pour récupérer toutes les catégories.
      * @return une liste de catgégorie.

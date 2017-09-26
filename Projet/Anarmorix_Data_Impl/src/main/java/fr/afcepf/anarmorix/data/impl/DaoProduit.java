@@ -72,6 +72,38 @@ public class DaoProduit implements IDaoProduit {
         return liste;
     }
     /**
+     * Implémentation méthode recherche de produits par libelle de categorie pour accordeon.
+     * @param libelleCategorie le libelle de la categoire.
+     * @return une liste de produits.
+     * @throws AnarmorixException Le serveur ne répond pas.
+     */
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Produit> rechercherParCategorie(String  libelleCategorie) throws AnarmorixException {
+        List<Produit> liste = null;
+        
+        try {
+        	liste = em.createQuery("SELECT all FROM Produit p"
+											 + "JOIN FETCH p.type t"
+											 + "JOIN FETCH t.categorie c"
+											 + "WHERE c.libelle = :plibelle")
+			.setParameter("plibelle", libelleCategorie)
+			.getResultList();
+		
+        	
+//        	liste = em.createQuery("SELECT p FROM Produit p JOIN p.image i"
+//        												 + "JOIN p.type t"
+//        												 + "JOIN t.categorie c"
+//        												 + "WHERE c.libelle = :plibelle")
+//        										.setParameter("plibelle", libelleCategorie)
+//        										.getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return liste;
+    }
+    /**
      * Implémentation méthode recherche tous les produits.
      * @return une liste de produits.
      * @throws AnarmorixException Le serveur ne répond pas.
