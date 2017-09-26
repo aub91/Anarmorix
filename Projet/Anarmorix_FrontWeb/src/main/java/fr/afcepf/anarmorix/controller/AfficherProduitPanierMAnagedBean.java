@@ -44,15 +44,12 @@ public class AfficherProduitPanierMAnagedBean {
 
 	@PostConstruct
     public void init() throws AnarmorixException {
-    	produits.setId(250); 
-    	produits.setPrixUnitaire(12.4);
-    	produits.setQuantiteEnStock(10.1);
+    	
     	Produit produit1 = new Produit();
     	produit1.setId(251); 
     	produit1.setPrixUnitaire(110.71);
-    	produit1.setQuantiteEnStock(210.1);
+    	produit1.setQuantiteEnStock(210.11);
     	listeProduits.add(produit1);
-    	listeProduits.add(produits);
     	
     }
 

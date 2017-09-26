@@ -47,6 +47,7 @@
 									<tr>
 										<th colspan="2">Produit</th>
 										<th>Quantité</th>
+										<th>Packaging</th>
 										<th>Prix unitaire</th>
 										<th colspan="2">Total</th>
 									</tr>
@@ -55,23 +56,25 @@
 								<tbody>
 									<ui:repeat var="prodCom" value="#{mbLigneProduitPanier.listeProduits}"> 
 									<tr class="ligneProduit">
-										<td><a href="#"> <img src="resources/img/Nectar-de-poire.png" alt="produit selectionné"></img></a></td>
+										<td><a href="#"> <img src="#{prodCom.id}" alt="produit selectionné"></img></a></td>
 										<td><a href="#"><strong><U>carottes </U></strong>c'est
 												bon</a></td>
-										<td><input id="quantiteProduit" type="number" value="#{prodCom.id}" class="form-control"></input></td>
+										<td><input id="quantiteProduit" type="number" value="#{prodCom.quantiteEnStock}" class="form-control"></input></td>
+                						<td>#{prodCom.packaging.libelle}</td>
                 						<td id="prixProduit">#{prodCom.prixUnitaire}</td>
 										<td ><i id="totalProduit"></i></td>
 									</tr>
 									</ui:repeat>
 									
 								</tbody>
-								<tfoot>
-									<tr class="ligneProduit">
+								<tfoot  >
+									<tr>
 										<th colspan="5">Total</th>
-										<th  colspan="2"><i id="totaux"></i></th>
+										<th colspan="2" class="ligneProduit"><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
 							</table>
+							
 
 						</div>
 						<!-- /.table-responsive -->
@@ -96,7 +99,7 @@
 						<div class="row">
 							<div class="pull-center">
 								<h3>Nom point relais</h3>
-								<span>Adresse</span><br /> <span>Horraires d'ouverture</span>
+								<span>Adresse</span><br /> <span>Horaires d'ouverture</span>
 							</div>
 							<div class="row">
 								<div class="pull-center">
@@ -142,7 +145,7 @@
 
 							<div class="row">
 
-								<div class=" col-md-4 suggestionProduitImage">
+								<div class=" col-md-4 suggestionProduitImage" id="mesProduit">
 									<a href="http://www.google.fr"><img class="imgProduit"
 										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
 								</div>
@@ -212,7 +215,6 @@
 						</div>
 					</div>
 				</div>
-
 
 				<div class="col-md-4">
 					<div class="box-fix" id="basket ">
@@ -268,22 +270,24 @@
 	<script src="resources/js/front.js"></script>
 	<script type="text/javascript">
 	 //<![CDATA[
-	 
+	 var totau = 0;
 	 $(".ligneProduit").each(function() {
 		var qt = $(this).find('#quantiteProduit').val();
 		var prix = $(this).find("#prixProduit").html();
 		var cout = qt * prix;
-		var totaux =+ cout;
-		 $(this).find('#totalProduit').html(cout+' €');
-		 $(this).find('#totaux').html(totaux+' €');
-		 $(this).find('#quantiteProduit').on('change', function(){
-			var qt = $(this).val();
-			var prix = $(this).closest('.ligneProduit').find("#prixProduit").html();
-			var cout = qt * prix;
-			cout = Math.trunc(cout*100)/100;
-			$(this).closest('.ligneProduit').find('#totalProduit').html(cout+' €');
-		});
+		$(this).find('#totalProduit').append(cout+' €');
+		totau += cout;
+		$(this).closest('.ligneProduit').find('#totaux').append(totau+' €');
+			$(this).find('#quantiteProduit').on('change', function(){
+				var qt = $(this).val();
+				var prix = $(this).closest('.ligneProduit').find("#prixProduit").html();
+				var cout = qt * prix;
+				cout = Math.trunc(cout*100)/100;
+				$(this).closest('.ligneProduit').find('#totalProduit').html(cout+' €');
+			});
 	 });
+	 
+	
 
 	  //]]>
 	
