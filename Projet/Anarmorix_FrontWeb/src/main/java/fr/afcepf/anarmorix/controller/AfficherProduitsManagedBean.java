@@ -47,11 +47,11 @@ public class AfficherProduitsManagedBean {
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
         return businessCLient.recupererCategoriesFilles(idCategorieMere);
     }
-    
+
     public  List<Produit> recupererProduitsFiltres(String libelleCategorie) throws AnarmorixException {
         return businessCLient.recupererLesProduitsParCategorie(libelleCategorie);
     }
-    
+
     public List<Categorie> getCategoriesTertiaires() {
         return categoriesTertiaires;
     }

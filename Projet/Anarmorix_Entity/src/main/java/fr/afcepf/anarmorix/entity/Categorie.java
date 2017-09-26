@@ -23,18 +23,6 @@ import javax.persistence.Transient;
 public class Categorie implements Serializable {
 
     /**
-     * @return the typesProduits
-     */
-    public List<TypeProduit> getTypesProduits() {
-        return typesProduits;
-    }
-    /**
-     * @param paramTypesProduits the typesProduits to set
-     */
-    public void setTypesProduits(List<TypeProduit> paramTypesProduits) {
-        typesProduits = paramTypesProduits;
-    }
-    /**
      * Numéro pour sérialisation.
      */
     @Transient
@@ -143,4 +131,16 @@ public class Categorie implements Serializable {
         categorieMere = paramCategorieMere;
     }
 
+    /**
+     * @return the typesProduits
+     */
+    public List<TypeProduit> getTypesProduits() {
+        return typesProduits;
+    }
+    /**
+     * @param paramTypesProduits the typesProduits to set
+     */
+    public void setTypesProduits(List<TypeProduit> paramTypesProduits) {
+        typesProduits = paramTypesProduits;
+    }
 }

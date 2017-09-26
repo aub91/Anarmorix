@@ -16,6 +16,7 @@ import fr.afcepf.anarmorix.data.api.IDaoHoraire;
 import fr.afcepf.anarmorix.data.api.IDaoJourOuverture;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.data.api.IDaoTypeProduit;
 import fr.afcepf.anarmorix.data.api.IDaoVille;
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.Categorie;
@@ -28,6 +29,7 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Statut;
+import fr.afcepf.anarmorix.entity.TypeProduit;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -71,10 +73,15 @@ public class BusinessClient implements IBusinessClient {
     @EJB
     private IDaoProduit daoProduit;
     /**
-     * Interface d'accès aux données {@link LigneCommande}.
+     * Interface d'accès aux données {@link LigneCommandeCategorie}.
      */
     @EJB
     private IDaoCategorie daoCategorie;
+    /**
+     * Interface d'accès aux données {@link TypeProduit}.
+     */
+    @EJB
+    private IDaoTypeProduit daoTypeProduit;
     /**
      * Interface d'accès aux données {@link LigneCommande}.
      */
@@ -229,9 +236,21 @@ public class BusinessClient implements IBusinessClient {
      */
     @Override
     public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {      
-		List<Produit> produits = null;
+		List<Produit> produits = new ArrayList<>();
+		List<Categorie> categories = null;
+		List<TypeProduit> typeProduits = new ArrayList<>();
 		try {
-			produits = daoProduit.rechercherParCategorie(libelleCategorie);
+			categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
+			
+			if(categories != null) {
+				typeProduits = categories.get(0).getTypesProduits();
+				System.out.println("libelle " + typeProduits.get(0).getLibelle());
+				for (TypeProduit type : typeProduits) {
+					Integer idType  = type.getId();
+					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
+				}
+			}
+		
 		} catch (Exception e) {
 			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
 			throw exc;

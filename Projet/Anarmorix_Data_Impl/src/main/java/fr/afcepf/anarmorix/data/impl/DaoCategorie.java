@@ -50,6 +50,26 @@ public class DaoCategorie implements IDaoCategorie {
         return categories;
     }
     /**
+     * recupere les categorie par libelle.
+     * @param libelleCategorie le libelle dune categorie.
+     * @return une liste categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    public List<Categorie> rechercherCategorieParLibelle (String libelleCategorie) throws AnarmorixException {
+        List<Categorie> categories = null;
+        try {
+            categories = em.createQuery(
+                    "SELECT c FROM Categorie c JOIN c.typesProduits t"
+                            + "WHERE c.libelle = :clibelle", Categorie.class)
+                    .setParameter("clibelle", libelleCategorie)
+                    .getResultList();
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return categories;
+    }
+    /**
      * Implémentation méthode recherche toutes les catégories.
      * @return une liste de catégorie.
      * @throws AnarmorixException Le serveur ne répond pas.
