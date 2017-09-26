@@ -40,20 +40,20 @@ import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 @Stateless
 public class BusinessClient implements IBusinessClient {
     /**
-     * Default constructor
+     * Default constructor.
      */
     public BusinessClient() {
     }
 
     /**
-     * Interface d'accès aux données {@link Horaire}
+     * Interface d'accès aux données {@link Horaire}.
      */
     private IDaoHoraire daoHoraire;
 
     /**
-     * Interface d'accès aux données {@link JourOuverture}
+     * Interface d'accès aux données {@link JourOuverture}.
      */
-    public IDaoJourOuverture daoJourOverture;
+    private IDaoJourOuverture daoJourOverture;
 
     /**
      * Interface d'accès aux données {@link Ville}.
@@ -238,7 +238,7 @@ public class BusinessClient implements IBusinessClient {
 		}
 		return produits;
     }
-    
+
     /**
      * Methode pour récupérer toutes les catégories.
      * @return une liste de catgégorie.

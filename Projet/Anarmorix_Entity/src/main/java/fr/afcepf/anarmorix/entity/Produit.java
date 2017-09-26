@@ -207,33 +207,6 @@ public class Produit implements Serializable {
     public void setPackaging(Packaging paramPackaging) {
         packaging = paramPackaging;
     }
-
-<<<<<<< HEAD
-	public TypeProduit getType() {
-		return type;
-	}
-
-	public void setType(TypeProduit type) {
-		this.type = type;
-	}
-
-	public String getDescriptif() {
-		return descriptif;
-	}
-
-	public void setDescriptif(String descriptif) {
-		this.descriptif = descriptif;
-	}
-
-	public List<Catalogue> getCatalogues() {
-		return catalogues;
-	}
-
-	public void setCatalogues(List<Catalogue> catalogues) {
-		this.catalogues = catalogues;
-	}
-    
-=======
     /**
      * @return the type
      */
@@ -275,5 +248,4 @@ public class Produit implements Serializable {
     public void setCatalogues(List<Catalogue> paramCatalogues) {
         catalogues = paramCatalogues;
     }
->>>>>>> aubin
 }

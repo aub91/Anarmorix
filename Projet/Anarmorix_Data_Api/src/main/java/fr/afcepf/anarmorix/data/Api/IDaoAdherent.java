@@ -1,11 +1,8 @@
 package fr.afcepf.anarmorix.data.api;
 
-<<<<<<< HEAD
-import java.util.Date;
-=======
-import java.util.List;
->>>>>>> christina
 
+import java.util.Date;
+import java.util.List;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -42,12 +39,7 @@ public interface IDaoAdherent {
      */
     Adherent mettreAJour(Adherent adherent) throws AnarmorixException;
     
-<<<<<<< HEAD
    Adherent afficherAdherent(Commande commande)throws AnarmorixException;
-   
-=======
-    public Adherent afficherAdherent(Commande commande) throws AnarmorixException;
 
->>>>>>> christina
 }
 

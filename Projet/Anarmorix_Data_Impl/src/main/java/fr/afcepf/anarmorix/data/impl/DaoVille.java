@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoVille;
 import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.Recette;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -44,6 +43,7 @@ public class DaoVille implements IDaoVille {
     public DaoVille() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Ville> rechercher(String paramLibelle) throws AnarmorixException {
         try {

@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoRecette;
-import fr.afcepf.anarmorix.entity.Commande;
-import fr.afcepf.anarmorix.entity.Packaging;
 import fr.afcepf.anarmorix.entity.Recette;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -44,8 +42,9 @@ public class DaoRecette implements IDaoRecette {
     public DaoRecette() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public List<Recette> rechercher(String paramLibelle)  throws AnarmorixException{
+    public List<Recette> rechercher(String paramLibelle)  throws AnarmorixException {
         try {
             List<Recette> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pLibelle", paramLibelle).getResultList();
             if (liste.size() == 0) {

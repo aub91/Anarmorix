@@ -83,6 +83,7 @@ public class Tournee implements Serializable {
      * @param paramDateHeureDebut the dateHeureDebut to set
      * @param paramDateHeureFin the dateHeureFin to set
      * @param paramSociete the societeLivraison to set
+     * @param paramLivreur the livreur to set
      */
     public Tournee(Integer paramId, Date paramDateHeureDebut, Date paramDateHeureFin, SocieteDeLivraison paramSociete, Livreur paramLivreur) {
         super();

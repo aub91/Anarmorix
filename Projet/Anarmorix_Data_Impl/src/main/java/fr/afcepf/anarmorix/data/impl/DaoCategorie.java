@@ -8,31 +8,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoCategorie;
-import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.entity.Categorie;
-import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
-<<<<<<< HEAD
- * Implémentation du DAO categorie.
-=======
  * Implémentation des méthodes de {@link IDaoCategorie}.
->>>>>>> aubin
  */
 @Remote(IDaoCategorie.class)
 @Stateless
 public class DaoCategorie implements IDaoCategorie {
     /**
-<<<<<<< HEAD
      * Le contexte de persisntence.
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
     /**
-=======
->>>>>>> aubin
      * Default constructor.
      */
     public DaoCategorie() {
@@ -63,8 +54,9 @@ public class DaoCategorie implements IDaoCategorie {
      * @return une liste de catégorie.
      * @throws AnarmorixException Le serveur ne répond pas.
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<Categorie> rechercherTous() throws AnarmorixException{
+    public List<Categorie> rechercherTous() throws AnarmorixException {
         List<Categorie> categories = null;
         try {
             categories = em.createQuery("SELECT c FROM Categorie c").getResultList();

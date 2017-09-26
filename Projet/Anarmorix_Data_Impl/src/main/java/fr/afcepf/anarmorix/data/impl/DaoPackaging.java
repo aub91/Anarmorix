@@ -8,13 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoPackaging;
-import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Packaging;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
- * Classe implémentant les méthodes de l'{@link IDaoPackaging}
+ * Classe implémentant les méthodes de l'{@link IDaoPackaging}.
  */
 @Remote(IDaoPackaging.class)
 @Stateless
@@ -36,13 +35,14 @@ public class DaoPackaging implements IDaoPackaging {
      * Requête permettant de récupérer un catalogue en fonction de son Id.
      */
     private static final String REQ_PACK_ID = "SELECT p FROM Packaging p WHERE p.id = :pId";
-    
+
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoPackaging() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Packaging> rechercher(String paramLibelle) throws AnarmorixException {
         try {

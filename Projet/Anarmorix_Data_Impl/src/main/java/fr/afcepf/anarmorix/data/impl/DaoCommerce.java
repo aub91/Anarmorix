@@ -11,6 +11,7 @@ import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Commerce;
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -84,8 +85,8 @@ public class DaoCommerce implements IDaoCommerce {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-<<<<<<< HEAD
     public List<Exploitation> rechercherExploitations(Ville paramVille) throws AnarmorixException {
         try {
             List<Exploitation> liste =  em.createQuery(REQ_EXPLOITATION).setParameter("pV", paramVille).getResultList();
@@ -104,6 +105,7 @@ public class DaoCommerce implements IDaoCommerce {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<PointRelais> rechercherPointsRelais(Ville paramVille) throws AnarmorixException {
         try {
@@ -123,9 +125,8 @@ public class DaoCommerce implements IDaoCommerce {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-=======
->>>>>>> aubin
     public List<SocieteDeLivraison> rechercherSocietesDeLivraison(Ville paramVille) throws AnarmorixException {
         try {
             List<SocieteDeLivraison> liste =  em.createQuery(REQ_SOCIETE).setParameter("pV", paramVille).getResultList();

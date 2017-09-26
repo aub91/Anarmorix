@@ -5,9 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.data.api.IDaoIngredient;
-import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Ingredient;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -18,7 +16,6 @@ import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 @Remote(IDaoIngredient.class)
 @Stateless
 public class DaoIngredient implements IDaoIngredient {
-    
     /**
      * Entity manager.
      */
@@ -31,7 +28,7 @@ public class DaoIngredient implements IDaoIngredient {
     private static final String REQ_INGREDIENT_ID = "Select i FROM Igredient i WHERE i.id = :pId";
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoIngredient() {
     }

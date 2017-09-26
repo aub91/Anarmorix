@@ -7,12 +7,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.afcepf.anarmorix.data.api.IDaoCategorie;
 import fr.afcepf.anarmorix.data.api.IDaoImage;
-import fr.afcepf.anarmorix.data.api.IDaoProduit;
-import fr.afcepf.anarmorix.entity.Categorie;
 import fr.afcepf.anarmorix.entity.Image;
-import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 

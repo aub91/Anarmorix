@@ -38,7 +38,7 @@ public class DaoCommande implements IDaoCommande {
     private static final String REQ_COMMANDE_ID = "Select c FROM Commande c WHERE c.id = :pId ";
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoCommande() {
     }
@@ -47,7 +47,7 @@ public class DaoCommande implements IDaoCommande {
     public List<Commande> rechercher(Adherent paramClient) throws AnarmorixException {
         try {
             @SuppressWarnings("unchecked")
-			List<Commande> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", paramClient.getId()).getResultList();
+            List<Commande> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", paramClient.getId()).getResultList();
             if (liste.size() == 0) {
                 AnarmorixException exc = new AnarmorixException("Le client n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
                 throw exc;
@@ -97,6 +97,4 @@ public class DaoCommande implements IDaoCommande {
             throw exc;
         }
     }
-
-	
 }

@@ -1,5 +1,5 @@
 /**
- * Package contenant les ManagedBean
+ * Package contenant les ManagedBean.
  * @author Aubin
  *
  */

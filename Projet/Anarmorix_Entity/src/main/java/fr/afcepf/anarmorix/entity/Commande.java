@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -123,15 +122,15 @@ public class Commande implements Serializable {
     * @return the id
     */
     public Integer getId() {
-		return id;
-	}
+        return id;
+    }
     /**
-     * @param id paramId the id to set
+     * @param paramId the id to set
      */
     public void setId(Integer paramId) {
-		id = paramId;
-	}
-	/**
+        id = paramId;
+    }
+    /**
      * @return the dateCreation
      */
     public Date getDateCreation() {
@@ -215,6 +214,4 @@ public class Commande implements Serializable {
     public void setLignesCommande(List<LigneCommande> paramLignesCommande) {
         lignesCommande = paramLignesCommande;
     }
-    
-    
 }

@@ -14,14 +14,14 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
-@ManagedBean(name ="mbLigneProduitPanier")
+@ManagedBean(name = "mbLigneProduitPanier")
 @ViewScoped
 public class AfficherProduitPanierMAnagedBean {
-	@EJB
-	private IBusinessPanier busPanier;
-	Produit produits = new Produit();
-	List<Produit> listeProduits = new ArrayList<Produit>();
-	
+    @EJB
+    private IBusinessPanier busPanier;
+    Produit produits = new Produit();
+    List<Produit> listeProduits = new ArrayList<Produit>();
+
 	public AfficherProduitPanierMAnagedBean() {
 	}
 	

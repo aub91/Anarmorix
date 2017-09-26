@@ -8,9 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoMotifDesinscription;
-import fr.afcepf.anarmorix.entity.Adherent;
-import fr.afcepf.anarmorix.entity.Catalogue;
-import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.MotifDesinscription;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -40,11 +37,12 @@ public class DaoMotifDesinscription implements IDaoMotifDesinscription {
     private static final String REQ_MOTIF_ID = "Select m FROM MotifDesinscription c WHERE m.id = :pId";
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoMotifDesinscription() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<MotifDesinscription> rechercher() throws AnarmorixException {
         try {

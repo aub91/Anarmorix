@@ -376,7 +376,4 @@ public abstract class Adherent implements Serializable {
         password = paramPassword;
         image = paramImage;
     }
-
-
-    
 }

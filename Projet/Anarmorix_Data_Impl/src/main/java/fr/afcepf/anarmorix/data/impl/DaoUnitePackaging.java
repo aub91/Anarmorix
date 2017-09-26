@@ -42,6 +42,7 @@ public class DaoUnitePackaging implements IDaoUnitePackaging {
     public DaoUnitePackaging() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<UnitePackaging> rechercher(String paramUnite) throws AnarmorixException {
         try {
@@ -75,7 +76,7 @@ public class DaoUnitePackaging implements IDaoUnitePackaging {
     @Override
     public Boolean supprimer(Integer paramId) throws AnarmorixException {
         try {
-            UnitePackaging unitePackaging= (UnitePackaging) em.createQuery(REQ_UNITE_ID).setParameter("pId", paramId).getSingleResult();
+            UnitePackaging unitePackaging = (UnitePackaging) em.createQuery(REQ_UNITE_ID).setParameter("pId", paramId).getSingleResult();
             em.remove(unitePackaging);
             return true;
         } catch (Exception e) {
@@ -87,7 +88,7 @@ public class DaoUnitePackaging implements IDaoUnitePackaging {
     @Override
     public UnitePackaging mettreAJour(Integer paramId) throws AnarmorixException {
         try {
-            UnitePackaging unitePackaging= (UnitePackaging) em.createQuery(REQ_UNITE_ID).setParameter("pId", paramId).getSingleResult();
+            UnitePackaging unitePackaging = (UnitePackaging) em.createQuery(REQ_UNITE_ID).setParameter("pId", paramId).getSingleResult();
             UnitePackaging updated = em.merge(unitePackaging);
             return updated;
         } catch (Exception e) {
