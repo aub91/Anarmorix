@@ -2,6 +2,7 @@ package fr.afcepf.anarmorix.data.api;
 
 import java.util.List;
 
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
@@ -41,23 +42,15 @@ public interface IDaoProduit {
      * </ul>
      */
     List<Produit> rechercherTousLesProduits() throws AnarmorixException;
-
     /**
-     * @param produit 
-     * @return
+     * Méthode qui cherche le {@link Produit} associé à une {@link LigneCommande}.
+     * @param paramLigneCommande une {@link LigneCommande} sans son produit.
+     * @return une {@link LigneCommande} avec son produit associé.
+     * @throws AnarmorixException
+     * <ul>
+     *  <li>Le serveur de données ne répond pas</li>
+     * </ul>
      */
-    public Produit ajouter(Produit produit) throws AnarmorixException;
-
-    /**
-     * @param id 
-     * @return
-     */
-    public Boolean supprimer(Integer id) throws AnarmorixException;
-
-    /**
-     * @param id 
-     * @return
-     */
-    public Produit mettreAJour(Integer id) throws AnarmorixException;
+    LigneCommande rechercherByLigneCommande(LigneCommande paramLigneCommande) throws AnarmorixException;
 
 }

@@ -45,6 +45,18 @@ public class Livreur extends Professionnel {
 
     /**
      * Constructeur surchargé.
+     * @param paramId the id to set
+     * @param paramDateInscription the dateInscription to set
+     * @param paramNom the nom to set
+     * @param paramPrenom the prenom to set
+     * @param paramDateNaissance the dateNaissance to set
+     * @param paramAdresse the adresse to set
+     * @param paramMail the mail to set
+     * @param paramTelephone1 the telephone1 to set
+     * @param paramTelephone2 the telephone2 to set
+     * @param paramUsername the userName to set
+     * @param paramPassword the password to set
+     * @param paramImage the image to set
      * @param paramSociete the societe to set
      */
     public Livreur(Integer paramId, Date paramDateInscription, String paramNom, String paramPrenom,

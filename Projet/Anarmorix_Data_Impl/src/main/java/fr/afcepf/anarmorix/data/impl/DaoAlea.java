@@ -44,6 +44,7 @@ public class DaoAlea implements IDaoAlea {
     public DaoAlea() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Alea> rechercher(LigneCommande paramLigne) throws AnarmorixException {
         try {

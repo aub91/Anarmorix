@@ -1,12 +1,9 @@
 package fr.afcepf.anarmorix.data.test;
 
-import java.sql.Date;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
-import fr.afcepf.anarmorix.data.impl.DaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -33,17 +30,17 @@ public class TestConnexionDaoAdherent {
      * Username valide.
      */
     private String usernameExistant = "grandarbre";
-    
+
     /**
      * Password pour le test du cas d'un mauvais password.
      */
     private String passwordInvalide = "test";
-    
+
     /**
      * Password valide correspondant à l'username valide.
      */
     private String passwordValide = "aaa";
-    
+
     /**
      * Id de l'adhérent utilisé pour le test de connexion.
      */

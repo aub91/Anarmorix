@@ -6,12 +6,12 @@ import fr.afcepf.anarmorix.data.api.IDaoCategorie;
 import fr.afcepf.anarmorix.entity.Categorie;
 
 /**
- * 
+ * Implémentation des méthodes de {@link IDaoCategorie}.
  */
 public class DaoCategorie implements IDaoCategorie {
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoCategorie() {
     }
@@ -31,7 +31,6 @@ public class DaoCategorie implements IDaoCategorie {
     @Override
     public void supprimer(Categorie paramCategorie) {
         // TODO Auto-generated method stub
-        
     }
 
     @Override

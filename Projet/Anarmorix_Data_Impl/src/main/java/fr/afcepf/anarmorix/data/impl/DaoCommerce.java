@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoCommerce;
+import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Commerce;
 import fr.afcepf.anarmorix.entity.Exploitation;
-import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -41,11 +41,12 @@ public class DaoCommerce implements IDaoCommerce {
     private static final String REQ_COMMERCE_ID = "Select c FROM Commerce c WHERE c.id = :pId";
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public DaoCommerce() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Commerce> rechercherCommerces(Ville paramVille) throws AnarmorixException {
         try {
@@ -63,18 +64,6 @@ public class DaoCommerce implements IDaoCommerce {
                 throw exc;
             }
         }
-    }
-
-    @Override
-    public List<Exploitation> rechercherExploitations(Ville paramVille) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<PointRelais> rechercherPointsRelais(Ville paramVille) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
@@ -116,5 +105,19 @@ public class DaoCommerce implements IDaoCommerce {
             AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
+    }
+
+    @Override
+    public Catalogue rechercherExploitationByCatalogue(Catalogue paramCatalogue) throws AnarmorixException {
+        Exploitation retour = null;
+        try {
+            String hql = "SELECT c.exploitation FROM Catalogue c WHERE c.id = :pid";
+            retour = (Exploitation) em.createQuery(hql).setParameter("pid", paramCatalogue.getId()).getSingleResult();
+            paramCatalogue.setExploitation(retour);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return paramCatalogue;
     }
 }

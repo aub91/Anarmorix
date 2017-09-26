@@ -82,6 +82,7 @@ public class TestDaoLigneCommande {
     /**
      * Client entré dans les commandes test.
      */
+    @SuppressWarnings("deprecation")
     private static final Client CLIENT =  new Client(15, new Date(117, 9, 18), "Scarlatti",
                                         "Gustave", new Date(117, 8, 17), ADRESSE,
                         "épanorthose@ovh.fr", "0666666666", null, "Wildcatgalileo", "aaa", null);
@@ -95,6 +96,7 @@ public class TestDaoLigneCommande {
     /**
      * Commande pour le test du cas nominal.
      */
+    @SuppressWarnings("deprecation")
     private static final Commande COMMANDE =
             new Commande(ID_EXISTANT, new Date(117, 9, 7), new Date(117, 9, 8), "12345", RELAIS, CLIENT, Statut.TERMINE);
 
@@ -190,6 +192,7 @@ public class TestDaoLigneCommande {
     /**
      * Livreur effectuant la tournée.
      */
+    @SuppressWarnings("deprecation")
     private static final Livreur LIVREUR = new Livreur(8, new Date(117, 6, 23), "Bakounine", "Mouloud", new Date(117, 8, 17),
                     ADRESSE_LIVREUR, "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, SOCIETE);
 
@@ -201,6 +204,7 @@ public class TestDaoLigneCommande {
     /**
      * Ligne commande retournée.
      */
+    @SuppressWarnings("deprecation")
     private static final LigneCommande LIGNE =
                     new LigneCommande(1, 1D, 1D, 1D, 1D, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
                     new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE);
@@ -242,5 +246,4 @@ public class TestDaoLigneCommande {
         Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.get(0).getQuantiteLivree());
         Assert.assertEquals(LIGNE.getQuantitePreparee(), retour.get(0).getQuantitePreparee());
     }
-    
 }

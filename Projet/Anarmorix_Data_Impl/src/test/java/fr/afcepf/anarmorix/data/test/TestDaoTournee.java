@@ -66,7 +66,7 @@ public class TestDaoTournee {
      * @throws AnarmorixException exception
      */
     @Test
-    public void testEchecRechercheSocieteLivraisonNonExistant() throws AnarmorixException {
+    public void testEchecRechercheBySocieteLivraisonNonExistant() throws AnarmorixException {
         SocieteDeLivraison retour = daoTest.rechercherBySocieteDeLivraison(societeEchec);
         Assert.assertEquals(0, retour.getTournees().size());
     }
@@ -75,7 +75,7 @@ public class TestDaoTournee {
      * @throws AnarmorixException exception
      */
     @Test
-    public void testRechercheNominal() throws AnarmorixException {
+    public void testRechercheBySocieteDeLivraisonNominal() throws AnarmorixException {
         SocieteDeLivraison retour = daoTest.rechercherBySocieteDeLivraison(societeNominal);
         Assert.assertNotNull(retour);
         Assert.assertEquals(1, retour.getTournees().size());
