@@ -4,8 +4,6 @@ import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Commerce;
-import fr.afcepf.anarmorix.entity.Exploitation;
-import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;

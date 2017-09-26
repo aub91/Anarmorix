@@ -115,7 +115,7 @@ public class DaoCommerce implements IDaoCommerce {
             retour = (Exploitation) em.createQuery(hql).setParameter("pid", paramCatalogue.getId()).getSingleResult();
             paramCatalogue.setExploitation(retour);
         } catch (Exception e) {
-            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
             throw exc;
         }
         return paramCatalogue;

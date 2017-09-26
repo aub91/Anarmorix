@@ -104,7 +104,7 @@ public class DaoCatalogue implements IDaoCatalogue {
     public Produit rechercherByProduit(Produit paramProduit) throws AnarmorixException {
         List<Catalogue> retour = null;
         try {
-            String hql = "SELECT p.catalogue FROM Produit p WHERE p.id = :pid";
+            String hql = "SELECT p.catalogues FROM Produit p WHERE p.id = :pid";
             retour = em.createQuery(hql).setParameter("pid", paramProduit.getId()).getResultList();
             paramProduit.setCatalogues(retour);
         } catch (Exception e) {
