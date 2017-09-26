@@ -2,7 +2,7 @@ package fr.afcepf.anarmorix.data.api;
 
 import java.util.List;
 
-import fr.afcepf.anarmorix.entity.Client;
+import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
@@ -12,9 +12,9 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 public interface IDaoCommande {
 
     /**
-     * @return
+     * @return id
      */
-    public List<Commande> rechercher(Client client) throws AnarmorixException;
+    public List<Commande> rechercher(Adherent client) throws AnarmorixException;
 
     /**
      * @param id 

@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
-import fr.afcepf.anarmorix.entity.Client;
+import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -44,9 +44,10 @@ public class DaoCommande implements IDaoCommande {
     }
 
     @Override
-    public List<Commande> rechercher(Client paramClient) throws AnarmorixException {
+    public List<Commande> rechercher(Adherent paramClient) throws AnarmorixException {
         try {
-            List<Commande> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", paramClient.getId()).getResultList();
+            @SuppressWarnings("unchecked")
+			List<Commande> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", paramClient.getId()).getResultList();
             if (liste.size() == 0) {
                 AnarmorixException exc = new AnarmorixException("Le client n'existe pas.", AnarmorixExceptionEnum.ARGUMENT_INEXISTANT);
                 throw exc;
@@ -96,4 +97,6 @@ public class DaoCommande implements IDaoCommande {
             throw exc;
         }
     }
+
+	
 }

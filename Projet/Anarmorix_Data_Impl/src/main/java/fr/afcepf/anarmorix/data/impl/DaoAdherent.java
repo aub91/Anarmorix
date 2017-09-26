@@ -37,8 +37,12 @@ public class DaoAdherent implements IDaoAdherent {
 
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
     
+<<<<<<< HEAD
     private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid"  ;
    
+=======
+    private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid";
+>>>>>>> christina
 
      /**
      * Default constructor.
@@ -96,6 +100,7 @@ public class DaoAdherent implements IDaoAdherent {
         return updatedAdherent;
     }
 
+<<<<<<< HEAD
 	@Override
 	public Adherent afficherAdherent(Commande commande) throws AnarmorixException {
 		Client adherent = null;
@@ -114,3 +119,29 @@ public class DaoAdherent implements IDaoAdherent {
 
 
 }
+=======
+	
+	    public Adherent afficherAdherent(Commande commande) throws AnarmorixException {
+	        Client adherent = null;
+	        try {
+	            adherent = (Client) em.createQuery(REQ_AFFADHERENT, Client.class)
+	                    .setParameter("pid", commande.getId()).getSingleResult(); 
+	        } catch (Exception e) {
+	            e.printStackTrace();
+
+	        }
+	        return adherent;
+	    }
+
+		@Override
+		public List<Adherent> rechercher(Commande commande) throws AnarmorixException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	}
+	
+	
+
+
+>>>>>>> christina
