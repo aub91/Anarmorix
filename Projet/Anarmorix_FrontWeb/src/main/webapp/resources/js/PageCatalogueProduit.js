@@ -181,6 +181,7 @@ $(function () {
             			categorieProduit =eltCollapseInSecondaire[0].firstChild.textContent;
             			console.log(categorieProduit);
             		}
+            		document.getElementById("libelle").value = categorieProduit;
             	}
         	}, 500);
         });

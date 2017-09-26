@@ -234,30 +234,42 @@ public class BusinessClient implements IBusinessClient {
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
+    private List<Produit> produits = new ArrayList<>();
     @Override
     public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {      
-		List<Produit> produits = new ArrayList<>();
 		List<Categorie> categories = null;
 		List<TypeProduit> typeProduits = new ArrayList<>();
 		try {
 			categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
-			
-			if(categories != null) {
+			//if(isCategorieFille(categories.get(0))) {
+				if(categories != null) {	
+				
 				typeProduits = categories.get(0).getTypesProduits();
-				System.out.println("libelle " + typeProduits.get(0).getLibelle());
 				for (TypeProduit type : typeProduits) {
 					Integer idType  = type.getId();
 					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
 				}
-			}
-		
+			} /*else {
+				for (Categorie cat : categories.get(0).getCategoriesFilles()) {
+					 recupererLesProduitsParCategorie(cat.getLibelle());
+				}
+			}*/
 		} catch (Exception e) {
 			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
 			throw exc;
 		}
 		return produits;
     }
-
+    
+    private boolean isCategorieFille(Categorie paramCategorie) {
+    	if(paramCategorie.getCategoriesFilles() == null) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    
+    }
+    
     /**
      * Methode pour récupérer toutes les catégories.
      * @return une liste de catgégorie.

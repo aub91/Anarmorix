@@ -59,9 +59,8 @@ public class DaoCategorie implements IDaoCategorie {
         List<Categorie> categories = null;
         try {
             categories = em.createQuery(
-                    "SELECT c FROM Categorie c JOIN c.typesProduits t"
-                            + "WHERE c.libelle = :clibelle", Categorie.class)
-                    .setParameter("clibelle", libelleCategorie)
+                    "SELECT c FROM Categorie c WHERE c.libelle = :plibelle", Categorie.class)
+                    .setParameter("plibelle", libelleCategorie)
                     .getResultList();
         } catch (Exception e) {
             AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);

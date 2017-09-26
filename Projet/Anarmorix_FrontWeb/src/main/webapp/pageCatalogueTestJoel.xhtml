@@ -103,7 +103,7 @@
 			</div>
 			<div class="col-lg-9">
 				<div class="section-catalogue">
-					<div class="page-header" id = "blocAvantImage">
+					<div class="page-header">
 						<div class="row">
 							<h1 class="text-center">
 								<div class="col-lg-5">
@@ -128,15 +128,14 @@
 					
 					<!-- début bloc images produits -->
 					<div class="row" id = "blocImage">
-					<h:outputLabel value="blabla" />
-						<ui:repeat var="pdt" value="#{mbAfficheProduits.recupererProduitsFiltres('Fraise')}">
+						<h:inputHidden id="libelle" value="#{mbAfficheProduits.libelleCategorie}" />
+						<ui:repeat var="pdt" value="#{mbAfficheProduits.recupererProduitsFiltres()}">
 							<div class="col-md-3 text-center">
 								 <div class="box">
 									<div class="box-img">
 										<h:graphicImage value="#{pdt.image.chemin}"/>
 									</div>
 								</div>
-								<!-- <h:outputLabel value="#{pdt.image.chemin}"/> -->
 							</div>
 						</ui:repeat> 
 					</div>

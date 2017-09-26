@@ -25,7 +25,7 @@ public class AfficherProduitsManagedBean {
     List<Categorie> categoriesSecondaires =  new ArrayList<>();
     List<Categorie> categoriesTertiaires =  new ArrayList<>();
     List<Categorie> categoriesFilles =  new ArrayList<>();
-    List<Produit> produitsFiltresParCategorie =  new ArrayList<>();
+    String libelleCategorie;
     Integer idCategorieMere;
 
     public AfficherProduitsManagedBean() {
@@ -48,11 +48,21 @@ public class AfficherProduitsManagedBean {
         return businessCLient.recupererCategoriesFilles(idCategorieMere);
     }
 
-    public  List<Produit> recupererProduitsFiltres(String libelleCategorie) throws AnarmorixException {
-        return businessCLient.recupererLesProduitsParCategorie(libelleCategorie);
+    public  List<Produit> recupererProduitsFiltres() throws AnarmorixException {
+    	if(libelleCategorie == null ) libelleCategorie = "Fraise";
+    	return businessCLient.recupererLesProduitsParCategorie(libelleCategorie);
     }
+    
 
-    public List<Categorie> getCategoriesTertiaires() {
+    public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+
+	public List<Categorie> getCategoriesTertiaires() {
         return categoriesTertiaires;
     }
 
