@@ -2,7 +2,9 @@ body {
   margin-top: 50px;
   font-family: Lato, sans-serif;
 }
+.container {
 
+}
 /*css navbar*/
 
  .dropdown-menu { 
@@ -77,6 +79,9 @@ body {
 }
 
 #titlecatalogue {
+	margin-left: -45px;
+	padding-bottom: 30px;
+	display: inline-block;
 	float: left;
 	font-family: Pacifico, sans-serif;
 }
@@ -85,10 +90,20 @@ body {
 	margin-top: 58px;
 }
 
-.section-catalogue .row {
-	margin-top: -20px;
+ .section-catalogue .row-nom {
+	margin-top: -15px;
 }
 
+
+.section-catalogue .recette-btn {
+	margin-top: -50px;
+	
+}
+.section-catalogue .box-img img {
+	
+	height: 285px;
+	width: 274.55px;
+}
 
 
 /*css bouton funky*/
@@ -414,6 +429,10 @@ body {
 	padding-top: 7px ;
 	display: inline-block;
 }
+
+
+
+
 
 
 /*footer*/
