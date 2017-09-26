@@ -15,7 +15,7 @@ public interface IBusinessPointRelais {
      * @param commande
      * @return
      */
-	List<Adherent> afficherAdherent(Commande commande) throws AnarmorixException;
+	Adherent afficherAdherent(Commande commande) throws AnarmorixException;
 	/**
      * @param client
      * @return

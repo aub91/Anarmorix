@@ -2,6 +2,10 @@ package fr.afcepf.anarmorix.business.impl;
 
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import fr.afcepf.anarmorix.business.api.IBusinessPointRelais;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.data.api.IDaoAlea;
@@ -14,6 +18,8 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 /**
  * 
  */
+@Stateless
+@Remote(IBusinessPointRelais.class)
 public class BusinessPointrelais implements IBusinessPointRelais {
 
     /**
@@ -21,16 +27,18 @@ public class BusinessPointrelais implements IBusinessPointRelais {
      */
     public BusinessPointrelais() {
     }
-
+    @EJB
     public IDaoAdherent daoAdherent;
     /**
      * 
      */
+    @EJB
     public IDaoCommande daoCommande;
 
     /**
      * 
      */
+    @EJB
     public IDaoAlea daoAlea;
 
     /**
@@ -68,9 +76,9 @@ public class BusinessPointrelais implements IBusinessPointRelais {
 	}
 
 	@Override
-	public List<Adherent> afficherAdherent(Commande commande) throws AnarmorixException {
+	public Adherent afficherAdherent(Commande commande) throws AnarmorixException {
 		
-		return daoAdherent.rechercher(commande);
+		return daoAdherent.afficherAdherent(commande);
 	}
 
 	

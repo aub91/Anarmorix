@@ -37,5 +37,7 @@ public interface IDaoAdherent {
      * @param adherent
      */
     Adherent mettreAJour(Adherent adherent) throws AnarmorixException;
+    
+    public Adherent afficherAdherent(Commande commande) throws AnarmorixException;
 
 }

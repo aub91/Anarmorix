@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
 import fr.afcepf.anarmorix.entity.Adherent;
+import fr.afcepf.anarmorix.entity.Client;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -34,6 +35,8 @@ public class DaoAdherent implements IDaoAdherent {
     private static final String REQ_CNX = "SELECT a FROM Adherent a WHERE a.username = :pusername AND a.password = :ppassword";
 
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
+    
+    private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid";
 
      /**
      * Default constructor.
@@ -91,9 +94,27 @@ public class DaoAdherent implements IDaoAdherent {
         return updatedAdherent;
     }
 
-	@Override
-	public List<Adherent> rechercher(Commande commande) throws AnarmorixException {
-		return null;
-	}
+	
+	    public Adherent afficherAdherent(Commande commande) throws AnarmorixException {
+	        Client adherent = null;
+	        try {
+	            adherent = (Client) em.createQuery(REQ_AFFADHERENT, Client.class)
+	                    .setParameter("pid", commande.getId()).getSingleResult(); 
+	        } catch (Exception e) {
+	            e.printStackTrace();
 
-}
+	        }
+	        return adherent;
+	    }
+
+		@Override
+		public List<Adherent> rechercher(Commande commande) throws AnarmorixException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	}
+	
+	
+
+

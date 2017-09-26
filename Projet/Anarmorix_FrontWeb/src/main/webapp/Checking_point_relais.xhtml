@@ -17,7 +17,12 @@
 	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+function ValideForm() {
+	if(document.getElementById('checkbox1').checked == true) {document.getElementById('btnValider').disabled = false }
+	if(document.getElementById('checkbox1').checked == false) {document.getElementById('btnValider').disabled = true }
+}
+</script> 
 
 <style type="text/css">
 #commande {
@@ -72,7 +77,7 @@
 
 #numero_livraison {
 	margin-bottom: 60px;
-	font-size: 30px;
+	font-size: 26px;
 	margin-left: 30px;
 	color: purple;
 	font-style: georgia;
@@ -83,10 +88,21 @@
 	grid-row: 1;
 }
 
+#liste {
+font-size: 23px;
+	font-weight: bold;
+	background-color: #9683EC;
+}
+
+#liste1 {
+margin-left: 25px;
+
+}
+
 #liste_commande {
 	height: 60px;
 	text-align: center;
-	font-size: 23px;
+	font-size: 20px;
 	font-weight: bold;
 	background-color: #9683EC;
 }
@@ -100,88 +116,53 @@
 	<div class="content-wrapper">
 		<div id="section-general">
 			<div class="title">
-				<h1 id="numero_livraison">Livraison numéro 9</h1>
+				<h1 id="numero_livraison" style="font-family:deftone stylus regular">Livraison numéro 9</h1>
 			</div>
+			<div id="liste"><span id="liste1">Liste des commandes à récupérer</span></div>
+			<br/>
+			<br/>
 			<table class="table">
+			
 				<thead>
 					<tr>
-						<th colspan="1"></th>
+					<th >Commande</th>
+					<th>Consommateur</th>
+					<th >Commande à récupérer</th>
+					<th >Validation</th>
 					</tr>
-					<tr>
-						<th id="liste_commande">Liste des commandes à récupérer</th>
-					</tr>
+					
 				</thead>
 				<ui:repeat var="prodPR" value="#{mbPR.liste}">
 
 					<tr>
-						<td>
-							<div id="commande">
-								<div id="commande_numero">
-									Commande numéro <span id="numero"> <span>#{prodPR.id}</span></span>
-								</div>
-								<div id="nomprenom_consommateur">nom et prénom du
-									consommateur</div>
-								<div id="commande_recuperee">
-									Commande récupérée <input type="checkbox" id="checkbox1"
-										value="checkbox1"></input>
-								</div>
-								
-									<input type="button" class="btn" id="btnValider" style="width:90px"
-										value="Valider"></input>
-								
-							</div>
-						</td>
-
-					</tr>
-
-					<tr>
-						<td>
-							<div id="commande">
-								<div id="commande_numero">
-									Commande numéro <span id="numero">519</span>
-								</div>
-								<div id="nomprenom_consommateur">nom et prénom du
-									consommateur</div>
-								<div id="commande_recuperee">
-									Commande récupérée <input type="checkbox" id="checkbox1"
-										value="checkbox1"></input>
-								</div>
-								
-									<input type="button" class="btn" id="btnValider" style="width:90px"
-										value="Valider"></input>
-								
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-						<td>
+						<td>Commande numéro <span id="numero"> <span>#{prodPR.id}</span></span></td>
+						<td>  #{prodPR.client.nom} #{prodPR.client.prenom} </td>
 						
-							<div id="commande">
-								<div id="commande_numero">
-									Commande numéro <span id="numero"></span>
-								</div>
-								<div id="nomprenom_consommateur">nom et prénom du
-									consommateur</div>
-								<div id="commande_recuperee">
-									Commande récupérée <input type="checkbox" id="checkbox1"
-										value="checkbox1"></input>
-								</div>
+						
+						
+				<td>Commande récupérée 	<input type="checkbox" id="checkbox1"
+										value="checkbox1" onClick="ValideForm()"></input></td>
 								
-									<input type="button" class="btn" id="btnValider" style="width:90px"
-										value="Valider"></input>
 								
-							</div>
-						</td>
+
+
+
+								
+						<td><input type="submit" class="btn" id="btnValider" style="width:90px"
+										value="Valider" disabled="disabled"></input></td>
+								
+				
+				
 
 					</tr>
-				</ui:repeat>
-				<tfoot>
-				</tfoot>
+						</ui:repeat>
+
 			</table>
 		</div>
 	</div>
 	<br />
+	
 
 </body>
+		
 </html>
