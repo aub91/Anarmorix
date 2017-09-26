@@ -54,6 +54,20 @@ public class BusinessConsommateur implements IBusinessConsommateur {
 
 
 
+	@Override
+	public LigneCommande mettreAJourLC(Integer id) throws AnarmorixException {
+		
+		return daoLignecommande.mettreAJour(id);
+	}
+
+
+
+
+
+
+
+
+
 
 
 

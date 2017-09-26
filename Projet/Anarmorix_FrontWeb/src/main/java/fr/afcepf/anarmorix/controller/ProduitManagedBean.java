@@ -11,12 +11,15 @@ import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.ViewScoped;
 
+
+
 import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 
 
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
 
@@ -29,6 +32,10 @@ public class ProduitManagedBean {
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
+	private LigneCommande ligne= new LigneCommande();
+
+	
+	
 
 
 	
@@ -37,6 +44,17 @@ public class ProduitManagedBean {
 	private IBusinessConsommateur bu;
 	
 	
+	public void valider(Integer id) {
+		try {
+			
+			ligne = bu.mettreAJourLC(id);
+			System.out.println(ligne);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	
@@ -63,8 +81,11 @@ public class ProduitManagedBean {
 
 		liste=bu.afficherLigneCommande(cmde);
 		
-		System.out.println(liste.size());
-		System.out.println(cmde.getDateCreation());
+		
+		
+		
+	
+		
 
 		} catch (Exception e) {
 			
@@ -72,7 +93,12 @@ public class ProduitManagedBean {
 		}
 	
 	}
+	
 
+
+	 
+	 
+	 
 	public Commande getCmde() {
 		return cmde;
 	}

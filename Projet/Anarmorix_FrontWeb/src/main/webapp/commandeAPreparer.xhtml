@@ -60,11 +60,13 @@
             </div>
             
             <div id="dateDebut">
-			Date de début de préparation : 
-			<h:inputText value="#{mbProduit.cmde.statut}" >
-			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
-			 </h:inputText>
-			<input type="button" class="btn" id="btnValider" value="Valider"  style="color:white;"></input>
+            	<form name="form-Maj">
+				Date de fin de préparation : 
+				<h:inputText value="#{mbProduit.cmde.dateCreation}"  name="saisie-dateFinPreparation">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
+				 </h:inputText>
+				<input type="submit" class="btn" id="btnValider" value="Valider"  style="color:white;"></input>
+				</form>
 			</div>
 
             <table class="table">
@@ -79,7 +81,8 @@
                     <tr>
                         <th>IMAGE</th>
                         <th>DESCRIPTIF</th>
-                        <th>QUANTITE</th>
+                        <th>QUANTITE COMMANDEE</th>
+                        <th>QUANTITE PREPAREE</th>
                         
                         <th></th>
                     </tr>
@@ -89,12 +92,15 @@
                 <tr>
                 	<td><img src="#{prodPrep.produit.image.chemin}"  width="50px" height="50px"/></td>
                 	<td>#{prodPrep.produit.type.libelle}</td>
-                	<td>#{prodPrep.quantitePreparee}
+                	<td>#{prodPrep.quantiteCommandee}
                 	<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}"  />
-                	 <input type="number" name="quantity" value="text" style="width:50px"/>
                 	</td>
-                	<td><input type="button" class="btn" id="btnValider2" value="Valider"  style="color:white;"/></td>
-                
+                	<td><input id="quantiteProduit" type="number" value="#{prodPrep.quantitePreparee}"></input>
+                	<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}"  />
+                	 </td>
+                	<td><h:button action ="#{mbProduit.valider()}"  value="Valider" 
+                		id="btnValider2" class="btn" 
+                		style="color:white;"></h:button> </td>        
                 </tr>
                 </ui:repeat>
             </table>
@@ -102,7 +108,7 @@
 
     </div>
     <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
- 
+	
     <footer class="sticky-footer">
     </footer>
 </body>
