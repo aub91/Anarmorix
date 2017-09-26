@@ -15,17 +15,24 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
+<<<<<<< HEAD
  * Implémentation du DAO categorie.
+=======
+ * Implémentation des méthodes de {@link IDaoCategorie}.
+>>>>>>> aubin
  */
 @Remote(IDaoCategorie.class)
 @Stateless
 public class DaoCategorie implements IDaoCategorie {
     /**
+<<<<<<< HEAD
      * Le contexte de persisntence.
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
     /**
+=======
+>>>>>>> aubin
      * Default constructor.
      */
     public DaoCategorie() {
@@ -76,7 +83,6 @@ public class DaoCategorie implements IDaoCategorie {
     @Override
     public void supprimer(Categorie paramCategorie) {
         // TODO Auto-generated method stub
-        
     }
 
     @Override

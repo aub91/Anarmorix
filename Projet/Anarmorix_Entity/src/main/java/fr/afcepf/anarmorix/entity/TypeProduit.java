@@ -61,7 +61,7 @@ public class TypeProduit implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_tva", nullable = true, foreignKey = @ForeignKey(name = "FK_TypeProduit_Tva"))
     private TauxTVA tva;
-    
+
     /**
      * Catégorie du type produit.
      */
@@ -98,7 +98,7 @@ public class TypeProduit implements Serializable {
      * @param paramLibelle the libelle to set
      * @param paramDureeDeConservation the dureeConservation to set
      * @param paramTva the tva to set
-     * @param parmaCategorie the categorie to set
+     * @param paramCategorie the categorie to set
      * @param paramUniteConservation the uniteConservation to set
      * @param paramImageParDefaut the imageParDefaut to set
      */

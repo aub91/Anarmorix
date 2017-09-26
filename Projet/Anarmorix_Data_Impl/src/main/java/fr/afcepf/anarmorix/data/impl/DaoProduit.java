@@ -1,6 +1,5 @@
 package fr.afcepf.anarmorix.data.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -9,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -108,6 +108,7 @@ public class DaoProduit implements IDaoProduit {
      * @return une liste de produits.
      * @throws AnarmorixException Le serveur ne répond pas.
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<Produit> rechercherTousLesProduits() throws AnarmorixException {
         List<Produit> liste = null;
@@ -119,23 +120,18 @@ public class DaoProduit implements IDaoProduit {
         }
         return liste;
     }
-
     @Override
-    public Produit ajouter(Produit paramProduit) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Boolean supprimer(Integer paramId) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Produit mettreAJour(Integer paramId) {
-        // TODO Auto-generated method stub
-        return null;
+    public LigneCommande rechercherByLigneCommande(LigneCommande paramLigneCommande) throws AnarmorixException {
+        Produit retour = null;
+        try {
+            String hql = "SELECT lc.produit FROM LigneCommande lc WHERE lc.id = :pid";
+            retour = (Produit) em.createQuery(hql).setParameter("pid", paramLigneCommande.getId()).getSingleResult();
+            paramLigneCommande.setProduit(retour);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
+        return paramLigneCommande;
     }
 
 

@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoCodePostal;
 import fr.afcepf.anarmorix.entity.Adresse;
-import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.CodePostal;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -28,7 +27,6 @@ public class DaoCodePostal implements IDaoCodePostal {
      */
     @PersistenceContext(unitName = "Anarmorix_Data_Impl")
     private EntityManager em;
-    
     /**
      * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
      */
@@ -39,13 +37,13 @@ public class DaoCodePostal implements IDaoCodePostal {
      * Requête permettant de récupérer un catalogue en fonction de son Id.
      */
     private static final String REQ_CP_ID = "Select c FROM CodePostal c WHERE c.id = :pId";
-    
     /**
      * Default constructor.
      */
     public DaoCodePostal() {
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<CodePostal> rechercher(Ville paramVille) throws AnarmorixException {
 

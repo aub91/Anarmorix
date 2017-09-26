@@ -1,45 +1,30 @@
 package fr.afcepf.anarmorix.business.impl;
 
-import java.util.Date;
-import java.util.List;
-
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
-import fr.afcepf.anarmorix.data.api.IDaoAdresse;
-import fr.afcepf.anarmorix.entity.Adresse;
+import fr.afcepf.anarmorix.data.api.IDaoTournee;
+import fr.afcepf.anarmorix.data.impl.DaoTournee;
+import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Classe implémentant les méthodes de {@link IBusinessLivreur}.
  */
 public class BusinessLivreur implements IBusinessLivreur {
-
     /**
-     * Default constructor
+     * {@link IDaoTournee}.
+     */
+    private IDaoTournee daoTournee = new DaoTournee();
+    /**
+     * Default constructor.
      */
     public BusinessLivreur() {
+
     }
 
-
-    /**
-     * 
-     */
-    public IDaoAdresse daoAdresse;
-
-    /**
-     * @param date 
-     * @return
-     */
-    public List<Adresse> recupererCommande(Date date) {
-        // TODO implement here
-        return null;
+    @Override
+    public SocieteDeLivraison setTournees(SocieteDeLivraison paramSocieteDeLivraison) throws AnarmorixException {
+        return daoTournee.rechercherBySocieteDeLivraison(paramSocieteDeLivraison);
     }
 
-    /**
-     * @param date 
-     * @return
-     */
-    public List<Adresse> liverCommande(Date date) {
-        // TODO implement here
-        return null;
-    }
 
 }

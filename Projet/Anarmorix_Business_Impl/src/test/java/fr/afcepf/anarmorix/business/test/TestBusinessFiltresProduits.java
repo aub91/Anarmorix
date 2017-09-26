@@ -11,7 +11,6 @@ import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.business.impl.BusinessClient;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.data.impl.DaoProduit;
-import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 /**
@@ -33,6 +32,7 @@ public class TestBusinessFiltresProduits {
     private static final int TAILLE_LISTE = 3;
     /**
      * test de recherche de tous les produits.
+     * @throws AnarmorixException une exception non attendue
      */
     @Test
     public void testNominal() throws AnarmorixException {
@@ -40,13 +40,16 @@ public class TestBusinessFiltresProduits {
         Assert.assertNotNull(produits);
         Assert.assertEquals(TAILLE_LISTE, produits.size());
      }
-    public TestBusinessFiltresProduits () {
+    /**
+     * Default constructor avec injection mock.
+     */
+    public TestBusinessFiltresProduits() {
         IDaoProduit mockDaoProduit = new DaoProduit() {
             @Override
             public List<Produit> rechercherTousLesProduits() throws AnarmorixException {
                 List<Produit> liste = new ArrayList<>();
                 for (int i = 0; i < TAILLE_LISTE; i++) {
-                    Produit pdt = new Produit(i,null,null,null,null,null,null);
+                    Produit pdt = new Produit(i, null, null, null, null, null, null);
                     liste.add(pdt);
                 }
                 return liste;
@@ -61,20 +64,4 @@ public class TestBusinessFiltresProduits {
             e.printStackTrace();
         }
     }
-/*    @Test
-    public void testRecupererTousLesProduits() {
-      List<Produit> produits = new ArrayList<>();
-        try {
-           // produits = daoProduit.rechercherTousLesProduits();
-            produits = businessCLient.choisirCategorieProduit();
-            for (Produit p : produits) {
-                System.out.println("test prix : " + p.getPrixUnitaire().intValue());
-                System.out.println("test chemin image : " + p.getImage().getChemin());
-            }
-            Assert.assertNotNull(produits);
-            Assert.assertEquals(TAILLE_LISTE, produits.size());
-        } catch (AnarmorixException e) {
-            Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
-        }
-    }*/
 }

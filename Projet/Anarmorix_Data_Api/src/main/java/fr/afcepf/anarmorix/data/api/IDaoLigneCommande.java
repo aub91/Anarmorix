@@ -4,10 +4,11 @@ import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Fonctionnalités liés à la persistence de l'entité {@link LigneCommande}.
  */
 public interface IDaoLigneCommande {
 
@@ -19,26 +20,33 @@ public interface IDaoLigneCommande {
     /**
      * @param paramId l'id de la ligne de commande recherchée.
      * @return la ligne de commande identifiée par l'id.
-     * @throws AnarmorixException, l'exception spécifique éventuellement levée.
+     * @throws AnarmorixException l'exception spécifique éventuellement levée.
      */
-    public LigneCommande rechercher(Integer paramId) throws AnarmorixException;
+    LigneCommande rechercher(Integer paramId) throws AnarmorixException;
 
     /**
      * @param ligneCommande 
      * @return
      */
-    public LigneCommande ajouter(LigneCommande ligneCommande) throws AnarmorixException;
+    LigneCommande ajouter(LigneCommande ligneCommande) throws AnarmorixException;
 
     /**
      * @param id 
      * @return
      */
-    public Boolean supprimer(Integer id) throws AnarmorixException ;
+    Boolean supprimer(Integer id) throws AnarmorixException ;
 
     /**
      * @param id 
      * @return
      */
-    public LigneCommande mettreAJour(Integer id) throws AnarmorixException;
+    LigneCommande mettreAJour(Integer id) throws AnarmorixException;
+    /**
+     * Méthode recherchant les lignes de commandes d'une tournée.
+     * @param paramTournee la tournée à alimenter
+     * @return la tournée avec sa liste de lignes de commande
+     * @throws AnarmorixException une exception levée
+     */
+    Tournee rechercherByTournee(Tournee paramTournee) throws AnarmorixException;
 
 }

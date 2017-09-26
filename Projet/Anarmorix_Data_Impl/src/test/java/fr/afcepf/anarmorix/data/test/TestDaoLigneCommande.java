@@ -82,6 +82,7 @@ public class TestDaoLigneCommande {
     /**
      * Client entré dans les commandes test.
      */
+    @SuppressWarnings("deprecation")
     private static final Client CLIENT =  new Client(15, new Date(117, 9, 18), "Scarlatti",
                                         "Gustave", new Date(117, 8, 17), ADRESSE,
                         "épanorthose@ovh.fr", "0666666666", null, "Wildcatgalileo", "aaa", null);
@@ -95,6 +96,7 @@ public class TestDaoLigneCommande {
     /**
      * Commande pour le test du cas nominal.
      */
+    @SuppressWarnings("deprecation")
     private static final Commande COMMANDE =
             new Commande(ID_EXISTANT, new Date(117, 9, 7), new Date(117, 9, 8), "12345", RELAIS, CLIENT, Statut.TERMINEE);
 
@@ -182,7 +184,7 @@ public class TestDaoLigneCommande {
             new Adresse(8, 7, null, "rue Saint-Andtoine", CP_2, VILLE_2, "-3.121430", "48.851137");
 
     /**
-     * Société de livraison prenant en charge la torunée.
+     * Société de livraison prenant en charge la tournée.
      */
     private static final SocieteDeLivraison SOCIETE =
             new SocieteDeLivraison(13, "422260208", "00026", "47111D", null, "Michel SARL", ADRESSE_SOCIETE, null);
@@ -190,6 +192,7 @@ public class TestDaoLigneCommande {
     /**
      * Livreur effectuant la tournée.
      */
+    @SuppressWarnings("deprecation")
     private static final Livreur LIVREUR = new Livreur(8, new Date(117, 6, 23), "Bakounine", "Mouloud", new Date(117, 8, 17),
                     ADRESSE_LIVREUR, "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, SOCIETE);
 
@@ -197,10 +200,19 @@ public class TestDaoLigneCommande {
      * Tournée prenant en charge la ligne de commande.
      */
     private static final Tournee TOURNEE = new Tournee(1, new Date(/*debut*/), new Date(/*fin*/), SOCIETE, LIVREUR);
+    /**
+     * ID de tournée non existant en base de données.
+     */
+    private static final int ID_TOURNEE_NON_EXISTANT = 999;
+    /**
+     * Tournée non existante en base.
+     */
+    private static final Tournee TOURNEE_NON_EXISTANTE = new Tournee(ID_TOURNEE_NON_EXISTANT, new Date(/*debut*/), new Date(/*fin*/), SOCIETE, LIVREUR);
 
     /**
      * Ligne commande retournée.
      */
+    @SuppressWarnings("deprecation")
     private static final LigneCommande LIGNE =
                     new LigneCommande(1, 1D, 1D, 1D, 1D, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
                     new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE);
@@ -210,7 +222,7 @@ public class TestDaoLigneCommande {
      * @throws AnarmorixException l'exception attendue, argument inexistant.
      */
     @Test
-    public void testEchecArgumentInexistant() throws AnarmorixException {
+    public void testEchecRechercherByCommandeArgumentInexistant() throws AnarmorixException {
         try {
             List<LigneCommande> retour = dao.rechercher(COMMANDE_INEXISTANTE);
             System.out.println("Size echec :");
@@ -228,7 +240,7 @@ public class TestDaoLigneCommande {
      * @throws AnarmorixException une exception que l'on ne doit pas avoir dans le test nominal.
      */
     @Test
-    public void testNominal() throws AnarmorixException {
+    public void testRechercheByCommandeNominal() throws AnarmorixException {
         List<LigneCommande> retour = dao.rechercher(COMMANDE);
         Assert.assertEquals(1, retour.size());
         Assert.assertEquals(LIGNE.getId(), retour.get(0).getId());
@@ -241,5 +253,30 @@ public class TestDaoLigneCommande {
         Assert.assertEquals(LIGNE.getQuantiteDelivree(), retour.get(0).getQuantiteDelivree());
         Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.get(0).getQuantiteLivree());
         Assert.assertEquals(LIGNE.getQuantitePreparee(), retour.get(0).getQuantitePreparee());
+    }
+    /**
+     * Test nominal de la méthode rechercherByTournee.
+     * @throws AnarmorixException exception non attendue
+     */
+    @Test
+    public void testNominalRechercherByTournee() throws AnarmorixException {
+        Tournee retour = dao.rechercherByTournee(TOURNEE);
+        Assert.assertNotNull(retour);
+        Assert.assertEquals(TOURNEE.getId(), retour.getId());
+        Assert.assertEquals(1, retour.getLignesCmd().size());
+        Assert.assertEquals(LIGNE.getId(), retour.getLignesCmd().get(0).getId());
+        Assert.assertEquals(LIGNE.getQuantiteCommandee(), retour.getLignesCmd().get(0).getQuantiteCommandee());
+        Assert.assertEquals(LIGNE.getQuantiteDelivree(), retour.getLignesCmd().get(0).getQuantiteDelivree());
+        Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.getLignesCmd().get(0).getQuantiteLivree());
+        Assert.assertEquals(LIGNE.getQuantitePreparee(), retour.getLignesCmd().get(0).getQuantitePreparee());
+    }
+    /**
+     * Test échec rechercherByTournee avec tournee non existante.
+     * @throws AnarmorixException exception non attendue
+     */
+    @Test
+    public void testEchecRechercherByTournee() throws AnarmorixException {
+        Tournee retour = dao.rechercherByTournee(TOURNEE_NON_EXISTANTE);
+        Assert.assertEquals(0, retour.getLignesCmd().size());
     }
 }

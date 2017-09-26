@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
-import fr.afcepf.anarmorix.entity.Alea;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
@@ -79,8 +79,9 @@ public class DaoCatalogue implements IDaoCatalogue {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public List<Catalogue> rechercher(Exploitation paramExploitation) throws AnarmorixException {
+    public List<Catalogue> rechercherByExploitation(Exploitation paramExploitation) throws AnarmorixException {
         try {
             List<Catalogue> liste =  em.createQuery(REQ_RECHERCHE).setParameter("pId", paramExploitation.getId()).getResultList();
             if (liste.size() == 0) {
@@ -96,6 +97,21 @@ public class DaoCatalogue implements IDaoCatalogue {
                 throw exc;
             }
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Produit rechercherByProduit(Produit paramProduit) throws AnarmorixException {
+        List<Catalogue> retour = null;
+        try {
+            String hql = "SELECT p.catalogues FROM Produit p WHERE p.id = :pid";
+            retour = em.createQuery(hql).setParameter("pid", paramProduit.getId()).getResultList();
+            paramProduit.setCatalogues(retour);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return paramProduit;
     }
 
 }

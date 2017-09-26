@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoHoraire;
-import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Horaire;
 import fr.afcepf.anarmorix.entity.JourOuverture;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -48,7 +47,7 @@ public class DaoHoraire implements IDaoHoraire {
     }
 
     @Override
-    public boolean supprimer(Integer paramId) throws AnarmorixException{
+    public boolean supprimer(Integer paramId) throws AnarmorixException {
         try {
             Horaire horaire = (Horaire) em.createQuery(REQ_HORAIRE_ID).setParameter("pId", paramId).getSingleResult();
             em.remove(horaire);
@@ -60,7 +59,7 @@ public class DaoHoraire implements IDaoHoraire {
     }
 
     @Override
-    public Horaire mettreAJour(Integer paramId) throws AnarmorixException{
+    public Horaire mettreAJour(Integer paramId) throws AnarmorixException {
         try {
             Horaire horaire = (Horaire) em.createQuery(REQ_HORAIRE_ID).setParameter("pId", paramId).getSingleResult();
             Horaire updated = em.merge(horaire);
