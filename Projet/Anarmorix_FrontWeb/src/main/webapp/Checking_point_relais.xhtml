@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8"></meta>
 <title>RecettePage1</title>
-<script type="text/javascript" src="js/jquery.js">
+<script type="text/javascript" src="js/jquery.js">0
 </script>
 <script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
 </script>
@@ -30,10 +30,15 @@
 	btnValider.style="color:white";
 	btnValider.disabled="disabled";
 	vider(userPassword);
+	$('#userPassword').hide();
+	$('#mdp').hide();
+	$('#valid').hide();
 	
 		}
 
-		
+		else if (userPassword == "")
+		{alert('Veuillez entrer un mot de passe');
+		}
 		else
 		{alert('Veuillez entrer un mot de passe valide')}
 		}
@@ -90,7 +95,7 @@
 #btnValider {
 	grid-column: 4;
 	grid-row: 1;
-}
+}     
 
 #commande_recuperee {
 	grid-column: 3;
@@ -149,8 +154,8 @@ margin-left: 25px;
 					<tr>
 					<th >Commande</th>
 					<th>Consommateur</th>
-					<th>Mot de passe</th>
-					<th >Validation</th>
+					<th id="mdp">Mot de passe</th>
+					<th id="valid">Validation</th>
 					</tr>
 					
 				</thead>
@@ -160,10 +165,6 @@ margin-left: 25px;
 						<td>Commande numéro <span id="numero"> <span>#{prodPR.id}</span></span></td>
 						<td>  #{prodPR.client.nom} #{prodPR.client.prenom} </td>
 						
-						
-						
-				
-								
 								
 <td><input id="userPassword" type="password" required="required"></input></td>
 
@@ -182,7 +183,7 @@ margin-left: 25px;
 		</div>
 	</div>
 	<br />
-	
+	 
 
 </body>
 		
