@@ -58,6 +58,7 @@ public class ProduitManagedBean {
 		try {
 		
 		cmde.setId(1);
+		cmde.setClient(bu.afficherClient(cmde));
 		
 	
 		liste=bu.afficherLigneCommande(cmde);
@@ -70,14 +71,6 @@ public class ProduitManagedBean {
 		}
 	
 	}
-//	public void affciher() throws AnarmorixException {
-	//	lgcmd=bu.afficherLigneCommande(cmde);
-	//}
-
-
-
-
-
 
 	public Commande getCmde() {
 		return cmde;

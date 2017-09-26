@@ -61,7 +61,7 @@
             
             <div id="dateDebut">
 			Date de début de préparation : 
-			<h:inputText value="#{mbProduit.cmde.dateCreation}" >
+			<h:inputText value="#{mbProduit.cmde.dateValidation}" >
 			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
 			 </h:inputText>
 			
@@ -75,6 +75,8 @@
                         <th >N° COMMANDE : 
                         <h:outputLabel value="#{mbProduit.cmde.id}"  />
                          </th>
+                         <th>Nom du client: <h:outputText value="#{mbProduit.cmde.client.nom}" /></th>
+                         <th>Prenom d client : <h:outputText value="#{mbProduit.cmde.client.prenom}" /></th>
                     </tr>
                     <tr>
                         <th>IMAGE</th>

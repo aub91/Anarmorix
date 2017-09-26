@@ -36,7 +36,7 @@ public class DaoAdherent implements IDaoAdherent {
 
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
     
-    private static final String REQ_AFFADHERENT = "SELECT ad FROM Client ad WHERE ad.id = :pid";
+    private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid";
      /**
      * Default constructor.
      */
@@ -98,7 +98,7 @@ public class DaoAdherent implements IDaoAdherent {
 		Client adherent = null;
 		try {
 		    adherent = (Client) em.createQuery(REQ_AFFADHERENT, Client.class)
-		    		.setParameter("pid", commande.getClient().getId()).getSingleResult(); 
+		    		.setParameter("pid", commande.getId()).getSingleResult(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 
