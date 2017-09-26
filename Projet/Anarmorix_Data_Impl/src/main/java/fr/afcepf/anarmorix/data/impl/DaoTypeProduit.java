@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoTypeProduit;
 import fr.afcepf.anarmorix.entity.Categorie;
-import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.TypeProduit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -28,12 +27,6 @@ public class DaoTypeProduit implements IDaoTypeProduit {
     private EntityManager em;
 
     /**
-     * Requête permettant de trouver l'ensemble des {@link Catalogue}s d'une exploitation.
-     */
-        //TODO ? Modfier pour rechercher sur les catégories n'ayant pas de produit directement attaché (Implémenté dans les catégories ?).
-    private static final String REQ_RECHERCHE = "SELECT c.commandes FROM Client c WHERE c.id = :pId";
-
-    /**
      * Requête permettant de récupérer un catalogue en fonction de son Id.
      */
     private static final String REQ_TYPE_ID = "Select t FROM TypeProduit t WHERE t.id = :pId";
@@ -46,8 +39,18 @@ public class DaoTypeProduit implements IDaoTypeProduit {
 
     @Override
     public List<TypeProduit> rechercher(Categorie paramCategorie) throws AnarmorixException {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            List<TypeProduit> types = paramCategorie.getTypesProduits();
+            List<Categorie> descendantes = paramCategorie.getCategoriesFilles();
+            for (Categorie categorie : descendantes) {
+                descendantes.addAll(categorie.getCategoriesFilles());
+                types.addAll(categorie.getTypesProduits());
+            }
+            return types;
+        } catch (Exception e) {
+            AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @Override
