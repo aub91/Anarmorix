@@ -61,11 +61,9 @@
             
             <div id="dateDebut">
 			Date de début de préparation : 
-			<h:inputText value="#{mbProduit.cmde.dateValidation}" >
+			<h:inputText value="#{mbProduit.cmde.statut}" >
 			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
 			 </h:inputText>
-			
-			
 			<input type="button" class="btn" id="btnValider" value="Valider"  style="color:white;"></input>
 			</div>
 

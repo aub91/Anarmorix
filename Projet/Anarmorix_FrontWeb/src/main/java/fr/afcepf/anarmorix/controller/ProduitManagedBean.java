@@ -1,7 +1,7 @@
 package fr.afcepf.anarmorix.controller;
 
 import java.util.ArrayList;
-
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +13,7 @@ import javax.faces.bean.ViewScoped;
 
 import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 
-import fr.afcepf.anarmorix.entity.Client;
+
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
@@ -29,6 +29,7 @@ public class ProduitManagedBean {
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
+
 
 	
 
@@ -59,11 +60,11 @@ public class ProduitManagedBean {
 		
 		cmde.setId(1);
 		cmde.setClient(bu.afficherClient(cmde));
-		
-	
+
 		liste=bu.afficherLigneCommande(cmde);
 		
 		System.out.println(liste.size());
+		System.out.println(cmde.getDateCreation());
 
 		} catch (Exception e) {
 			

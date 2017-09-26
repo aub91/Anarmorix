@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.data.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -36,7 +37,9 @@ public class DaoAdherent implements IDaoAdherent {
 
     private static final String REQ_REGISTER = "SELECT a FROM Adherent a WHERE a.username = :pusername OR a.mail = :pmail";
     
-    private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid";
+    private static final String REQ_AFFADHERENT = "SELECT ad.client FROM Commande ad WHERE ad.id = :pid"  ;
+   
+
      /**
      * Default constructor.
      */
@@ -106,6 +109,7 @@ public class DaoAdherent implements IDaoAdherent {
 		return adherent;
 	}
 
+	
 
 
 

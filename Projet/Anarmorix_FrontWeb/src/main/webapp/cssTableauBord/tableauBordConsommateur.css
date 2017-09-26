@@ -673,6 +673,11 @@ color: white;
     grid-template-columns: 1 fr;
     grid-template-rows: 250px, 250px;
 }
+
+#text{
+	text-transform: lowercase;
+	text-transform: inherit;
+}
  #exampleAccordion li, #exampleAccordion ul
  {
  display: block;
