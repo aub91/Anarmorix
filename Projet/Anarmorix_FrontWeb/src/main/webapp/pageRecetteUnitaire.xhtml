@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
+	<ui:define name="css">
+		<link href="css/pageRecetteUnitaire.css" rel="stylesheet"
+			type="text/css"></link>
+	</ui:define>
+	
+	<ui:define name="script">
+		<script type="text/javascript"
+			src="resources/js/pageRecettesUnitaire.js"></script>
+	</ui:define>
+	
+	<ui:define name="content">
+	<div class="page-header">
+
+						<div class="row">
+
+
+
+							<h1 class="text-center">
+
+								<div class="col-lg-offset-5">
+									<span id="titlerecette">Ratatouille</span>
+
+								</div>
+							</h1>
+
+						</div>
+						
+				</div>
+	
+	
+	<div id="recette">
+		<div id="conteneurimage">
+			<img id="imageprincipale" src="resources/img/ratatouille.jpg" />
+		</div>
+		<div id="info">
+			<div id="enhaut_info">
+				<span id="ingredient"> Ingrédients</span> <br /> <br />
+				<div id="premierProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span>  <input type="checkbox"
+						id="checkbox1" value="checkbox1" checked="checked"></input>
+				</div>
+				<br />
+
+				<div id="deuxiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span><input type="checkbox"
+						id="checkbox2" value="checkbox2" checked="checked"></input>
+				</div>
+
+				<div id="troisiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span> <input type="checkbox"
+						id="checkbox3" value="checkbox3" checked="checked"></input>
+				</div>
+				<div id="quatriemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span><input type="checkbox"
+						id="checkbox4" value="checkbox4" checked="checked"></input>
+				</div>
+
+
+
+				<div id="cinquiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span> <input type="checkbox"
+						id="checkbox5" value="checkbox5" checked="checked"></input>
+				</div>
+				<div id="sixiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span> <input type="checkbox"
+						id="checkbox6" value="checkbox6" checked="checked"></input>
+				</div>
+
+
+				<div id="septiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span> <input type="checkbox"
+						id="checkbox7" value="checkbox7" checked="checked"></input>
+				</div>
+
+				<div id="huitiemeProduit">
+					<img src="resources/img/ratatouille.jpg" class="images_petit ingredientimage" />
+					<span class="ingredientquantite">Quantité et</span><span class="ingredientrecette">produit de la recette</span><input type="checkbox"
+						id="checkbox8" value="checkbox8" checked="checked"></input>
+				</div>
+			</div>
+			<br />
+			<div id="enbas_info">
+
+				<div id="Ajouter_totalite">
+					Ajouter la totalité des produits de la recette <input
+						type="checkbox" name="checkbox2" value="checkbox"
+						checked="checked"></input> <br /> <br /> <br /> <input
+						type="submit" class="btn" value="Valider" id="btnValider"></input>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="inforecette">
+		<div id="temps">Temps</div>
+
+		<div id="minutes">15 minutes</div>
+		<div></div>
+		<br /> <br />
+		<div id="personnes">Personnes</div>
+		<br /> <br />
+		<div id="quantite">8</div>
+		<br /> <br />
+		<div id="facilite">Très facile</div>
+
+		<div id="container">
+			<div class="row">
+
+
+				<h4 class="progressbar-title"></h4>
+				<div class="progress">
+					<div
+						class="progress-bar progress-bar-info progress-bar-striped active"
+						role="progressbar" aria-valuenow="45" aria-valuemin="0"
+						aria-valuemax="100" style="width: 75%;">
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<br /> <br />
+		<div id="prix">Bon marché</div>
+
+		<div id="container2">
+			<div class="row">
+
+
+				<h4 class="progressbar-title"></h4>
+				<div class="progress">
+					<div
+						class="progress-bar progress-bar-info progress-bar-striped active"
+						role="progressbar" aria-valuenow="45" aria-valuemin="0"
+						aria-valuemax="100" style="width: 75%;">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div style="font-weight: bold" id="motPreparation">Préparation de
+		la recette</div>
+
+
+
+	<div id="etapeRecette">
+		<div id="etape1">
+			Etape 1:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br />
+		<div id="etape4">
+			Etape 4:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br />
+		<div id="etape2">
+			Etape 2:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br />
+		<div id="etape5">
+			Etape 5:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br />
+		<div id="etape3">
+			Etape 3:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+		<br />
+		<div id="etape6">
+			Etape 6:
+			<div>cuire les légumes à feu doux blablabla blablabla</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	</ui:define>
+</ui:composition>
+</html>
