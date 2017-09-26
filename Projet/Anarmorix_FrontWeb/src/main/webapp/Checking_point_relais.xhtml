@@ -17,12 +17,35 @@
 	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-function ValideForm() {
-	if(document.getElementById('checkbox1').checked == true) {document.getElementById('btnValider').disabled = false }
-	if(document.getElementById('checkbox1').checked == false) {document.getElementById('btnValider').disabled = true }
-}
-</script> 
+	<script type="text/javascript">
+
+	
+	
+	function isValid(){
+		var userPassword = document.getElementById('userPassword').value;
+		if (userPassword == "chris")
+		{alert('Correct!');
+		document.getElementById('btnValider').value="Commande récupérée";
+		btnValider.style="width:200px";
+	btnValider.style="color:white";
+	btnValider.disabled="disabled";
+	vider(userPassword);
+	
+		}
+
+		
+		else
+		{alert('Veuillez entrer un mot de passe valide')}
+		}
+
+	
+	function vider() {
+		
+		document.getElementById('userPassword').value='';
+		
+	}
+</script>
+
 
 <style type="text/css">
 #commande {
@@ -65,7 +88,6 @@ function ValideForm() {
 }
 
 #btnValider {
-	
 	grid-column: 4;
 	grid-row: 1;
 }
@@ -127,7 +149,7 @@ margin-left: 25px;
 					<tr>
 					<th >Commande</th>
 					<th>Consommateur</th>
-					<th >Commande à récupérer</th>
+					<th>Mot de passe</th>
 					<th >Validation</th>
 					</tr>
 					
@@ -140,16 +162,15 @@ margin-left: 25px;
 						
 						
 						
-				<td>Commande récupérée 	<input type="checkbox" id="checkbox1"
-										value="checkbox1" onClick="ValideForm()"></input></td>
+				
 								
 								
-
+<td><input id="userPassword" type="password" required="required"></input></td>
 
 
 								
-						<td><input type="submit" class="btn" id="btnValider" style="width:90px"
-										value="Valider" disabled="disabled"></input></td>
+						<td><input type="submit" class="btn" id="btnValider" style="width:80px"
+										value="Valider"  onclick="isValid(this)"  ></input></td>
 								
 				
 				
