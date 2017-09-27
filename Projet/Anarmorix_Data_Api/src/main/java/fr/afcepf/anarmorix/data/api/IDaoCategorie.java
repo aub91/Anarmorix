@@ -23,6 +23,15 @@ public interface IDaoCategorie {
      * @throws AnarmorixException exception serveur.
      */
     List<Categorie> rechercherParId(Integer idCategorie) throws AnarmorixException;
+    
+    /**
+     * recupere les categorie par libelle.
+     * @param libelleCategorie le libelle dune categorie.
+     * @return une liste categories.
+     * @throws AnarmorixException exception serveur.
+     */
+    List<Categorie> rechercherCategorieParLibelle (String libelleCategorie) throws AnarmorixException;
+    
     /**
      * @return
      */
