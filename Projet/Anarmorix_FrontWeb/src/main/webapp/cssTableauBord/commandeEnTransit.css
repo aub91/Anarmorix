@@ -14,6 +14,26 @@
     grid-template-rows: 1 fr;
 }
 
+.btn {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+	border-radius: 30px 5px;
+	color: #edebe6;
+	background-color: #3d348b;
+}
+
+@media only screen and (max-width: 767px) {
+	.btn {
+		margin-bottom: 15px;
+	}
+}
+
 .noCmd {
     grid-row: 1;
     grid-column: 1;
