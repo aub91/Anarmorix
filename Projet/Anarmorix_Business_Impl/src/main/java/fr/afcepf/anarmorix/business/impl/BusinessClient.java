@@ -221,13 +221,14 @@ public class BusinessClient implements IBusinessClient {
     @Override
     public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {
         List<Produit> produits = null;
-		try {
-			produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
-		} catch (Exception e) {
-			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
-			throw exc;
-		}
-		return produits;
+
+        try {
+            produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
     }
     /**
      * Methode pour récupérer  les produits par type.
@@ -240,37 +241,37 @@ public class BusinessClient implements IBusinessClient {
         if (reset) {
             produits = new ArrayList<>();
         }
-		List<Categorie> categories = null;
-		List<TypeProduit> typeProduits = new ArrayList<>();
-		try {
-			categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
-			if (isCategorieFille(categories.get(0))) {
-				if (categories != null) {
-    				typeProduits = categories.get(0).getTypesProduits();
-    				for (TypeProduit type : typeProduits) {
-    				    System.out.println("business type " + type.getLibelle());
-    					Integer idType  = type.getId();
-    					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
-    				}
-				}
-			} else {
-				for (Categorie cat : categories.get(0).getCategoriesFilles()) {
-					 recupererLesProduitsParCategorie(cat.getLibelle(), false);
-				}
-			}
-		} catch (Exception e) {
-			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
-			throw exc;
-		}
-		return produits;
+        List<Categorie> categories = null;
+        List<TypeProduit> typeProduits = new ArrayList<>();
+        try {
+            categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
+            if (isCategorieFille(categories.get(0))) {
+                if (categories != null) {
+                    typeProduits = categories.get(0).getTypesProduits();
+                    for (TypeProduit type : typeProduits) {
+                        System.out.println("business type " + type.getLibelle());
+                        Integer idType  = type.getId();
+                        produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
+                    }
+                }
+            } else {
+                for (Categorie cat : categories.get(0).getCategoriesFilles()) {
+                     recupererLesProduitsParCategorie(cat.getLibelle(), false);
+                }
+            }
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
     }
     
     private boolean isCategorieFille(Categorie paramCategorie) {
-    	if(paramCategorie.getCategoriesFilles().size() == 0) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+        if(paramCategorie.getCategoriesFilles().size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
     
     }
     
