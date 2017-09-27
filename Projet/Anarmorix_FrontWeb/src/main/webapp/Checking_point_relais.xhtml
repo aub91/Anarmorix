@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8"></meta>
 <title>RecettePage1</title>
-<script type="text/javascript" src="js/jquery.js">
+<script type="text/javascript" src="js/jquery.js">0
 </script>
 <script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
 </script>
@@ -17,12 +17,40 @@
 	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-function ValideForm() {
-	if(document.getElementById('checkbox1').checked == true) {document.getElementById('btnValider').disabled = false }
-	if(document.getElementById('checkbox1').checked == false) {document.getElementById('btnValider').disabled = true }
-}
-</script> 
+	<script type="text/javascript">
+
+	
+	
+	function isValid(){
+		var userPassword = document.getElementById('userPassword').value;
+		if (userPassword == "chris")
+		{alert('Correct!');
+		document.getElementById('btnValider').value="Commande récupérée";
+		btnValider.style="width:200px";
+	btnValider.style="color:white";
+	btnValider.disabled="disabled";
+	vider(userPassword);
+	$('#userPassword').hide();
+	$('#mdp').hide();
+	$('#valid').hide();
+	
+		}
+
+		else if (userPassword == "")
+		{alert('Veuillez entrer un mot de passe');
+		}
+		else
+		{alert('Veuillez entrer un mot de passe valide')}
+		}
+
+	
+	function vider() {
+		
+		document.getElementById('userPassword').value='';
+		
+	}
+</script>
+
 
 <style type="text/css">
 #commande {
@@ -65,10 +93,9 @@ function ValideForm() {
 }
 
 #btnValider {
-	
 	grid-column: 4;
 	grid-row: 1;
-}
+}     
 
 #commande_recuperee {
 	grid-column: 3;
@@ -127,8 +154,8 @@ margin-left: 25px;
 					<tr>
 					<th >Commande</th>
 					<th>Consommateur</th>
-					<th >Commande à récupérer</th>
-					<th >Validation</th>
+					<th id="mdp">Mot de passe</th>
+					<th id="valid">Validation</th>
 					</tr>
 					
 				</thead>
@@ -138,18 +165,13 @@ margin-left: 25px;
 						<td>Commande numéro <span id="numero"> <span>#{prodPR.id}</span></span></td>
 						<td>  #{prodPR.client.nom} #{prodPR.client.prenom} </td>
 						
-						
-						
-				<td>Commande récupérée 	<input type="checkbox" id="checkbox1"
-										value="checkbox1" onClick="ValideForm()"></input></td>
 								
-								
-
+<td><input id="userPassword" type="password" required="required"></input></td>
 
 
 								
-						<td><input type="submit" class="btn" id="btnValider" style="width:90px"
-										value="Valider" disabled="disabled"></input></td>
+						<td><input type="submit" class="btn" id="btnValider" style="width:80px"
+										value="Valider"  onclick="isValid(this)"  ></input></td>
 								
 				
 				
@@ -161,7 +183,7 @@ margin-left: 25px;
 		</div>
 	</div>
 	<br />
-	
+	 
 
 </body>
 		

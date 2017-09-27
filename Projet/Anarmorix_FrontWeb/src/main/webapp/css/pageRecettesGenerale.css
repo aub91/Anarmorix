@@ -71,7 +71,9 @@ body {
 
 /*fin*/
 
-
+.group-boutonrecettes {
+	float: left;
+}
 
 .section-catalogue #cart {
 	float: right;
@@ -79,6 +81,7 @@ body {
 }
 
 #titlecatalogue {
+	margin-bottom : 20px;
 	margin-left: -45px;
 	padding-bottom: 30px;
 	display: inline-block;
@@ -456,7 +459,8 @@ body {
 }
 
 #myFooter img {
-	
+	margin-top: 40px;
+	margin-left: -100px;
 	height :350px;
 	width: 400px;
 }

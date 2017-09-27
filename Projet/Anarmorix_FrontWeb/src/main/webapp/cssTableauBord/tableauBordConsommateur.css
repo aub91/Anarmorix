@@ -419,6 +419,8 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 .content-wrapper {
     overflow-x: hidden;
     background: white;
+   
+    
 }
 
 @media (min-width: 992px) {
@@ -493,8 +495,17 @@ footer.sticky-footer {
         width: calc(100% - 55px);
     }
 }
-
+.content-wrapper11{
+	 display: grid;
+    grid-template-rows: 1fr;
+     grid-template-columns: 150px 1fr;
+}
+#navbarResponsive11{
+		grid-row:1;
+	grid-colum:1;
+}
 #section-general {
+
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: 1 fr;

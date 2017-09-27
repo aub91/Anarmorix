@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,18 +23,6 @@ import javax.persistence.Transient;
 @Table(name = "categorie")
 public class Categorie implements Serializable {
 
-    /**
-     * @return the typesProduits
-     */
-    public List<TypeProduit> getTypesProduits() {
-        return typesProduits;
-    }
-    /**
-     * @param paramTypesProduits the typesProduits to set
-     */
-    public void setTypesProduits(List<TypeProduit> paramTypesProduits) {
-        typesProduits = paramTypesProduits;
-    }
     /**
      * Numéro pour sérialisation.
      */
@@ -61,13 +50,13 @@ public class Categorie implements Serializable {
     /**
      * Liste des Types produits rattachés à la catégorie.
      */
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(mappedBy = "categorie", fetch = FetchType.EAGER)
     private List<TypeProduit> typesProduits;
 
     /**
      * Liste des catégories filles.
      */
-    @OneToMany(mappedBy = "categorieMere")
+    @OneToMany(mappedBy = "categorieMere", fetch = FetchType.EAGER)
     private List<Categorie> categoriesFilles;
 
     /**
@@ -143,4 +132,16 @@ public class Categorie implements Serializable {
         categorieMere = paramCategorieMere;
     }
 
+    /**
+     * @return the typesProduits
+     */
+    public List<TypeProduit> getTypesProduits() {
+        return typesProduits;
+    }
+    /**
+     * @param paramTypesProduits the typesProduits to set
+     */
+    public void setTypesProduits(List<TypeProduit> paramTypesProduits) {
+        typesProduits = paramTypesProduits;
+    }
 }

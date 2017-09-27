@@ -70,7 +70,7 @@
 								<tfoot  >
 									<tr>
 										<th colspan="5">Total</th>
-										<th colspan="2" class="ligneProduit"><i id="totaux"></i></th>
+										<th colspan="2"><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
 							</table>
@@ -268,24 +268,29 @@
 	<script src="resources/js/bootstrap-hover-dropdown.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/front.js"></script>
+	
 	<script type="text/javascript">
 	 //<![CDATA[
 	 var totau = 0;
 	 $(".ligneProduit").each(function() {
-		var qt = $(this).find('#quantiteProduit').val();
+		var qt = $($(this).find('#quantiteProduit')[0]).val();
 		var prix = $(this).find("#prixProduit").html();
 		var cout = qt * prix;
-		$(this).find('#totalProduit').append(cout+' €');
+		$(this).find('#totalProduit').append(cout);
 		totau += cout;
-		$(this).closest('.ligneProduit').find('#totaux').append(totau+' €');
-			$(this).find('#quantiteProduit').on('change', function(){
+		
+		$($(this).find('#quantiteProduit')[0]).on('change', function(){
 				var qt = $(this).val();
 				var prix = $(this).closest('.ligneProduit').find("#prixProduit").html();
 				var cout = qt * prix;
+				totau += cout;
 				cout = Math.trunc(cout*100)/100;
-				$(this).closest('.ligneProduit').find('#totalProduit').html(cout+' €');
+				$(this).closest('.ligneProduit').find('#totalProduit').html(cout);
+				
 			});
+			
 	 });
+	 $('#totaux').append(totau);
 	 
 	
 

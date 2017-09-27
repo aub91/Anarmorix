@@ -8,8 +8,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
-
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+
+
 
 import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 
@@ -17,29 +19,39 @@ import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
 
 
 @ManagedBean(name="mbProduit")
-@ViewScoped
+@SessionScoped
 
 public class ProduitManagedBean {
 	private List<LigneCommande> liste = new ArrayList<>();
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
-
-
-	
+	private LigneCommande ligne= new LigneCommande();
 
 	@EJB
 	private IBusinessConsommateur bu;
 	
 	
-	
-	
-	
+	public void miseAjour(Integer id) {
+		try {
+			for (LigneCommande ligneCommande : liste) {
+				if(ligneCommande.getId() == id) {
+					System.out.println(ligneCommande.getQuantitePreparee());
+					
+					bu.mettreAJourLC(ligneCommande);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@PostConstruct
 	public void ajouterProduits() {
@@ -63,8 +75,11 @@ public class ProduitManagedBean {
 
 		liste=bu.afficherLigneCommande(cmde);
 		
-		System.out.println(liste.size());
-		System.out.println(cmde.getDateCreation());
+		
+		
+		
+	
+		
 
 		} catch (Exception e) {
 			
@@ -72,7 +87,12 @@ public class ProduitManagedBean {
 		}
 	
 	}
+	
 
+
+	 
+	 
+	 
 	public Commande getCmde() {
 		return cmde;
 	}

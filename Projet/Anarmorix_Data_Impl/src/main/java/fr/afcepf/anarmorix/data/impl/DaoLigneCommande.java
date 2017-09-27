@@ -103,10 +103,9 @@ public class DaoLigneCommande implements IDaoLigneCommande {
     }
 
     @Override
-    public LigneCommande mettreAJour(Integer paramId) throws AnarmorixException {
+    public LigneCommande mettreAJour(LigneCommande paramLigne) throws AnarmorixException {
         try {
-            LigneCommande ligne = (LigneCommande) em.createQuery(REQ_LIGNE_ID).setParameter("pId", paramId).getSingleResult();
-            LigneCommande updated = em.merge(ligne);
+            LigneCommande updated = em.merge(paramLigne);
             return updated;
         } catch (Exception e) {
             AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);

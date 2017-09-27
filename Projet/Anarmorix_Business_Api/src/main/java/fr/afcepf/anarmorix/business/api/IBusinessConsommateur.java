@@ -17,6 +17,7 @@ public interface IBusinessConsommateur {
 	
 	 List<LigneCommande> afficherLigneCommande(Commande commande) throws AnarmorixException;
 	 Client afficherClient(Commande commande) throws AnarmorixException;
+	 LigneCommande mettreAJourLC(LigneCommande paramLigne)throws AnarmorixException;
 
 	
 	

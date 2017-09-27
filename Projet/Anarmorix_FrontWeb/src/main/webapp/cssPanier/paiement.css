@@ -1,0 +1,42 @@
+@charset "utf-8";
+.container {
+	margin-top: 70px;
+	padding: 10px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	line-height: 1.42857143;
+	color: #333333;
+	background-image: url(resources/img/fondvioletlight.png);
+	background-size: cover;
+	text-align: center;
+}
+
+.champs {
+	width: 100%;
+	border-radius: 8px hover;
+}
+
+#dataExp {
+	text-align: center;
+}
+
+.mois .year {
+	width: 100%;
+}
+
+.icon {
+	background-image: url(css/ressources/Carrot.png);
+}
+
+#infosPay {
+	font-family: "Pacifico", Helvetica, Arial, sans-serif;
+	font-size: 25px;
+}
+
+.spCarte {
+	font-family: Arial, sans-serif;
+	padding: 10px;
+	margin:10px;
+	font-size: 18px;
+	text-align: left;
+}
