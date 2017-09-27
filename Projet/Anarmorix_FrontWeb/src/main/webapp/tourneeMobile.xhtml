@@ -14,7 +14,7 @@
 <body class="w3-row">
   <header class="w3-col s12 w3-bar w3-card w3-purple w3-mobile">
     <button class="w3-bar-item w3-button w3-hover-purple w3-xxxlarge" onclick="openSidebar()">&#9776;</button>
-    <h4 class="w3-bar-item"> Tournée n°1 du 24/09/2017</h4>
+    <h4 class="w3-bar-item"> Tournée n°#{mbTournee.selectedTournee.id} du 24/09/2017</h4>
   </header>
   <div class="w3-container w3-col s12">
     <div class="w3-row">
@@ -23,34 +23,38 @@
       <div id="itineraire" class="w3-col s12 w3-hide"></div>
       <button onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple">Points d'arrêts</button>
       <div id="arrets" class="w3-col s12 w3-hide">
-        <table class="w3-table-all w3-centered w3-small">
+        <table class="w3-table-all w3-centered w3-small w3-mobile">
           <thead>
-            <th>Nom</th>
-            <th>Produits à récupérer/déposer</th>
+            <tr>
+              <th>Nom</th>
+              <th>Produits à récupérer/déposer</th>
+            </tr>
           </thead>
-          <tr class="w3-hover-purple" onclick="document.getElementById('producteur').style.display='block'">
-            <td>Producteur 1</td>
-            <td>2</td>
+          <ui:repeat var="com" value="#{mbTournee.commercesAVisiter}">
+          <tr class="w3-hover-purple" onclick="document.getElementById('producteur-#{com.commerce.id}').style.display='block'">
+            <td>#{com.commerce.raisonSociale}</td>
+            <td>#{com.listeLigneCmd.size()}</td>
           </tr>
-          <tr class="w3-hover-purple" onclick="document.getElementById('producteur').style.display='block'">
-            <td>Point-relais 1</td>
-            <td>2</td>
-          </tr>
+          </ui:repeat>
         </table>
-        <div id="producteur" class="w3-modal">
+        <ui:repeat var="com" value="#{mbTournee.commercesAVisiter}">
+        <h:form>
+        <div id="producteur-#{com.commerce.id}" class="w3-modal">
           <div class="w3-modal-content">
             <header class="w3-bar w3-red">
-              <h4 class="w3-bar-item">Producteur 1</h4>
-              <button class="w3-bar-item w3-button w3-green w3-margin-top">Tout récupérer</button>
-              <span onclick="document.getElementById('producteur').style.display='none'" class="w3-button w3-right w3-bar-item w3-xxlarge">X</span>
+              <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
+              <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
+              <span onclick="document.getElementById('producteur-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
             <ul class="w3-ul w3-card-4">
+              <ui:repeat var="prod" value="#{com.listeLigneCmd}">
               <li>
                 <div class="w3-row">
-                  <span class="w3-col s4">Produit1</span>
+                  <span class="w3-col s4">#{prod.produit.type.libelle}</span>
                   <div class="w3-col s4">
                     <span>Qté à récupérer:</span>
-                    <span>5kg</span>
+                    <span>#{prod.quantitePreparee}</span>
+                    <span>#{prod.produit.packaging.unite.unite}</span>
                   </div>
                   <div class="w3-col s4">
                     <button class="w3-button w3-green">OK</button>
@@ -58,24 +62,12 @@
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="w3-row">
-                  <div class="w3-col s4">
-                    <span>Bière blonde</span>
-                  </div>
-                  <div class="w3-col s4">
-                    <span>Qté à récupérer:</span>
-                    <span>2kg</span>
-                  </div>
-                  <div class="w3-col s4">
-                    <button class="w3-button w3-green">OK</button>
-                    <button class="w3-button w3-yellow">!</button>
-                  </div>
-                </div>
-              </li>
+              </ui:repeat>
             </ul>
           </div>
         </div>
+        </h:form>
+        </ui:repeat>
       </div>
     </div>
   </div>
@@ -83,6 +75,7 @@
   //<![CDATA[
       var map;
         function initMap() {
+          var wP = #{mbTournee.jSonWayPoints};
           var directionsDisplay = new google.maps.DirectionsRenderer;
           var directionsService = new google.maps.DirectionsService;
           map = new google.maps.Map(document.getElementById('map'), {
@@ -93,16 +86,10 @@
           directionsDisplay.setPanel(document.getElementById('itineraire'));
 
           directionsService.route({
-        	  origin: 'Chicago, IL',
-        	  destination: 'Los Angeles, CA',
-        	  waypoints: [
-        	    {
-        	      location: 'Joplin, MO',
-        	      stopover: false
-        	    },{
-        	      location: 'Oklahoma City, OK',
-        	      stopover: true
-        	    }],
+        	  origin: {lat: 48.782303, lng: -3.059167},
+        	  destination: {lat: 48.782303, lng: -3.059167},
+        	  waypoints: wP,
+        	  optimizeWaypoints: true,
               travelMode: 'DRIVING'
           }, function(response, status) {
             console.log(status)

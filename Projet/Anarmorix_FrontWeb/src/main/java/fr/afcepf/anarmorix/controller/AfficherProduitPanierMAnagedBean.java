@@ -47,9 +47,19 @@ public class AfficherProduitPanierMAnagedBean {
     	
     	Produit produit1 = new Produit();
     	produit1.setId(251); 
-    	produit1.setPrixUnitaire(110.71);
-    	produit1.setQuantiteEnStock(210.11);
+    	produit1.setPrixUnitaire(1.06);
+    	produit1.setQuantiteEnStock(2.01);
     	listeProduits.add(produit1);
+    	Produit produit2 = new Produit();
+    	produit2.setId(252);
+    	produit2.setPrixUnitaire(2.0);
+    	produit2.setQuantiteEnStock(25.0);
+    	listeProduits.add(produit2);
+    	Produit produit3 = new Produit();
+    	produit3.setId(20);
+    	produit3.setPrixUnitaire(2.0);
+    	produit3.setQuantiteEnStock(2.0);
+    	listeProduits.add(produit3);
     	
     }
 

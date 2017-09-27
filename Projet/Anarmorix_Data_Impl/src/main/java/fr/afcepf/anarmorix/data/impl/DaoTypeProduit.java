@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.data.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -40,6 +41,7 @@ public class DaoTypeProduit implements IDaoTypeProduit {
     @Override
     public List<TypeProduit> rechercher(Categorie paramCategorie) throws AnarmorixException {
         try {
+        	
             List<TypeProduit> types = paramCategorie.getTypesProduits();
             List<Categorie> descendantes = paramCategorie.getCategoriesFilles();
             for (Categorie categorie : descendantes) {

@@ -6,53 +6,85 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.entity.Categorie;
+import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 @ManagedBean(name = "mbAfficheProduits")
-@ViewScoped
+@SessionScoped
 public class AfficherProduitsManagedBean {
     
     @EJB
     private IBusinessClient businessCLient;
-    List<Produit> produits =  new ArrayList<>();
-    List<Categorie> categories =  new ArrayList<>();
-    List<Categorie> categoriesPrimaires =  new ArrayList<>();
-    List<Categorie> categoriesSecondaires =  new ArrayList<>();
-    List<Categorie> categoriesTertiaires =  new ArrayList<>();
-    List<Categorie> categoriesFilles =  new ArrayList<>();
-    List<Produit> produitsFiltresParCategorie =  new ArrayList<>();
-    Integer idCategorieMere;
+    private List<Produit> produits =  new ArrayList<>();
+    private List<Categorie> categories =  new ArrayList<>();
+    private List<Categorie> categoriesPrimaires =  new ArrayList<>();
+    private List<Categorie> categoriesSecondaires =  new ArrayList<>();
+    private List<Categorie> categoriesTertiaires =  new ArrayList<>();
+    private List<Categorie> categoriesFilles =  new ArrayList<>();
+    private String libelleCategorie;
+    private Integer idCategorieMere;
+    private PointRelais selectedPointRelais;
+    private List<Produit> listePdts;
+    @ManagedProperty(value="#{mbMap}")
+    private MapManagedBean mapMb;
 
     public AfficherProduitsManagedBean() {
     }
     
     @PostConstruct
     public void init(){
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String queryString = request.getQueryString();
+        String[] tab = queryString.split("=");
+        Integer idPointRelais = Integer.parseInt(tab[1]);
+        for (PointRelais relais : mapMb.getListe()) {
+            if(relais.getId() == idPointRelais){
+                selectedPointRelais = relais;
+            }
+        }
         try {
             produits = businessCLient.recupererTousLesProduits();
             categories = businessCLient.recupererToutesLesCategories();
             categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
             categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
-            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires(); 
         } catch (Exception e) {
            e.printStackTrace();
         }
+       
     }
-    
+
+    public void actualiserListe(Categorie cat)  throws AnarmorixException {
+        //if(listePdts != null) listePdts.clear();
+        //listePdts.clear();
+        listePdts = businessCLient.recupererLesProduitsParCategorie(cat.getLibelle(), true);
+        for (Produit pdt : listePdts) {
+            System.out.println("id produit " + pdt.getId());
+        }
+    }
+
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
         return businessCLient.recupererCategoriesFilles(idCategorieMere);
     }
-    
-    public  List<Produit> recupererProduitsFiltres(String libelleCategorie) throws AnarmorixException {
-        return businessCLient.recupererLesProduitsParCategorie(libelleCategorie);
-    }
-    
-    public List<Categorie> getCategoriesTertiaires() {
+
+    public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+
+	public List<Categorie> getCategoriesTertiaires() {
         return categoriesTertiaires;
     }
 
@@ -107,4 +139,37 @@ public class AfficherProduitsManagedBean {
     public void setIdCategorieMere(Integer paramIdCategorieMere) {
         idCategorieMere = paramIdCategorieMere;
     }
+
+    public PointRelais getSelectedPointRelais() {
+        return selectedPointRelais;
+    }
+
+    public void setSelectedPointRelais(PointRelais paramSelectedPointRelais) {
+        selectedPointRelais = paramSelectedPointRelais;
+    }
+
+    public MapManagedBean getMapMb() {
+        return mapMb;
+    }
+
+    public void setMapMb(MapManagedBean paramMapMb) {
+        mapMb = paramMapMb;
+    }
+
+    public IBusinessClient getBusinessCLient() {
+        return businessCLient;
+    }
+
+    public void setBusinessCLient(IBusinessClient paramBusinessCLient) {
+        businessCLient = paramBusinessCLient;
+    }
+
+    public List<Produit> getListePdts() {
+        return listePdts;
+    }
+
+    public void setListePdts(List<Produit> paramListePdts) {
+        listePdts = paramListePdts;
+    }
+    
 }

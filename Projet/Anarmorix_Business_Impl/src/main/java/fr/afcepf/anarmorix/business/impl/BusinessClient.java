@@ -16,6 +16,7 @@ import fr.afcepf.anarmorix.data.api.IDaoHoraire;
 import fr.afcepf.anarmorix.data.api.IDaoJourOuverture;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.data.api.IDaoTypeProduit;
 import fr.afcepf.anarmorix.data.api.IDaoVille;
 import fr.afcepf.anarmorix.entity.Adresse;
 import fr.afcepf.anarmorix.entity.Categorie;
@@ -28,6 +29,7 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Statut;
+import fr.afcepf.anarmorix.entity.TypeProduit;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -71,10 +73,15 @@ public class BusinessClient implements IBusinessClient {
     @EJB
     private IDaoProduit daoProduit;
     /**
-     * Interface d'accès aux données {@link LigneCommande}.
+     * Interface d'accès aux données {@link LigneCommandeCategorie}.
      */
     @EJB
     private IDaoCategorie daoCategorie;
+    /**
+     * Interface d'accès aux données {@link TypeProduit}.
+     */
+    @EJB
+    private IDaoTypeProduit daoTypeProduit;
     /**
      * Interface d'accès aux données {@link LigneCommande}.
      */
@@ -212,33 +219,61 @@ public class BusinessClient implements IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     @Override
-    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {      
-		List<Produit> produits = null;
-		try {
-			produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
-		} catch (Exception e) {
-			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
-			throw exc;
-		}
-		return produits;
+    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {
+        List<Produit> produits = null;
+        try {
+            produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
     }
     /**
      * Methode pour récupérer  les produits par type.
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
+    private List<Produit> produits = new ArrayList<>();
     @Override
-    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {      
-		List<Produit> produits = null;
+    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie, boolean reset) throws AnarmorixException {
+        if (reset) {
+            produits = new ArrayList<>();
+        }
+		List<Categorie> categories = null;
+		List<TypeProduit> typeProduits = new ArrayList<>();
 		try {
-			produits = daoProduit.rechercherParCategorie(libelleCategorie);
+			categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
+			if (isCategorieFille(categories.get(0))) {
+				if (categories != null) {
+    				typeProduits = categories.get(0).getTypesProduits();
+    				for (TypeProduit type : typeProduits) {
+    				    System.out.println("business type " + type.getLibelle());
+    					Integer idType  = type.getId();
+    					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
+    				}
+				}
+			} else {
+				for (Categorie cat : categories.get(0).getCategoriesFilles()) {
+					 recupererLesProduitsParCategorie(cat.getLibelle(), false);
+				}
+			}
 		} catch (Exception e) {
 			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
 			throw exc;
 		}
 		return produits;
     }
-
+    
+    private boolean isCategorieFille(Categorie paramCategorie) {
+    	if(paramCategorie.getCategoriesFilles().size() == 0) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    
+    }
+    
     /**
      * Methode pour récupérer toutes les catégories.
      * @return une liste de catgégorie.

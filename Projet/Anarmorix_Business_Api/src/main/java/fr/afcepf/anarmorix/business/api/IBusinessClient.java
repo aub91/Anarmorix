@@ -82,7 +82,7 @@ public interface IBusinessClient {
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
-    List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException;
+    List<Produit> recupererLesProduitsParCategorie(String libelleCategorie, boolean reset) throws AnarmorixException;
     /**
      * @return une liste de categorie.
      * @throws AnarmorixException exception serveur.

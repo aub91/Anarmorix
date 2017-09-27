@@ -5,7 +5,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fr.afcepf.anarmorix.data.api.IDaoCategorie;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.data.api.IDaoTypeProduit;
+import fr.afcepf.anarmorix.entity.Categorie;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.TypeProduit;
@@ -22,6 +25,7 @@ public class TestDaoProduit {
      */
     private IDaoProduit daoProduit = (IDaoProduit) CreateProxyEJB.getProxy(
             "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoProduit!fr.afcepf.anarmorix.data.api.IDaoProduit");
+
     /**
      * ID du produit a tester.
      */
@@ -50,6 +54,49 @@ public class TestDaoProduit {
             Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
         }
     }
+    /**
+     * dao créé par proxy.
+     */
+    private IDaoCategorie daoCategorie = (IDaoCategorie) CreateProxyEJB.getProxy(
+            "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoCategorie!fr.afcepf.anarmorix.data.api.IDaoCategorie");
+    /*
+     *Test de recuperation des categories.
+     */
+    @Test
+    public void testGetCategories() {
+        try { 
+        	List<Categorie> categories = daoCategorie.rechercherCategorieParLibelle("Fraise");
+        	  Assert.assertEquals(categories.size(), 1);
+        } catch (AnarmorixException e) {
+            Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
+        }
+    }
+    
+    /**
+     * dao créé par proxy.
+     */
+    private IDaoTypeProduit daoTypeProduit = (IDaoTypeProduit) CreateProxyEJB.getProxy(
+            "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoTypeProduit!fr.afcepf.anarmorix.data.api.IDaoTypeProduit");
+    /*
+     *Test de recuperation des typeProduits.
+     */
+    @Test
+    public void testTypeProduits() {
+        try {
+        	Categorie cat = new Categorie(11, "Fraise", daoCategorie.rechercherParId(8).get(0));
+        	System.out.println("categorie : " + cat.getTypesProduits());
+        	/*List<TypeProduit> typeProduits = daoTypeProduit.rechercher(cat);
+        	for (TypeProduit typeProduit : typeProduits) {
+        		System.out.println("type " + typeProduit.getLibelle());
+			}*/
+        	
+        	 // Assert.assertEquals(categories.size(), 1);
+        } catch (AnarmorixException e) {
+            Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
+        }
+    }
+    
+    
     /**
      * ID du  type produit.
      */
