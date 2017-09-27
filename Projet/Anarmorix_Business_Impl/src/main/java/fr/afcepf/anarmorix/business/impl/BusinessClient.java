@@ -219,15 +219,15 @@ public class BusinessClient implements IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     @Override
-    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {      
-		List<Produit> produits = null;
-		try {
-			produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
-		} catch (Exception e) {
-			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
-			throw exc;
-		}
-		return produits;
+    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {
+        List<Produit> produits = null;
+        try {
+            produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
     }
     /**
      * Methode pour récupérer  les produits par type.
@@ -236,6 +236,7 @@ public class BusinessClient implements IBusinessClient {
      */
     private List<Produit> produits = new ArrayList<>();
     @Override
+<<<<<<< HEAD
     public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie, boolean reset) throws AnarmorixException {
         if (reset) {
             produits = new ArrayList<>();
@@ -263,6 +264,17 @@ public class BusinessClient implements IBusinessClient {
 			throw exc;
 		}
 		return produits;
+=======
+    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {
+        List<Produit> produits = null;
+        try {
+            produits = daoProduit.rechercherParCategorie(libelleCategorie);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return produits;
+>>>>>>> aubin
     }
     
     private boolean isCategorieFille(Categorie paramCategorie) {
