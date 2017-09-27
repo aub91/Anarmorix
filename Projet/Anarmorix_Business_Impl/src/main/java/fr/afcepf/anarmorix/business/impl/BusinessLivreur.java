@@ -1,6 +1,8 @@
 package fr.afcepf.anarmorix.business.impl;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.ejb.EJB;
@@ -65,23 +67,28 @@ public class BusinessLivreur implements IBusinessLivreur {
 
     @Override
     public Tournee setLignesCommandes(Tournee paramTournee) throws AnarmorixException {
-        Tournee retour = daoLigneCommande.rechercherByTournee(paramTournee);
-        for (LigneCommande ligne : retour.getLignesCmd()) {
-            ligne = daoProduit.rechercherByLigneCommande(ligne);
-            ligne.setProduit(daoCatalogue.rechercherByProduit(ligne.getProduit()));
-            for (Catalogue catag : ligne.getProduit().getCatalogues()) {
+        Tournee tournee = daoLigneCommande.rechercherByTournee(paramTournee);
+        List<LigneCommande> liste = new ArrayList<>();
+        for (LigneCommande ligne : tournee.getLignesCmd()) {
+            LigneCommande ligneTmp = new LigneCommande();
+            ligneTmp = daoProduit.rechercherByLigneCommande(ligne);
+            ligneTmp.setProduit(daoCatalogue.rechercherByProduit(ligne.getProduit()));
+            for (Catalogue catag : ligneTmp.getProduit().getCatalogues()) {
                 catag = daoCommerce.rechercherExploitationByCatalogue(catag);
             }
+            liste.add(ligneTmp);
         }
-        return retour;
+        tournee.setLignesCmd(liste);
+        return tournee;
     }
 
     @Override
-    public Set<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException {
-        Set<Exploitation> retour = new LinkedHashSet<>();
+    public List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException {
+        Set<Exploitation> setRetour = new LinkedHashSet<>();
         for (LigneCommande ligne : paramTournee.getLignesCmd()) {
-            retour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
+            setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
         }
+        List<Exploitation> retour = new ArrayList<>(setRetour);
         return retour;
     }
 }

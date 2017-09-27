@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -210,7 +209,7 @@ public class TestBusinessLivreur {
         Tournee tourneeTemp = tourneeNominal;
         tourneeTemp.setLignesCmd(new ArrayList<>());
         tourneeTemp = busLivreur.setLignesCommandes(tourneeTemp);
-        Set<Exploitation> retour = busLivreur.setExploitationAVisiter(tourneeTemp);
+        List<Exploitation> retour = busLivreur.setExploitationAVisiter(tourneeTemp);
         Assert.assertNotNull(retour);
         Assert.assertEquals(TAILLE_SET_EXPLOITATION, retour.size());
         Assert.assertNotNull(retour.iterator().next());
@@ -229,7 +228,7 @@ public class TestBusinessLivreur {
     public void testEchecSetExploitationAVisiter() throws AnarmorixException {
         Tournee tourneeTemp = tourneeNonExistante;
         tourneeTemp.setLignesCmd(new ArrayList<>());
-        Set<Exploitation> retour = busLivreur.setExploitationAVisiter(tourneeNonExistante);
+        List<Exploitation> retour = busLivreur.setExploitationAVisiter(tourneeNonExistante);
         Assert.assertEquals(0, retour.size());
     }
     /**

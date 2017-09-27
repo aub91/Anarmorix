@@ -46,7 +46,7 @@ public class MapManagedBean {
      */
     private String centre;
     /**
-     * Latitude du centre de la carte.
+     * Latitude du centre de la crate.
      */
     private String lat = "47.577512";
     /**

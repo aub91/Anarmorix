@@ -1,8 +1,9 @@
 package fr.afcepf.anarmorix.business.api;
 
-import java.util.Set;
+import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -32,6 +33,6 @@ public interface IBusinessLivreur {
      * @return la collection des exploitation à visiter.
      * @throws AnarmorixException une exception
      */
-    Set<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException;
+    List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException;
 
 }
