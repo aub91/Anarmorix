@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
@@ -149,7 +150,7 @@ public class TestDaoLigneCommande {
      * Produit attaché à la ligne de commande.
      */
     private static final Produit PRODUIT =
-            new Produit(2, TYPE, null, 25D, 50D, IMAGE, PACK);
+            new Produit(1, TYPE, null, 25D, 50D, IMAGE, PACK);
 
     /**
      * Ville de l'adresse de la societe de livraison.
@@ -216,6 +217,13 @@ public class TestDaoLigneCommande {
     private static final LigneCommande LIGNE =
                     new LigneCommande(1, 1D, 1D, 1D, 1D, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
                     new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE);
+    /**
+     * Ligne commande updatée.
+     */
+    @SuppressWarnings("deprecation")
+    private static final LigneCommande LIGNE_UPDATE =
+                    new LigneCommande(1, 2D, 2D, 2D, 2D, new Date(117, 9, 8), new Date(117, 9, 9), new Date(117, 9, 10),
+                    new Date(117, 9, 10), new Date(117, 9, 11), PRODUIT, TOURNEE);
 
     /**
      * Test du cas d'un argument inexistant en base.
@@ -236,7 +244,7 @@ public class TestDaoLigneCommande {
     }
 
     /**
-     * Test du cas nominal.
+     * Test du cas nominal rechercherByCommande.
      * @throws AnarmorixException une exception que l'on ne doit pas avoir dans le test nominal.
      */
     @Test
@@ -278,5 +286,34 @@ public class TestDaoLigneCommande {
     public void testEchecRechercherByTournee() throws AnarmorixException {
         Tournee retour = dao.rechercherByTournee(TOURNEE_NON_EXISTANTE);
         Assert.assertEquals(0, retour.getLignesCmd().size());
+    }
+    /**
+     * Test nominal de mettreAJour.
+     * @throws AnarmorixException exception non attendue
+     */
+    @Test
+    public void testNominalMettreAJour() throws AnarmorixException {
+        LIGNE_UPDATE.setCommande(COMMANDE);
+        LigneCommande retour = dao.mettreAJour(LIGNE_UPDATE);
+        Assert.assertNotNull(retour);
+        Assert.assertEquals(LIGNE_UPDATE.getId(), retour.getId());
+        Assert.assertEquals(LIGNE_UPDATE.getQuantiteCommandee(), retour.getQuantiteCommandee());
+        Assert.assertEquals(LIGNE_UPDATE.getQuantiteDelivree(), retour.getQuantiteDelivree());
+        Assert.assertEquals(LIGNE_UPDATE.getQuantiteLivree(), retour.getQuantiteLivree());
+        Assert.assertEquals(LIGNE_UPDATE.getQuantitePreparee(), retour.getQuantitePreparee());
+    }
+    /**
+     * Reset de la base de données.
+     */
+    @Before
+    public void resetDataBase() {
+        String path = Thread.currentThread().getContextClassLoader().getResource("creabase.bat").getPath();
+        path = path.replaceAll("%20", " ");
+        try {
+            Process proc = Runtime.getRuntime().exec(path);
+            proc.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
