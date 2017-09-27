@@ -27,6 +27,8 @@ public class BusinessConsommateur implements IBusinessConsommateur {
 	 private IDaoLigneCommande daoLignecommande;
 	@EJB
 	private IDaoAdherent daoAdherent;
+	@EJB
+	private IDaoCommande daoCommande;
 	
 
 	
@@ -58,6 +60,16 @@ public class BusinessConsommateur implements IBusinessConsommateur {
 	public LigneCommande mettreAJourLC(LigneCommande paramLigne) throws AnarmorixException {
 		
 		return daoLignecommande.mettreAJour(paramLigne);
+	}
+
+
+
+
+
+	@Override
+	public Commande mettreAJourCommande(Commande paramId) throws AnarmorixException {
+		
+		return daoCommande.mettreAJour(paramId);
 	}
 
 

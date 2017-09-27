@@ -72,6 +72,11 @@
                          </th>
                          <th>Nom du client: <h:outputText value="#{mbProduit.cmde.client.nom}" /></th>
                          <th>Prenom d client : <h:outputText value="#{mbProduit.cmde.client.prenom}" /></th>
+                       <!--    <th>Statue: <h:inputText value="#{mbProduit.cmde.statut}" ></h:inputText>
+                         <h:commandButton action ="#{mbProduit.miseAjour(mbProduit.cmde.id)}" value="Valider"   
+						class="btn" id="btnValider" style="color:white;"></h:commandButton>
+                         
+                         </th>-->
                     </tr>
                     <tr>
                         <th>IMAGE</th>
@@ -97,13 +102,13 @@
                 		id="btnValider2" class="btn" 
                 		style="color:white;"></h:commandButton> </td>        
                 </tr>
-              <div>
-				Date de fin de préparation : 
-				<h:inputText value="#{prodPrep.dateFinPreparation}">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
-				 </h:inputText>
-				<h:commandButton action ="#{mbProduit.miseAjour(prodPrep.id)}" value="Valider"   
-				class="btn" id="btnValider" style="color:white;"></h:commandButton>
+             	 <div>
+						Date de fin de préparation : 
+						<h:inputText value="#{prodPrep.dateFinPreparation}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
+						 </h:inputText> jj/mm/aaaa
+						<h:commandButton action ="#{mbProduit.miseAjour(prodPrep.id)}" value="Valider"   
+						class="btn" id="btnValider" style="color:white;"></h:commandButton>
 				</div>
                 </ui:repeat>
                 </h:form>
@@ -118,8 +123,57 @@
 
 
 	</script>
-    <footer class="sticky-footer">
-    </footer>
+    <footer id="myFooter" data-img="resources/img/fondvioletlight.png" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 class="logo">
+                    	<img src="resources/img/LogoAnarmorique.png">
+                    	</img>
+                    </h2>
+                </div>
+                <div class="col-sm-4">
+                    
+                    <h5>Nos partenaires</h5>
+                    <ul>
+                        <li><a href="https://slowfood.fr/">Slow food France</a></li>
+                        <li><a href="http://www.permaculteurs.com/">Permaculteurs</a></li>
+                        <li><a href="https://www.lecomptoirlocal.fr/">Le comptoir local</a></li> 
+                    </ul>
+                    
+                    <h5>Informations</h5>
+                    <ul>
+                        <li><span>Adresse : 17 rue Georg Lukacs, 22500 Paimpol</span></li>
+                        <li><span>Courriel : laDialectiquePeutElleCasserDesBriques@mailoo.org</span></li>
+                        <li><span>Téléphone : 02 96 18 03 1871</span></li>
+                    </ul>
+                    
+                    
+                </div>
+                
+                
+                <div class="col-sm-2">
+                    <div class="social-networks">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                    <button type="button" class="btn btn-default">Contactez-nous</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright" data-img="resources/img/fondvioletlight.png" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
+            <p> 2017 Anarmorix SARL</p>
+        </div>
+
+</footer>
+	<script type="text/javascript">
+	$("#toto").datepicker({
+	dateFormat:"yy-mm-dd"
+	});
+
+</script>
+
 </body>
 
 </html>

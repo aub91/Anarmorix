@@ -42,11 +42,12 @@ public class ProduitManagedBean {
 		try {
 			for (LigneCommande ligneCommande : liste) {
 				if(ligneCommande.getId() == id) {
-					System.out.println(ligneCommande.getQuantitePreparee());
-					
+					System.out.println(ligneCommande.getQuantiteCommandee());
 					bu.mettreAJourLC(ligneCommande);
-				}
+									
+				}			
 			}
+					
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
