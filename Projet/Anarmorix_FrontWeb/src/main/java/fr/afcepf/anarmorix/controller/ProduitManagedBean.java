@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
-
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 
@@ -25,7 +25,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
 @ManagedBean(name="mbProduit")
-@ViewScoped
+@SessionScoped
 
 public class ProduitManagedBean {
 	private List<LigneCommande> liste = new ArrayList<>();
@@ -34,30 +34,24 @@ public class ProduitManagedBean {
 	private Commande cmde = new Commande();
 	private LigneCommande ligne= new LigneCommande();
 
-	
-	
-
-
-	
-
 	@EJB
 	private IBusinessConsommateur bu;
 	
 	
-	public void valider(Integer id) {
+	public void miseAjour(Integer id) {
 		try {
-			
-			ligne = bu.mettreAJourLC(id);
-			System.out.println(ligne);
-			
+			for (LigneCommande ligneCommande : liste) {
+				if(ligneCommande.getId() == id) {
+					System.out.println(ligneCommande.getQuantitePreparee());
+					
+					bu.mettreAJourLC(ligneCommande);
+				}
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
-	
-	
-	
 
 	@PostConstruct
 	public void ajouterProduits() {

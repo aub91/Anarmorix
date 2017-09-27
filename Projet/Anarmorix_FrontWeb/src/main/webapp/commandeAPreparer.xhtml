@@ -60,16 +60,11 @@
             </div>
             
             <div id="dateDebut">
-            	<form name="form-Maj">
-				Date de fin de préparation : 
-				<h:inputText value="#{mbProduit.cmde.dateCreation}"  name="saisie-dateFinPreparation">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
-				 </h:inputText>
-				<input type="submit" class="btn" id="btnValider" value="Valider"  style="color:white;"></input>
-				</form>
+            	
 			</div>
 
             <table class="table">
+            	<h:form>
                 <thead>
                     <tr>
                         <th >N° COMMANDE : 
@@ -95,20 +90,34 @@
                 	<td>#{prodPrep.quantiteCommandee}
                 	<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}"  />
                 	</td>
-                	<td><input id="quantiteProduit" type="number" value="#{prodPrep.quantitePreparee}"></input>
+                	<td><h:inputText id="quantiteProduit" type="number" value="#{prodPrep.quantitePreparee}" />
                 	<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}"  />
                 	 </td>
-                	<td><h:button action ="#{mbProduit.valider()}"  value="Valider" 
+                	<td><h:commandButton action ="#{mbProduit.miseAjour(prodPrep.id)}" value="Valider" 
                 		id="btnValider2" class="btn" 
-                		style="color:white;"></h:button> </td>        
+                		style="color:white;"></h:commandButton> </td>        
                 </tr>
+              <div>
+				Date de fin de préparation : 
+				<h:inputText value="#{prodPrep.dateFinPreparation}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
+				 </h:inputText>
+				<h:commandButton action ="#{mbProduit.miseAjour(prodPrep.id)}" value="Valider"   
+				class="btn" id="btnValider" style="color:white;"></h:commandButton>
+				</div>
                 </ui:repeat>
+                </h:form>
+                
             </table>
         </div>
 
     </div>
     <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
 	
+
+
+	</script>
     <footer class="sticky-footer">
     </footer>
 </body>
