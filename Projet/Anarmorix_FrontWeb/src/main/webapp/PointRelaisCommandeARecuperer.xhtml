@@ -3,10 +3,28 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+	
+	
+	
+<ui:composition template="WEB-INF/templates/masterPagePointRelaisCommandeARecuperer.xhtml">
 
 
- <script type="text/javascript">
 
+
+
+ <ui:define name="script">
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js">0
+</script>
+<script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
+</script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+
+
+
+ 
 $(function () {
 	
 	$('#commandeRecuperee').hide();
@@ -25,8 +43,6 @@ $(function () {
 	$('#valid').hide();
 	$('#commandeRecuperee').show();
 	
-
-	
 		}
 
 		else if (userPassword == "")
@@ -44,20 +60,14 @@ $(function () {
 		
 	}
 
-
+});
 </script>
+</ui:define>
 
-
-
-
-<ui:composition template="WEB-INF/templates/masterPagePointRelaisARecuperer.xhtml">
-
-
-
-	<ui:define name="css">
-		<link href="cssTableauBord/tableauBordPointrelais.css" rel="stylesheet"
-			type="text/css"></link>
+	<ui:define name="css"><link href="cssTableauBord/commandeAPreparer.css" rel="stylesheet"></link>
+	
 	</ui:define>
+	
 	<ui:define name="content">
 	
 	 <div class="content-wrapper">
@@ -93,31 +103,17 @@ $(function () {
                 	<h:outputLabel value="#{prodTrans.produit.packaging.unite.unite}"  />
                 	</td>
                 	<td><input id="userPassword" type="password" required="required"></input></td>
-
-
 								
 						<td><input type="submit" class="btn" id="btnValider" style="width:80px"
-										value="Valider"  ></input></td>
-                	            
+										value="Valider"  ></input></td>        
                 </tr>
                 </ui:repeat>
             </table>
-
 
         </div>
 
     </div>
 
-
-    <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-    <footer class="sticky-footer">
-
-    </footer>
-
-
-
-	
-	
 	</ui:define>
 	</ui:composition>
 	</html>
