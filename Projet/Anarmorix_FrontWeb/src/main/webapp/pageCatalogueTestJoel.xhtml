@@ -14,6 +14,7 @@
 			src="resources/js/PageCatalogueProduit.js"></script>
 	</ui:define>
 	<ui:define name="content">
+	
 		<div class="row" data-img="img/fondblancasse.png"
 			style="background: url(resources/img/fondblancasse.png); background-size: cover;">
 			<div class="col-lg-3">
@@ -27,16 +28,18 @@
 										<div class="list-group panel">
 										
 										<!-- PRIMAIRE -->	
-										
+										<h:form id="formAccordeon">
 										<ui:repeat var="catPrimaire" value="#{mbAfficheProduits.categoriesPrimaires}" varStatus="statusPrimaire">
-											<h:outputLink  value = "#AccordeonNiveauSecondaire#{statusPrimaire.index + 1}"
-													 	   class="list-group-item list-group-item-success bg-secondaire">
-											<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
-											<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
-											<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
+												<h:commandLink  styleClass="list-group-item list-group-item-success bg-secondaire">
+												<f:passThroughAttribute name = "href" value= "#AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" />
+												<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
+												<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
 													<h:outputText value="#{catPrimaire.libelle}" />
-													<i class="fa fa-caret-down"></i> 
-											</h:outputLink>
+													<i class="fa fa-caret-down"></i>
+													<f:ajax event="click" render="formImage" execute="@form"
+													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}"></f:ajax>
+												</h:commandLink>
 											
 											<!-- SECONDAIRE -->	
 											
@@ -44,14 +47,16 @@
 											<f:passThroughAttribute name = "aria-expanded" value="true" /> 
 											<f:passThroughAttribute name = "id" value = "AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" /> 
 												<ui:repeat var="catSecondaires" value="#{mbAfficheProduits.recupererCategorieFilles(catPrimaire.id)}" varStatus="statusSecondaire">
-												<h:outputLink  value = "#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"
-														 	   class="list-group-item bg-tertiaire">
+												<h:commandLink class="list-group-item bg-tertiaire">
+												<f:passThroughAttribute name = "href" value="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
 												<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
 												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"/>
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  
 													<h:outputText value="#{catSecondaires.libelle}" />
 													<i class="fa fa-caret-down"></i>
-												</h:outputLink>
+													<f:ajax event="click" render="formImage" execute="@form"
+													 	listener="#{mbAfficheProduits.actualiserListe(catSecondaires)}"></f:ajax>
+												</h:commandLink>
 												
 												<!-- TERTIAIRE -->	
 												
@@ -59,18 +64,21 @@
 												<f:passThroughAttribute name = "aria-expanded" value="false" /> 
 												<f:passThroughAttribute name = "id" value = "AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
 													<ui:repeat var="catTertiaires" value="#{mbAfficheProduits.recupererCategorieFilles(catSecondaires.id)}" varStatus="statusTertiaire">
-													<h:outputLink  value = "#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"
-														 	   class="list-group-item bg-quaternaire">
+													<h:commandLink class="list-group-item bg-quaternaire">
+													<f:passThroughAttribute name = "href" value="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
 													<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
 													<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauQuaternaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}-#{statusTertiaire.index + 1}"/>
 													<f:passThroughAttribute name = "aria-expanded" value="false" />  
 														<h:outputText value="#{catTertiaires.libelle}" />
-													</h:outputLink>
+														<f:ajax event="click" render="formImage" execute="@form"
+													 		listener="#{mbAfficheProduits.actualiserListe(catTertiaires)}"></f:ajax>
+													</h:commandLink>
 													</ui:repeat> 
 												</h:panelGroup>
 												</ui:repeat> 
 											</h:panelGroup>
 										</ui:repeat> 
+										</h:form>
 										</div>
 									</div>
 								</div>
@@ -127,9 +135,12 @@
 					</div>
 					
 					<!-- début bloc images produits -->
+					<h:panelGroup layout="block" id="formImage">
 					<div class="row" id = "blocImage">
+					
 						<h:inputHidden id="libelle" value="#{mbAfficheProduits.libelleCategorie}" />
-						<ui:repeat var="pdt" value="#{mbAfficheProduits.recupererProduitsFiltres()}">
+						
+						<ui:repeat var="pdt" value="#{mbAfficheProduits.listePdts}">
 							<div class="col-md-3 text-center">
 								 <div class="box">
 									<div class="box-img">
@@ -138,8 +149,9 @@
 								</div>
 							</div>
 						</ui:repeat> 
+						
 					</div>
-
+</h:panelGroup>
 					<!--
 				<tr>
 					<td>

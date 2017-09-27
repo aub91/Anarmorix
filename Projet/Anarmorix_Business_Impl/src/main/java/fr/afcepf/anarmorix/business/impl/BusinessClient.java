@@ -236,24 +236,28 @@ public class BusinessClient implements IBusinessClient {
      */
     private List<Produit> produits = new ArrayList<>();
     @Override
-    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie) throws AnarmorixException {      
+    public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie, boolean reset) throws AnarmorixException {
+        if (reset) {
+            produits = new ArrayList<>();
+        }
 		List<Categorie> categories = null;
 		List<TypeProduit> typeProduits = new ArrayList<>();
 		try {
 			categories = daoCategorie.rechercherCategorieParLibelle(libelleCategorie);
-			//if(isCategorieFille(categories.get(0))) {
-				if(categories != null) {	
-				
-				typeProduits = categories.get(0).getTypesProduits();
-				for (TypeProduit type : typeProduits) {
-					Integer idType  = type.getId();
-					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
+			if (isCategorieFille(categories.get(0))) {
+				if (categories != null) {
+    				typeProduits = categories.get(0).getTypesProduits();
+    				for (TypeProduit type : typeProduits) {
+    				    System.out.println("business type " + type.getLibelle());
+    					Integer idType  = type.getId();
+    					produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
+    				}
 				}
-			} /*else {
+			} else {
 				for (Categorie cat : categories.get(0).getCategoriesFilles()) {
-					 recupererLesProduitsParCategorie(cat.getLibelle());
+					 recupererLesProduitsParCategorie(cat.getLibelle(), false);
 				}
-			}*/
+			}
 		} catch (Exception e) {
 			AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
 			throw exc;
@@ -262,7 +266,7 @@ public class BusinessClient implements IBusinessClient {
     }
     
     private boolean isCategorieFille(Categorie paramCategorie) {
-    	if(paramCategorie.getCategoriesFilles() == null) {
+    	if(paramCategorie.getCategoriesFilles().size() == 0) {
     		return true;
     	} else {
     		return false;
