@@ -4,6 +4,7 @@ package fr.afcepf.anarmorix.controller;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -113,6 +114,88 @@ public class TourneeManagedBean {
         } catch (AnarmorixException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+    }
+    /**
+     * Méthode de mise à jour d'un produit récupéré.
+     * @param ligne une ligne de commande venant d'être récupéré
+     * @throws AnarmorixException une exception
+     */
+    public void recuperer(LigneCommande ligne) {
+        ligne.setDateRetraitProducteur(new Date());
+        try {
+            busLivreur.mettreAJour(ligne);
+            for (CommerceVue commerceVue : exploitationAVisiter) {
+                if (commerceVue.getListeLigneCmd().contains(ligne)) {
+                    commerceVue.getListeLigneCmd().remove(ligne);
+                }
+            }
+        } catch (AnarmorixException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Méthode de mise à jour de tous les produits récupérés dans une exploitation.
+     * @param paramCommerceVue une exploitation où on récupère tous les produits
+     * @throws AnarmorixException une exception
+     */
+    public void toutRecuperer(CommerceVue paramCommerceVue) {
+        for (CommerceVue commerceVue : exploitationAVisiter) {
+            if (commerceVue.equals(paramCommerceVue)) {
+                for (LigneCommande ligne : commerceVue.getListeLigneCmd()) {
+                    ligne.setDateRetraitProducteur(new Date());
+                    try {
+                        busLivreur.mettreAJour(ligne);
+                    } catch (AnarmorixException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                commerceVue.getListeLigneCmd().clear();
+            }
+        }
+    }
+    /**
+     * Méthode de mise à jour d'un produit déposé.
+     * @param ligne une ligne de commande venant d'être récupéré
+     * @throws AnarmorixException une exception
+     */
+    public void deposer(LigneCommande ligne) {
+        ligne.setDateLivraisonPtRel(new Date());
+        ligne.setQuantiteLivree(ligne.getQuantitePreparee());
+        try {
+            busLivreur.mettreAJour(ligne);
+            for (CommerceVue commerceVue : pointRelaisAVisiter) {
+                if (commerceVue.getListeLigneCmd().contains(ligne)) {
+                    commerceVue.getListeLigneCmd().remove(ligne);
+                }
+            }
+        } catch (AnarmorixException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Méthode de mise à jour de tous les produits déposés dans un point-relais.
+     * @param paramCommerceVue un point-relais où on dépose tous les produits
+     * @throws AnarmorixException une exception
+     */
+    public void toutDeposer(CommerceVue paramCommerceVue) {
+        for (CommerceVue commerceVue : pointRelaisAVisiter) {
+            if (commerceVue.equals(paramCommerceVue)) {
+                for (LigneCommande ligne : commerceVue.getListeLigneCmd()) {
+                    ligne.setDateLivraisonPtRel(new Date());
+                    ligne.setQuantiteLivree(ligne.getQuantitePreparee());
+                    try {
+                        busLivreur.mettreAJour(ligne);
+                    } catch (AnarmorixException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                commerceVue.getListeLigneCmd().clear();
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package fr.afcepf.anarmorix.business.api;
 import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
@@ -41,5 +42,12 @@ public interface IBusinessLivreur {
      * @throws AnarmorixException une exception
      */
     Livreur alimenterLivreur(Livreur paramLivreur) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une ligne de commande venant d'être récupéré.
+     * @param paramLigneCommande ule ligne de commande venant d'être récupéré
+     * @return la ligne de commande mise à jour
+     * @throws AnarmorixException une exception
+     */
+    LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException;
 
 }

@@ -104,4 +104,9 @@ public class BusinessLivreur implements IBusinessLivreur {
         Livreur retour = daoCommerce.rechercherSocieteByLivreur(paramLivreur);
         return retour;
     }
+
+    @Override
+    public LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException {
+        return daoLigneCommande.mettreAJour(paramLigneCommande);
+    }
 }

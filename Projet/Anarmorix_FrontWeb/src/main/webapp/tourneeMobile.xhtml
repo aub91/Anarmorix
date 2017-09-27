@@ -19,6 +19,7 @@
   <div class="w3-container w3-col s12">
     <div class="w3-row">
       <div id="map" class="w3-col s12" style="height:50vh"></div>
+      <h:panelGroup id="tournee">
       <button onclick="show('itineraire')" class="w3-button w3-block w3-purple w3-hover-purple">Itinéraire</button>
       <div id="itineraire" class="w3-col s12 w3-hide"></div>
       <button onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple">Points d'arrêts</button>
@@ -57,7 +58,9 @@
           <div class="w3-modal-content">
             <header class="w3-bar w3-blue">
               <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
-              <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
+              <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top">
+                <f:ajax listener="#{mbTournee.toutRecuperer(com)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+              </h:commandButton>
               <span onclick="document.getElementById('exploitation-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
             <ul class="w3-ul w3-card-4">
@@ -71,8 +74,11 @@
                     <span>#{prod.produit.packaging.unite.unite}</span>
                   </div>
                   <div class="w3-col s4">
-                    <button class="w3-button w3-green">OK</button>
-                    <button class="w3-button w3-yellow">!</button>
+                    <h:commandButton class="w3-button w3-green" value="OK">
+                      <f:ajax listener="#{mbTournee.recuperer(prod)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+                    </h:commandButton>
+                    <h:commandButton class="w3-button w3-yellow" value="!">
+                    </h:commandButton>
                   </div>
                 </div>
               </li>
@@ -88,7 +94,9 @@
           <div class="w3-modal-content">
             <header class="w3-bar w3-red">
               <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
-              <h:commandButton value="Tout déposer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
+              <h:commandButton value="Tout déposer" styleClass="w3-bar-item w3-button w3-green w3-margin-top">
+                <f:ajax listener="#{mbTournee.toutDeposer(com)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+              </h:commandButton>
               <span onclick="document.getElementById('pointRelais-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
             <ul class="w3-ul w3-card-4">
@@ -97,13 +105,16 @@
                 <div class="w3-row">
                   <span class="w3-col s4">#{prod.produit.type.libelle}</span>
                   <div class="w3-col s4">
-                    <span>Qté à récupérer:</span>
+                    <span>Qté à déposer:</span>
                     <span>#{prod.quantitePreparee}</span>
                     <span>#{prod.produit.packaging.unite.unite}</span>
                   </div>
                   <div class="w3-col s4">
-                    <button class="w3-button w3-green">OK</button>
-                    <button class="w3-button w3-yellow">!</button>
+                    <h:commandButton class="w3-button w3-green" value="OK">
+                      <f:ajax listener="#{mbTournee.deposer(prod)}" execute="@form" render="tournee"></f:ajax>
+                    </h:commandButton>
+                    <h:commandButton class="w3-button w3-yellow" value="!">
+                    </h:commandButton>
                   </div>
                 </div>
               </li>
@@ -114,6 +125,7 @@
         </h:form>
         </ui:repeat>
       </div>
+      </h:panelGroup>
     </div>
   </div>
   <script type="text/javascript">
