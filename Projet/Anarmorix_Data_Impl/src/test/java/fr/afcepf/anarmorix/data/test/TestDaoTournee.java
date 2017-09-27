@@ -51,7 +51,7 @@ public class TestDaoTournee {
     /**
      * ID société de livraison échec.
      */
-    private static final int ID_SOCIETE_ECHEC = 14;
+    private static final int ID_SOCIETE_ECHEC = 99;
     /**
      * Société de livraison non existante en base de données.
      */

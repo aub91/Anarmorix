@@ -40,7 +40,7 @@ public interface IDaoLigneCommande {
      * @param id 
      * @return
      */
-    LigneCommande mettreAJour(Integer id) throws AnarmorixException;
+    LigneCommande mettreAJour(LigneCommande paramLigne) throws AnarmorixException;
     /**
      * Méthode recherchant les lignes de commandes d'une tournée.
      * @param paramTournee la tournée à alimenter

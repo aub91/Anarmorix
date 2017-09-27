@@ -7,9 +7,13 @@
 <h:head>
 	<meta charset="UTF-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<title>
+		<ui:define name="title"></ui:define>
+	</title>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	
+	<link href="css/PageCatalogueProduit.css" rel="stylesheet"
+		type="text/css" ></link>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 	<link rel="stylesheet"
@@ -24,7 +28,7 @@
     <ui:insert name="css"></ui:insert>
 </h:head>
 
-<body data-img="img/fondblancasse.png"
+<h:body data-img="img/fondblancasse.png"
 			style="background: url(resources/img/fondblancasse.png); background-size: cover;">
 	
 							
@@ -51,10 +55,18 @@
 								<ul class="dropdown-menu" style= "background: url(resources/img/fondvioletlight.png);background-size: cover;">
 								
 									
-									<li id="spanlogin"><span >Nom d'utilisateur : </span><input class="login" type="text" /></li>
-									<li id="spanmdp"> <span > Mot de passe : </span><input class="mdp" type="text" /></li>
+									<li id="spanlogin">
+										<span >Nom d'utilisateur : </span>
+										<h:inputText value="#{mbConnexion.username}" class="login" type="text" />
+									</li>
+									<li id="spanmdp"> 
+										<span > Mot de passe : </span>
+										<h:inputSecret value="#{mbConnexion.password}" class="mdp" type="text" />
+									</li>
 									
-									<li id="bouton-validation-connexion"><button type="submit" class="btn btn-default">Connectez-vous</button></li>
+									<li id="bouton-validation-connexion">
+										<h:commandButton action="#{mbConnexion.connexion()}" value="Connexion" />
+									</li>
 								
 									
 								</ul>
@@ -126,9 +138,9 @@
 		src="http://cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.3/iscroll.min.js"></script>
 	<script
 		src="http://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.22/webfontloader.js"></script>
-		<ui:insert name="script"></ui:insert>
+	<ui:insert name="script"></ui:insert>
 	
 
-</body>
+</h:body>
 
 </html>

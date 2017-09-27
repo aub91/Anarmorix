@@ -437,7 +437,8 @@ body {
 }
 
 #myFooter img {
-	
+	margin-top: 40px;
+	margin-left: -100px;
 	height :350px;
 	width: 400px;
 }
