@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
+	<ui:define name="css"><link href="cssPanier/style.default.css" rel="stylesheet"
+		id="theme-stylesheet"></link>
+	 <link href="cssPanier/paiement.css" rel="stylesheet"
+		id="theme-stylesheet"></link>
+	<link href="cssPanier/bootstrap.css" rel="stylesheet"
+		id="theme-stylesheet"></link>
+		<link rel="stylesheet" href="cssPanier/suggestion.css"></link>
+	</ui:define>
+	
+	<!-- your stylesheet with modifications -->
+	
+	
+	<ui:define name="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-5">
+				<div class="box-fix" id="basket ">
+					<div class="box">
+
+						<div class="row" id="infosPay">Veuillez renseigner vos
+							informations de paiement</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-5">
+			<div class="box-fix" id="basket ">
+				<div class="box">
+					<div class="row">
+						<div class="row">
+
+							<span class="spCarte">Titulaire de la carte</span>
+							<div class="col-md-12">
+								<input type="text" class="champs"
+									placeholder="Titulaire de la carte" maxlength="50" />
+							</div>
+							<br />
+							<br />
+							<div class="row"></div>
+							<span class="spCarte">Numero de la carte</span>
+							<div class="col-md-12">
+
+
+
+								<input type="text" class="champs"
+									onkeypress="return verif(event)"
+									placeholder="Inserez un numero de carte valide" maxlength="23" />
+							</div>
+							<br />
+							<br />
+							<div class="row"></div>
+
+							<div class="col-md-12">
+								<div class="col-md-3">
+									<span class="spCarte">Code</span>
+									<div class="input-wrapper">
+										<input type="text" onkeypress="return verif(event)"
+											class="champs" placeholder="CCV" maxlength="3" /> <span
+											class="icon"></span>
+									</div>
+								</div>
+								<div class="col-md-8" id="dataExp">
+									<div class="col-md-12">
+										<span class="spCarte">Date d'expiration </span>
+									</div>
+
+									<div class="col-md-12">
+										<select name="carteMois" class="mois">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select> <select name="carteYear" class="year">
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+											<option value="2022">2022</option>
+											<option value="2023">2023</option>
+											<option value="2024">2024</option>
+											<option value="2025">2025</option>
+											<option value="2026">2026</option>
+											<option value="2027">2027</option>
+											<option value="2028">2028</option>
+											<option value="2029">2029</option>
+											<option value="2030">2030</option>
+											<option value="2031">2031</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="row validation">
+							<div class="col-md-5 priceProduit p">
+								<p>
+									<b><u> </u></b>
+								</p>
+							</div>
+
+
+							<div class="col-md-12 payerBtn">
+								<button type="submit" class="payCart btn btn-primary">Payer
+								</button>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</ui:define>
+<ui:define name="script"><script type="text/javascript">
+    function verif(evt) {
+        var keyCode = evt.which ? evt.which : evt.keyCode;
+        var accept = '0123456789';
+        if (accept.indexOf(String.fromCharCode(keyCode)) >= 0) {
+            
+            return true;
+        } else {
+            alert("Saisissez un numero de carte valide!");
+            return false;
+        }
+    }
+</script>
+
+</ui:define>
+</ui:composition>
+</html>
