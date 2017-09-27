@@ -219,8 +219,8 @@ public class BusinessClient implements IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     @Override
-    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {      
-		List<Produit> produits = null;
+    public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {
+        List<Produit> produits = null;
 		try {
 			produits = daoProduit.rechercherParIDTypeProduit(idTypeProduit);
 		} catch (Exception e) {

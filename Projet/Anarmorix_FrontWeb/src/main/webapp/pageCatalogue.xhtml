@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
+	<ui:define name="script">
+		<script type="text/javascript" src="resources/js/PageCataloguePanier.js"></script>
+		<script type="text/javascript" src="resources/js/PageCatalogueProduit.js"></script>
+	</ui:define>
+	<ui:define name="css">
+		<link href="css/PageCatalogueProduit.css" rel="stylesheet" type="text/css"></link>
+	</ui:define>
+	<ui:define name="content">
+		<div class="row" >
+			<div class="col-lg-3">
+				<div class="section-categories">
+
+					<!--ACCORDEON-->
+
+					<div class="section-d">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12">
+									<div id="AccordeonNiveauPrincipal">
+										<div class="list-group panel">
+										
+										<!-- PRIMAIRE -->	
+										
+										<h:form id="formAccordeon">
+										<ui:repeat var="catPrimaire" value="#{mbAfficheProduits.categoriesPrimaires}" varStatus="statusPrimaire">
+												<h:commandLink  styleClass="list-group-item list-group-item-success bg-secondaire">
+												<f:passThroughAttribute name = "href" value= "#AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" />
+												<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
+												<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
+													<h:outputText value="#{catPrimaire.libelle}" />
+													<i class="fa fa-caret-down"></i>
+													<f:ajax event="click" render="formImage" execute="@form"
+													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}"></f:ajax>
+												</h:commandLink>
+											
+											<!-- SECONDAIRE -->	
+											
+											<h:panelGroup layout="block" class="collapse">
+											<f:passThroughAttribute name = "aria-expanded" value="true" /> 
+											<f:passThroughAttribute name = "id" value = "AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" /> 
+												<ui:repeat var="catSecondaires" value="#{mbAfficheProduits.recupererCategorieFilles(catPrimaire.id)}" varStatus="statusSecondaire">
+												<h:commandLink class="list-group-item bg-tertiaire">
+												<f:passThroughAttribute name = "href" value="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
+												<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"/>
+												<f:passThroughAttribute name = "aria-expanded" value="false" />  
+													<h:outputText value="#{catSecondaires.libelle}" />
+													<i class="fa fa-caret-down"></i>
+													<f:ajax event="click" render="formImage" execute="@form"
+													 	listener="#{mbAfficheProduits.actualiserListe(catSecondaires)}"></f:ajax>
+												</h:commandLink>
+												
+												<!-- TERTIAIRE -->	
+												
+												<h:panelGroup layout="block" class="collapse list-group-submenu">
+												<f:passThroughAttribute name = "aria-expanded" value="false" /> 
+												<f:passThroughAttribute name = "id" value = "AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
+													<ui:repeat var="catTertiaires" value="#{mbAfficheProduits.recupererCategorieFilles(catSecondaires.id)}" varStatus="statusTertiaire">
+													<h:commandLink class="list-group-item bg-quaternaire">
+													<f:passThroughAttribute name = "href" value="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}" /> 
+													<f:passThroughAttribute name = "data-toggle" value="collapse" /> 
+													<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauQuaternaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}-#{statusTertiaire.index + 1}"/>
+													<f:passThroughAttribute name = "aria-expanded" value="false" />  
+														<h:outputText value="#{catTertiaires.libelle}" />
+														<f:ajax event="click" render="formImage" execute="@form"
+													 		listener="#{mbAfficheProduits.actualiserListe(catTertiaires)}"></f:ajax>
+													</h:commandLink>
+													</ui:repeat> 
+												</h:panelGroup>
+												</ui:repeat> 
+											</h:panelGroup>
+										</ui:repeat> 
+										</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--  RECETTES -->
+					
+					<div class="col-lg-offset-1">
+						<button type="button" class="btn-recettes"
+							data-img="resources/img/cotriade.jpg"
+							style="background: url(resources/img/cotriade.jpg); background-size: cover;">
+							<div class="ribbon">
+								<span>Nos recettes</span>
+							</div>
+						</button>
+					</div>
+				
+					<!--  PANIER COULEUR -->
+				
+					<div class="col-lg-offset-1">
+						<button type="button" class=" btn-recettes"
+							data-img="img/purplefood.jpg"
+							style="background: url(img/purplefood.jpg); background-size: cover;">
+							<div class="ribbon">
+								<span>Par couleurs</span>
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-9">
+				<div class="section-catalogue">
+							
+					<!-- EN TETE CATALOGUE -->
+					
+					<div class="page-header">
+						<div class="row">
+							<h1 class="text-center">
+								<div class="col-lg-5">
+									<form class="searchbox">
+										<input type="search" placeholder="Quel produit voulez-vous ?"
+											name="search" class="searchbox-input" onkeyup="buttonUp();"
+											required="required"></input> <input type="submit"
+											class="searchbox-submit" value="Recherchez"></input><span
+											class="searchbox-icon">Recherchez</span>
+									</form>
+								</div>
+								<div class="col-lg-7">
+									<span id="titlecatalogue">Nos Produits</span>
+									<div id="cart">
+										<span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span
+											class="badge badge-notify my-cart-badge"></span></span>
+									</div>
+								</div>
+							</h1>
+						</div>
+					</div>
+					
+					<!-- AFFICHAGE PRODUITS -->
+					<h:form>
+					<h:panelGroup layout="block" id="formImage">
+					<div class="row" id = "blocImage">
+						<h:inputHidden id="libelle" value="#{mbAfficheProduits.libelleCategorie}" />
+						<ui:repeat var="lgnCmd" value="#{mbAfficheProduits.ligneComandesAffichables}">
+							<div class="col-md-3 text-center">
+							
+								<!-- IMAGES -->
+							
+								 <div class="box">
+									<div class="box-img">
+										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/>
+									</div>
+									<div class="content">
+										<h3 class="title"> <h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></h3>
+										<h:outputLabel styleClass="description" value="#{lgnCmd.produit.descriptif}"/>
+									</div>
+								</div>
+								
+								<!-- PRIX / CONDITIONNEMENT -->
+								
+								<div class="row">
+									<div class="col-lg-12 text-center">
+										<h:panelGroup id="nomProduit" layout="block">
+											<h:outputLabel value="#{lgnCmd.produit.type.libelle}"/>
+										</h:panelGroup>
+										<strong>
+											<h:panelGroup id="prixProduit">
+												<h:outputLabel value="#{lgnCmd.produit.prixUnitaire}">€/</h:outputLabel>
+											</h:panelGroup>
+											<c:choose>
+												<c:when test="#{lgnCmd.produit.packaging.libelle == 'Vrac'}">
+													<h:panelGroup id="conditionnementProduit">
+														<h:outputLabel value="#{lgnCmd.produit.packaging.unite.unite}"/>
+													</h:panelGroup>
+												</c:when>
+												<c:otherwise>
+	        										<h:panelGroup id="conditionnementProduit">
+														<h:outputLabel value="#{lgnCmd.produit.packaging.libelle}"/>
+													</h:panelGroup>
+	    										</c:otherwise>
+											</c:choose>
+										</strong>
+									</div>
+								</div>
+								
+								<!-- BOUTON + / - -->
+								
+								<div class="row">
+									<div id="groupInput" class="col-lg-8">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button type="button"
+													class="quantity-left-minus btn btn-number" data-type="minus"
+													data-field="">
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</span>
+											
+											<h:inputText  id="quantity" name="quantity" 
+														  styleClass="form-control input-number" value="#{lgnCmd.quantiteCommandee}">
+												<f:passThroughAttribute name = "value" value="1" /> 
+												<f:passThroughAttribute name = "min" value="1" /> 
+												<f:passThroughAttribute name = "max" value="100" /> 			  
+											</h:inputText>
+											
+										<!-- 	 
+											<input type="text" id="quantity" name="quantity"
+												class="form-control input-number" value="1" min="1" max="100">
+											</input>
+											 -->
+											<span class="input-group-btn">
+												<button type="button"
+													class="quantity-right-plus btn  btn-number" data-type="plus"
+													data-field="">
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+									
+									<!-- BOUTON AJOUTER -->
+									
+									<div class="col-lg-4">
+								<!-- 		<h:commandButton styleClass="btn my-cart-btn text-center" value="Ajout Panier">
+											<f:passThroughAttribute name = "data-id" value="1" /> 
+											<f:passThroughAttribute name = "data-name" value="#{lgnCmd.produit.type.libelle}" /> 
+											<f:passThroughAttribute name = "data-summary" value="summary 1" /> 	
+											<f:passThroughAttribute name = "data-price" value="#{lgnCmd.produit.prixUnitaire}" /> 
+											<f:passThroughAttribute name = "data-quantity" value="#{lgnCmd.quantiteCommandee}" /> 
+											<f:passThroughAttribute name = "data-image" value="#{lgnCmd.produit.image.chemin}" /> 	
+												<f:ajax event="click" render="formImage" execute="@form"
+														 	    listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}"></f:ajax>
+										</h:commandButton>
+								 -->
+										<button type="button" jsf:id="btn" >
+											<f:passThroughAttribute name = "class" value="btn my-cart-btn text-center" /> 
+											<f:passThroughAttribute name = "data-id" value="1" /> 
+											<f:passThroughAttribute name = "data-name" value="#{lgnCmd.produit.type.libelle}" /> 
+											<f:passThroughAttribute name = "data-summary" value="summary 1" /> 	
+											<f:passThroughAttribute name = "data-price" value="#{lgnCmd.produit.prixUnitaire}" /> 
+											<f:passThroughAttribute name = "data-quantity" value="#{lgnCmd.quantiteCommandee}" /> 
+											<f:passThroughAttribute name = "data-image" value="#{lgnCmd.produit.image.chemin}" /> 	
+												<f:ajax event="click" render="formImage" execute="@form"
+														 	    listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}"></f:ajax>
+										
+										click</button>
+										
+									<!-- 
+										<button class="btn my-cart-btn text-center" data-id="1"
+											data-name="Andouille de Guéméné" data-summary="summary 1"
+											data-price="10" data-quantity="1"
+											data-image="resources/img/Andouille_de_guemene.jpg">Ajout Panier
+										</button>
+										 -->
+									</div>
+								</div>
+							</div>
+						</ui:repeat> 
+					</div>
+					</h:panelGroup>
+					</h:form>
+				<!--	<div class="row">
+						<div class="col-md-3 text-center">
+							<div class="box">
+								<div class="box-img">
+									<img src="resources/img/Andouille_de_guemene.jpg"></img>
+								</div>
+								<div class="content">
+									<h3 class="title">web design</h3>
+									<p class="description">Lorem ipsum dolor sit amet,
+										consectetur adipiscing elit. Aenean sagittis porta ante.</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 text-center">
+									<span id="nomProduit">ANDOUILLE DE GUÉMÉNÉ</span> <strong><span
+										id="prixProduit">6.00</span>€/<span
+										id="conditionnementProduit">kg</span> </strong>
+								</div>
+							</div>
+							<div class="row">
+								<div id="groupInput" class="col-lg-8">
+									<div class="input-group">
+										<span class="input-group-btn">
+											<button type="button"
+												class="quantity-left-minus btn btn-number" data-type="minus"
+												data-field="">
+												<span class="glyphicon glyphicon-minus"></span>
+											</button>
+										</span> <input type="text" id="quantity" name="quantity"
+											class="form-control input-number" value="1" min="1" max="100"></input>
+										<span class="input-group-btn">
+											<button type="button"
+												class="quantity-right-plus btn  btn-number" data-type="plus"
+												data-field="">
+												<span class="glyphicon glyphicon-plus"></span>
+											</button>
+										</span>
+									</div>
+									<span id="conditionnementQuantite">KG</span>
+								</div>
+								<div class="col-lg-4">
+
+									<button class="btn my-cart-btn text-center" data-id="1"
+										data-name="Andouille de Guéméné" data-summary="summary 1"
+										data-price="10" data-quantity="1"
+										data-image="resources/img/Andouille_de_guemene.jpg">Ajout
+										Panier</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					-->
+				</div>
+				
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>
