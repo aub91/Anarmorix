@@ -91,20 +91,16 @@ public class ConnexionCommandeManagedBean implements Serializable{
     public String seConnecter(){
         String forward ="";
         try {
-            System.out.println(username);
-            System.out.println(password);
             connectedAdh = buCnx.seConnecter(username, password);
             if(connectedAdh != null && connectedAdh.getClass() == Client.class) {
                 System.out.println("Nom : " + connectedAdh.getNom());
                 forward = "/paiement.xhtml?faces-redirect=true";
             } else {
-                System.out.println("Pas d'adhérent.");
-                forward = "/pageAutreUser.xhml?faces-redirect=true";
+                forward = "/pageConnexionCommande.xhml?faces-redirect=true";
             }
             return forward;
         } catch (AnarmorixException e) {
-            System.out.println("AnarmorixException à la connexion");
-            forward = "/pageErreur.xhtml?faces-redirect=true";
+            forward = "/pageConnexionCommande.xhtml?faces-redirect=true";
             return forward;
         }
     }
