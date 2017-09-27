@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import fr.afcepf.anarmorix.business.api.IBusinessConnexion;
 import fr.afcepf.anarmorix.entity.Adherent;
 import fr.afcepf.anarmorix.entity.Client;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 @ManagedBean(name = "mbConnexion")
@@ -83,9 +84,22 @@ public class ConnexionCommandeManagedBean implements Serializable{
     public void setPassword(String paramPassword) {
         password = paramPassword;
     }
-    
-    public void connexion() {
-        //TODO : Implement method.
+
+    public String connexion() {
+        String forward ="";
+        try {
+            connectedAdh = buCnx.seConnecter(username, password);
+            if(connectedAdh != null && connectedAdh.getClass() == Livreur.class) {
+                System.out.println("Nom : " + connectedAdh.getNom());
+                forward = "/pageConnecte.xhtml?faces-redirect=true";
+            } else {
+                forward = "/pageConnexionCommande.xhml?faces-redirect=true";
+            }
+            return forward;
+        } catch (AnarmorixException e) {
+            forward = "/pageConnexionCommande.xhtml?faces-redirect=true";
+            return forward;
+        }
     }
 
     public String seConnecter(){

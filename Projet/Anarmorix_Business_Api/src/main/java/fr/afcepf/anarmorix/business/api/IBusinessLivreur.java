@@ -34,5 +34,12 @@ public interface IBusinessLivreur {
      * @throws AnarmorixException une exception
      */
     List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException;
+    /**
+     * Méthode pour alimenter la société d'un livreur.
+     * @param paramLivreur un livreur sans sa société de livraison
+     * @return le livreur avec sa société de livraison
+     * @throws AnarmorixException une exception
+     */
+    Livreur alimenterLivreur(Livreur paramLivreur) throws AnarmorixException;
 
 }

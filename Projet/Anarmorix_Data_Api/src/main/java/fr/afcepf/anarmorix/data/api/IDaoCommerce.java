@@ -5,6 +5,7 @@ import java.util.List;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Commerce;
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Ville;
@@ -55,6 +56,13 @@ public interface IDaoCommerce {
      * @throws AnarmorixException une exception
      */
     Catalogue rechercherExploitationByCatalogue(Catalogue paramCatalogue) throws AnarmorixException;
+    /**
+     * Méthode alimentant un livreur avec sa société de livraison.
+     * @param paramLivreur un livreur sans sa société de livraison
+     * @return le livreur avec sa société de livraison
+     * @throws AnarmorixException une exception
+     */
+    Livreur rechercherSocieteByLivreur(Livreur paramLivreur) throws AnarmorixException;
 
     List<PointRelais> rechercherPointsRelais(Ville paramVille) throws AnarmorixException;
 

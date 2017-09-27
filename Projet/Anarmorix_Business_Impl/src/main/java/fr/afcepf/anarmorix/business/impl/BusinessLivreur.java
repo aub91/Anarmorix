@@ -10,6 +10,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
+import fr.afcepf.anarmorix.data.api.IDaoAdresse;
 import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
 import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
@@ -18,6 +19,7 @@ import fr.afcepf.anarmorix.data.api.IDaoTournee;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Exploitation;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -54,6 +56,11 @@ public class BusinessLivreur implements IBusinessLivreur {
     @EJB
     private IDaoCommerce daoCommerce;
     /**
+     * {@link IDaoAdresse}.
+     */
+    @EJB
+    private IDaoAdresse daoAdresse;
+    /**
      * Default constructor.
      */
     public BusinessLivreur() {
@@ -89,6 +96,12 @@ public class BusinessLivreur implements IBusinessLivreur {
             setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
         }
         List<Exploitation> retour = new ArrayList<>(setRetour);
+        return retour;
+    }
+
+    @Override
+    public Livreur alimenterLivreur(Livreur paramLivreur) throws AnarmorixException {
+        Livreur retour = daoCommerce.rechercherSocieteByLivreur(paramLivreur);
         return retour;
     }
 }

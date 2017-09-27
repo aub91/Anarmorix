@@ -23,28 +23,73 @@
       <div id="itineraire" class="w3-col s12 w3-hide"></div>
       <button onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple">Points d'arrêts</button>
       <div id="arrets" class="w3-col s12 w3-hide">
-        <table class="w3-table-all w3-centered w3-small w3-mobile">
+        <table id="exploitationTable" class="w3-table-all w3-centered w3-small">
           <thead>
             <tr>
               <th>Nom</th>
-              <th>Produits à récupérer/déposer</th>
+              <th>Produits à récupérer</th>
             </tr>
           </thead>
-          <ui:repeat var="com" value="#{mbTournee.commercesAVisiter}">
-          <tr class="w3-hover-purple" onclick="document.getElementById('producteur-#{com.commerce.id}').style.display='block'">
+          <ui:repeat var="com" value="#{mbTournee.exploitationAVisiter}">
+          <tr class="w3-hover-purple" onclick="document.getElementById('exploitation-#{com.commerce.id}').style.display='block'">
             <td>#{com.commerce.raisonSociale}</td>
             <td>#{com.listeLigneCmd.size()}</td>
           </tr>
           </ui:repeat>
         </table>
-        <ui:repeat var="com" value="#{mbTournee.commercesAVisiter}">
+        <table id="pointRelaisTable" class="w3-table-all w3-centered w3-small">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Produits à déposer</th>
+            </tr>
+          </thead>
+          <ui:repeat var="com" value="#{mbTournee.pointRelaisAVisiter}">
+          <tr class="w3-hover-purple" onclick="document.getElementById('pointRelais-#{com.commerce.id}').style.display='block'">
+            <td>#{com.commerce.raisonSociale}</td>
+            <td>#{com.listeLigneCmd.size()}</td>
+          </tr>
+          </ui:repeat>
+        </table>
+        <ui:repeat var="com" value="#{mbTournee.exploitationAVisiter}">
         <h:form>
-        <div id="producteur-#{com.commerce.id}" class="w3-modal">
+        <div id="exploitation-#{com.commerce.id}" class="w3-modal">
+          <div class="w3-modal-content">
+            <header class="w3-bar w3-blue">
+              <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
+              <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
+              <span onclick="document.getElementById('exploitation-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
+            </header>
+            <ul class="w3-ul w3-card-4">
+              <ui:repeat var="prod" value="#{com.listeLigneCmd}">
+              <li>
+                <div class="w3-row">
+                  <span class="w3-col s4">#{prod.produit.type.libelle}</span>
+                  <div class="w3-col s4">
+                    <span>Qté à récupérer:</span>
+                    <span>#{prod.quantitePreparee}</span>
+                    <span>#{prod.produit.packaging.unite.unite}</span>
+                  </div>
+                  <div class="w3-col s4">
+                    <button class="w3-button w3-green">OK</button>
+                    <button class="w3-button w3-yellow">!</button>
+                  </div>
+                </div>
+              </li>
+              </ui:repeat>
+            </ul>
+          </div>
+        </div>
+        </h:form>
+        </ui:repeat>
+        <ui:repeat var="com" value="#{mbTournee.pointRelaisAVisiter}">
+        <h:form>
+        <div id="pointRelais-#{com.commerce.id}" class="w3-modal">
           <div class="w3-modal-content">
             <header class="w3-bar w3-red">
               <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
-              <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
-              <span onclick="document.getElementById('producteur-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
+              <h:commandButton value="Tout déposer" styleClass="w3-bar-item w3-button w3-green w3-margin-top"></h:commandButton>
+              <span onclick="document.getElementById('pointRelais-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
             <ul class="w3-ul w3-card-4">
               <ui:repeat var="prod" value="#{com.listeLigneCmd}">
@@ -86,8 +131,8 @@
           directionsDisplay.setPanel(document.getElementById('itineraire'));
 
           directionsService.route({
-        	  origin: {lat: 48.782303, lng: -3.059167},
-        	  destination: {lat: 48.782303, lng: -3.059167},
+        	  origin: {lat: #{mbTournee.livreur.societe.adresse.latitude}, lng: #{mbTournee.livreur.societe.adresse.longitude}},
+        	  destination: {lat: #{mbTournee.cnxMb.connectedAdh.societe.adresse.latitude}, lng: #{mbTournee.cnxMb.connectedAdh.societe.adresse.longitude}},
         	  waypoints: wP,
         	  optimizeWaypoints: true,
               travelMode: 'DRIVING'
