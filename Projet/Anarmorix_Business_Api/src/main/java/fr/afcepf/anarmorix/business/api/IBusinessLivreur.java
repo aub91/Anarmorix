@@ -49,5 +49,12 @@ public interface IBusinessLivreur {
      * @throws AnarmorixException une exception
      */
     LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une tournée.
+     * @param paramTournee une tournee de commande venant d'être commencé
+     * @return la tournee mise à jour
+     * @throws AnarmorixException une exception
+     */
+    Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException;
 
 }

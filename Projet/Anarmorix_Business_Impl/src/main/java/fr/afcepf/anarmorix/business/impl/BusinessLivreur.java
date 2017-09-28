@@ -109,4 +109,9 @@ public class BusinessLivreur implements IBusinessLivreur {
     public LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException {
         return daoLigneCommande.mettreAJour(paramLigneCommande);
     }
+
+    @Override
+    public Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException {
+        return daoTournee.mettreAJour(paramTournee);
+    }
 }

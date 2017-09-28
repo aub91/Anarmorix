@@ -91,7 +91,7 @@ public class ConnexionCommandeManagedBean implements Serializable{
             connectedAdh = buCnx.seConnecter(username, password);
             if(connectedAdh != null && connectedAdh.getClass() == Livreur.class) {
                 System.out.println("Nom : " + connectedAdh.getNom());
-                forward = "/pageConnecte.xhtml?faces-redirect=true";
+                forward = "/tableauDeBordLivreur.xhtml?faces-redirect=true";
             } else {
                 forward = "/pageConnexionCommande.xhml?faces-redirect=true";
             }

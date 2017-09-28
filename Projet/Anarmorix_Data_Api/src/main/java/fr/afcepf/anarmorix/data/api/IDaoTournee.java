@@ -29,9 +29,10 @@ public interface IDaoTournee {
     Boolean supprimer(Integer id);
 
     /**
-     * @param id
-     * @return
+     * @param paramTournee tournée à mettre à jour
+     * @return la tournée mise à jour
+     * @throws AnarmorixException une exception
      */
-    Tournee mettreAJour(Integer id);
+    Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException;
 
 }
