@@ -8,11 +8,14 @@
 
 <ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
 	<ui:define name="script">
-		<script type="text/javascript" src="resources/js/PageCataloguePanier.js"></script>
-		<script type="text/javascript" src="resources/js/PageCatalogueProduit.js"></script>
+					<script type="text/javascript" src="resources/js/PageCataloguePanier.js"></script> 
+					<script type="text/javascript" src="resources/js/PageCatalogueProduit.js"></script>
 	</ui:define>
+	
+	
 	<ui:define name="css">
 		<link href="css/PageCatalogueProduit.css" rel="stylesheet" type="text/css"></link>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 	</ui:define>
 	<ui:define name="content">
 		<div class="row" >
@@ -31,6 +34,9 @@
 										<!-- PRIMAIRE -->	
 										
 										<h:form id="formAccordeon">
+										
+										<!-- FORMMMMM -->
+										
 										<ui:repeat var="catPrimaire" value="#{mbAfficheProduits.categoriesPrimaires}" varStatus="statusPrimaire">
 												<h:commandLink  styleClass="list-group-item list-group-item-success bg-secondaire">
 												<f:passThroughAttribute name = "href" value= "#AccordeonNiveauSecondaire#{statusPrimaire.index + 1}" />
@@ -39,8 +45,8 @@
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
 													<h:outputText value="#{catPrimaire.libelle}" />
 													<i class="fa fa-caret-down"></i>
-													<f:ajax event="click" render="formImage" execute="@form"
-													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}"></f:ajax>
+													<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
+													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}" onevent="incrementQty"></f:ajax>
 												</h:commandLink>
 											
 											<!-- SECONDAIRE -->	
@@ -56,8 +62,9 @@
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  
 													<h:outputText value="#{catSecondaires.libelle}" />
 													<i class="fa fa-caret-down"></i>
-													<f:ajax event="click" render="formImage" execute="@form"
-													 	listener="#{mbAfficheProduits.actualiserListe(catSecondaires)}"></f:ajax>
+													<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
+													 	listener="#{mbAfficheProduits.actualiserListe(catSecondaires)}" onevent="incrementQty"></f:ajax>
+													 	
 												</h:commandLink>
 												
 												<!-- TERTIAIRE -->	
@@ -72,8 +79,10 @@
 													<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauQuaternaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}-#{statusTertiaire.index + 1}"/>
 													<f:passThroughAttribute name = "aria-expanded" value="false" />  
 														<h:outputText value="#{catTertiaires.libelle}" />
-														<f:ajax event="click" render="formImage" execute="@form"
-													 		listener="#{mbAfficheProduits.actualiserListe(catTertiaires)}"></f:ajax>
+														<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
+													 		listener="#{mbAfficheProduits.actualiserListe(catTertiaires)}" onevent="incrementQty"></f:ajax>
+													 		
+													 		
 													</h:commandLink>
 													</ui:repeat> 
 												</h:panelGroup>
@@ -81,6 +90,7 @@
 											</h:panelGroup>
 										</ui:repeat> 
 										</h:form>
+
 										</div>
 									</div>
 								</div>
@@ -131,19 +141,39 @@
 											class="searchbox-icon">Recherchez</span>
 									</form>
 								</div>
+											
 								<div class="col-lg-7">
 									<span id="titlecatalogue">Nos Produits</span>
-									<div id="cart">
-										<span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span
-											class="badge badge-notify my-cart-badge"></span></span>
-									</div>
+									
+									
+									<div class="w3-container">
+									
+										  <img onclick="document.getElementById('id01').style.display='block'" src="resources/img/Panier.png" alt="Panier" height="60" width="60">
+										  
+<!-- 										  <SPAN onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"></SPAN> -->
+										  </img>
+										  
+<!-- 										  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+										
+										  <div id="id01" class="w3-modal">
+										    <div class="w3-modal-content">
+										      <div class="w3-container">
+										      
+										        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">X</span>
+										        <p>Some text. Some text. Some text.</p>
+										        <p>Some text. Some text. Some text.</p>
+										      </div>
+										    </div>
+										  </div>
+										</div>
 								</div>
 							</h1>
 						</div>
 					</div>
-					
+				
 					<!-- AFFICHAGE PRODUITS -->
-					<h:form>
+					<h:form id="form-affiche-pdts">
+		
 					<h:panelGroup layout="block" id="formImage">
 					<div class="row" id = "blocImage">
 						<h:inputHidden id="libelle" value="#{mbAfficheProduits.libelleCategorie}" />
@@ -190,7 +220,8 @@
 								</div>
 								
 								<!-- BOUTON + / - -->
-								
+							
+		
 								<div class="row">
 									<div id="groupInput" class="col-lg-8">
 										<div class="input-group">
@@ -208,12 +239,6 @@
 												<f:passThroughAttribute name = "min" value="1" /> 
 												<f:passThroughAttribute name = "max" value="100" /> 			  
 											</h:inputText>
-											
-										<!-- 	 
-											<input type="text" id="quantity" name="quantity"
-												class="form-control input-number" value="1" min="1" max="100">
-											</input>
-											 -->
 											<span class="input-group-btn">
 												<button type="button"
 													class="quantity-right-plus btn  btn-number" data-type="plus"
@@ -227,18 +252,7 @@
 									<!-- BOUTON AJOUTER -->
 									
 									<div class="col-lg-4">
-								<!-- 		<h:commandButton styleClass="btn my-cart-btn text-center" value="Ajout Panier">
-											<f:passThroughAttribute name = "data-id" value="1" /> 
-											<f:passThroughAttribute name = "data-name" value="#{lgnCmd.produit.type.libelle}" /> 
-											<f:passThroughAttribute name = "data-summary" value="summary 1" /> 	
-											<f:passThroughAttribute name = "data-price" value="#{lgnCmd.produit.prixUnitaire}" /> 
-											<f:passThroughAttribute name = "data-quantity" value="#{lgnCmd.quantiteCommandee}" /> 
-											<f:passThroughAttribute name = "data-image" value="#{lgnCmd.produit.image.chemin}" /> 	
-												<f:ajax event="click" render="formImage" execute="@form"
-														 	    listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}"></f:ajax>
-										</h:commandButton>
-								 -->
-										<button type="button" jsf:id="btn" >
+											<button type="button" jsf:id="btn" >
 											<f:passThroughAttribute name = "class" value="btn my-cart-btn text-center" /> 
 											<f:passThroughAttribute name = "data-id" value="1" /> 
 											<f:passThroughAttribute name = "data-name" value="#{lgnCmd.produit.type.libelle}" /> 
@@ -246,18 +260,11 @@
 											<f:passThroughAttribute name = "data-price" value="#{lgnCmd.produit.prixUnitaire}" /> 
 											<f:passThroughAttribute name = "data-quantity" value="#{lgnCmd.quantiteCommandee}" /> 
 											<f:passThroughAttribute name = "data-image" value="#{lgnCmd.produit.image.chemin}" /> 	
-												<f:ajax event="click" render="formImage" execute="@form"
-														 	    listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}"></f:ajax>
-										
-										click</button>
-										
-									<!-- 
-										<button class="btn my-cart-btn text-center" data-id="1"
-											data-name="Andouille de Guéméné" data-summary="summary 1"
-											data-price="10" data-quantity="1"
-											data-image="resources/img/Andouille_de_guemene.jpg">Ajout Panier
-										</button>
-										 -->
+												
+														<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
+														listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}" onevent="incrementQty"></f:ajax>
+										Ajout Panier</button>
+											
 									</div>
 								</div>
 							</div>
@@ -265,63 +272,14 @@
 					</div>
 					</h:panelGroup>
 					</h:form>
-				<!--	<div class="row">
-						<div class="col-md-3 text-center">
-							<div class="box">
-								<div class="box-img">
-									<img src="resources/img/Andouille_de_guemene.jpg"></img>
-								</div>
-								<div class="content">
-									<h3 class="title">web design</h3>
-									<p class="description">Lorem ipsum dolor sit amet,
-										consectetur adipiscing elit. Aenean sagittis porta ante.</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 text-center">
-									<span id="nomProduit">ANDOUILLE DE GUÉMÉNÉ</span> <strong><span
-										id="prixProduit">6.00</span>€/<span
-										id="conditionnementProduit">kg</span> </strong>
-								</div>
-							</div>
-							<div class="row">
-								<div id="groupInput" class="col-lg-8">
-									<div class="input-group">
-										<span class="input-group-btn">
-											<button type="button"
-												class="quantity-left-minus btn btn-number" data-type="minus"
-												data-field="">
-												<span class="glyphicon glyphicon-minus"></span>
-											</button>
-										</span> <input type="text" id="quantity" name="quantity"
-											class="form-control input-number" value="1" min="1" max="100"></input>
-										<span class="input-group-btn">
-											<button type="button"
-												class="quantity-right-plus btn  btn-number" data-type="plus"
-												data-field="">
-												<span class="glyphicon glyphicon-plus"></span>
-											</button>
-										</span>
-									</div>
-									<span id="conditionnementQuantite">KG</span>
-								</div>
-								<div class="col-lg-4">
-
-									<button class="btn my-cart-btn text-center" data-id="1"
-										data-name="Andouille de Guéméné" data-summary="summary 1"
-										data-price="10" data-quantity="1"
-										data-image="resources/img/Andouille_de_guemene.jpg">Ajout
-										Panier</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					-->
 				</div>
 				
 			</div>
 		</div>
 	</ui:define>
+	
+
+	
 </ui:composition>
 
 </html>

@@ -72,9 +72,15 @@ public class AfficherProduitsManagedBean {
 
     public void actualiserListe(Categorie cat)  throws AnarmorixException {
         listePdts = businessCLient.recupererLesProduitsParCategorie(cat.getLibelle(), true);
+        ligneComandesAffichables = new ArrayList<>();
         for (Produit pdt : listePdts) {
             System.out.println("id produit " + pdt.getId());
+            LigneCommande lc = new LigneCommande();
+            lc.setProduit(pdt);
+            ligneComandesAffichables.add(lc);
         }
+        System.out.println(listePdts);
+        System.out.println(listePdts.size());
     }
     
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande/*Produit produitAjoute*/) {
