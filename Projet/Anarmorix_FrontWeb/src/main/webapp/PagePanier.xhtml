@@ -33,14 +33,21 @@
 								</thead>
 								<!-- partie a remplir dans le panier-->
 								<tbody>
-									<ui:repeat var="prodCom" value="#{mbLigneProduitPanier.listeProduits}"> 
+									<ui:repeat var="lgnCmd" value="#{mbAfficheProduits.ligneComandes}"> 
 									<tr class="ligneProduit">
-										<td><a href="#"> <img src="#{prodCom.id}" alt="produit selectionné"></img></a></td>
-										<td><a href="#"><strong><U>carottes </U></strong>c'est
-												bon</a></td>
-										<td><input id="quantiteProduit" type="number" value="#{prodCom.quantiteEnStock}" class="form-control"></input></td>
-                						<td>#{prodCom.packaging.libelle}</td>
-                						<td id="prixProduit">#{prodCom.prixUnitaire} </td>
+										<td>
+ 										<a href="#"> 
+										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/>
+<!-- 										<img src="#{prodCom.id}" alt="produit selectionné"></img> -->
+										</a>
+										</td>
+										
+<!-- 										<td><a href="#"><strong><U>carottes </U></strong>c'est -->
+<!-- 												bon</a></td> -->
+										<td><h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></td>
+										<td><input id="quantiteProduit" type="number" value="#{lgnCmd.quantiteCommandee}" class="form-control"></input></td>
+                						<td>#{lgnCmd.produit.packaging.libelle}</td>
+                						<td id="prixProduit">#{lgnCmd.produit.prixUnitaire} </td>
 										<td ><i id="totalProduit"></i></td>
 									</tr>
 									</ui:repeat>
@@ -64,9 +71,15 @@
 									class="fa fa-chevron-left"></i> Continuer mes achats</a>
 							</div>
 							<div class="pull-right">
-								<button type="submit" class="btn btn-primary">
-									commander<a href="paiement.xhtml"></a> <i class="fa fa-chevron-right"></i>
-								</button>
+							
+										<A href="http://localhost:18080/Anarmorix_FrontWeb/paiement.jsf">
+											<button type="button" class ="btn my-cart-btn text-center" >
+											commander</button>
+										</A>
+							
+<!-- 								<button type="submit" class="btn btn-primary"> -->
+<!-- 									commander<a href="paiement.xhtml"></a> <i class="fa fa-chevron-right"></i> -->
+<!-- 								</button> -->
 							</div>
 						</div>
 					</div>
@@ -88,9 +101,16 @@
 						<div class="box-footer">
 							<div class="row">
 								<div class="pull-center">
-									<button type="submit" class="btn btn-primary">
-										Commander <i class="fa fa-chevron-right"></i>
-									</button>
+								
+								
+<!-- 							<A href="http://localhost:18080/Anarmorix_FrontWeb/paiement.jsf"> -->
+									<h:form>
+								    <h:commandButton styleClass="btn" value="Commander"
+								                     action="#{mbAfficheProduits.ajouterLigneCommandeEnBAse}"/>
+<!-- 											<button type="button" class ="btn my-cart-btn text-center" > -->
+<!-- 											commander</button> -->
+<!-- 										</A> -->
+									</h:form>
 								</div>
 							</div>
 						</div>

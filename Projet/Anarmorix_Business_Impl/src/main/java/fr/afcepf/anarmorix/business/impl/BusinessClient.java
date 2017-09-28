@@ -1,6 +1,7 @@
 package fr.afcepf.anarmorix.business.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -90,6 +91,7 @@ public class BusinessClient implements IBusinessClient {
     /**
      * Interface d'accès aux données {@link Commande}.
      */
+    @EJB
     private IDaoCommande daoCommande;
 
     /**
@@ -114,6 +116,26 @@ public class BusinessClient implements IBusinessClient {
      */
     public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException {
         commande.setLignesCommande(daoLignecommande.rechercher(commande));
+        return commande;
+    }
+    
+    /**
+     * Méthode permettant d'ajouter une liste de lignes de commandes à une commande..
+     * @param produit 
+     * @param quantite 
+     * @return
+     */
+    public Commande ajouterListeLigneCommande(List<LigneCommande> lignesCommandes) throws AnarmorixException {
+        Commande commande = new Commande();
+        Client client = new Client();
+        client.setId(1);
+        commande.setClient(client);
+        PointRelais PR = new PointRelais();
+        PR.setId(4);
+        commande.setRelais(PR);
+        commande.setDateCreation(new Date());
+        commande.setLignesCommande(lignesCommandes);
+        commande = daoCommande.ajouter(commande);
         return commande;
     }
 
