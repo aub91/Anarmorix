@@ -28,6 +28,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 @SessionScoped
 
 public class ProduitManagedBean {
+	
 	private List<LigneCommande> liste = new ArrayList<>();
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
@@ -90,7 +91,6 @@ public class ProduitManagedBean {
 	
 
 
-	 
 	 
 	 
 	public Commande getCmde() {

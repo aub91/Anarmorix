@@ -94,13 +94,21 @@ $(function () {
     <div class="content-wrapper">
         <div id="section-general">
             <div class="title">
-                <h1>Liste des commandes à récupérer</h1>
+            <form name="formulaire">
+						<h1>
+							Liste des commandes à récupérer <input type="button" class="btn"
+								style="width: 200px; float: right; margin-right: 25px"
+								id="TableauDeBord" value="Retour au tableau de bord"
+								onclick="window.location='tableauBordPointRelais.xhtml'"></input>
+						</h1>
+					</form>
+                
             </div>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th >N° COMMANDE : <h:outputLabel value="#{mbProduit.cmde.id}" /></th>
+                        <th>N° COMMANDE : <h:outputLabel value="#{mbProduit.cmde.id}" /></th>
                         <th>Nom du client:  <h:outputLabel value="#{mbProduit.cmde.client.nom}" /></th>
                         <th>Prénom du client: <h:outputLabel value="#{mbProduit.cmde.client.prenom}" /></th>
                         <th> <input type="submit" class="btn"  style="width:200px" 
