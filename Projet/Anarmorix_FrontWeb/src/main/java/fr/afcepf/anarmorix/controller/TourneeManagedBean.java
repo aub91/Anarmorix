@@ -19,12 +19,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Exploitation;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.PointRelais;
+import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
+import java.net.URISyntaxException;
+
 
 /**
  * Classe contenant les fonctionnalités du controller des pages en lien avec la tournée.
@@ -69,6 +77,15 @@ public class TourneeManagedBean {
      * Tournée selectionnée.
      */
     private Tournee selectedTournee;
+    /**
+     * Account twilio.
+     */
+    public static final String ACCOUNT_SID = "ACfe22176d0e37790f1e3b04ae13049393";
+    /**
+     * Token twilio.
+     */
+    public static final String AUTH_TOKEN = "87894586cd368fc7d4f478fa7eed9dbc";
+
     /**
      * Méthode pour set une tournée spécifique.
      */
@@ -200,13 +217,35 @@ public class TourneeManagedBean {
                 for (LigneCommande ligne : commerceVue.getListeLigneCmd()) {
                     ligne.setDateLivraisonPtRel(new Date());
                     ligne.setQuantiteLivree(ligne.getQuantitePreparee());
+                    Commande cmd = ligne.getCommande();
+                    cmd.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
+                    cmd.setCodeValidation("8392");
                     try {
                         busLivreur.mettreAJour(ligne);
                     } catch (AnarmorixException e) {
                         e.printStackTrace();
                     }
                 }
+                Commande cmd = commerceVue.getListeLigneCmd().get(0).getCommande();
+                cmd.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
+                cmd.setCodeValidation("8392");
+                try {
+                    busLivreur.mettreAJour(cmd);
+                } catch (AnarmorixException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 commerceVue.getListeLigneCmd().clear();
+                StringBuffer sms = new StringBuffer();
+                sms.append("Votre commande est prête. Vous pouvez aller la chercher au point-relais ").append(paramCommerceVue.getCommerce().getRaisonSociale())
+                    .append(". Le code secret de votre commande est ").append(cmd.getCodeValidation()).append(". Merci de votre commande.");
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+                Message message = Message
+                        .creator(new PhoneNumber("+33675332831"),  // to
+                                 new PhoneNumber("+33757903069"),  // from
+                                 sms.toString())
+                        .create();
             }
         }
     }

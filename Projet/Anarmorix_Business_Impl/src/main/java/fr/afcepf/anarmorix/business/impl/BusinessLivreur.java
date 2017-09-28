@@ -12,11 +12,13 @@ import javax.ejb.Stateless;
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
 import fr.afcepf.anarmorix.data.api.IDaoAdresse;
 import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
+import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.data.api.IDaoTournee;
 import fr.afcepf.anarmorix.entity.Catalogue;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Exploitation;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Livreur;
@@ -35,6 +37,11 @@ public class BusinessLivreur implements IBusinessLivreur {
      */
     @EJB
     private IDaoTournee daoTournee;
+    /**
+     * {@link IDaoCommande}.
+     */
+    @EJB
+    private IDaoCommande daoCommande;
     /**
      * {@link IDaoLigneCommande}.
      */
@@ -121,5 +128,10 @@ public class BusinessLivreur implements IBusinessLivreur {
     @Override
     public Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException {
         return daoTournee.mettreAJour(paramTournee);
+    }
+
+    @Override
+    public Commande mettreAJour(Commande paramCommande) throws AnarmorixException {
+        return daoCommande.mettreAJour(paramCommande);
     }
 }

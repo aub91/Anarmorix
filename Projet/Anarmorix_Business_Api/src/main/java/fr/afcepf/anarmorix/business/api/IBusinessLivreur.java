@@ -2,6 +2,7 @@ package fr.afcepf.anarmorix.business.api;
 
 import java.util.List;
 
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Exploitation;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Livreur;
@@ -56,5 +57,12 @@ public interface IBusinessLivreur {
      * @throws AnarmorixException une exception
      */
     Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une commande.
+     * @param paramCommande une commande déposé
+     * @return la commande mise à jour
+     * @throws AnarmorixException une exception
+     */
+    Commande mettreAJour(Commande paramCommande) throws AnarmorixException;
 
 }
