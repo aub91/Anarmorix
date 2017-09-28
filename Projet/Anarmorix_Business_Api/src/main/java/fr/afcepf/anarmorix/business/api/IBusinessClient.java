@@ -27,6 +27,15 @@ public interface IBusinessClient {
      * @return
      */
     Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
+    
+    /**
+     * Méthode permettant d'ajouter une liste de lignes de commandes à une commande..
+     * @param produit 
+     * @param quantite 
+     * @return
+     */
+    Commande ajouterListeLigneCommande(List<LigneCommande> lignesCommandes) throws AnarmorixException;
+    
     /**
      * @param produit 
      * @param quantite 

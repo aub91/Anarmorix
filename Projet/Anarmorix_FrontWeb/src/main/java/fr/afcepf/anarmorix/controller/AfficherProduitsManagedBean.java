@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.entity.Categorie;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
@@ -36,7 +37,9 @@ public class AfficherProduitsManagedBean {
     private List<LigneCommande> ligneComandesAffichables =  new ArrayList<>();
     private Integer ligneComandesAjoutees;
     private String quantiteAjoute;
-    
+    private Commande commande;
+    private List<LigneCommande> ligneCommandesRecette = new ArrayList<>();
+        
 
     public Integer getLigneComandesAjoutees() {
         return ligneComandes.size();
@@ -62,6 +65,7 @@ public class AfficherProduitsManagedBean {
                 selectedPointRelais = relais;
             }
         }
+        
         try {
             categories = businessCLient.recupererToutesLesCategories();
             categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
@@ -72,7 +76,19 @@ public class AfficherProduitsManagedBean {
                LigneCommande lgnCommandeTmp = new LigneCommande();
                lgnCommandeTmp.setProduit(pdt);
                ligneComandesAffichables.add(lgnCommandeTmp);
+
+               
+             //LIgne Commandes recettes
+               if(pdt.getType().getLibelle().equals("Filets de sole")){
+                   lgnCommandeTmp.setQuantiteCommandee(4.0);
+                   ligneCommandesRecette.add(lgnCommandeTmp);
+               }
+               if(pdt.getType().getLibelle().equals("Asperge du Blayais")){
+                   lgnCommandeTmp.setQuantiteCommandee(2.0);
+                   ligneCommandesRecette.add(lgnCommandeTmp);
+               }
            }
+           
         } catch (Exception e) {
            e.printStackTrace();
         }
@@ -88,11 +104,23 @@ public class AfficherProduitsManagedBean {
             ligneComandesAffichables.add(lc);
         }
     }
+    public String ajouterRecetteAuPanier() {
+        System.out.println("TESSSTE" + ligneCommandesRecette.size());
+        
+        ligneComandes.addAll(ligneCommandesRecette);
+        
+        return "pageCatalogue.jsf";
+    }
+    
+    public String ajouterLigneCommandeEnBAse() throws AnarmorixException {
+        System.out.println("je cree une commande");
+      commande = businessCLient.ajouterListeLigneCommande(ligneComandes);
+      
+      return "paiement.jsf";
+
+    }
     
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande/*Produit produitAjoute*/) {
-        /*LigneCommande ligne = new LigneCommande();
-        ligne.setProduit(produitAjoute);
-        ligne.setQuantiteCommandee(Double.parseDouble(quantiteAjoute));*/
         ligneComandes.add(ligneCommande);
         
         for (LigneCommande ligneCmd : ligneComandes) {

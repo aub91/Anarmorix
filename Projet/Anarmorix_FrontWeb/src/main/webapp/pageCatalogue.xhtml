@@ -43,7 +43,7 @@
 												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
 													<h:outputText value="#{catPrimaire.libelle}" />
-													<i class="fa fa-caret-down"></i>
+<!-- 													<i class="fa fa-caret-down"></i> -->
 													<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
 													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}" onevent="incrementQty"></f:ajax>
 												</h:commandLink>
@@ -60,7 +60,7 @@
 												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauTertiaire#{statusPrimaire.index + 1}-#{statusSecondaire.index + 1}"/>
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  
 													<h:outputText value="#{catSecondaires.libelle}" />
-													<i class="fa fa-caret-down"></i>
+<!-- 													<i class="fa fa-caret-down"></i> -->
 													<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
 													 	listener="#{mbAfficheProduits.actualiserListe(catSecondaires)}" onevent="incrementQty"></f:ajax>
 													 	
@@ -100,6 +100,7 @@
 					<!--  RECETTES -->
 					
 					<div class="col-lg-offset-1">
+					<A href="http://localhost:18080/Anarmorix_FrontWeb/pageRecettesGenerale.jsf">
 						<button type="button" class="btn-recettes"
 							data-img="resources/img/cotriade.jpg"
 							style="background: url(resources/img/cotriade.jpg); background-size: cover;">
@@ -107,6 +108,7 @@
 								<span>Nos recettes</span>
 							</div>
 						</button>
+						</A>
 					</div>
 				
 					<!--  PANIER COULEUR -->
@@ -134,13 +136,6 @@
 						<div class="row">
 							<h1 class="text-center">
 								<div class="col-lg-5">
-									<form class="searchbox">
-										<input type="search" placeholder="Quel produit voulez-vous ?"
-											name="search" class="searchbox-input" onkeyup="buttonUp();"
-											required="required"></input> <input type="submit"
-											class="searchbox-submit" value="Recherchez"></input><span
-											class="searchbox-icon">Recherchez</span>
-									</form>
 								</div>
 											
 								<div class="col-lg-7">
@@ -150,7 +145,7 @@
 									
 									<div id="recapPanier" class="w3-container">
 										  <img onclick="document.getElementById('id01').style.display='block'" src="resources/img/Panier.png" alt="Panier" height="60" width="60">	</img>
-											<span class="w3-badge w3-margin-left w3-small w3-green">5</span>
+<!-- 											<span class="w3-badge w3-margin-left w3-small w3-green">5</span> -->
 											<h:outputText value="#{mbAfficheProduits.ligneComandesAjoutees}"></h:outputText>
 											
 										  <div id="id01" class="w3-modal">
@@ -161,7 +156,7 @@
 
 												<!-- FENETRE MODALE -->
 										        
-										        <TABLE>
+										        <TABLE class="table">
 										        <THEAD>
 										        	<TR>
 										        		<th>Quantité</th>
@@ -179,7 +174,15 @@
 										        </tr>
 										      </ui:repeat> 
 										     </TABLE>
-										      
+										  <BR />    
+									<div class="col-lg-12">
+									<A href="http://localhost:18080/Anarmorix_FrontWeb/PagePanier.jsf">
+											<button type="button" jsf:id="btn" >
+											<f:passThroughAttribute name = "class" value="btn my-cart-btn text-center" /> 
+										Valider le panier</button>
+										</A>
+									</div>
+										       <BR /> 
 										    </div>
 										  </div>
 										</div>
@@ -223,18 +226,23 @@
 											<h:panelGroup id="prixProduit">
 												<h:outputLabel value="#{lgnCmd.produit.prixUnitaire}">€/</h:outputLabel>
 											</h:panelGroup>
-											<c:choose>
-												<c:when test="#{lgnCmd.produit.packaging.libelle == 'Vrac'}">
+											
 													<h:panelGroup id="conditionnementProduit">
-														<h:outputLabel value="#{lgnCmd.produit.packaging.unite.unite}"/>
+														<h:outputLabel value="#{lgnCmd.produit.packaging.valeurUnitaire}"></h:outputLabel>
+														<h:outputLabel value="#{lgnCmd.produit.packaging.unite.unite}"> en <h:outputText value="&#160;"/> </h:outputLabel>
+														<h:outputLabel value="#{lgnCmd.produit.packaging.libelle}"> </h:outputLabel>
 													</h:panelGroup>
-												</c:when>
-												<c:otherwise>
-	        										<h:panelGroup id="conditionnementProduit">
-														<h:outputLabel value="#{lgnCmd.produit.packaging.libelle}"/>
-													</h:panelGroup>
-	    										</c:otherwise>
-											</c:choose>
+											
+<!-- 											<c:choose> -->
+<!-- 												<c:when test="#{lgnCmd.produit.packaging.libelle == 'Vrac'}"> -->
+											
+<!-- 												</c:when> -->
+<!-- 												<c:otherwise> -->
+<!-- 	        										<h:panelGroup id="conditionnementProduit"> -->
+<!-- 														<h:outputLabel value="#{lgnCmd.produit.packaging.libelle}"/> -->
+<!-- 													</h:panelGroup> -->
+<!-- 	    										</c:otherwise> -->
+<!-- 											</c:choose> -->
 										</strong>
 									</div>
 								</div>

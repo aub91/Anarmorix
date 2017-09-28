@@ -39,7 +39,7 @@
 
 		<div id="recette">
 			<div id="conteneurimage">
-				<div class="box">
+				<div class="box"  style="width:400px;height:400px;">
 					<div class="box-img">
 						<img id="imageprincipale" src="resources/img/Ossobuco.jpeg"></img>
 					</div>
@@ -138,8 +138,18 @@
 						</div>
 						</div>
 						<div class="row text-center">
-							<input type="submit" class="btn" value="Valider" id="btnValider">
-							</input>
+						
+						
+								<h:form>
+								<A href="http://localhost:18080/Anarmorix_FrontWeb/pageCatalogue.jsf">
+								    <h:commandButton styleClass="btn" value="Ajout Panier"
+						action="#{mbAfficheProduits.ajouterRecetteAuPanier}" />
+								                     </A>
+								</h:form>
+						
+<!-- 							<input type="submit" class="btn" value="Valider" id="btnValider"> -->
+							
+<!-- 							</input> -->
 						</div>
 					
 				</div>
