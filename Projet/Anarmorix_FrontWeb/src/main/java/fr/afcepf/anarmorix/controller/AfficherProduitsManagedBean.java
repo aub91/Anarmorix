@@ -8,12 +8,12 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.entity.Categorie;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -21,25 +21,36 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 @ManagedBean(name = "mbAfficheProduits")
 @SessionScoped
 public class AfficherProduitsManagedBean {
-    
     @EJB
     private IBusinessClient businessCLient;
-    private List<Produit> produits =  new ArrayList<>();
     private List<Categorie> categories =  new ArrayList<>();
     private List<Categorie> categoriesPrimaires =  new ArrayList<>();
     private List<Categorie> categoriesSecondaires =  new ArrayList<>();
     private List<Categorie> categoriesTertiaires =  new ArrayList<>();
     private List<Categorie> categoriesFilles =  new ArrayList<>();
     private String libelleCategorie;
-    private Integer idCategorieMere;
+    private Integer idCategorieMere;    
     private PointRelais selectedPointRelais;
     private List<Produit> listePdts;
+    private List<LigneCommande> ligneComandes =  new ArrayList<>();
+    private List<LigneCommande> ligneComandesAffichables =  new ArrayList<>();
+    private Integer ligneComandesAjoutees;
+    private String quantiteAjoute;
+    
+
+    public Integer getLigneComandesAjoutees() {
+        return ligneComandes.size();
+    }
+
+    public void setLigneComandesAjoutees(Integer paramLigneComandesAjoutees) {
+        ligneComandesAjoutees = ligneComandes.size();
+    }
     @ManagedProperty(value="#{mbMap}")
     private MapManagedBean mapMb;
 
     public AfficherProduitsManagedBean() {
     }
-    
+
     @PostConstruct
     public void init(){
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -52,26 +63,47 @@ public class AfficherProduitsManagedBean {
             }
         }
         try {
-            produits = businessCLient.recupererTousLesProduits();
             categories = businessCLient.recupererToutesLesCategories();
             categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
             categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
-            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires(); 
+            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            listePdts = businessCLient.recupererTousLesProduits();
+           for (Produit pdt : listePdts) {
+               LigneCommande lgnCommandeTmp = new LigneCommande();
+               lgnCommandeTmp.setProduit(pdt);
+               ligneComandesAffichables.add(lgnCommandeTmp);
+           }
         } catch (Exception e) {
            e.printStackTrace();
         }
-       
     }
 
     public void actualiserListe(Categorie cat)  throws AnarmorixException {
-        //if(listePdts != null) listePdts.clear();
-        //listePdts.clear();
         listePdts = businessCLient.recupererLesProduitsParCategorie(cat.getLibelle(), true);
+        ligneComandesAffichables = new ArrayList<>();
         for (Produit pdt : listePdts) {
             System.out.println("id produit " + pdt.getId());
+            LigneCommande lc = new LigneCommande();
+            lc.setProduit(pdt);
+            ligneComandesAffichables.add(lc);
         }
     }
-
+    
+    public void ajouterProduitLigneCommande(LigneCommande ligneCommande/*Produit produitAjoute*/) {
+        /*LigneCommande ligne = new LigneCommande();
+        ligne.setProduit(produitAjoute);
+        ligne.setQuantiteCommandee(Double.parseDouble(quantiteAjoute));*/
+        ligneComandes.add(ligneCommande);
+        
+        for (LigneCommande ligneCmd : ligneComandes) {
+            
+            System.out.println("Commande qté: " + ligneCmd.getQuantiteCommandee());
+            System.out.println("Commande libelle: " + ligneCmd.getProduit().getType().getLibelle());
+        }
+        
+        System.out.println("taille " + ligneComandes.size());
+    }
+    
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
         return businessCLient.recupererCategoriesFilles(idCategorieMere);
     }
@@ -115,19 +147,10 @@ public class AfficherProduitsManagedBean {
     public void setCategories(List<Categorie> paramCategories) {
         categories = paramCategories;
     }
-
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> paramProduits) {
-        produits = paramProduits;
-    }
     
     public List<Categorie> getCategoriesFilles() {
         return categoriesFilles;
     }
-
     public void setCategoriesFilles(List<Categorie> paramCategoriesFilles) {
         categoriesFilles = paramCategoriesFilles;
     }
@@ -143,15 +166,12 @@ public class AfficherProduitsManagedBean {
     public PointRelais getSelectedPointRelais() {
         return selectedPointRelais;
     }
-
     public void setSelectedPointRelais(PointRelais paramSelectedPointRelais) {
         selectedPointRelais = paramSelectedPointRelais;
     }
-
     public MapManagedBean getMapMb() {
         return mapMb;
     }
-
     public void setMapMb(MapManagedBean paramMapMb) {
         mapMb = paramMapMb;
     }
@@ -159,7 +179,6 @@ public class AfficherProduitsManagedBean {
     public IBusinessClient getBusinessCLient() {
         return businessCLient;
     }
-
     public void setBusinessCLient(IBusinessClient paramBusinessCLient) {
         businessCLient = paramBusinessCLient;
     }
@@ -171,5 +190,23 @@ public class AfficherProduitsManagedBean {
     public void setListePdts(List<Produit> paramListePdts) {
         listePdts = paramListePdts;
     }
-    
+    public List<LigneCommande> getLigneComandes() {
+        return ligneComandes;
+    }
+    public void setLigneComandes(List<LigneCommande> paramLigneComandes) {
+        ligneComandes = paramLigneComandes;
+    }
+    public String getQuantiteAjoute() {
+        return quantiteAjoute;
+    }
+    public void setQuantiteAjoute(String paramQuantiteAjoute) {
+        quantiteAjoute = paramQuantiteAjoute;
+    }
+    public List<LigneCommande> getLigneComandesAffichables() {
+        return ligneComandesAffichables;
+    }
+    public void setLigneComandesAffichables(List<LigneCommande> paramLigneComandesAffichables) {
+        ligneComandesAffichables = paramLigneComandesAffichables;
+    }
+
 }

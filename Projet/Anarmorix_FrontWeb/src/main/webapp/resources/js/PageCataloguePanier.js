@@ -294,6 +294,7 @@
     /*
     EVENT
     */
+    
     if(options.affixCartIcon) {
       var cartIconBottom = $cartIcon.offset().top * 1 + $cartIcon.css("height").match(/\d+/) * 1;
       var cartIconPosition = $cartIcon.css('position');

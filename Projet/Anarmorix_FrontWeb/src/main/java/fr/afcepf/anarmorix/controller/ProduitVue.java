@@ -4,11 +4,10 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 
 public class ProduitVue {
-	private Produit prodt ;
+    
+	private Produit prodt;
 
-	
-
-	public ProduitVue() {
+    public ProduitVue() {
 		super();
 	}
 
@@ -24,9 +23,4 @@ public class ProduitVue {
 	public void setProdt(Produit prodt) {
 		this.prodt = prodt;
 	}
-
-
-	
-	
-
 }
