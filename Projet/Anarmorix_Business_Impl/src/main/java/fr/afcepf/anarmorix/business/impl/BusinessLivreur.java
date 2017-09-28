@@ -10,14 +10,18 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
+import fr.afcepf.anarmorix.data.api.IDaoAdresse;
 import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
+import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.data.api.IDaoTournee;
 import fr.afcepf.anarmorix.entity.Catalogue;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Exploitation;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -33,6 +37,11 @@ public class BusinessLivreur implements IBusinessLivreur {
      */
     @EJB
     private IDaoTournee daoTournee;
+    /**
+     * {@link IDaoCommande}.
+     */
+    @EJB
+    private IDaoCommande daoCommande;
     /**
      * {@link IDaoLigneCommande}.
      */
@@ -53,6 +62,11 @@ public class BusinessLivreur implements IBusinessLivreur {
      */
     @EJB
     private IDaoCommerce daoCommerce;
+    /**
+     * {@link IDaoAdresse}.
+     */
+    @EJB
+    private IDaoAdresse daoAdresse;
     /**
      * Default constructor.
      */
@@ -86,9 +100,38 @@ public class BusinessLivreur implements IBusinessLivreur {
     public List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException {
         Set<Exploitation> setRetour = new LinkedHashSet<>();
         for (LigneCommande ligne : paramTournee.getLignesCmd()) {
-            setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
+            boolean exist = false;
+            for (Exploitation exploitation : setRetour) {
+                if (exploitation.getId() == ligne.getProduit().getCatalogues().get(0).getExploitation().getId()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
+            }
         }
         List<Exploitation> retour = new ArrayList<>(setRetour);
         return retour;
+    }
+
+    @Override
+    public Livreur alimenterLivreur(Livreur paramLivreur) throws AnarmorixException {
+        Livreur retour = daoCommerce.rechercherSocieteByLivreur(paramLivreur);
+        return retour;
+    }
+
+    @Override
+    public LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException {
+        return daoLigneCommande.mettreAJour(paramLigneCommande);
+    }
+
+    @Override
+    public Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException {
+        return daoTournee.mettreAJour(paramTournee);
+    }
+
+    @Override
+    public Commande mettreAJour(Commande paramCommande) throws AnarmorixException {
+        return daoCommande.mettreAJour(paramCommande);
     }
 }

@@ -32,6 +32,7 @@ import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.entity.TypeProduit;
 import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
 
 /**
  * Classe contenant les tests des méthodes de {@link IBusinessLivreur}.
@@ -104,11 +105,11 @@ public class TestBusinessLivreur {
     /**
      * ID de tournée non existant en base de données.
      */
-    private static final int ID_TOURNEE_NON_EXISTANT = 999;
+    private static final int ID_NON_EXISTANT = 999;
     /**
      * Tournée non existante en base.
      */
-    private Tournee tourneeNonExistante = new Tournee(ID_TOURNEE_NON_EXISTANT, new Date(/*debut*/), new Date(/*fin*/), societeNominal, livreur);
+    private Tournee tourneeNonExistante = new Tournee(ID_NON_EXISTANT, new Date(/*debut*/), new Date(/*fin*/), societeNominal, livreur);
     /**
      * Ligne commande retournée.
      */
@@ -127,6 +128,20 @@ public class TestBusinessLivreur {
      * Exploitation attendue du test nominal de rechercherExploitationByCatalogue.
      */
     private Exploitation exploitationNominal = new Exploitation(1, "422260208", "00026", "4711D", null, "Dyomedea SARL", null, null);
+    /**
+     * ID du livreur nominal.
+     */
+    private static final int ID_LIVREUR_NOMINAL = 8;
+    /**
+     * Livreur pour test nominal.
+     */
+    private Livreur livreurNominal = new Livreur(ID_LIVREUR_NOMINAL, null, "Bakounine", "Mouloud", null, null,
+            "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, null);
+    /**
+     * Livreur pour test échec.
+     */
+    private Livreur livreurNonExistant = new Livreur(ID_NON_EXISTANT, null, "Bakounine", "Mouloud", null, null,
+            "patrickdewaere@mailoo.org", "0666666666", null, "Onnyvoitgoethe", "aaa", null, null);
 
     /**
      * Test nominal de la méthode setTournees.
@@ -232,6 +247,41 @@ public class TestBusinessLivreur {
         Assert.assertEquals(0, retour.size());
     }
     /**
+     * Test nominal de la méthode alimenterLivreur.
+     * @throws AnarmorixException exception non attendue
+     */
+    @Test
+    public void testNominalAlimenterLivreur() throws AnarmorixException {
+        Livreur retour = busLivreur.alimenterLivreur(livreurNominal);
+        Assert.assertNotNull(retour);
+        Assert.assertEquals(livreurNominal.getId(), retour.getId());
+        Assert.assertEquals(livreurNominal.getMail(), retour.getMail());
+        Assert.assertEquals(livreurNominal.getNom(), retour.getNom());
+        Assert.assertEquals(livreurNominal.getPrenom(), retour.getPrenom());
+        Assert.assertEquals(livreurNominal.getPassword(), retour.getPassword());
+        Assert.assertEquals(livreurNominal.getUsername(), retour.getUsername());
+        Assert.assertEquals(livreurNominal.getTelephone1(), retour.getTelephone1());
+        Assert.assertNull(retour.getTelephone2());
+        Assert.assertNotNull(retour.getSociete());
+        Assert.assertEquals(societeNominal.getId(), retour.getSociete().getId());
+        Assert.assertEquals(societeNominal.getCodeApe(), retour.getSociete().getCodeApe());
+        Assert.assertEquals(societeNominal.getNumNic(), retour.getSociete().getNumNic());
+        Assert.assertEquals(societeNominal.getNumSiren(), retour.getSociete().getNumSiren());
+        Assert.assertEquals(societeNominal.getRaisonSociale(), retour.getSociete().getRaisonSociale());
+    }
+    /**
+     * Test échec alimenterLivreur.
+     */
+    @Test
+    public void testEchecAlimenterLivreur() {
+        try {
+            busLivreur.alimenterLivreur(livreurNonExistant);
+            Assert.fail("Test d'échec qui ne devrait pas réussir");
+        } catch (AnarmorixException e) {
+            Assert.assertEquals(AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE, e.getCodeErreur());
+        }
+    }
+    /**
      * Default constructor avec injection mock.
      */
     public TestBusinessLivreur() {
@@ -285,6 +335,15 @@ public class TestBusinessLivreur {
                     paramCatalogue.setExploitation(exploitationNominal);
                 }
                 return paramCatalogue;
+            }
+            @Override
+            public Livreur rechercherSocieteByLivreur(Livreur paramLivreur) throws AnarmorixException {
+                if (paramLivreur.getId() == ID_LIVREUR_NOMINAL) {
+                    paramLivreur.setSociete(societeNominal);
+                } else {
+                    throw new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+                }
+                return paramLivreur;
             }
         };
         try {

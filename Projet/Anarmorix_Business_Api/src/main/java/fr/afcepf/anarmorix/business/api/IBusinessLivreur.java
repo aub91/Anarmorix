@@ -2,7 +2,9 @@ package fr.afcepf.anarmorix.business.api;
 
 import java.util.List;
 
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
@@ -34,5 +36,33 @@ public interface IBusinessLivreur {
      * @throws AnarmorixException une exception
      */
     List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException;
+    /**
+     * Méthode pour alimenter la société d'un livreur.
+     * @param paramLivreur un livreur sans sa société de livraison
+     * @return le livreur avec sa société de livraison
+     * @throws AnarmorixException une exception
+     */
+    Livreur alimenterLivreur(Livreur paramLivreur) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une ligne de commande venant d'être récupéré.
+     * @param paramLigneCommande ule ligne de commande venant d'être récupéré
+     * @return la ligne de commande mise à jour
+     * @throws AnarmorixException une exception
+     */
+    LigneCommande mettreAJour(LigneCommande paramLigneCommande) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une tournée.
+     * @param paramTournee une tournee de commande venant d'être commencé
+     * @return la tournee mise à jour
+     * @throws AnarmorixException une exception
+     */
+    Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException;
+    /**
+     * Méthode mettant à jour une commande.
+     * @param paramCommande une commande déposé
+     * @return la commande mise à jour
+     * @throws AnarmorixException une exception
+     */
+    Commande mettreAJour(Commande paramCommande) throws AnarmorixException;
 
 }

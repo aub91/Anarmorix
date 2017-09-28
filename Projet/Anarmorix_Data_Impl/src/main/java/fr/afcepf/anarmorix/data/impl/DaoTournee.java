@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.anarmorix.data.api.IDaoTournee;
+import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -44,9 +45,14 @@ public class DaoTournee implements IDaoTournee {
     }
 
     @Override
-    public Tournee mettreAJour(Integer paramId) {
-        // TODO Auto-generated method stub
-        return null;
+    public Tournee mettreAJour(Tournee paramTournee) throws AnarmorixException {
+        try {
+            Tournee updated = em.merge(paramTournee);
+            return updated;
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
     }
 
     @SuppressWarnings("unchecked")
