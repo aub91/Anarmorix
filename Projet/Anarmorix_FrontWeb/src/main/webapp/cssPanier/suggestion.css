@@ -10,6 +10,10 @@
     float: left;
     
 }
+.form-control{
+    display: block;
+    width: 50%;
+}
 
 .suggestionProduitImage{
     margin-bottom: 10px;
@@ -72,4 +76,14 @@
 }
 .vendre {
     font-family: 'Pacifico', sans-serif, fantasy;
+}
+.container {
+    margin-top: 90px;
+    padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-image:url("resources/img/Cidre.jpg");
+  background-size: cover;
 }

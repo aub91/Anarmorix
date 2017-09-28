@@ -84,72 +84,6 @@ h1 {
   font-weight: 300;
   margin-bottom: 20px;
 }
-.navbar .yamm-content h5 {
-  font-size: 18px;
-  font-weight: 400;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-  border-bottom: dotted 1px #555555;
-}
-@media (max-width: 767px) {
-  .navbar .yamm-content h5 {
-    font-size: 14px;
-  }
-}
-.navbar .yamm-content ul {
-  margin: 0;
-  padding: 0;
-}
-.navbar .yamm-content ul li {
-  list-style-type: none;
-  border-bottom: solid 1px #eeeeee;
-  text-transform: uppercase;
-  padding: 4px 0;
-}
-.navbar .yamm-content ul li a {
-  color: #999999;
-  font-size: 12px;
-  display: block;
-}
-.navbar .yamm-content ul li a:hover {
-  color: #4fbfa8;
-  text-decoration: none;
-}
-.navbar .yamm-content .banner {
-  margin-bottom: 10px;
-}
-.navbar ul.nav > li > a {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.navbar #search {
-  clear: both;
-  border-top: solid 1px #9adacd;
-  text-align: right;
-}
-.navbar #search .navbar-form {
-  float: right;
-  width: 500px;
-}
-.navbar #search .navbar-form .input-group {
-  display: table;
-}
-.navbar #search .navbar-form .input-group .input-group-btn {
-  white-space: nowrap;
-  width: 1%;
-}
-.navbar #search .navbar-form .input-group .form-control {
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .navbar #search .navbar-form {
-    float: none;
-    width: auto;
-  }
-}
-.navbar #basket-overview {
-  padding: 0;
-}
 #hot h2 {
   text-transform: uppercase;
   font-size: 36px;
@@ -403,35 +337,7 @@ h1 {
   padding: 5px 0;
   margin: 0;
 }
-#content .panel.sidebar-menu ul.nav.category-menu {
-  margin-bottom: 20px;
-}
-#content .panel.sidebar-menu ul.nav.category-menu li a {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-#content .panel.sidebar-menu ul.nav ul {
-  list-style: none;
-  padding-left: 0;
-}
-#content .panel.sidebar-menu ul.nav ul li {
-  display: block;
-}
-#content .panel.sidebar-menu ul.nav ul li a {
-  position: relative;
-  font-weight: normal;
-  text-transform: none !important;
-  display: block;
-  padding: 10px 15px;
-  padding-left: 30px;
-  font-size: 12px;
-  color: #999999;
-}
-#content .panel.sidebar-menu ul.nav ul li a:hover,
-#content .panel.sidebar-menu ul.nav ul li a:focus {
-  text-decoration: none;
-  background-color: #eeeeee;
-}
+
 #content .info-bar {
   line-height: 32px;
   vertical-align: middle;
@@ -679,17 +585,7 @@ h1 {
 #content #thumbs a.active {
   border-color: #4fbfa8;
 }
-#content #checkout .nav {
-  margin-bottom: 20px;
-  border-bottom: solid 1px #4fbfa8;
-}
-#content #checkout .nav li {
-  height: 100%;
-}
-#content #checkout .nav li a {
-  display: block;
-  height: 100%;
-}
+
 #content #order-summary table {
   margin-top: 20px;
 }
@@ -710,7 +606,7 @@ h1 {
 #content #checkout .table tbody tr td input,
 #content #basket .table tbody tr td input,
 #content #customer-order .table tbody tr td input {
-  width: 90px;
+  width: 70px;
   text-align: left;
 }
 #content #checkout .table tbody tr td img,
@@ -979,7 +875,7 @@ h1 {
   color: #999999;
   background-color: #ffffff;
   border-color: #dddddd;
-}
+}	
 .blockquote-reverse,
 blockquote.pull-right {
   border-right: 5px solid #4fbfa8;

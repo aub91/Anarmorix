@@ -12,6 +12,7 @@ import fr.afcepf.anarmorix.business.api.IBusinessPanier;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
+import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 @ManagedBean(name = "mbLigneProduitPanier")
@@ -21,6 +22,14 @@ public class AfficherProduitPanierMAnagedBean {
     private IBusinessPanier busPanier;
     Produit produits = new Produit();
     List<Produit> listeProduits = new ArrayList<Produit>();
+    Commande com = new Commande();
+    public Commande getCom() {
+		return com;
+	}
+    public void setCom(Commande com) {
+		this.com = com;
+	}
+    
 
 	public AfficherProduitPanierMAnagedBean() {
 	}
@@ -59,8 +68,7 @@ public class AfficherProduitPanierMAnagedBean {
     	produit3.setId(20);
     	produit3.setPrixUnitaire(2.0);
     	produit3.setQuantiteEnStock(2.0);
-    	listeProduits.add(produit3);
-    	
+    	listeProduits.add(produit3);  	
     }
 
 	public IBusinessPanier getBusPanier() {
