@@ -19,6 +19,7 @@ import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
@@ -32,12 +33,29 @@ public class ProduitManagedBean {
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
+	private List<Commande> listeCommande = new ArrayList<>();
 	private LigneCommande ligne= new LigneCommande();
+	private String statue;
 
 	@EJB
 	private IBusinessConsommateur bu;
 	
+	// methode de mise a jours de la commande
+	public void miseajourCommande(Integer id) {
+		try {
+			for (LigneCommande ligneCommande : liste) {
+					if(ligneCommande.getCommande().getId()==id) {
+					ligneCommande.getCommande().setStatut(cmde.getStatut());
+					bu.mettreAJourCommande(ligneCommande.getCommande());
+				}
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	// methode de mise a jour de la ligne de commande
 	public void miseAjour(Integer id) {
 		try {
 			for (LigneCommande ligneCommande : liste) {
@@ -45,8 +63,17 @@ public class ProduitManagedBean {
 					System.out.println(ligneCommande.getQuantiteCommandee());
 					bu.mettreAJourLC(ligneCommande);
 									
-				}			
+				}
+				
 			}
+			/*for(Commande commande:listeCommande) {
+				if(commande.getId()==id) {
+					System.out.println(commande.getStatut());
+					bu.mettreAJourCommande(commande);
+				}
+				
+			}
+		*/
 					
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -127,6 +154,54 @@ public class ProduitManagedBean {
 
 	public void setListe(List<LigneCommande> liste) {
 		this.liste = liste;
+	}
+
+	public LigneCommande getLigne() {
+		return ligne;
+	}
+
+	public void setLigne(LigneCommande ligne) {
+		this.ligne = ligne;
+	}
+
+	public String getStatue() {
+		return statue;
+	}
+
+	public void setStatue(String statue) {
+		//System.out.println(statue);
+		switch (statue) {
+		case "1":
+			cmde.setStatut(Statut.CREEE);
+			break;
+		case "2":
+			cmde.setStatut(Statut.EN_COURS_DE_PREPARATION);
+			break;
+			
+		case "3":
+			cmde.setStatut(Statut.EN_COURS_DE_LIVRAISON);
+			break;
+		case "4":
+			cmde.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
+			break;
+		case "5":
+			cmde.setStatut(Statut.TERMINEE);
+			break;
+		
+			
+
+		default:
+			break;
+		}
+		this.statue = statue;
+	}
+
+	public List<Commande> getListeCommande() {
+		return listeCommande;
+	}
+
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
 	}
 
 

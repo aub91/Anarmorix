@@ -18,26 +18,59 @@
 	<link
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		rel="stylesheet"></link>
-
-
-
 	<script type="text/javascript"
 		src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"></link>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"></link>
+	<link href="https://fonts.googleapis.com/css?family=Lato"
+		rel="stylesheet" type="text/css"></link>
+	<script type="text/javascript"
+		src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script type="text/javascrip">
+		window.onload = function() {
+    	document.getElementById('toc').style.color = '#ffff00';
+};
+</script>
 
 </h:head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
-        <a class="navbar-brand" href="#">Tabealu de bord consommateur
-        </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="" id="mainNav" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
+       
+      				 <div class="navbar-header">
+						<span class="navbar-brand text-center" id="logo">Anarmorix</span>
+					</div>
+
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						
+						<form class="navbar-form" role="search">
+						<ul class="nav navbar-nav navbar-right">						
+							<li class="dropdown dropdown-toggle" ><a id="connexion" href="#"
+								data-toggle="dropdown">CONNEXION<strong class="caret"></strong></a>
+								<ul class="dropdown-menu" style= "background: url(resources/img/fondvioletlight.png);background-size: cover;">	
+									<li id="spanlogin"><span >Nom d'utilisateur : </span><input class="login" type="text" /></li>
+									<li id="spanmdp"> <span > Mot de passe : </span><input class="mdp" type="text" /></li>
+									
+									<li id="bouton-validation-connexion"><button type="submit" class="btn btn-default">Connectez-vous</button></li>				
+								</ul>
+								</li>
+						</ul>
+						</form>
+					</div>
+            
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
-
+			 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                    <a class="nav-link" href="tableauDeBoardConsommateur.jsf">
+					<span class="nav-link-text">Tabealu de bord consommateur </span>
+                   </a>
+                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="">
 
@@ -45,8 +78,6 @@
                 COMMANDES </span>
                     </a>
                 </li>
-
-
             </ul>
         </div>
     </nav>
@@ -54,19 +85,19 @@
     <div class="content-wrapper">
         <div id="section_general">
 
-            <div class="container">
+            <div class="container" >
 
                 <div class="main-timeline">
-                    <div class="col-md-3 col-sm-6 timeline">
+                
+                    <div class="col-md-3 col-sm-6 timeline"  >
+                    <div> <H4>Statue de la commande numéro: #{mbProduit.cmde.id} </H4></div>
                         <div class="timeline-inner">
-                            <div class="year">Cours de preparation</div>
+                            <div class="year"  id="toc"><h:outputLabel value="#{mbProduit.cmde.statut.name()}" /></div>
                             <div class="timeline-content">
-
-
                             </div>
                             <div class="timeline-icon">
-
                             </div>
+                            <!--  
                         </div>
                     </div>
 
@@ -103,9 +134,11 @@
                             <div class="timeline-icon">
 
                             </div>
+                              -->
                         </div>
                     </div>
                 </div>
+              
             </div>
 
             <div class="cmdPasse">
@@ -128,10 +161,9 @@
                             <th>QUANTITE</th>
                             <th>TOTAL</th>
                         </tr>
-                    </thead>
-                    
-                         <ui:repeat var="prodtvue" value="#{mbProduit.liste}">  
-                    <tr>
+                    </thead>                   
+                       <ui:repeat var="prodtvue" value="#{mbProduit.liste}">  
+                   		 <tr>
                     
 							<td><img src="#{prodtvue.produit.image.chemin}"  width="50px" height="50px"/></td>
 							<td>#{prodtvue.produit.type.libelle}</td>
@@ -140,7 +172,7 @@
 							</td>
 							<td>#{prodtvue.produit.prixUnitaire}</td>
 				
-					</tr>
+						</tr>
 					</ui:repeat>
                 </table>
 
@@ -151,7 +183,52 @@
 	<script
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		type="text/javascript"></script>
-	<footer class="sticky-footer"> </footer>
+	 <footer id="myFooter" data-img="resources/img/fondvioletlight.png" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 class="logo">
+                    	<img src="resources/img/LogoAnarmorique.png">
+                    	</img>
+                    </h2>
+                </div>
+                <div class="col-sm-4">
+                    
+                    <h5>Nos partenaires</h5>
+                    <ul>
+                        <li><a href="https://slowfood.fr/">Slow food France</a></li>
+                        <li><a href="http://www.permaculteurs.com/">Permaculteurs</a></li>
+                        <li><a href="https://www.lecomptoirlocal.fr/">Le comptoir local</a></li> 
+                    </ul>
+                    
+                    <h5>Informations</h5>
+                    <ul>
+                        <li><span>Adresse : 17 rue Georg Lukacs, 22500 Paimpol</span></li>
+                        <li><span>Courriel : laDialectiquePeutElleCasserDesBriques@mailoo.org</span></li>
+                        <li><span>Téléphone : 02 96 18 03 1871</span></li>
+                    </ul>
+                    
+                    
+                </div>
+                
+                
+                <div class="col-sm-2">
+                    <div class="social-networks">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                    <button type="button" class="btn btn-default">Contactez-nous</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright" data-img="resources/img/fondvioletlight.png" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
+            <p> 2017 Anarmorix SARL</p>
+        </div>
+
+</footer>
+
+
 
 </body>
 </html>

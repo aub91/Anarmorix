@@ -89,7 +89,6 @@ public class DaoCommande implements IDaoCommande {
     @Override
     public Commande mettreAJour(Commande paramId) throws AnarmorixException {
         try {
-            
             Commande updated = em.merge(paramId);
             return updated;
         } catch (Exception e) {
