@@ -15,15 +15,16 @@ import fr.afcepf.anarmorix.entity.Commande;
 @ManagedBean(name = "mbPR")
 public class ManagedBeanPointRelais {
 	@EJB
-	private IBusinessPointRelais bu;
 
+	private IBusinessPointRelais bu;
+	
 	private Client client = new Client();
 	private List<Commande> liste = new ArrayList<>();
 	
 
 	@PostConstruct
 	public void ajouterCommandes() {
-
+		
 		try {
 			client.setId(1);
 			liste = bu.afficherCommande(client);
@@ -31,8 +32,11 @@ public class ManagedBeanPointRelais {
 
 			e.printStackTrace();
 		}
+		
 	}
 	
+	
+
 	
 
 	public Client getClient() {
