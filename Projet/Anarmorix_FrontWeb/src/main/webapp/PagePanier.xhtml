@@ -8,6 +8,7 @@
 	<link href="cssPanier/style.default.css" rel="stylesheet" id="theme-stylesheet"></link>
 		<!-- your stylesheet with modifications -->
 	<link rel="stylesheet" href="cssPanier/suggestion.css"></link>
+	<link href="cssPanier/panierMaster.css" rel="stylesheet"></link>
 	</ui:define>
 	
 	<ui:define name="content" >
@@ -26,8 +27,8 @@
 										<th colspan="2">Produit</th>
 										<th>Quantité</th>
 										<th>Packaging</th>
-										<th>Prix unitaire</th>
-										<th colspan="2">Total</th>
+										<th>Prix unitaire <span> / €</span></th>
+										<th colspan="2">Total <span> / €</span></th>
 									</tr>
 								</thead>
 								<!-- partie a remplir dans le panier-->
@@ -39,7 +40,7 @@
 												bon</a></td>
 										<td><input id="quantiteProduit" type="number" value="#{prodCom.quantiteEnStock}" class="form-control"></input></td>
                 						<td>#{prodCom.packaging.libelle}</td>
-                						<td id="prixProduit">#{prodCom.prixUnitaire}</td>
+                						<td id="prixProduit">#{prodCom.prixUnitaire} </td>
 										<td ><i id="totalProduit"></i></td>
 									</tr>
 									</ui:repeat>
@@ -47,7 +48,7 @@
 								</tbody>
 								<tfoot  >
 									<tr>
-										<th colspan="5">Total</th>
+										<th colspan="5">Total<span> / €</span></th>
 										<th colspan="2"><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
@@ -70,7 +71,6 @@
 						</div>
 					</div>
 				</div>
-
 
 				<div class="col-md-3" id="basket">
 					<div class="box">
@@ -125,15 +125,14 @@
 
 								<div class=" col-md-4 suggestionProduitImage" id="mesProduit">
 									<a href="http://www.google.fr"><img class="imgProduit"
-										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+										src="resources/img/Fraise.jpg" href="https://www.google.fr"></img></a>
 								</div>
 
 								<div class="col-md-7 suggestionProduit">
 
-									<a class="fort" href="http://www.google.fr"><strong><U>Produit
-												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod Lorem m</a>
+									<a class="fort" href="http://www.google.fr"><strong><U>Fraise gariguette</U></strong> Réputées pour leur saveur,
+									 leur parfum et leur chair juteuse à souhait, les fraises ‘Gariguette’ sont de couleur rouge-orangé et de forme
+									  allongée. Précoces...</a>
 
 								</div>
 							</div>
@@ -141,7 +140,7 @@
 								<div class="row validation">
 									<div class="col-md-5 priceProduit p">
 										<p>
-											<b><u> prix : 13 € </u></b>
+											<b><u> Prix : 10.99 €/Kg </u></b>
 										</p>
 									</div>
 
@@ -164,15 +163,14 @@
 
 								<div class=" col-md-4 suggestionProduitImage">
 									<a href="http://www.google.fr"><img class="imgProduit"
-										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+										src="resources/img/gala.jpg" href="https://www.google.fr"></img></a>
 								</div>
 
 								<div class="col-md-7 suggestionProduit">
 
-									<a class="fort" href="http://www.google.fr"><strong><U>Produit
-												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod Lorem m</a>
+									<a class="fort" href="http://www.google.fr"><strong><U> Pomme Gala  </U><dd></dd>
+									</strong>  Rouge orangé à rayures verticales, très sucrée,
+									 faiblement acide avec une petite pointe d’amertume, ferme et juteuse, très croquante...</a>
 
 								</div>
 							</div>
@@ -256,8 +254,12 @@
 		var qt = $($(this).find('#quantiteProduit')[0]).val();
 		var prix = $(this).find("#prixProduit").html();
 		var cout = qt * prix;
+		qt = Math.trunc(qt*100)/100;
+		cout = Math.trunc(cout*100)/100;
 		$(this).find('#totalProduit').append(cout);
+		cout = Math.trunc(cout*100)/100;
 		totau += cout;
+		totau = Math.trunc(totau*100)/100;
 		
 		$($(this).find('#quantiteProduit')[0]).on('change', function(){
 				var qt = $(this).val();
@@ -265,12 +267,17 @@
 				var cout = qt * prix;
 				cout = Math.trunc(cout*100)/100;
 				$(this).closest('.ligneProduit').find('#totalProduit').html(cout);
+					totau = 0;
+				$(".ligneProduit").each(function() {
+					var qt = $($(this).find('#quantiteProduit')[0]).val();
+					var prix = $(this).find("#prixProduit").html();
+					var cout = qt * prix;
+					totau += cout;
+					totau = Math.trunc(totau*100)/100;
+					 $('#totaux').html(totau);
+				});
 		});
-				$($(this).find('#totalProduit').on('change', function(){
-					totau += $(this).find('#totalProduit').html();
-					
-					
-			});
+				
 	 });
 	 $('#totaux').html(totau);
 	  //]]>
