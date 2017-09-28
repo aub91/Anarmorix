@@ -33,7 +33,7 @@ public class ProduitManagedBean {
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
-	private List<Commande> listeCommande = new ArrayList<>();
+	
 	private LigneCommande ligne= new LigneCommande();
 	private String statue;
 
@@ -196,13 +196,7 @@ public class ProduitManagedBean {
 		this.statue = statue;
 	}
 
-	public List<Commande> getListeCommande() {
-		return listeCommande;
-	}
-
-	public void setListeCommande(List<Commande> listeCommande) {
-		this.listeCommande = listeCommande;
-	}
+	
 
 
 

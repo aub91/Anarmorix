@@ -99,7 +99,7 @@
 			<div id="dateDebut"></div>
 			<table class="table">
 				<h:form>
-					<thead>
+					<thead  id="thead">
 						<tr>
 							<th>N° COMMANDE : <h:outputLabel
 									value="#{mbProduit.cmde.id}" />
@@ -133,25 +133,21 @@
 					</thead>
 					<ui:repeat var="prodPrep" value="#{mbProduit.liste}">
 
-						<tr id="contenu" style="background: #AAA;">
-							<td><img src="#{prodPrep.produit.image.chemin}"
-								width="50px" height="50px" /></td>
+						<tr id="contenu" >
+							<td><img src="#{prodPrep.produit.image.chemin}" width="50px"
+								height="50px" /></td>
 							<td>#{prodPrep.produit.type.libelle}</td>
 							<td>#{prodPrep.quantiteCommandee} <h:outputLabel
 									value="#{prodPrep.produit.packaging.unite.unite}" />
 							</td>
 							<td><h:inputText id="quantiteProduit" type="number"
-									value="#{prodPrep.quantitePreparee}" style="width:40px"/> 
-									<h:commandButton
+									value="#{prodPrep.quantitePreparee}" style="width:40px" /> <h:commandButton
 									action="#{mbProduit.miseAjour(prodPrep.id)}" value="OK"
 									id="btnValider" class="btn" style="color:white;"></h:commandButton>
-									<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}" /></td>
-							<td>
-							<h:commandButton 
-								value="Fin de prepartion" class="btn" id="btncomde" style="color:white;"></h:commandButton>
-							</td>
+								<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}" /></td>
+							<td></td>
 						</tr>
-						<div>
+						<div id="date">
 							Date de fin de préparation :
 							<h:inputText value="#{prodPrep.dateFinPreparation}">
 								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
@@ -160,21 +156,62 @@
 							<h:commandButton action="#{mbProduit.miseAjour(prodPrep.id)}"
 								value="Valider" class="btn" id="btnVal" style="color:white;"></h:commandButton>
 						</div>
-						
+
 					</ui:repeat>
 				</h:form>
-				
+
 			</table>
-			
+
 			<div>
-			
+				<h:commandButton value="Fin de prepartion" class="btn" id="btncomde"
+					style="color:white;"></h:commandButton>
 			</div>
 			<div id="CommandeALivrer">
-				<input type="submit" class="btn" style="width: 200px"
-					id="commandeRecuperee" value="Commande récupérée"></input>
+				
+				<h1>Commande pret pour la livraison</h1>
+				<table class="table">
+					<h:form>
+						<thead>
+							<tr>
+								<th>N° COMMANDE : <h:outputLabel
+										value="#{mbProduit.cmde.id}" />
+								</th>
+								<th>Nom du client: <h:outputText
+										value="#{mbProduit.cmde.client.nom}" /></th>
+								<th>Prenom d client : <h:outputText
+										value="#{mbProduit.cmde.client.prenom}" /></th>
+								<!-- pour modifier le statue de la commande -->
+								<th></th>
+							</tr>
+							<tr>
+								<th>IMAGE</th>
+								<th>DESCRIPTIF</th>
+								<th>QUANTITE COMMANDEE</th>
+								<th>QUANTITE PREPAREE</th>
+								<th></th>
+							</tr>
+						</thead>
+						<ui:repeat var="prodPrep" value="#{mbProduit.liste}">
 
+							<tr id="" style="background: #e6ffee;">
+								<td><img src="#{prodPrep.produit.image.chemin}"
+									width="50px" height="50px" /></td>
+								<td>#{prodPrep.produit.type.libelle}</td>
+								<td>#{prodPrep.quantiteCommandee} <h:outputLabel
+										value="#{prodPrep.produit.packaging.unite.unite}" />
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+
+
+						</ui:repeat>
+					</h:form>
+
+				</table>
 
 			</div>
+
 		</div>
 	</div>
 	<script
@@ -233,11 +270,14 @@
 	<script type="text/javascript">
    $(function(){
 
-	   $('#commandeRecuperee').hide();
+	   $('#CommandeALivrer').hide();
 	$('#btncomde').click(function isValid(){
 		alert('commande a été préparée!');
 		$('#contenu').hide();
-		$('#commandeRecuperee').show();
+		$('#thead').hide();
+		$('#date').hide();
+		$('#CommandeALivrer').show();
+		$('#btncomde').hide();
 	})
    });
 
