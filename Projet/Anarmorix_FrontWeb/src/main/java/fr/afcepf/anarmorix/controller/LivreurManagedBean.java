@@ -1,6 +1,8 @@
 package fr.afcepf.anarmorix.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -35,6 +37,10 @@ public class LivreurManagedBean {
      */
     private Livreur livreur;
     /**
+     * Liste des tournées.
+     */
+    private List<Tournee> listeTournee = new ArrayList<>();
+    /**
      * Tournée sélectionnée.
      */
     private Tournee tourneeSelectionnee;
@@ -48,8 +54,10 @@ public class LivreurManagedBean {
         try {
             livreur = busLivreur.alimenterLivreur(livreur);
             livreur.setSociete(busLivreur.setTournees(livreur.getSociete()));
-            System.out.println(livreur.getId());
-            System.out.println(livreur.getSociete().getId());
+            for (Tournee tournee : livreur.getSociete().getTournees()) {
+                tournee = busLivreur.setLignesCommandes(tournee);
+                listeTournee.add(tournee);
+            }
         } catch (AnarmorixException e) {
             e.printStackTrace();
         }
@@ -138,4 +146,17 @@ public class LivreurManagedBean {
     public void setTourneeSelectionnee(Tournee paramTourneeSelectionnee) {
         tourneeSelectionnee = paramTourneeSelectionnee;
     }
+    /**
+     * @return the listeTournee
+     */
+    public List<Tournee> getListeTournee() {
+        return listeTournee;
+    }
+    /**
+     * @param paramListeTournee the listeTournee to set
+     */
+    public void setListeTournee(List<Tournee> paramListeTournee) {
+        listeTournee = paramListeTournee;
+    }
+    
 }

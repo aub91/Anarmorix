@@ -26,7 +26,7 @@
     <h4 class="w3-bar-item">Mes tournées</h4>
   </header>
   <div class="w3-container w3-col s12">
-        <h:outputLabel value="#{mbLivreur.livreur.id}" />
+        <h:outputLabel value="Liste des tournées: " />
         <table id="listeTournee" class="w3-table-all w3-centered w3-small">
           <thead>
             <tr>
@@ -37,7 +37,7 @@
               <th></th>
             </tr>
           </thead>
-          <ui:repeat var="tournee" value="#{mbLivreur.livreur.societe.tournees}">
+          <ui:repeat var="tournee" value="#{mbLivreur.listeTournee}">
           <tr>
             <td>#{tournee.id}</td>
             <td>#{mbLivreur.determinerStatut(tournee)}</td>
