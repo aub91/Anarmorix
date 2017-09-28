@@ -93,7 +93,15 @@ public class BusinessLivreur implements IBusinessLivreur {
     public List<Exploitation> setExploitationAVisiter(Tournee paramTournee) throws AnarmorixException {
         Set<Exploitation> setRetour = new LinkedHashSet<>();
         for (LigneCommande ligne : paramTournee.getLignesCmd()) {
-            setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
+            boolean exist = false;
+            for (Exploitation exploitation : setRetour) {
+                if (exploitation.getId() == ligne.getProduit().getCatalogues().get(0).getExploitation().getId()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                setRetour.add(ligne.getProduit().getCatalogues().get(0).getExploitation());
+            }
         }
         List<Exploitation> retour = new ArrayList<>(setRetour);
         return retour;

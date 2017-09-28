@@ -68,7 +68,7 @@ public class LivreurManagedBean {
      * @return l'url de la tournée
      */
     public String commencerTournee(Tournee paramTournee) {
-        for (Tournee tournee : livreur.getSociete().getTournees()) {
+        for (Tournee tournee : listeTournee) {
             if (tournee.getId() == paramTournee.getId()) {
                 tournee.setDateHeureDebut(new Date());
                 tournee.setLivreur(livreur);
@@ -80,7 +80,7 @@ public class LivreurManagedBean {
                 }
             }
         }
-        return "/tourneeMobile.xhml?id=" + paramTournee.getId() + "&faces-redirect=true";
+        return "/tourneeMobile.jsf?id=" + paramTournee.getId() + "&faces-redirect=true";
     }
     /**
      * Méthode pour déterminer le statut d'une tournée.
@@ -88,10 +88,10 @@ public class LivreurManagedBean {
      * @return le statut de la tournee
      */
     public String determinerStatut(Tournee paramTournee) {
-        if (paramTournee.getDateHeureDebut().equals(null)) {
+        if (paramTournee.getDateHeureDebut() == null) {
             return "Non commencée";
         } else {
-            if (paramTournee.getDateHeureFin().equals(null)) {
+            if (paramTournee.getDateHeureFin() == null) {
                 return "En cours";
             } else {
                 return "Terminée";

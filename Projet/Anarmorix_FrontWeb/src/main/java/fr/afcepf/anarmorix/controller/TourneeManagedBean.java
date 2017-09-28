@@ -14,6 +14,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
@@ -72,7 +74,11 @@ public class TourneeManagedBean {
      */
     @PostConstruct
     public void setTournee() {
-        selectedTournee = new Tournee(1, null, null, null, null);
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String queryString = request.getQueryString();
+        String[] tab = queryString.split("=");
+        Integer idTournee = Integer.parseInt(tab[1]);
+        selectedTournee = new Tournee(idTournee, null, null, null, null);
         livreur = (Livreur) cnxMb.getConnectedAdh();
         try {
             livreur = busLivreur.alimenterLivreur(livreur);
@@ -80,7 +86,15 @@ public class TourneeManagedBean {
             List<Exploitation> collectionExploitation = busLivreur.setExploitationAVisiter(selectedTournee);
             Set<PointRelais> collectionPointRelais = new LinkedHashSet<>();
             for (LigneCommande ligne : selectedTournee.getLignesCmd()) {
-                collectionPointRelais.add(ligne.getCommande().getRelais());
+                boolean exist = false;
+                for (PointRelais pointRelais : collectionPointRelais) {
+                    if (pointRelais.getId() == ligne.getCommande().getRelais().getId()) {
+                        exist = true;
+                    }
+                }
+                if (!exist) {
+                    collectionPointRelais.add(ligne.getCommande().getRelais());
+                }
             }
             for (PointRelais pointRelais : collectionPointRelais) {
                 CommerceVue commerce = new CommerceVue();
