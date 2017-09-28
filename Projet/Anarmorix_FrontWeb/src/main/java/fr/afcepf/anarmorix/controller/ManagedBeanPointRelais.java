@@ -31,6 +31,7 @@ public class ManagedBeanPointRelais {
 			client.setId(1);
 			liste = bu.afficherCommande(client);
 			for(Commande commande:liste) {
+				
 				compteur=compteur+1;
 			}
 			
