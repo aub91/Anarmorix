@@ -17,6 +17,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
 import fr.afcepf.anarmorix.business.api.IBusinessLivreur;
 import fr.afcepf.anarmorix.business.api.IBusinessMap;
 import fr.afcepf.anarmorix.entity.Commande;
@@ -27,11 +31,6 @@ import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
-
-import java.net.URISyntaxException;
 
 
 /**
@@ -228,7 +227,8 @@ public class TourneeManagedBean {
                 }
                 Commande cmd = commerceVue.getListeLigneCmd().get(0).getCommande();
                 cmd.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
-                cmd.setCodeValidation("8392");
+                Integer code = (int) (Math.random() * 10000);
+                cmd.setCodeValidation(code.toString());
                 try {
                     busLivreur.mettreAJour(cmd);
                 } catch (AnarmorixException e) {
