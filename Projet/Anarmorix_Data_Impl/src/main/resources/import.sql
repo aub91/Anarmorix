@@ -137,7 +137,11 @@ INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitat
 
 
 
+<<<<<<< HEAD
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, lÃ©gumes et Ã©picerie', NULL);
+=======
+INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (1, 'Fruits, légumes et épicerie', NULL);
+>>>>>>> aubin
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (2, 'Viandes, charcuteries et produits de la mer', NULL);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (3, 'Produits laitiers', NULL);
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES (4, 'Boissons', NULL);
@@ -285,7 +289,11 @@ INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservati
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (24, NULL, 'Maquereaux', NULL, 24, 1, 71);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (25, NULL, 'Moules', NULL, 25, 1, 57);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (26, NULL, 'Nectar de Poire', NULL, 26, 1, 69);
+<<<<<<< HEAD
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (27, NULL, 'PÃ¢tÃ© de campagne', NULL, 27, 1, 72);
+=======
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (27, NULL, 'Pâté de campagne', NULL, 27, 1, 72);
+>>>>>>> aubin
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (28, NULL, 'Persil', NULL, 29, 1, 51);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (29, NULL, 'Poireaux', NULL, 30, 1, 52);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (30, NULL, 'Poitrine de porc', NULL, 31, 1, 65);
@@ -296,7 +304,11 @@ INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservati
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (35, NULL, 'Tomate', NULL, 37, 1, 49);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (36, NULL, 'Tourteau', NULL, 38, 1, 56);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (37, NULL, 'Jarret de boeuf', NULL, 39, 1, 64);
+<<<<<<< HEAD
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (38, NULL, 'Yaourt Ã  la chataÃ®gne', NULL, 40, 1, 74);
+=======
+INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (38, NULL, 'Yaourt à la chataîgne', NULL, 40, 1, 74);
+>>>>>>> aubin
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (39, NULL, 'Asperge du Blayais', NULL, 41, 1, 75);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (40, NULL, 'Coriandre', NULL, 42, 1, 76);
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_imageDefaut`, `id_tva`, `id_categorie`) VALUES (41, NULL, 'Filets de sole', NULL, 43, 1, 77);
@@ -307,6 +319,7 @@ INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservati
 
 
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (1, NULL, '3.00', '50.00', 1, 7, 1, 'Les fraises Gramsci, presque aussi rouges que le patron');
+<<<<<<< HEAD
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (2, NULL, '25.00', '50.00', 2, 8, 2, 'Des homards sauvages avec une chair de caractÃ¨re');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (3, NULL, '20.00', '50.00', 3, 10, 3, 'Des huÃ®tres en direct de la baie de Saint-Brieuc');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (4, NULL, '25.00', '50.00', 4, 5, 4, 'Contient suffisament de calories pour rÃ©soudre la faim dans le monde');
@@ -315,11 +328,22 @@ INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_i
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (7, NULL, '4.00', '50.00', 7, 6, 7, 'Si ce n''est pas du beurre salÃ©, ce n''est pas du beurre tout court');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (8, NULL, '1.50', '50.00', 8, 3, 8, 'Une vraie blonde, comme la femme du patron');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (9, NULL, '3.00', '50.00', 9, 5, 9, 'On court tous aprÃ¨s la carotte Gramsci');
+=======
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (2, NULL, '25.00', '50.00', 2, 8, 2, 'Des homards sauvages avec une chair de caractère');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (3, NULL, '20.00', '50.00', 3, 10, 3, 'Des huîtres en direct de la baie de Saint-Brieuc');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (4, NULL, '25.00', '50.00', 4, 5, 4, 'Contient suffisament de calories pour résoudre la faim dans le monde');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (5, NULL, '3.00', '50.00', 5, 8, 5, 'Un coeur délicieusement fondant');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (6, NULL, '2.00', '50.00', 6, 5, 6, 'Une betterave du terroir');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (7, NULL, '4.00', '50.00', 7, 6, 7, 'Si ce n''est pas du beurre salé, ce n''est pas du beurre tout court');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (8, NULL, '1.50', '50.00', 8, 3, 8, 'Une vraie blonde, comme la femme du patron');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (9, NULL, '3.00', '50.00', 9, 5, 9, 'On court tous après la carotte Gramsci');
+>>>>>>> aubin
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (10, NULL, '2.00', '50.00', 10, 8, 10, 'Une explosion florale pour vos papilles');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (11, NULL, '3.00', '50.00', 11, 8, 11, 'Une explosion florale pour vos papilles');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (12, NULL, '2.50', '50.00', 12, 5, 12, 'Un Gramsci, ciboulette');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (13, NULL, '2.00', '50.00', 13, 2, 13, 'La pomme dans ta face');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (14, NULL, '5.00', '50.00', 14, 12, 14, 'Le gras, c''est la vie');
+<<<<<<< HEAD
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (15, NULL, '9.00', '50.00', 15, 5, 15, 'Des crevettes sauvages avec une chair de caractÃ¨re');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (16, NULL, '11.00', '50.00', 16, 5, 16, 'Des crevettes sauvages avec une chair de caractÃ¨re');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (17, NULL, '7.00', '50.00', 17, 8, 17, 'ElevÃ© au grain armoricain');
@@ -335,12 +359,30 @@ INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_i
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (27, NULL, '5.00', '50.00', 27, 12, 27, 'Tout est bon dans le cochon, surtout quand il est breton');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (28, NULL, '5.00', '50.00', 29, 5, 28, 'Une bouquet aromatique exquis');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (29, NULL, '7.00', '50.00', 30, 5, 29, 'Pour un kilo de poireaux achetÃ©, un kilo de moules offertes');
+=======
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (15, NULL, '9.00', '50.00', 15, 5, 15, 'Des crevettes sauvages avec une chair de caractère');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (16, NULL, '11.00', '50.00', 16, 5, 16, 'Des crevettes sauvages avec une chair de caractère');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (17, NULL, '7.00', '50.00', 17, 8, 17, 'Elevé au grain armoricain');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (18, NULL, '3.00', '50.00', 18, 5, 18, 'Un bulbe de saveurs');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (19, NULL, '8.00', '50.00', 19, 5, 19, 'Tout est bon dans le cochon, surtout quand il est breton');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (20, NULL, '3.00', '50.00', 20, 5, 20, 'Un gout délicieusement acidulé');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (21, NULL, '8.00', '50.00', 21, 11, 21, 'Tout est bon dans le cochon, surtout quand il est breton');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (22, NULL, '1.00', '50.00', 22, 1, 22, 'La pomme dans ta face');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (23, NULL, '4.00', '50.00', 23, 8, 23, 'Laitue verte ? Moi j''suis rouge !');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (24, NULL, '6.00', '50.00', 24, 5, 24, 'Du mac étincelant');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (25, NULL, '8.00', '50.00', 25, 10, 25, 'S''accompagnent très bien de poireaux');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (26, NULL, '3.00', '50.00', 26, 1, 26, 'La poire dans ta face');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (27, NULL, '5.00', '50.00', 27, 12, 27, 'Tout est bon dans le cochon, surtout quand il est breton');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (28, NULL, '5.00', '50.00', 29, 5, 28, 'Une bouquet aromatique exquis');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (29, NULL, '7.00', '50.00', 30, 5, 29, 'Pour un kilo de poireaux acheté, un kilo de moules offertes');
+>>>>>>> aubin
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (30, NULL, '6.00', '50.00', 31, 5, 30, 'Tout est bon dans le cochon, surtout quand il est breton');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (31, NULL, '2.00', '50.00', 32, 5, 31, 'Cent patates !');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (32, NULL, '2.50', '50.00', 33, 5, 32, 'Cent patates ! version communiste');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (33, NULL, '4.00', '50.00', 34, 5, 33, 'La pomme dans ta face');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (34, NULL, '12.00', '50.00', 36, 8, 34, 'Tout est bon dans le cochon, surtout quand il est breton');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (35, NULL, '3.00', '50.00', 37, 5, 35, 'Les tomates Gramsci, presque aussi rouges que le patron');
+<<<<<<< HEAD
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (36, NULL, '9.00', '50.00', 38, 5, 36, 'Des crabes sauvages avec une chair de caractÃ¨re');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (37, NULL, '8.00', '50.00', 39, 5, 37, 'Un boeuf du terroir armoricain');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (38, NULL, '1.00', '50.00', 40, 14, 38, 'Des chataÃ®gnes du terroir');
@@ -349,6 +391,16 @@ INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_i
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (41, NULL, '11.00', '50.00', 43, 8, 41, 'Des filets bien raclÃ©s de sole');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (42, NULL, '4.00', '50.00', 44, 13, 42, 'Une explosion aromatique');
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (43, NULL, '3.00', '50.00', 45, 13, 43, 'La fine fleur du salÃ©');
+=======
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (36, NULL, '9.00', '50.00', 38, 5, 36, 'Des crabes sauvages avec une chair de caractère');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (37, NULL, '8.00', '50.00', 39, 5, 37, 'Un boeuf du terroir armoricain');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (38, NULL, '1.00', '50.00', 40, 14, 38, 'Des chataîgnes du terroir');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (39, NULL, '7.00', '50.00', 41, 9, 39, 'Pour un kilo d''asperges achetées, un kilo de moules offertes');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (40, NULL, '6.00', '50.00', 42, 5, 40, 'Une explosion aromatique');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (41, NULL, '11.00', '50.00', 43, 8, 41, 'Des filets bien raclés de sole');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (42, NULL, '4.00', '50.00', 44, 13, 42, 'Une explosion aromatique');
+INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (43, NULL, '3.00', '50.00', 45, 13, 43, 'La fine fleur du salé');
+>>>>>>> aubin
 INSERT INTO `produit` (`id`, `dateProduction`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`, `descriptif`) VALUES (44, NULL, '9.00', '50.00', 46, 2, 44, 'Le vin est blanc, mais rassurez-vous, le patron est bien rouge');
 
 
