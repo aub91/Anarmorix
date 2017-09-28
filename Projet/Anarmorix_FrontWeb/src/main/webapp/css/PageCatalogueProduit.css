@@ -1,6 +1,17 @@
+
+
+
 body {
   margin-top: 50px;
   font-family: Lato, sans-serif;
+}
+
+#recapPanier {
+	 float: right;
+}
+
+.w3-badge {
+	margin-left: -100px;	
 }
 
 /*css navbar*/
@@ -10,6 +21,7 @@ body {
 	width: 30 vh;
 	border-radius: 5px 5px 5px 5px;
 }
+
 
  
    
@@ -523,7 +535,14 @@ body {
 }
 
 
+.imagesModales {
+	 height: 50px;
+	 width: 50px;
+}
 
+#id01{
+	font-size: 12px;
+}
 
 /*fin*/
 

@@ -8,14 +8,15 @@
 
 <ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
 	<ui:define name="script">
-					<script type="text/javascript" src="resources/js/PageCataloguePanier.js"></script> 
-					<script type="text/javascript" src="resources/js/PageCatalogueProduit.js"></script>
+	
+			<script type="text/javascript" src="resources/js/PageCatalogueProduit.js"></script>
+			
 	</ui:define>
 	
 	
 	<ui:define name="css">
+	  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/> 
 		<link href="css/PageCatalogueProduit.css" rel="stylesheet" type="text/css"></link>
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 	</ui:define>
 	<ui:define name="content">
 		<div class="row" >
@@ -34,8 +35,6 @@
 										<!-- PRIMAIRE -->	
 										
 										<h:form id="formAccordeon">
-										
-										<!-- FORMMMMM -->
 										
 										<ui:repeat var="catPrimaire" value="#{mbAfficheProduits.categoriesPrimaires}" varStatus="statusPrimaire">
 												<h:commandLink  styleClass="list-group-item list-group-item-success bg-secondaire">
@@ -128,6 +127,8 @@
 				<div class="section-catalogue">
 							
 					<!-- EN TETE CATALOGUE -->
+			
+					<h:form id="RecapPanier">
 					
 					<div class="page-header">
 						<div class="row">
@@ -145,35 +146,54 @@
 								<div class="col-lg-7">
 									<span id="titlecatalogue">Nos Produits</span>
 									
+									<!-- RECAP PANIER -->
 									
-									<div class="w3-container">
-									
-										  <img onclick="document.getElementById('id01').style.display='block'" src="resources/img/Panier.png" alt="Panier" height="60" width="60">
-										  
-<!-- 										  <SPAN onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"></SPAN> -->
-										  </img>
-										  
-<!-- 										  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
-										
+									<div id="recapPanier" class="w3-container">
+										  <img onclick="document.getElementById('id01').style.display='block'" src="resources/img/Panier.png" alt="Panier" height="60" width="60">	</img>
+											<span class="w3-badge w3-margin-left w3-small w3-green">5</span>
+											<h:outputText value="#{mbAfficheProduits.ligneComandesAjoutees}"></h:outputText>
+											
 										  <div id="id01" class="w3-modal">
 										    <div class="w3-modal-content">
 										      <div class="w3-container">
 										      
 										        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">X</span>
-										        <p>Some text. Some text. Some text.</p>
-										        <p>Some text. Some text. Some text.</p>
-										      </div>
+
+												<!-- FENETRE MODALE -->
+										        
+										        <TABLE>
+										        <THEAD>
+										        	<TR>
+										        		<th>Quantité</th>
+										        		<th>Libelle</th>
+										        		<th>Prix unitaire</th>
+										        		<th>Prix total</th>
+										        	</TR>
+										        </THEAD>
+										        <ui:repeat var="lgnCmd" value="#{mbAfficheProduits.ligneComandes}">
+										        <tr>
+										        	<td><h:outputLabel value="#{lgnCmd.quantiteCommandee}"> </h:outputLabel></td>
+										        	<td><h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></td>
+										        	<td><h:outputLabel value="#{lgnCmd.produit.prixUnitaire}">€</h:outputLabel></td>
+										        	<td><h:outputLabel value="#{lgnCmd.produit.prixUnitaire*lgnCmd.quantiteCommandee}">€</h:outputLabel></td>
+										        </tr>
+										      </ui:repeat> 
+										     </TABLE>
+										      
 										    </div>
 										  </div>
 										</div>
+									</div>
 								</div>
 							</h1>
 						</div>
 					</div>
+					
+					</h:form>
+				
 				
 					<!-- AFFICHAGE PRODUITS -->
 					<h:form id="form-affiche-pdts">
-		
 					<h:panelGroup layout="block" id="formImage">
 					<div class="row" id = "blocImage">
 						<h:inputHidden id="libelle" value="#{mbAfficheProduits.libelleCategorie}" />
@@ -261,10 +281,10 @@
 											<f:passThroughAttribute name = "data-quantity" value="#{lgnCmd.quantiteCommandee}" /> 
 											<f:passThroughAttribute name = "data-image" value="#{lgnCmd.produit.image.chemin}" /> 	
 												
-														<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
+														<f:ajax event="click" render=":form-affiche-pdts:formImage RecapPanier" execute="@form"
 														listener="#{mbAfficheProduits.ajouterProduitLigneCommande(lgnCmd)}" onevent="incrementQty"></f:ajax>
 										Ajout Panier</button>
-											
+										
 									</div>
 								</div>
 							</div>
@@ -276,10 +296,9 @@
 				
 			</div>
 		</div>
+		
+		
 	</ui:define>
-	
-
-	
 </ui:composition>
 
 </html>

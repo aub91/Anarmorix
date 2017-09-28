@@ -81,7 +81,7 @@ $(function() {
 	/*fin*/
 
 	/*sélecteur de quantité*/
-	$(document).ready(function() {
+
 
 		var quantitiy = 0;
 
@@ -121,12 +121,9 @@ $(function() {
 
 		});
 
-	});
-
 	/*fin*/
 
 	/*barre de recherche*/
-	$(document).ready(function() {
 		var submitIcon = $('.searchbox-icon');
 		var inputBox = $('.searchbox-input');
 		var searchBox = $('.searchbox');
@@ -154,7 +151,6 @@ $(function() {
 				submitIcon.click();
 			}
 		});
-	});
 	function buttonUp() {
 		var inputVal = $('.searchbox-input').val();
 		inputVal = $.trim(inputVal).length;
@@ -185,12 +181,10 @@ $(function() {
 		var categorieProduit = $(this).text();
 		document.getElementById("libelle").value = categorieProduit;
 	});
+	incrementQty();
 });
 
 function incrementQty() {
-	
-
-	
 	$('.quantity-left-minus').click(function(e) {
 
 		var $this = $(this);

@@ -34,9 +34,17 @@ public class AfficherProduitsManagedBean {
     private List<Produit> listePdts;
     private List<LigneCommande> ligneComandes =  new ArrayList<>();
     private List<LigneCommande> ligneComandesAffichables =  new ArrayList<>();
+    private Integer ligneComandesAjoutees;
     private String quantiteAjoute;
     
 
+    public Integer getLigneComandesAjoutees() {
+        return ligneComandes.size();
+    }
+
+    public void setLigneComandesAjoutees(Integer paramLigneComandesAjoutees) {
+        ligneComandesAjoutees = ligneComandes.size();
+    }
     @ManagedProperty(value="#{mbMap}")
     private MapManagedBean mapMb;
 
@@ -79,8 +87,6 @@ public class AfficherProduitsManagedBean {
             lc.setProduit(pdt);
             ligneComandesAffichables.add(lc);
         }
-        System.out.println(listePdts);
-        System.out.println(listePdts.size());
     }
     
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande/*Produit produitAjoute*/) {
@@ -94,6 +100,8 @@ public class AfficherProduitsManagedBean {
             System.out.println("Commande qté: " + ligneCmd.getQuantiteCommandee());
             System.out.println("Commande libelle: " + ligneCmd.getProduit().getType().getLibelle());
         }
+        
+        System.out.println("taille " + ligneComandes.size());
     }
     
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
