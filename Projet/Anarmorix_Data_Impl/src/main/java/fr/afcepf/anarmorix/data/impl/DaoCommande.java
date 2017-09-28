@@ -89,11 +89,7 @@ public class DaoCommande implements IDaoCommande {
     @Override
     public Commande mettreAJour(Commande paramCommande) throws AnarmorixException {
         try {
-<<<<<<< HEAD
-            Commande updated = em.merge(paramId);
-=======
             Commande updated = em.merge(paramCommande);
->>>>>>> aubin
             return updated;
         } catch (Exception e) {
             AnarmorixException exc =  new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
