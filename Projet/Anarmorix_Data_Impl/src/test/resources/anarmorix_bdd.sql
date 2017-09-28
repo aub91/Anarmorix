@@ -28,6 +28,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `adherent`
 --
 
+drop database anarmorix_bdd;
+create database anarmorix_bdd;
+use anarmorix_bdd;
+
 CREATE TABLE `adherent` (
   `type_adherent` varchar(31) NOT NULL,
   `id` int(11) NOT NULL,

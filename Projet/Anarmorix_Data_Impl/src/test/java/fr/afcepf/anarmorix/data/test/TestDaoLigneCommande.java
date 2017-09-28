@@ -309,6 +309,7 @@ public class TestDaoLigneCommande {
     public void resetDataBase() {
         String path = Thread.currentThread().getContextClassLoader().getResource("creabase.bat").getPath();
         path = path.replaceAll("%20", " ");
+        System.out.println(path);
         try {
             Process proc = Runtime.getRuntime().exec(path);
             proc.waitFor();

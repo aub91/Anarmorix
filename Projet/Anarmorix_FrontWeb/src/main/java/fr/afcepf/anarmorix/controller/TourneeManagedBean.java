@@ -172,7 +172,6 @@ public class TourneeManagedBean {
                 }
             }
         } catch (AnarmorixException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -190,7 +189,6 @@ public class TourneeManagedBean {
                     try {
                         busLivreur.mettreAJour(ligne);
                     } catch (AnarmorixException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }

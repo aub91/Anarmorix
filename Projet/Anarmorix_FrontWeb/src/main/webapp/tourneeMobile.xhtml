@@ -8,21 +8,32 @@
   <meta charset="UTF-8"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/> 
-  <h:outputScript library="js" name="markerclusterer.js"/>
-  <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc&amp;callback=initMap"></script>
+  
 </h:head>
 <body class="w3-row">
+  <nav class="w3-sidebar w3-bar-block w3-card w3-purple" id="mySidebar" style="display: none">
+    <div class="w3-container">
+      <span onclick="closeSidebar()" class="w3-button w3-display-topright w3-large">X</span>
+      <br/>
+      <div class="w3-padding w3-center">
+        <img class="w3-circle" src="resources/img/avatar.png" alt="avatar" style="width:75%"/>
+      </div>
+    </div>
+    <h:outputText class="w3-bar-item" value="Bonjour #{mbTournee.livreur.prenom}" />
+    <a class="w3-bar-item w3-button" href="#">Mes Livraisons</a>
+  </nav>
   <header class="w3-col s12 w3-bar w3-card w3-purple w3-mobile">
     <button class="w3-bar-item w3-button w3-hover-purple w3-xxxlarge" onclick="openSidebar()">&#9776;</button>
     <h4 class="w3-bar-item"> Tournée n°#{mbTournee.selectedTournee.id} du 24/09/2017</h4>
   </header>
   <div class="w3-container w3-col s12">
     <div class="w3-row">
-      <div id="map" class="w3-col s12" style="height:50vh"></div>
+      <div id="map" class="w3-col s12" style="height:65vh"></div>
+      <h:form id="toto">
       <h:panelGroup id="tournee">
-      <button onclick="show('itineraire')" class="w3-button w3-block w3-purple w3-hover-purple">Itinéraire</button>
+      <input type="button" onclick="show('itineraire')" class="w3-button w3-block w3-purple w3-hover-purple" value="Itinéraire" />
       <div id="itineraire" class="w3-col s12 w3-hide"></div>
-      <button onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple">Points d'arrêts</button>
+      <input type="button"  onclick="show('arrets')" class="w3-button w3-block w3-purple w3-hover-purple" value="Points d'arrêts"/>
       <div id="arrets" class="w3-col s12 w3-hide">
         <table id="exploitationTable" class="w3-table-all w3-centered w3-small">
           <thead>
@@ -53,13 +64,13 @@
           </ui:repeat>
         </table>
         <ui:repeat var="com" value="#{mbTournee.exploitationAVisiter}">
-        <h:form>
+        
         <div id="exploitation-#{com.commerce.id}" class="w3-modal">
           <div class="w3-modal-content">
             <header class="w3-bar w3-blue">
               <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
               <h:commandButton value="Tout récupérer" styleClass="w3-bar-item w3-button w3-green w3-margin-top">
-                <f:ajax listener="#{mbTournee.toutRecuperer(com)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+                <f:ajax listener="#{mbTournee.toutRecuperer(com)}" execute="@form" render=":toto:tournee" ></f:ajax>
               </h:commandButton>
               <span onclick="document.getElementById('exploitation-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
@@ -75,7 +86,7 @@
                   </div>
                   <div class="w3-col s4">
                     <h:commandButton class="w3-button w3-green" value="OK">
-                      <f:ajax listener="#{mbTournee.recuperer(prod)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+                      <f:ajax listener="#{mbTournee.recuperer(prod)}" execute="@form" render=":toto:tournee" ></f:ajax>
                     </h:commandButton>
                     <h:commandButton class="w3-button w3-yellow" value="!">
                     </h:commandButton>
@@ -86,16 +97,14 @@
             </ul>
           </div>
         </div>
-        </h:form>
         </ui:repeat>
         <ui:repeat var="com" value="#{mbTournee.pointRelaisAVisiter}">
-        <h:form>
         <div id="pointRelais-#{com.commerce.id}" class="w3-modal">
           <div class="w3-modal-content">
             <header class="w3-bar w3-red">
               <h5 class="w3-bar-item">#{com.commerce.raisonSociale}</h5>
               <h:commandButton value="Tout déposer" styleClass="w3-bar-item w3-button w3-green w3-margin-top">
-                <f:ajax listener="#{mbTournee.toutDeposer(com)}" execute="@form" render="tournee" onevent="initMap()"></f:ajax>
+                <f:ajax listener="#{mbTournee.toutDeposer(com)}" execute="@form" render=":toto:tournee" ></f:ajax>
               </h:commandButton>
               <span onclick="document.getElementById('pointRelais-#{com.commerce.id}').style.display='none'" class="w3-button w3-right w3-bar-item w3-xlarge">X</span>
             </header>
@@ -111,7 +120,7 @@
                   </div>
                   <div class="w3-col s4">
                     <h:commandButton class="w3-button w3-green" value="OK">
-                      <f:ajax listener="#{mbTournee.deposer(prod)}" execute="@form" render="tournee"></f:ajax>
+                      <f:ajax listener="#{mbTournee.deposer(prod)}" execute="@form" render=":toto:tournee" ></f:ajax>
                     </h:commandButton>
                     <h:commandButton class="w3-button w3-yellow" value="!">
                     </h:commandButton>
@@ -122,12 +131,15 @@
             </ul>
           </div>
         </div>
-        </h:form>
+        
         </ui:repeat>
       </div>
       </h:panelGroup>
+      </h:form>
     </div>
   </div>
+  <h:outputScript library="js" name="markerclusterer.js"/>
+  <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf-7j3fGn9ixB1w2exeFysSJtWlWUYiFc&amp;callback=initMap"></script>
   <script type="text/javascript">
   //<![CDATA[
       var map;
@@ -164,6 +176,13 @@
             } else {
                 x.className = x.className.replace(" w3-show", "");
             }
+        }
+        function openSidebar() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function closeSidebar() {
+            document.getElementById("mySidebar").style.display = "none";
         }
       //]]>
   </script>
