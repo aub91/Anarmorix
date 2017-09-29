@@ -20,6 +20,9 @@
     </div>
     <h:outputText class="w3-bar-item" value="Bonjour #{mbLivreur.livreur.prenom}" />
     <a class="w3-bar-item w3-button" href="#">Mes Livraisons</a>
+    <h:form>
+    <h:commandLink action="#{mbConnexion.seDeconnecter()}" value="Déconnexion" class="w3-bar-item w3-button"/>
+    </h:form>
   </nav>
   <header class="w3-col s12 w3-bar w3-card w3-purple w3-mobile">
     <button class="w3-bar-item w3-button w3-hover-purple w3-xxxlarge" onclick="openSidebar()">&#9776;</button>

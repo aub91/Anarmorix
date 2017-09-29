@@ -99,7 +99,7 @@
 							<th>Prenom du client : <h:outputText
 									value="#{mbProduit.cmde.client.prenom}" /></th>
 							<!-- pour modifier le statue de la commande -->
-							<th>Statut: <h:selectOneMenu value="#{mbProduit.statue}">
+							<!--<th>Statut: <h:selectOneMenu value="#{mbProduit.statue}">
 									<f:selectItem id="item1" itemLabel="creee" itemValue="1" />
 									<f:selectItem id="item2" itemLabel="en cours de preparation"
 										itemValue="2" />
@@ -111,7 +111,7 @@
 								</h:selectOneMenu> <h:commandButton
 									action="#{mbProduit.miseajourCommande(mbProduit.cmde.id)}"
 									value="Valider" class="btn" id="btn" style="color:white;"></h:commandButton>
-							</th>
+							</th>-->
 						</tr>
 						<tr>
 							<th>IMAGE</th>
@@ -136,15 +136,15 @@
                 <h:commandButton action="#{mbProduit.miseAjour(prodPrep.id)}" value="OK" id="btnValider" class="btn" style="color:white;"></h:commandButton></td>
 							<td></td>
 						</tr>
-						<div id="date">
-							Date de fin de préparation :
-							<h:inputText value="#{prodPrep.dateFinPreparation}">
-								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
-							</h:inputText>
-							jj/mm/aaaa
-							<h:commandButton action="#{mbProduit.miseAjour(prodPrep.id)}"
-								value="Valider" class="btn" id="btnVal" style="color:white;"></h:commandButton>
-						</div>
+<!-- 						<div id="date"> -->
+<!-- 							Date de fin de préparation : -->
+<!-- 							<h:inputText value="#{prodPrep.dateFinPreparation}"> -->
+<!-- 								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" /> -->
+<!-- 							</h:inputText> -->
+<!-- 							jj/mm/aaaa -->
+<!-- 							<h:commandButton action="#{mbProduit.miseAjour(prodPrep.id)}" -->
+<!-- 								value="Valider" class="btn" id="btnVal" style="color:white;"></h:commandButton> -->
+<!-- 						</div> -->
 
 					</ui:repeat>
 				</h:form>

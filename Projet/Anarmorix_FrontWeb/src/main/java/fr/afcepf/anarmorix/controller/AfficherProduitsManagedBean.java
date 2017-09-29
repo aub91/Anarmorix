@@ -20,6 +20,7 @@ import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Statut;
+import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 /**
  * ManagedBean avec fonctionnalités du panier.
@@ -217,7 +218,9 @@ public class AfficherProduitsManagedBean {
         Commande commandeCree = new Commande(null, new Date(), new Date(), null,
                 selectedPointRelais, client, Statut.EN_ATTENTE_DE_PREPARATION);
         commandeCree.setLignesCommande(ligneComandes);
+        commandeCree.setCodeValidation("12345");
         commandeCree = businessCLient.ajouterListeLigneCommande(commandeCree);
+        ligneComandes.clear();
     } catch (AnarmorixException e) {
         e.printStackTrace();
     }

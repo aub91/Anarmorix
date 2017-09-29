@@ -32,7 +32,7 @@ $(function () {
 	$('#commandeRecuperee').hide();
 	$('#btnValider').click(function isValid(){
 		var userPassword = document.getElementById('userPassword').value;
-		if (userPassword == "chris")
+		if (userPassword == "12345")
 		{alert('Correct!');
 		
 		
@@ -95,8 +95,6 @@ $(function () {
 									value="#{mbProduit.cmde.client.nom}" /></th>
 							<th>Prénom du client: <h:outputLabel
 									value="#{mbProduit.cmde.client.prenom}" /></th>
-							<th><input type="submit" class="btn" style="width: 200px"
-								id="commandeRecuperee" value="Commande récupérée"></input></th>
 							<th></th>
 						</tr>
 						<tr>

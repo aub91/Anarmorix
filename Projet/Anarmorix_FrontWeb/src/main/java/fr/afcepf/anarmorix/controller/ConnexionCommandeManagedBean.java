@@ -50,13 +50,13 @@ public class ConnexionCommandeManagedBean {
         try {
             connectedAdh = buCnx.seConnecter(username, password);
             if (connectedAdh != null && connectedAdh.getClass() == Livreur.class) {
-                forward = "/tableauDeBordLivreur.xhtml?faces-redirect=true";
+                forward = "/tournee.xhtml?faces-redirect=true";
             } else {
                 if (connectedAdh != null && connectedAdh.getClass() == Employe.class) {
-                    forward = "/tableauBordPointRelais.jsf?faces-redirect=true";
+                    forward = "/PointRelaisCommandeARecuperer.jsf?faces-redirect=true";
                 } else {
                     if (connectedAdh != null && connectedAdh.getClass() == Producteur.class) {
-                        forward = "/tableauBordProducteur.jsf?faces-redirect=true";
+                        forward = "/commandeAPreparer.jsf?faces-redirect=true";
                     } else {
                         if (connectedAdh != null && connectedAdh.getClass() == Client.class) {
                             forward = "/pageAccueilAnarmoriqueMap.jsf?faces-redirect=true";

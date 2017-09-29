@@ -218,7 +218,6 @@ public class TourneeManagedBean {
                     ligne.setQuantiteLivree(ligne.getQuantitePreparee());
                     Commande cmd = ligne.getCommande();
                     cmd.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
-                    cmd.setCodeValidation("8392");
                     try {
                         busLivreur.mettreAJour(ligne);
                     } catch (AnarmorixException e) {
@@ -238,7 +237,7 @@ public class TourneeManagedBean {
                 commerceVue.getListeLigneCmd().clear();
                 StringBuffer sms = new StringBuffer();
                 sms.append("Votre commande est prête. Vous pouvez aller la chercher au point-relais ").append(paramCommerceVue.getCommerce().getRaisonSociale())
-                    .append(". Le code secret de votre commande est ").append(cmd.getCodeValidation()).append(". Merci de votre commande.");
+                    .append(". Le code secret de votre commande est ").append(cmd.getCodeValidation()).append(". Merci de votre achat.");
                 Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
                 Message message = Message
