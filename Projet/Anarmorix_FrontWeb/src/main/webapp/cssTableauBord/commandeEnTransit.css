@@ -1,4 +1,4 @@
-.container-fluid {
+ .container-fluid {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
@@ -12,6 +12,26 @@
     display: grid;
     grid-template-columns: 25% 500% 25%;
     grid-template-rows: 1 fr;
+}
+
+.btn {
+	border-radius: 5px 30px;
+	color: #fff;
+	background-color: #6c5cb8;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+	border-radius: 30px 5px;
+	color: #edebe6;
+	background-color: #3d348b;
+}
+
+@media only screen and (max-width: 767px) {
+	.btn {
+		margin-bottom: 15px;
+	}
 }
 
 .noCmd {

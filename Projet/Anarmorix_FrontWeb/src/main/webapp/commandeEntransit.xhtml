@@ -6,7 +6,7 @@
 <h:head>
 
     <meta charset="utf-8"></meta>
-    <title>Commande en transit</title>
+    <title>Commande à récupérer</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"></link>
@@ -15,13 +15,62 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"></link>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js">0
+</script>
+<script type="text/javascript" src="js/jqueryui/jquery-ui.min.js">
+</script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+
+$(function () {
+	
+	$('#commandeRecuperee').hide();
+	$('#btnValider').click(function isValid(){
+		var userPassword = document.getElementById('userPassword').value;
+		if (userPassword == "chris")
+		{alert('Correct!');
+		
+		
+	btnValider.style="color:white";
+	btnValider.disabled="disabled";
+	vider(userPassword);
+	$('#userPassword').hide();
+	$('#mdp').hide();
+	$('#btnValider').hide();
+	$('#valid').hide();
+	$('#commandeRecuperee').show();
+	
+
+	
+		}
+
+		else if (userPassword == "")
+		{alert('Veuillez entrer un mot de passe');
+		}
+		else
+		{alert('Veuillez entrer un mot de passe valide')}
+		}
+	)
+	
+	
+	function vider() {
+		
+		document.getElementById('userPassword').value='';
+		
+	}
+
+});
+</script>
+
+
 </h:head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="background: url(resources/img/fondvioletlight.png);background-size: cover;">
-        <a class="navbar-brand" href="#">Tabealu de bord Point Relais
+        <a class="navbar-brand" href="#">Tableau de bord du Point Relais
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +82,7 @@
                     <a class="nav-link" href="">
 
                         <span class="nav-link-text">
-                COMMANDES EN TRANSIT </span>
+                COMMANDES A RECUPERER </span>
                     </a>
                 </li>
 
@@ -45,20 +94,33 @@
     <div class="content-wrapper">
         <div id="section-general">
             <div class="title">
-                <h1>Liste des commandes en transit</h1>
+            <form name="formulaire">
+						<h1>
+							Liste des commandes à récupérer <input type="button" class="btn"
+								style="width: 200px; float: right; margin-right: 25px"
+								id="TableauDeBord" value="Retour au tableau de bord"
+								onclick="window.location='tableauBordPointRelais.xhtml'"></input>
+						</h1>
+					</form>
+                
             </div>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th >N° COMMANDE : <h:outputLabel value="#{mbProduit.cmde.id}" /></th>
-                        <th>Nom Client:  <h:outputLabel value="#{mbProduit.cmde.client.nom}" /></th>
-                        <th>Prenom Client: <h:outputLabel value="#{mbProduit.cmde.client.prenom}" /></th>
+                        <th>N° COMMANDE : <h:outputLabel value="#{mbProduit.cmde.id}" /></th>
+                        <th>Nom du client:  <h:outputLabel value="#{mbProduit.cmde.client.nom}" /></th>
+                        <th>Prénom du client: <h:outputLabel value="#{mbProduit.cmde.client.prenom}" /></th>
+                        <th> <input type="submit" class="btn"  style="width:200px" 
+									id="commandeRecuperee"	value="Commande récupérée"></input></th>
+                        <th></th>
                     </tr>
                     <tr>
-                        <th>IMAGE</th>
-                        <th>DESCRIPTIF</th>
-                        <th>QUANTITE</th>
+                        <th>Image</th>
+                        <th>Descriptif</th>
+                        <th>Quantité</th>
+                        <th id="mdp">Mot de passe</th>
+					<th id="valid">Validation</th>
                     </tr>
                 </thead>
                  <ui:repeat var="prodTrans" value="#{mbProduit.liste}"> 
@@ -69,6 +131,12 @@
                 	<td>#{prodTrans.quantiteLivree}
                 	<h:outputLabel value="#{prodTrans.produit.packaging.unite.unite}"  />
                 	</td>
+                	<td><input id="userPassword" type="password" required="required"></input></td>
+
+
+								
+						<td><input type="submit" class="btn" id="btnValider" style="width:80px"
+										value="Valider"  ></input></td>
                 	            
                 </tr>
                 </ui:repeat>

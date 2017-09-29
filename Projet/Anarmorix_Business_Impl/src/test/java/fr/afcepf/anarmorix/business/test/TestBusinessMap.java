@@ -282,33 +282,23 @@ public class TestBusinessMap {
             Field attDaoPointRelais = clazz.getDeclaredField("daoPointRelais");
             attDaoPointRelais.setAccessible(true);
             attDaoPointRelais.set(busMap, mockDaoPointRelais);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            Class<?> clazz = busMap.getClass();
+
             Field attDaoAdresse = clazz.getDeclaredField("daoAdresse");
             attDaoAdresse.setAccessible(true);
             attDaoAdresse.set(busMap, mockDaoAdresse);
+
             Field attDaoJourOuverture = clazz.getDeclaredField("daoJourOuverture");
             attDaoJourOuverture.setAccessible(true);
             attDaoJourOuverture.set(busMap, mockDaoJourOuverture);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            Class<?> clazz = busMap.getClass();
+
             Field attDaoHoraire = clazz.getDeclaredField("daoHoraire");
             attDaoHoraire.setAccessible(true);
             attDaoHoraire.set(busMap, mockDaoHoraire);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            Class<?> clazz = busMap.getClass();
+
             Field attDaoVille = clazz.getDeclaredField("daoVille");
             attDaoVille.setAccessible(true);
             attDaoVille.set(busMap, mockDaoVille);
+
             Field attDaoCodePostal = clazz.getDeclaredField("daoCodePostal");
             attDaoCodePostal.setAccessible(true);
             attDaoCodePostal.set(busMap, mockDaoCodePostal);

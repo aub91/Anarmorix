@@ -51,7 +51,7 @@ public class TestDaoTournee {
     /**
      * ID société de livraison échec.
      */
-    private static final int ID_SOCIETE_ECHEC = 14;
+    private static final int ID_SOCIETE_ECHEC = 99;
     /**
      * Société de livraison non existante en base de données.
      */
@@ -78,7 +78,7 @@ public class TestDaoTournee {
     public void testRechercheBySocieteDeLivraisonNominal() throws AnarmorixException {
         SocieteDeLivraison retour = daoTest.rechercherBySocieteDeLivraison(societeNominal);
         Assert.assertNotNull(retour);
-        Assert.assertEquals(1, retour.getTournees().size());
+        Assert.assertEquals(2, retour.getTournees().size());
         Assert.assertEquals(tourneeNominal.getClass(), retour.getTournees().get(0).getClass());
         Assert.assertEquals(tourneeNominal.getId(), retour.getTournees().get(0).getId());
         Assert.assertEquals(societeNominal.getClass(), retour.getClass());

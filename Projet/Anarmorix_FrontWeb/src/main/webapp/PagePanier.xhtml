@@ -3,38 +3,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<meta charset="utf-8"></meta>
-	<meta name="robots" content="all,follow"></meta>
-	<meta name="googlebot" content="index,follow,snippet,archive"></meta>
-	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<title>Panier Basket</title>
-
-	<meta name="keywords" content=""></meta>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,500,700,300,100'	rel='stylesheet' type='text/css'></link>
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"></link>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+<ui:composition template="WEB-INF/templates/masterPageCatalogue.xhtml">
+	<ui:define name="css">
 	<link href="cssPanier/style.default.css" rel="stylesheet" id="theme-stylesheet"></link>
 		<!-- your stylesheet with modifications -->
 	<link rel="stylesheet" href="cssPanier/suggestion.css"></link>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"></link>
-	<style>
-	body {
-    margin: 10px;
-    padding: 10px;
-  font-family: 'Lato', sans-serif;
-  font-size: 15px;
-  line-height: 1.42857143;
-  color: #333333;
-  background-image: url(resources/img/fondvioletlight.png);
-  background-size: cover;
-}
-	</style>
-</h:head>
-<body>
-	<div id="content">
+	<link href="cssPanier/panierMaster.css" rel="stylesheet"></link>
+	</ui:define>
+	
+	<ui:define name="content" >
 		<div class="container" id="conM">
-			<div class="row">
+			<div class="row" id="bod">
 				<div class="col-md-9" id="basket">
 
 					<div class="box">
@@ -48,20 +27,23 @@
 										<th colspan="2">Produit</th>
 										<th>Quantité</th>
 										<th>Packaging</th>
-										<th>Prix unitaire</th>
-										<th colspan="2">Total</th>
+										<th>Prix unitaire <span> / €</span></th>
+										<th colspan="2">Total <span> / €</span></th>
 									</tr>
 								</thead>
 								<!-- partie a remplir dans le panier-->
 								<tbody>
-									<ui:repeat var="prodCom" value="#{mbLigneProduitPanier.listeProduits}"> 
+									<ui:repeat var="lgnCmd" value="#{mbAfficheProduits.ligneComandes}"> 
 									<tr class="ligneProduit">
-										<td><a href="#"> <img src="#{prodCom.id}" alt="produit selectionné"></img></a></td>
-										<td><a href="#"><strong><U>carottes </U></strong>c'est
-												bon</a></td>
-										<td><input id="quantiteProduit" type="number" value="#{prodCom.quantiteEnStock}" class="form-control"></input></td>
-                						<td>#{prodCom.packaging.libelle}</td>
-                						<td id="prixProduit">#{prodCom.prixUnitaire}</td>
+										<td>
+ 										<a href="#"> 
+										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/>
+										</a>
+										</td>
+										<td><h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></td>
+										<td><input id="quantiteProduit" type="number" value="#{lgnCmd.quantiteCommandee}" class="form-control"></input></td>
+                						<td>#{lgnCmd.produit.packaging.libelle}</td>
+                						<td id="prixProduit">#{lgnCmd.produit.prixUnitaire} </td>
 										<td ><i id="totalProduit"></i></td>
 									</tr>
 									</ui:repeat>
@@ -69,8 +51,8 @@
 								</tbody>
 								<tfoot  >
 									<tr>
-										<th colspan="5">Total</th>
-										<th colspan="2" class="ligneProduit"><i id="totaux"></i></th>
+										<th colspan="5">Total<span> / €</span></th>
+										<th colspan="2"><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
 							</table>
@@ -81,25 +63,45 @@
 
 						<div class="box-footer">
 							<div class="pull-left">
-								<a href="pageCatalogue2.xhtml" class="btn btn-default"><i
+								<a href="pageCatalogue.xhtml" class="btn btn-default"><i
 									class="fa fa-chevron-left"></i> Continuer mes achats</a>
 							</div>
 							<div class="pull-right">
-								<button type="submit" class="btn btn-primary">
-									commander <i class="fa fa-chevron-right"></i>
-								</button>
+						      <h:form>
+							   <h:commandButton styleClass="btn" value="Commander" action="#{mbAfficheProduits.ajouterLigneCommandeEnBase}"/>
+							  </h:form>
 							</div>
 						</div>
 					</div>
 				</div>
 
-
 				<div class="col-md-3" id="basket">
 					<div class="box">
 						<div class="row">
 							<div class="pull-center">
-								<h3>Nom point relais</h3>
-								<span>Adresse</span><br /> <span>Horaires d'ouverture</span>
+                                <h3>Point-relais:</h3>
+								<h3>#{mbAfficheProduits.selectedPointRelais.raisonSociale}</h3>
+								<span>
+                                    #{mbAfficheProduits.selectedPointRelais.adresse.numero} #{mbAfficheProduits.selectedPointRelais.adresse.voie} 
+                                </span>
+                                <br /> 
+                                <span>
+                                    #{mbAfficheProduits.selectedPointRelais.adresse.codePostal.codePostal} #{mbAfficheProduits.selectedPointRelais.adresse.ville.nomVille} 
+                                </span>
+                                <br />
+                                <span>Horaires d'ouverture:</span>
+                                <ul class="list-group">
+                                  <ui:repeat var="jour" value="#{mbAfficheProduits.selectedPointRelais.joursOuverture}">
+                                    <li class="list-group-item">
+                                      #{jour.libelle}
+                                      <ul class="list-group">
+                                        <ui:repeat var="horaire" value="#{jour.horairesOuverture}">
+                                          <li class="list-group-item">#{horaire.heureOuverture}-#{horaire.heureFermeture}</li>
+                                        </ui:repeat>
+                                      </ul>
+                                    </li>
+                                  </ui:repeat>
+                                </ul>
 							</div>
 							<div class="row">
 								<div class="pull-center">
@@ -110,9 +112,10 @@
 						<div class="box-footer">
 							<div class="row">
 								<div class="pull-center">
-									<button type="submit" class="btn btn-primary">
-										Commander <i class="fa fa-chevron-right"></i>
-									</button>
+									<h:form>
+								    <h:commandButton styleClass="btn" value="Commander" 
+                                      action="#{mbAfficheProduits.ajouterLigneCommandeEnBase}"/>
+									</h:form>
 								</div>
 							</div>
 						</div>
@@ -147,15 +150,14 @@
 
 								<div class=" col-md-4 suggestionProduitImage" id="mesProduit">
 									<a href="http://www.google.fr"><img class="imgProduit"
-										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+										src="resources/img/Fraise.jpg" href="https://www.google.fr"></img></a>
 								</div>
 
 								<div class="col-md-7 suggestionProduit">
 
-									<a class="fort" href="http://www.google.fr"><strong><U>Produit
-												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod Lorem m</a>
+									<a class="fort" href="http://www.google.fr"><strong><U>Fraise gariguette.</U></strong> Réputées pour leur saveur,
+									 leur parfum et leur chair juteuse à souhait, les fraises ‘Gariguette’ sont de couleur rouge-orangé et de forme
+									  allongée. Précoces...</a>
 
 								</div>
 							</div>
@@ -163,7 +165,7 @@
 								<div class="row validation">
 									<div class="col-md-5 priceProduit p">
 										<p>
-											<b><u> prix : 13 € </u></b>
+											<b><u> Prix : 10.99 €/Kg </u></b>
 										</p>
 									</div>
 
@@ -186,15 +188,14 @@
 
 								<div class=" col-md-4 suggestionProduitImage">
 									<a href="http://www.google.fr"><img class="imgProduit"
-										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+										src="resources/img/gala.jpg" href="https://www.google.fr"></img></a>
 								</div>
 
 								<div class="col-md-7 suggestionProduit">
 
-									<a class="fort" href="http://www.google.fr"><strong><U>Produit
-												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod Lorem m</a>
+									<a class="fort" href="http://www.google.fr"><strong><U> Pomme Gala.  </U><dd></dd>
+									</strong>  Rouge orangé à rayures verticales, très sucrée,
+									 faiblement acide avec une petite pointe d’amertume, ferme et juteuse, très croquante...</a>
 
 								</div>
 							</div>
@@ -202,7 +203,7 @@
 								<div class="row validation">
 									<div class="col-md-5 priceProduit p">
 										<p>
-											<b><u> prix : 13 € </u></b>
+											<b><u> prix : 2.99 €/Kg </u></b>
 										</p>
 									</div>
 									<div class="col-md-5 validerBtn">
@@ -224,15 +225,13 @@
 
 								<div class=" col-md-4 suggestionProduitImage">
 									<a href="http://www.google.fr"><img class="imgProduit"
-										src="resources/img/Cidre.jpg" href="https://www.google.fr"></img></a>
+										src="resources/img/poire.jpg" href="https://www.google.fr"></img></a>
 								</div>
 
 								<div class="col-md-7 suggestionProduit">
 
-									<a class="fort" href="http://www.google.fr"><strong><U>Produit
-												1</U></strong> : Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod Lorem Lorem ipsum dolor sit amet, consectetur
-										adipiscing elit, sed do eiusmod Lorem m</a>
+									<a class="fort" href="http://www.google.fr"><strong><U>Poire conference. </U></strong>
+									De forme allongée, sa robe de couleur vert- jaune. En bouche, elle est fine et fondante. Juteuse et parfumée, elle a une saveur légèrement acidulée...</a>
 
 								</div>
 							</div>
@@ -240,7 +239,7 @@
 								<div class="row validation">
 									<div class="col-md-5 priceProduit p">
 										<p>
-											<b><u> prix : 13 € </u></b>
+											<b><u> prix : 3.55 €/Kg </u></b>
 										</p>
 									</div>
 
@@ -257,10 +256,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
+	</ui:define>
 
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
+	<ui:define name="script">
 	<script src="resources/js/jquery-1.11.0.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.cookie.js"></script>
@@ -268,31 +269,44 @@
 	<script src="resources/js/bootstrap-hover-dropdown.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/front.js"></script>
+	
 	<script type="text/javascript">
 	 //<![CDATA[
 	 var totau = 0;
 	 $(".ligneProduit").each(function() {
-		var qt = $(this).find('#quantiteProduit').val();
+		var qt = $($(this).find('#quantiteProduit')[0]).val();
 		var prix = $(this).find("#prixProduit").html();
 		var cout = qt * prix;
-		$(this).find('#totalProduit').append(cout+' €');
+		qt = Math.trunc(qt*100)/100;
+		cout = Math.trunc(cout*100)/100;
+		$(this).find('#totalProduit').append(cout);
+		cout = Math.trunc(cout*100)/100;
 		totau += cout;
-		$(this).closest('.ligneProduit').find('#totaux').append(totau+' €');
-			$(this).find('#quantiteProduit').on('change', function(){
+		totau = Math.trunc(totau*100)/100;
+		
+		$($(this).find('#quantiteProduit')[0]).on('change', function(){
 				var qt = $(this).val();
 				var prix = $(this).closest('.ligneProduit').find("#prixProduit").html();
 				var cout = qt * prix;
 				cout = Math.trunc(cout*100)/100;
-				$(this).closest('.ligneProduit').find('#totalProduit').html(cout+' €');
-			});
+				$(this).closest('.ligneProduit').find('#totalProduit').html(cout);
+					totau = 0;
+				$(".ligneProduit").each(function() {
+					var qt = $($(this).find('#quantiteProduit')[0]).val();
+					var prix = $(this).find("#prixProduit").html();
+					var cout = qt * prix;
+					totau += cout;
+					totau = Math.trunc(totau*100)/100;
+					 $('#totaux').html(totau);
+				});
+		});
+				
 	 });
-	 
-	
-
+	 $('#totaux').html(totau);
 	  //]]>
-	
-
 	</script>
+	</ui:define>
+	</ui:composition>
 
-</body>
+	
 </html>

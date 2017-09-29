@@ -11,6 +11,7 @@ import fr.afcepf.anarmorix.data.api.IDaoCommerce;
 import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Commerce;
 import fr.afcepf.anarmorix.entity.Exploitation;
+import fr.afcepf.anarmorix.entity.Livreur;
 import fr.afcepf.anarmorix.entity.PointRelais;
 import fr.afcepf.anarmorix.entity.SocieteDeLivraison;
 import fr.afcepf.anarmorix.entity.Ville;
@@ -192,5 +193,19 @@ public class DaoCommerce implements IDaoCommerce {
             throw exc;
         }
         return paramCatalogue;
+    }
+
+    @Override
+    public Livreur rechercherSocieteByLivreur(Livreur paramLivreur) throws AnarmorixException {
+        SocieteDeLivraison retour = null;
+        try {
+            String hql = "SELECT l.societe FROM Livreur l WHERE l.id = :pid";
+            retour = (SocieteDeLivraison) em.createQuery(hql).setParameter("pid", paramLivreur.getId()).getSingleResult();
+            paramLivreur.setSociete(retour);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
+        return paramLivreur;
     }
 }

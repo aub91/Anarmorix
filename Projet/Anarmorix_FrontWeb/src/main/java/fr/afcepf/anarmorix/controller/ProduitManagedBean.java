@@ -8,7 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
-
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 
@@ -19,45 +20,69 @@ import fr.afcepf.anarmorix.business.api.IBusinessConsommateur;
 import fr.afcepf.anarmorix.entity.Commande;
 
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Statut;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 
 
 
 @ManagedBean(name="mbProduit")
-@ViewScoped
+@SessionScoped
 
 public class ProduitManagedBean {
+	
 	private List<LigneCommande> liste = new ArrayList<>();
 	//private Client client= new Client();
 	//private List<ProduitVue> produitVue = new ArrayList<>();
 	private Commande cmde = new Commande();
+	
 	private LigneCommande ligne= new LigneCommande();
-
-	
-	
-
-
-	
+	private String statue;
 
 	@EJB
 	private IBusinessConsommateur bu;
 	
 	
-	public void valider(Integer id) {
+	// methode de mise a jours de la commande
+	public void miseajourCommande(Integer id) {
 		try {
+			for (LigneCommande ligneCommande : liste) {
+					if(ligneCommande.getCommande().getId()==id) {
+					ligneCommande.getCommande().setStatut(cmde.getStatut());
+					bu.mettreAJourCommande(ligneCommande.getCommande());
+				}
+			}
 			
-			ligne = bu.mettreAJourLC(id);
-			System.out.println(ligne);
-			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// methode de mise a jour de la ligne de commande
+	public void miseAjour(Integer id) {
+		try {
+			for (LigneCommande ligneCommande : liste) {
+				if(ligneCommande.getId() == id) {
+					System.out.println(ligneCommande.getQuantiteCommandee());
+					bu.mettreAJourLC(ligneCommande);
+									
+				}
+				
+			}
+			/*for(Commande commande:listeCommande) {
+				if(commande.getId()==id) {
+					System.out.println(commande.getStatut());
+					bu.mettreAJourCommande(commande);
+				}
+				
+			}
+		*/
+					
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
-	
-	
-	
 
 	@PostConstruct
 	public void ajouterProduits() {
@@ -76,7 +101,7 @@ public class ProduitManagedBean {
 		//liste.add(P3);
 		try {
 		
-		cmde.setId(1);
+		cmde.setId(2);
 		cmde.setClient(bu.afficherClient(cmde));
 
 		liste=bu.afficherLigneCommande(cmde);
@@ -96,7 +121,6 @@ public class ProduitManagedBean {
 	
 
 
-	 
 	 
 	 
 	public Commande getCmde() {
@@ -133,6 +157,48 @@ public class ProduitManagedBean {
 	public void setListe(List<LigneCommande> liste) {
 		this.liste = liste;
 	}
+
+	public LigneCommande getLigne() {
+		return ligne;
+	}
+
+	public void setLigne(LigneCommande ligne) {
+		this.ligne = ligne;
+	}
+
+	public String getStatue() {
+		return statue;
+	}
+
+	public void setStatue(String statue) {
+		//System.out.println(statue);
+		switch (statue) {
+		case "1":
+			cmde.setStatut(Statut.CREEE);
+			break;
+		case "2":
+			cmde.setStatut(Statut.EN_COURS_DE_PREPARATION);
+			break;
+			
+		case "3":
+			cmde.setStatut(Statut.EN_COURS_DE_LIVRAISON);
+			break;
+		case "4":
+			cmde.setStatut(Statut.EN_ATTENTE_DE_RETRAIT);
+			break;
+		case "5":
+			cmde.setStatut(Statut.TERMINEE);
+			break;
+		
+			
+
+		default:
+			break;
+		}
+		this.statue = statue;
+	}
+
+	
 
 
 

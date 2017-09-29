@@ -14,26 +14,53 @@ import fr.afcepf.anarmorix.entity.Commande;
 @ViewScoped
 @ManagedBean(name = "mbPR")
 public class ManagedBeanPointRelais {
+	
+	
+	private int compteur=0;
 	@EJB
 	private IBusinessPointRelais bu;
-
+	
 	private Client client = new Client();
 	private List<Commande> liste = new ArrayList<>();
 	
 
 	@PostConstruct
 	public void ajouterCommandes() {
-
+		
 		try {
 			client.setId(1);
 			liste = bu.afficherCommande(client);
+			for(Commande commande:liste) {
+				
+				compteur=compteur+1;
+			}
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
+		
 	}
 	
 	
+
+	
+
+	public int getCompteur() {
+		return compteur;
+	}
+
+
+
+
+
+	public void setCompteur(int compteur) {
+		this.compteur = compteur;
+	}
+
+
+
+
 
 	public Client getClient() {
 		return client;

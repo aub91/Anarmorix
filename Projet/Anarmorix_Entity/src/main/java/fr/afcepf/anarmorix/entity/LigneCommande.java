@@ -347,4 +347,19 @@ public class LigneCommande implements Serializable {
         tournee = paramTournee;
     }
 
+    /**
+     * @return the commande
+     */
+    public Commande getCommande() {
+        return commande;
+    }
+
+    /**
+     * @param paramCommande the commande to set
+     */
+    public void setCommande(Commande paramCommande) {
+        commande = paramCommande;
+    }
+    
+
 }

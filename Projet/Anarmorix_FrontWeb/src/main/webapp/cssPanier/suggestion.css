@@ -10,10 +10,16 @@
     float: left;
     
 }
+.form-control{
+    display: block;
+    width: 50%;
+}
 
 .suggestionProduitImage{
     margin-bottom: 10px;
     margin-right: 20px;
+    overflow: hidden;
+    position: static;
 }
 
 .box-fix{
@@ -21,15 +27,21 @@
 }
 .imgProduit {
     display: block;
+    position: absolute;
     margin: 5px;
     width: 120px;
     height: 90px;
+}
+.imgProduit img{
+	position: absolute;
 }
 
 .fort{
     
     font-family: montserrat;
     font-size: 14px ;
+    overflow: hidden;
+    
 }
 .fort U{
     color: black;
@@ -50,7 +62,7 @@
     float: left;
     display: block;
     text-align: center;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .addCart btn btn-primary{
@@ -72,4 +84,14 @@
 }
 .vendre {
     font-family: 'Pacifico', sans-serif, fantasy;
+}
+.container {
+    margin-top: 90px;
+    padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-image:url("resources/img/Cidre.jpg");
+  background-size: cover;
 }

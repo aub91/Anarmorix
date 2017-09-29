@@ -245,6 +245,9 @@ body{
     grid-gap: 1;
     width: 100%
 }
+#quantiteProduit{
+	width: 20px;
+}
 
 #table {
     grid-row: 2;
