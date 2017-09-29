@@ -8,21 +8,29 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.anarmorix.business.api.IBusinessCommande;
-import fr.afcepf.anarmorix.business.api.IBusinessConnexion;
 import fr.afcepf.anarmorix.data.api.IDaoCommande;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
-import fr.afcepf.anarmorix.data.impl.DaoCommande;
-import fr.afcepf.anarmorix.data.impl.DaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
+/**
+ * Implémentation de {@link IBusinessCommande}.
+ * @author Aubin
+ *
+ */
 @Remote(IBusinessCommande.class)
 @Stateless
-public class BusinessCommande implements IBusinessCommande{
+public class BusinessCommande implements IBusinessCommande {
+    /**
+     * {@link IDaoCommande}.
+     */
     @EJB
-    private IDaoCommande daoCmd = new DaoCommande();
+    private IDaoCommande daoCmd;
+    /**
+     * {@link IDaoLigneCommande}.
+     */
     @EJB
-    private IDaoLigneCommande daoLg = new DaoLigneCommande();
+    private IDaoLigneCommande daoLg;
 
     @Override
     public Commande creerCommande(List<LigneCommande> paramPanier) throws AnarmorixException {
