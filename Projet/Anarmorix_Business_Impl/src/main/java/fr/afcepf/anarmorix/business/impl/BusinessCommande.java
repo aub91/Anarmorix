@@ -20,9 +20,9 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 @Stateless
 public class BusinessCommande implements IBusinessCommande{
     @EJB
-    private IDaoCommande daoCmd;
+    private IDaoCommande daoCmd = new DaoCommande();
     @EJB
-    private IDaoLigneCommande daoLg;
+    private IDaoLigneCommande daoLg = new DaoLigneCommande();
 
     @Override
     public Commande creerCommande(List<LigneCommande> paramPanier) throws AnarmorixException {
