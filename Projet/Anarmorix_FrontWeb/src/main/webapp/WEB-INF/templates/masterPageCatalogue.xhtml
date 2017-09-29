@@ -41,7 +41,7 @@
 						 <img src="resources/img/LogoAnar.png" alt="Panier" height="130" width="130"/>
 						 </span>
                          <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
-                            <h:outputText value="Bonjour #{mbConnexion.connectedAdh.prenom}" class="navbar-brand" />
+                            <h:outputText value="Bonjour #{mbConnexion.connectedAdh.prenom}" class="nardineprenom" />
                          </ui:fragment> 
 					</div>
 
@@ -68,7 +68,7 @@
                             <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
                               <li>
                                 <h:form>
-                                  <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
+                                  <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion" class="nardinebutton"/>
                                 </h:form> 
                               </li>
                             </ui:fragment>
