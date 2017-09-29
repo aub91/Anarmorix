@@ -27,7 +27,7 @@ public class TestBusinessPanier {
     /**
      * La taille de liste de ligne de commande attendue.
      */
-    private static final int TAILLE_LIST = 12;
+    private static final int TAILLE_LIST = 1;
 
     /**
      * Commande pour test nominal.
