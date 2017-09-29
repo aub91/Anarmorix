@@ -43,7 +43,7 @@
 												<f:passThroughAttribute	name = "data-parent" value ="#AccordeonNiveauPrincipal"/>	
 												<f:passThroughAttribute name = "aria-expanded" value="false" />  	   
 													<h:outputText value="#{catPrimaire.libelle}" />
-<!-- 													<i class="fa fa-caret-down"></i> -->
+													<img class="logocategories" src=""></img>
 													<f:ajax event="click" render=":form-affiche-pdts:formImage" execute="@form"
 													 	    listener="#{mbAfficheProduits.actualiserListe(catPrimaire)}" onevent="incrementQty"></f:ajax>
 												</h:commandLink>
