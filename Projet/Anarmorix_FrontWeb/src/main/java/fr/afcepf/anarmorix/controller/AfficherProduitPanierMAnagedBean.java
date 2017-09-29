@@ -52,7 +52,7 @@ public class AfficherProduitPanierMAnagedBean {
 	}
 
 	@PostConstruct
-    public void init() throws AnarmorixException {
+    public void init() {
     	
     	Produit produit1 = new Produit();
     	produit1.setId(251); 

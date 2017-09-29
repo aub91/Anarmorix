@@ -12,82 +12,59 @@ import fr.afcepf.anarmorix.entity.Ville;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Fonctionnalités métier du client.
  */
 public interface IBusinessClient {
 
     /**
-     * @param ville 
-     * @return
+     * @param ville ville de recherche
+     * @return liste de point-relais de la ville
+     * @throws AnarmorixException une exception
      */
-    List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException ;
+    List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException;
     /**
-     * @param produit 
-     * @param quantite 
-     * @return
+     * @param commande commande dans laquelle il faut ajouter une ligne
+     * @return la commande avec sa ligne ajouté
+     * @throws AnarmorixException ne exception
      */
     Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
-    
-    /**
-     * Méthode permettant d'ajouter une liste de lignes de commandes à une commande..
-     * @param produit 
-     * @param quantite 
-     * @return
-     */
-    Commande ajouterListeLigneCommande(List<LigneCommande> lignesCommandes) throws AnarmorixException;
-    
-    /**
-     * @param produit 
-     * @param quantite 
-     * @return
-     */
-    LigneCommande retirer(Produit produit, Double quantite) throws AnarmorixException ;
-    /**
-     * @param commande 
-     * @return
-     */
-    Boolean annulerCommande(Commande commande) throws AnarmorixException ;
-    /**
-     * @param commande 
-     * @return
-     */
-    Commande valider(Commande commande) throws AnarmorixException ;
-    /**
-     * @param prix 
-     * @return
-     */
-    Boolean payer(Double prix) throws AnarmorixException ;
 
     /**
-     * @param listeProduit 
-     * @return
+     * Méthode permettant d'ajouter une liste de lignes de commandes à une commande.
+     * @param paramCommande une commande avec ses lignes à faire persister
+     * @return la commande avec ses listes de lignes
+     * @throws AnarmorixException une exception
      */
-    List<LigneCommande> ajouterProduitRecette(List<Produit> listeProduit) throws AnarmorixException ;
+    Commande ajouterListeLigneCommande(Commande paramCommande) throws AnarmorixException;
 
     /**
-     * @param client 
-     * @return
+     * Méthode d'annulation d'une commande.
+     * @param commande la commande à annuler
+     * @return true si l'anulation est un succès
+     * @throws AnarmorixException une exception
      */
-    Client sinscrire(Client client) throws AnarmorixException ;
-
+    Boolean annulerCommande(Commande commande) throws AnarmorixException;
     /**
-     * @param client 
-     * @return
+     * Méthode de vérification de catégorie fille.
+     * @param paramCategorie catégorie à examiner
+     * @return true si pas de catégories filles
      */
-    Client modifierProfil(Client client) throws AnarmorixException ;
-    
+    boolean isCategorieFille(Categorie paramCategorie);
     /**
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
     List<Produit> recupererTousLesProduits() throws AnarmorixException;
     /**
+     * @param idTypeProduit id du type produit
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
     List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException;
     /**
      * Methode pour récupérer  les produits par libelle de categorie.
+     * @param libelleCategorie le nom de la catégorie
+     * @param reset un booléen
      * @return une liste de produits.
      * @throws AnarmorixException exception serveur.
      */
