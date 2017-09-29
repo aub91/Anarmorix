@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 28 sep. 2017 à 01:28
+-- Généré le :  ven. 29 sep. 2017 à 05:18
 -- Version du serveur :  10.1.26-MariaDB
 -- Version de PHP :  7.1.8
 
@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `adherent`
 --
-
 drop database anarmorix_bdd;
 create database anarmorix_bdd;
 use anarmorix_bdd;
@@ -59,20 +58,20 @@ CREATE TABLE `adherent` (
 
 INSERT INTO `adherent` (`type_adherent`, `id`, `dateDesinscription`, `dateInscription`, `dateNaissance`, `mail`, `nom`, `password`, `prenom`, `tel1`, `tel2`, `username`, `id_adresse`, `id_image`, `id_motif_desinscription`, `id_relais`, `id_societe`, `id_exploitation`) VALUES
 ('Client', 1, NULL, '2017-09-18 00:00:00', '2017-08-17 00:00:00', 'jj.grandarbre@mail.fr', 'Grandarbre', 'aaa', 'Jean-Jacques', '0666666666', NULL, 'grandarbre', 1, NULL, NULL, NULL, NULL, NULL),
-('Producteur', 2, NULL, '2016-12-17 00:00:00', '2017-08-17 00:00:00', 'guillaumedemachaut@mailoo.org', 'Gramsci', 'aaa', 'Aubin', '0666666666', NULL, 'Renï¿½shinycastle', 2, NULL, NULL, NULL, NULL, 1),
+('Producteur', 2, NULL, '2016-12-17 00:00:00', '2017-08-17 00:00:00', 'guillaumedemachaut@mailoo.org', 'Gramsci', 'aaa', 'Aubin', '0666666666', NULL, 'Reneshinycastle', 2, NULL, NULL, NULL, NULL, 1),
 ('Producteur', 3, NULL, '2017-01-14 00:00:00', '2017-08-17 00:00:00', 'jamesosterberg@zaclys.org', 'Kropotkine', 'aaa', 'Alexandre', '0666666666', NULL, 'Marbeufmiroton', 3, NULL, NULL, NULL, NULL, 2),
 ('Producteur', 4, NULL, '2017-02-10 00:00:00', '2017-08-17 00:00:00', 'loureed@gandi.org', 'Luxemburg', 'aaa', 'Christina', '0666666666', NULL, 'Platontondubled', 4, NULL, NULL, NULL, NULL, 3),
-('Employe', 5, NULL, '2017-03-05 00:00:00', '2017-08-17 00:00:00', 'archangelocorelli@vivaldi.org', 'Considï¿½rant', 'aaa', 'Eloi', '0666666666', NULL, 'Diogeneegoiste', 5, NULL, NULL, 4, NULL, NULL),
+('Employe', 5, NULL, '2017-03-05 00:00:00', '2017-08-17 00:00:00', 'archangelocorelli@vivaldi.org', 'Considérant', 'aaa', 'Eloi', '0666666666', NULL, 'Diogeneegoiste', 5, NULL, NULL, 4, NULL, NULL),
 ('Employe', 6, NULL, '2017-04-11 00:00:00', '2017-08-17 00:00:00', 'marcbolan@openmailbox.com', 'Blanqui', 'aaa', 'Fousseynou', '0666666666', NULL, 'Spinozeabond', 6, NULL, NULL, 5, NULL, NULL),
 ('Employe', 7, NULL, '2017-05-18 00:00:00', '2017-08-17 00:00:00', 'sergioleone@autistici.org', 'Marx', 'aaa', 'Joel', '0666666666', NULL, 'Marxisterique', 7, NULL, NULL, 6, NULL, NULL),
 ('Livreur', 8, NULL, '2017-06-23 00:00:00', '2017-08-17 00:00:00', 'patrickdewaere@mailoo.org', 'Bakounine', 'aaa', 'Mouloud', '0666666666', NULL, 'Onnyvoitgoethe', 8, NULL, NULL, NULL, 13, NULL),
-('Livreur', 9, NULL, '2017-07-04 00:00:00', '2017-08-17 00:00:00', 'samcooke@fastmail.com', 'Michel', 'aaa', 'Cunï¿½gonde', '0666666666', NULL, 'Kantbuymelove', 9, NULL, NULL, NULL, 13, NULL),
+('Livreur', 9, NULL, '2017-07-04 00:00:00', '2017-08-17 00:00:00', 'samcooke@fastmail.com', 'Michel', 'aaa', 'Cunégonde', '0666666666', NULL, 'Kantbuymelove', 9, NULL, NULL, NULL, 13, NULL),
 ('Client', 10, NULL, '2017-07-29 00:00:00', '2017-08-17 00:00:00', 'carlhall@posteo.fr', 'Proudhon', 'aaa', 'Norbert', '0666666666', NULL, 'Hobbesecration', 10, NULL, NULL, NULL, NULL, NULL),
 ('Client', 11, NULL, '2017-08-12 00:00:00', '2017-08-17 00:00:00', 'anadiplose@mailoo.org', 'Fourier', 'aaa', 'Athanase', '0666666666', NULL, 'Genevoixdughetto', 11, NULL, NULL, NULL, NULL, NULL),
-('Client', 12, NULL, '2017-08-16 00:00:00', '2017-08-17 00:00:00', 'ï¿½penthï¿½se@autistici.org', 'Brassens', 'aaa', 'Eugï¿½ne', '0666666666', NULL, 'Keplerdelateci', 12, NULL, NULL, NULL, NULL, NULL),
+('Client', 12, NULL, '2017-08-16 00:00:00', '2017-08-17 00:00:00', 'épenthèse@autistici.org', 'Brassens', 'aaa', 'Eugène', '0666666666', NULL, 'Keplerdelateci', 12, NULL, NULL, NULL, NULL, NULL),
 ('Client', 13, NULL, '2017-09-11 00:00:00', '2017-08-17 00:00:00', 'hyperchleuasme@zaclys.fr', 'Thoreau', 'aaa', 'Celestin', '0666666666', NULL, 'Bergsonindaplace', 1, NULL, NULL, NULL, NULL, NULL),
 ('Client', 14, NULL, '2017-09-13 00:00:00', '2017-08-17 00:00:00', 'synecdoque@openmailbox.com', 'Bloy', 'aaa', 'Achille', '0666666666', NULL, 'Funkstergauss', 2, NULL, NULL, NULL, NULL, NULL),
-('Client', 15, NULL, '2017-09-18 00:00:00', '2017-08-17 00:00:00', 'ï¿½panorthose@ovh.fr', 'Scarlatti', 'aaa', 'Gustave', '0666666666', NULL, 'Wildcatgalileo', 3, NULL, NULL, NULL, NULL, NULL);
+('Client', 15, NULL, '2017-09-18 00:00:00', '2017-08-17 00:00:00', 'épanorthose@ovh.fr', 'Scarlatti', 'aaa', 'Gustave', '0666666666', NULL, 'Wildcatgalileo', 3, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +110,7 @@ INSERT INTO `adresse` (`id`, `complement_numero`, `latitude`, `longitude`, `nume
 (13, NULL, '48.740593', '-2.964513', 27, 'Poul Rouzigou', 10, '22214'),
 (14, NULL, '45.838292', '1.249233', 16, 'Rue Marc Antoine Muret', 11, '87085'),
 (15, NULL, '43.703757', '7.264550', 22, 'Rue d Angleterre', 12, '06088'),
-(16, NULL, '44.846476', '-0.597124', 71, 'Rue de Caudï¿½ran', 13, '33063'),
+(16, NULL, '44.846476', '-0.597124', 71, 'Rue de Caudéran', 13, '33063'),
 (17, NULL, '46.159375', '-1.163280', 36, 'avenue Jeau Guiton', 14, '17300'),
 (18, NULL, '47.593167', '-3.066101', 36, 'chemin de Kerluir', 15, '56034'),
 (19, NULL, '45.852200', '6.632303', 3164, 'Route Edmond de Rothschild', 16, '74173');
@@ -181,7 +180,48 @@ CREATE TABLE `catalogue_produit` (
 INSERT INTO `catalogue_produit` (`catalogue_id`, `produit_id`) VALUES
 (1, 1),
 (2, 2),
-(3, 3);
+(3, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(1, 16),
+(1, 17),
+(1, 18),
+(1, 19),
+(1, 20),
+(1, 21),
+(1, 22),
+(1, 23),
+(1, 24),
+(1, 25),
+(1, 26),
+(1, 27),
+(1, 28),
+(1, 29),
+(1, 30),
+(1, 31),
+(1, 32),
+(1, 33),
+(1, 34),
+(1, 35),
+(1, 36),
+(1, 37),
+(1, 38),
+(1, 39),
+(1, 40),
+(1, 41),
+(1, 42),
+(1, 43),
+(1, 44);
 
 -- --------------------------------------------------------
 
@@ -200,19 +240,87 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id`, `libelle`, `id_categorie_mere`) VALUES
-(1, 'Fruits, lï¿½gumes et fï¿½culents', NULL),
+(1, 'Fruits, légumes et épicerie', NULL),
 (2, 'Viandes, charcuteries et produits de la mer', NULL),
 (3, 'Produits laitiers', NULL),
 (4, 'Boissons', NULL),
 (5, 'Fruits', 1),
-(6, 'Charcuterie', 2),
-(7, 'Autres boissons alcoolisï¿½es', 4),
-(8, 'Fruits rouges', 5),
-(9, 'Pï¿½tï¿½/Terrine', 6),
-(10, 'Biï¿½re', 7),
-(11, 'Fraise', 8),
-(12, 'Pï¿½tï¿½', 9),
-(13, 'Biï¿½re blonde', 10);
+(6, 'Légumes', 1),
+(7, 'Epicerie', 1),
+(8, 'Viandes', 2),
+(9, 'Charcuterie', 2),
+(10, 'produits de la mer', 2),
+(11, 'fromages', 3),
+(12, 'laits', 3),
+(13, 'crèmes, beurres et yaourts', 3),
+(14, 'vins', 4),
+(15, 'autres boissons alcoolisées', 4),
+(16, 'boissons non alcoolisées', 4),
+(17, 'Fruits à pépins', 5),
+(18, 'Fruits rouges', 5),
+(19, 'Légumes-racines', 6),
+(20, 'Légumes-fruits', 6),
+(21, 'Légumes-feuilles', 6),
+(22, 'Légumes-tubercules', 6),
+(23, 'Légumes-bulbes', 6),
+(24, 'Légumes-tiges', 6),
+(25, 'Légumes-fleurs', 6),
+(26, 'Viande rouge', 8),
+(27, 'Viande blanche', 8),
+(28, 'Saucisses/Jambon', 9),
+(29, 'Beurres', 13),
+(30, 'Crèmes', 13),
+(31, 'Yaourts', 13),
+(32, 'Bières', 15),
+(33, 'Cidres', 15),
+(34, 'Jus de fruits', 16),
+(35, 'Fruits de mer', 10),
+(36, 'Poissons', 10),
+(37, 'Vins blancs', 14),
+(38, 'Pâté/Terrine', 9),
+(39, 'Epices', 7),
+(40, 'Pomme', 17),
+(41, 'Fraise', 18),
+(42, 'Betterave', 19),
+(43, 'Artichaut', 24),
+(44, 'Carotte', 19),
+(45, 'Chou-Fleur', 25),
+(46, 'Chou romanesco', 25),
+(47, 'Ciboulette', 24),
+(48, 'Oignons et échalotes', 23),
+(49, 'Tomate', 20),
+(50, 'Laitue verte', 21),
+(51, 'Persil', 21),
+(52, 'Poireau', 24),
+(53, 'Pommes de terre', 22),
+(54, 'Pommes de terre rouge', 22),
+(55, 'Andouille', 28),
+(56, 'Crustacés', 35),
+(57, 'Mollusques', 35),
+(58, 'Beurre demi-sel', 29),
+(59, 'Cidres bruts', 33),
+(60, 'Bières blondes', 32),
+(61, 'Crème fraîche', 30),
+(62, 'Crevettes grises', 35),
+(63, 'Crevettes roses', 35),
+(64, 'Viande de boeuf', 26),
+(65, 'Viande de porc', 27),
+(66, 'Volaille', 27),
+(67, 'Jambon', 28),
+(68, 'Jus', 34),
+(69, 'Nectar', 34),
+(70, 'Salade', 21),
+(71, 'Poissons gras', 36),
+(72, 'Pâté', 38),
+(73, 'Oeufs de poissons', 36),
+(74, 'Yaourts aux fruits', 31),
+(75, 'Asperges', 25),
+(76, 'Coriandres', 39),
+(77, 'Poissons blancs', 36),
+(78, 'Poivre', 39),
+(79, 'Sel', 39),
+(80, 'Vins blancs secs', 37),
+(81, 'Saucissons', 28);
 
 -- --------------------------------------------------------
 
@@ -301,7 +409,8 @@ CREATE TABLE `commande` (
 --
 
 INSERT INTO `commande` (`id`, `codeValidation`, `dateCreation`, `dateValidation`, `statut`, `id_client`, `id_relais`) VALUES
-(1, '12345', '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'TERMINEE', 1, 4);
+(1, '12345', '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'TERMINEE', 1, 4),
+(2, NULL, '2017-09-07 00:00:00', '2017-09-08 00:00:00', 'PRETE', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -332,7 +441,7 @@ INSERT INTO `commerce` (`type_commerce`, `id`, `codeApe`, `iban`, `numNic`, `num
 ('PointRelais', 4, '4711D', NULL, '00026', '422260208', 'Kantbuymelove SARL', 4, NULL),
 ('PointRelais', 5, '4711D', NULL, '00026', '422260208', 'Kropotkine SARL', 5, NULL),
 ('PointRelais', 6, '4711D', NULL, '00026', '422260208', 'Onnyvoitgoethe SARL', 6, NULL),
-('PointRelais', 7, '4711D', NULL, '00026', '422260208', 'Cï¿½lestin SARL', 15, NULL),
+('PointRelais', 7, '4711D', NULL, '00026', '422260208', 'Célestin SARL', 15, NULL),
 ('PointRelais', 8, '4711D', NULL, '00026', '422260208', 'Norbert SARL', 16, NULL),
 ('PointRelais', 9, '4711D', NULL, '00026', '422260208', 'Johnny SARL', 17, NULL),
 ('PointRelais', 10, '4711D', NULL, '00026', '422260208', 'Shop SARL', 18, NULL),
@@ -359,20 +468,20 @@ CREATE TABLE `horaire` (
 --
 
 INSERT INTO `horaire` (`id`, `heureFermeture`, `heureOuverture`, `libelle`, `id_jour`) VALUES
-(1, '20h', '14h', 'Aprï¿½s-midi', 1),
-(2, '19h', '8h', 'Journï¿½e', 2),
-(3, '19h', '8h', 'Journï¿½e', 3),
-(4, '19h', '8h', 'Journï¿½e', 4),
-(5, '19h', '8h', 'Journï¿½e', 5),
-(6, '19h', '8h', 'Journï¿½e', 6),
-(7, '19h', '8h', 'Journï¿½e', 7),
-(8, '19h', '8h', 'Journï¿½e', 8),
-(9, '19h', '8h', 'Journï¿½e', 9),
-(10, '19h', '8h', 'Journï¿½e', 10),
-(11, '19h', '8h', 'Journï¿½e', 11),
-(12, '19h', '8h', 'Journï¿½e', 12),
-(13, '19h', '8h', 'Journï¿½e', 13),
-(14, '19h', '8h', 'Journï¿½e', 14),
+(1, '20h', '14h', 'Après-midi', 1),
+(2, '19h', '8h', 'Journée', 2),
+(3, '19h', '8h', 'Journée', 3),
+(4, '19h', '8h', 'Journée', 4),
+(5, '19h', '8h', 'Journée', 5),
+(6, '19h', '8h', 'Journée', 6),
+(7, '19h', '8h', 'Journée', 7),
+(8, '19h', '8h', 'Journée', 8),
+(9, '19h', '8h', 'Journée', 9),
+(10, '19h', '8h', 'Journée', 10),
+(11, '19h', '8h', 'Journée', 11),
+(12, '19h', '8h', 'Journée', 12),
+(13, '19h', '8h', 'Journée', 13),
+(14, '19h', '8h', 'Journée', 14),
 (15, '12h30', '8h', 'Matin', 15);
 
 -- --------------------------------------------------------
@@ -396,7 +505,50 @@ CREATE TABLE `image` (
 INSERT INTO `image` (`id`, `chemin`, `id_adherent`, `id_commerce`, `id_exploitation`) VALUES
 (1, 'resources/img/Fraise.jpg', NULL, NULL, NULL),
 (2, 'resources/img/Homard.jpg', NULL, NULL, NULL),
-(3, 'resources/img/Huitre.jpg', NULL, NULL, NULL);
+(3, 'resources/img/Huitre.jpg', NULL, NULL, NULL),
+(4, 'resources/img/Andouille_de_guemene.jpg', NULL, NULL, NULL),
+(5, 'resources/img/artichauts.png', NULL, NULL, NULL),
+(6, 'resources/img/betterave.jpg', NULL, NULL, NULL),
+(7, 'resources/img/beurre.jpg', NULL, NULL, NULL),
+(8, 'resources/img/biere.png', NULL, NULL, NULL),
+(9, 'resources/img/carotte.jpg', NULL, NULL, NULL),
+(10, 'resources/img/chou_fleur.jpg', NULL, NULL, NULL),
+(11, 'resources/img/chou_romanesco.jpg', NULL, NULL, NULL),
+(12, 'resources/img/ciboulette.jpg', NULL, NULL, NULL),
+(13, 'resources/img/Cidre.jpg', NULL, NULL, NULL),
+(14, 'resources/img/creme-fraiche.jpg', NULL, NULL, NULL),
+(15, 'resources/img/crevettes grises.jpeg', NULL, NULL, NULL),
+(16, 'resources/img/crevettes roses.jpg', NULL, NULL, NULL),
+(17, 'resources/img/Cuisse de poulet.jpg', NULL, NULL, NULL),
+(18, 'resources/img/Echalotte.jpg', NULL, NULL, NULL),
+(19, 'resources/img/echine-de-porc.jpg', NULL, NULL, NULL),
+(20, 'resources/img/granny-smith.jpeg', NULL, NULL, NULL),
+(21, 'resources/img/Jambon-blanc.jpg', NULL, NULL, NULL),
+(22, 'resources/img/Jus-de-pomme.jpg', NULL, NULL, NULL),
+(23, 'resources/img/laitue-verte.jpg', NULL, NULL, NULL),
+(24, 'resources/img/Maquereaux.jpg', NULL, NULL, NULL),
+(25, 'resources/img/Moules.jpg', NULL, NULL, NULL),
+(26, 'resources/img/Nectar-de-poire.png', NULL, NULL, NULL),
+(27, 'resources/img/patebreton.jpg', NULL, NULL, NULL),
+(28, 'resources/img/Perle-noire.jpg', NULL, NULL, NULL),
+(29, 'resources/img/persil.jpeg', NULL, NULL, NULL),
+(30, 'resources/img/poireaux.jpg', NULL, NULL, NULL),
+(31, 'resources/img/poitrine-de-porc.jpg', NULL, NULL, NULL),
+(32, 'resources/img/Pomme-de-terre.jpg', NULL, NULL, NULL),
+(33, 'resources/img/pomme-de-terre rouge.jpg', NULL, NULL, NULL),
+(34, 'resources/img/pomme-golden.jpg', NULL, NULL, NULL),
+(35, 'resources/img/poulet.png', NULL, NULL, NULL),
+(36, 'resources/img/saucisson-sec-artisanal.jpg.png', NULL, NULL, NULL),
+(37, 'resources/img/tomates.jpeg', NULL, NULL, NULL),
+(38, 'resources/img/tourteau.jpg', NULL, NULL, NULL),
+(39, 'resources/img/viande de boeuf.jpg', NULL, NULL, NULL),
+(40, 'resources/img/Yaourt.jpg', NULL, NULL, NULL),
+(41, 'resources/img/Asperge.jpg', NULL, NULL, NULL),
+(42, 'resources/img/coriandre.jpg', NULL, NULL, NULL),
+(43, 'resources/img/filetsdesole.jpg', NULL, NULL, NULL),
+(44, 'resources/img/poivre-de-malabar.jpg', NULL, NULL, NULL),
+(45, 'resources/img/seldeguerande.png', NULL, NULL, NULL),
+(46, 'resources/img/vinblanc.jpg', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -488,7 +640,10 @@ CREATE TABLE `lignecommande` (
 --
 
 INSERT INTO `lignecommande` (`id`, `dateDebutPreparation`, `dateFinPreparation`, `dateLivraisonPtRel`, `dateRetraitProducteur`, `dateRetraitPtRel`, `quantite_commandee`, `quantite_delivree`, `quantite_livree`, `quantite_preparee`, `id_commande`, `id_produit`, `id_tournee`) VALUES
-(1, '2017-10-08 00:00:00', '2017-10-09 00:00:00', '2017-10-10 00:00:00', '2017-10-10 00:00:00', '2017-10-11 00:00:00', 1, 1, 1, 1, 1, 1, 1);
+(1, '2017-09-08 00:00:00', '2017-09-09 00:00:00', '2017-09-10 00:00:00', '2017-09-10 00:00:00', '2017-09-11 00:00:00', 1, 1, 1, 1, 1, 1, 1),
+(2, '2017-09-08 00:00:00', '2017-09-09 00:00:00', NULL, NULL, NULL, 2, NULL, NULL, 2, 2, 42, 2),
+(3, '2017-09-08 00:00:00', '2017-09-09 00:00:00', NULL, NULL, NULL, 2, NULL, NULL, 2, 2, 12, 2),
+(4, '2017-09-08 00:00:00', '2017-09-09 00:00:00', NULL, NULL, NULL, 2, NULL, NULL, 2, 2, 18, 2);
 
 -- --------------------------------------------------------
 
@@ -521,8 +676,20 @@ CREATE TABLE `packaging` (
 --
 
 INSERT INTO `packaging` (`id`, `libelle`, `valeur_unitaire`, `packaging_pere`, `unite`) VALUES
-(1, 'Bouteille', 1, NULL, 2),
-(2, 'Vrac', NULL, NULL, 1);
+(1, 'Bouteille', 1, NULL, 3),
+(2, 'Bouteille', 0.75, NULL, 3),
+(3, 'Bouteille', 0.5, NULL, 3),
+(4, 'Vrac', 500, NULL, 2),
+(5, 'Vrac', 100, NULL, 2),
+(6, 'Barquette', 250, NULL, 2),
+(7, 'Barquette', 500, NULL, 2),
+(8, 'Unité', 1, NULL, 4),
+(9, 'Botte', 250, NULL, 2),
+(10, 'Bourriche', 1, NULL, 1),
+(11, 'Tranche', 1, NULL, 4),
+(12, 'Pot', 500, NULL, 2),
+(13, 'Boîte', 100, NULL, 2),
+(14, 'Pot', 100, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -546,9 +713,50 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id`, `dateProduction`, `descriptif`, `prixUnitaire`, `quantite`, `id_image`, `id_packaging`, `id_type`) VALUES
-(1, NULL, NULL, '25.00', '50.00', 1, 2, 1),
-(2, NULL, NULL, '10.00', '50.00', 2, 1, 3),
-(3, NULL, NULL, '10.00', '50.00', 3, 2, 2);
+(1, NULL, 'Les fraises Gramsci, presque aussi rouges que le patron', '3.00', '50.00', 1, 7, 1),
+(2, NULL, 'Des homards sauvages avec une chair de caractère', '25.00', '50.00', 2, 8, 2),
+(3, NULL, 'Des huîtres en direct de la baie de Saint-Brieuc', '20.00', '50.00', 3, 10, 3),
+(4, NULL, 'Contient suffisament de calories pour résoudre la faim dans le monde', '25.00', '50.00', 4, 5, 4),
+(5, NULL, 'Un coeur délicieusement fondant', '3.00', '50.00', 5, 8, 5),
+(6, NULL, 'Une betterave du terroir', '2.00', '50.00', 6, 5, 6),
+(7, NULL, 'Si ce n\'est pas du beurre salé, ce n\'est pas du beurre tout court', '4.00', '50.00', 7, 6, 7),
+(8, NULL, 'Une vraie blonde, comme la femme du patron', '1.50', '50.00', 8, 3, 8),
+(9, NULL, 'On court tous après la carotte Gramsci', '3.00', '50.00', 9, 5, 9),
+(10, NULL, 'Une explosion florale pour vos papilles', '2.00', '50.00', 10, 8, 10),
+(11, NULL, 'Une explosion florale pour vos papilles', '3.00', '50.00', 11, 8, 11),
+(12, NULL, 'Un Gramsci, ciboulette', '2.50', '50.00', 12, 5, 12),
+(13, NULL, 'La pomme dans ta face', '2.00', '50.00', 13, 2, 13),
+(14, NULL, 'Le gras, c\'est la vie', '5.00', '50.00', 14, 12, 14),
+(15, NULL, 'Des crevettes sauvages avec une chair de caractère', '9.00', '50.00', 15, 5, 15),
+(16, NULL, 'Des crevettes sauvages avec une chair de caractère', '11.00', '50.00', 16, 5, 16),
+(17, NULL, 'Elevé au grain armoricain', '7.00', '50.00', 17, 8, 17),
+(18, NULL, 'Un bulbe de saveurs', '3.00', '50.00', 18, 5, 18),
+(19, NULL, 'Tout est bon dans le cochon, surtout quand il est breton', '8.00', '50.00', 19, 5, 19),
+(20, NULL, 'Un gout délicieusement acidulé', '3.00', '50.00', 20, 5, 20),
+(21, NULL, 'Tout est bon dans le cochon, surtout quand il est breton', '8.00', '50.00', 21, 11, 21),
+(22, NULL, 'La pomme dans ta face', '1.00', '50.00', 22, 1, 22),
+(23, NULL, 'Laitue verte ? Moi j\'suis rouge !', '4.00', '50.00', 23, 8, 23),
+(24, NULL, 'Du mac étincelant', '6.00', '50.00', 24, 5, 24),
+(25, NULL, 'S\'accompagnent très bien de poireaux', '8.00', '50.00', 25, 10, 25),
+(26, NULL, 'La poire dans ta face', '3.00', '50.00', 26, 1, 26),
+(27, NULL, 'Tout est bon dans le cochon, surtout quand il est breton', '5.00', '50.00', 27, 12, 27),
+(28, NULL, 'Une bouquet aromatique exquis', '5.00', '50.00', 29, 5, 28),
+(29, NULL, 'Pour un kilo de poireaux acheté, un kilo de moules offertes', '7.00', '50.00', 30, 5, 29),
+(30, NULL, 'Tout est bon dans le cochon, surtout quand il est breton', '6.00', '50.00', 31, 5, 30),
+(31, NULL, 'Cent patates !', '2.00', '50.00', 32, 5, 31),
+(32, NULL, 'Cent patates ! version communiste', '2.50', '50.00', 33, 5, 32),
+(33, NULL, 'La pomme dans ta face', '4.00', '50.00', 34, 5, 33),
+(34, NULL, 'Tout est bon dans le cochon, surtout quand il est breton', '12.00', '50.00', 36, 8, 34),
+(35, NULL, 'Les tomates Gramsci, presque aussi rouges que le patron', '3.00', '50.00', 37, 5, 35),
+(36, NULL, 'Des crabes sauvages avec une chair de caractère', '9.00', '50.00', 38, 5, 36),
+(37, NULL, 'Un boeuf du terroir armoricain', '8.00', '50.00', 39, 5, 37),
+(38, NULL, 'Des chataîgnes du terroir', '1.00', '50.00', 40, 14, 38),
+(39, NULL, 'Pour un kilo d\'asperges achetées, un kilo de moules offertes', '7.00', '50.00', 41, 9, 39),
+(40, NULL, 'Une explosion aromatique', '6.00', '50.00', 42, 5, 40),
+(41, NULL, 'Des filets bien raclés de sole', '11.00', '50.00', 43, 8, 41),
+(42, NULL, 'Une explosion aromatique', '4.00', '50.00', 44, 13, 42),
+(43, NULL, 'La fine fleur du salé', '3.00', '50.00', 45, 13, 43),
+(44, NULL, 'Le vin est blanc, mais rassurez-vous, le patron est bien rouge', '9.00', '50.00', 46, 2, 44);
 
 -- --------------------------------------------------------
 
@@ -600,7 +808,8 @@ CREATE TABLE `tournee` (
 --
 
 INSERT INTO `tournee` (`id`, `dateHeureDebut`, `dateHeureFin`, `id_livreur`, `id_societe`) VALUES
-(1, '2017-09-10 09:00:00', '2017-09-10 12:00:00', 8, 13);
+(1, '2017-09-10 09:00:00', '2017-09-10 12:00:00', 8, 13),
+(2, NULL, NULL, NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -623,9 +832,50 @@ CREATE TABLE `typeproduit` (
 --
 
 INSERT INTO `typeproduit` (`id`, `dureConservation`, `libelle`, `uniteConservation`, `id_categorie`, `id_imageDefaut`, `id_tva`) VALUES
-(1, NULL, 'Fraise gariguette', NULL, 11, 1, 1),
-(2, NULL, 'Pï¿½tï¿½ de campagne', NULL, 12, 1, 1),
-(3, NULL, 'Biï¿½re blonde sans gluten', NULL, 13, 1, 1);
+(1, NULL, 'Fraise gariguette', NULL, 41, 1, 1),
+(2, NULL, 'Homard', NULL, 56, 2, 1),
+(3, NULL, 'Huître', NULL, 57, 3, 1),
+(4, NULL, 'Andouille de Guéméné', NULL, 55, 4, 1),
+(5, NULL, 'Artichaut', NULL, 43, 5, 1),
+(6, NULL, 'Betterave', NULL, 42, 6, 1),
+(7, NULL, 'Beurre au sel de Guérande', NULL, 58, 7, 1),
+(8, NULL, 'Bière blonde', NULL, 60, 8, 1),
+(9, NULL, 'Carotte', NULL, 44, 9, 1),
+(10, NULL, 'Chou-fleur', NULL, 45, 10, 1),
+(11, NULL, 'Chou romanesco', NULL, 46, 11, 1),
+(12, NULL, 'Ciboulette', NULL, 47, 12, 1),
+(13, NULL, 'Cidre', NULL, 59, 13, 1),
+(14, NULL, 'Crème fraîche', NULL, 61, 14, 1),
+(15, NULL, 'Crevettes grises', NULL, 62, 15, 1),
+(16, NULL, 'Crevettes roses', NULL, 63, 16, 1),
+(17, NULL, 'Cuisses de poulet', NULL, 66, 17, 1),
+(18, NULL, 'Echalotes', NULL, 48, 18, 1),
+(19, NULL, 'Echine de porc', NULL, 65, 19, 1),
+(20, NULL, 'Pommes Granny-Smith', NULL, 40, 20, 1),
+(21, NULL, 'Jambon blanc', NULL, 67, 21, 1),
+(22, NULL, 'Jus de pomme', NULL, 68, 22, 1),
+(23, NULL, 'Laitue verte', NULL, 50, 23, 1),
+(24, NULL, 'Maquereaux', NULL, 71, 24, 1),
+(25, NULL, 'Moules', NULL, 57, 25, 1),
+(26, NULL, 'Nectar de Poire', NULL, 69, 26, 1),
+(27, NULL, 'Pâté de campagne', NULL, 72, 27, 1),
+(28, NULL, 'Persil', NULL, 51, 29, 1),
+(29, NULL, 'Poireaux', NULL, 52, 30, 1),
+(30, NULL, 'Poitrine de porc', NULL, 65, 31, 1),
+(31, NULL, 'Pommes de terre', NULL, 53, 32, 1),
+(32, NULL, 'Pommes de terre rouges', NULL, 54, 33, 1),
+(33, NULL, 'Pommes golden', NULL, 40, 34, 1),
+(34, NULL, 'Saucisson sec artisanal', NULL, 81, 36, 1),
+(35, NULL, 'Tomate', NULL, 49, 37, 1),
+(36, NULL, 'Tourteau', NULL, 56, 38, 1),
+(37, NULL, 'Jarret de boeuf', NULL, 64, 39, 1),
+(38, NULL, 'Yaourt à la chataîgne', NULL, 74, 40, 1),
+(39, NULL, 'Asperge du Blayais', NULL, 75, 41, 1),
+(40, NULL, 'Coriandre', NULL, 76, 42, 1),
+(41, NULL, 'Filets de sole', NULL, 77, 43, 1),
+(42, NULL, 'Poivre gris', NULL, 78, 44, 1),
+(43, NULL, 'Sel de Guerande', NULL, 79, 45, 1),
+(44, NULL, 'Vin blanc Gramsci', NULL, 80, 46, 1);
 
 -- --------------------------------------------------------
 
@@ -644,8 +894,9 @@ CREATE TABLE `unitepackaging` (
 
 INSERT INTO `unitepackaging` (`id`, `unite`) VALUES
 (1, 'kilogramme'),
-(2, 'litre'),
-(3, 'piï¿½ce');
+(2, 'grammes'),
+(3, 'litre'),
+(4, 'pièce');
 
 -- --------------------------------------------------------
 
@@ -673,11 +924,11 @@ INSERT INTO `ville` (`codeInsee`, `nom`) VALUES
 ('22195', 'Pleubian'),
 ('22214', 'Pouezec'),
 ('22278', 'Saint-Brieuc'),
-('22362', 'Trï¿½guier'),
+('22362', 'Tréguier'),
 ('33063', 'Bordeaux'),
 ('35238', 'Rennes'),
 ('56034', 'Carnac'),
-('74173', 'Megï¿½ve'),
+('74173', 'Megève'),
 ('87085', 'Limoges');
 
 -- --------------------------------------------------------
@@ -941,7 +1192,7 @@ ALTER TABLE `catalogue`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT pour la table `codepostal`
 --
@@ -951,7 +1202,7 @@ ALTER TABLE `codepostal`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `commerce`
 --
@@ -966,7 +1217,7 @@ ALTER TABLE `horaire`
 -- AUTO_INCREMENT pour la table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT pour la table `indisponibilite`
 --
@@ -986,7 +1237,7 @@ ALTER TABLE `jourouverture`
 -- AUTO_INCREMENT pour la table `lignecommande`
 --
 ALTER TABLE `lignecommande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `motifdesinscription`
 --
@@ -996,12 +1247,12 @@ ALTER TABLE `motifdesinscription`
 -- AUTO_INCREMENT pour la table `packaging`
 --
 ALTER TABLE `packaging`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT pour la table `recette`
 --
@@ -1016,17 +1267,17 @@ ALTER TABLE `tauxtva`
 -- AUTO_INCREMENT pour la table `tournee`
 --
 ALTER TABLE `tournee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `typeproduit`
 --
 ALTER TABLE `typeproduit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT pour la table `unitepackaging`
 --
 ALTER TABLE `unitepackaging`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables déchargées
 --

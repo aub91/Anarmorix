@@ -29,46 +29,25 @@ public class BusinessConsommateur implements IBusinessConsommateur {
 	private IDaoAdherent daoAdherent;
 	@EJB
 	private IDaoCommande daoCommande;
-	
-
-	
-	
-	
 
 
 	@Override
 	public List<LigneCommande> afficherLigneCommande(Commande commande) throws AnarmorixException {
-		
 		return daoLignecommande.rechercher(commande);
 	}
 
-
-
-
-
 	@Override
 	public Client afficherClient(Commande commande) throws AnarmorixException {
-		
 		return (Client) daoAdherent.afficherAdherent(commande);
 	}
 
-
-
-
-
 	@Override
 	public LigneCommande mettreAJourLC(LigneCommande paramLigne) throws AnarmorixException {
-		
 		return daoLignecommande.mettreAJour(paramLigne);
 	}
 
-
-
-
-
 	@Override
 	public Commande mettreAJourCommande(Commande paramId) throws AnarmorixException {
-		
 		return daoCommande.mettreAJour(paramId);
 	}
 
