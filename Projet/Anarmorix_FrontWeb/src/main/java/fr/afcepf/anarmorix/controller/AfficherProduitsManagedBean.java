@@ -68,17 +68,50 @@ public class AfficherProduitsManagedBean {
         
         try {
             categories = businessCLient.recupererToutesLesCategories();
-            categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
-            categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
-            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            //categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            // categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
+            
+            //PRIMAIRES
+            for (Categorie categorie : categories) {
+                if (categorie.getCategorieMere() == null) {
+                    categoriesPrimaires.add(categorie);
+                }
+            }
+            
+            //SECONDAIRES
+            for (Categorie categorie : categories) {
+                int nbParents = 0;
+                Categorie categorieTemp = categorie.getCategorieMere();
+                while (categorieTemp != null) {
+                    categorieTemp = categorieTemp.getCategorieMere();
+                    nbParents++;
+                }
+                if (nbParents == 1) {
+                    categoriesSecondaires.add(categorie);
+                }
+            }
+
+            //TERTIAIRES
+            for (Categorie categorie : categories) {
+                int nbParents = 0;
+                Categorie categorieTemp = categorie.getCategorieMere();
+                while (categorieTemp != null) {
+                    categorieTemp = categorieTemp.getCategorieMere();
+                    nbParents++;
+                }
+                if (nbParents == 2) {
+                    categoriesTertiaires.add(categorie);
+                }
+            }
+            
+            //LIGNES COMMANDES AFFICHABLES
             listePdts = businessCLient.recupererTousLesProduits();
-           for (Produit pdt : listePdts) {
+            for (Produit pdt : listePdts) {
                LigneCommande lgnCommandeTmp = new LigneCommande();
                lgnCommandeTmp.setProduit(pdt);
                ligneComandesAffichables.add(lgnCommandeTmp);
 
-               
-             //LIgne Commandes recettes
+             //LIGNE COMMANDE RECETTE
                if(pdt.getType().getLibelle().equals("Filets de sole")){
                    lgnCommandeTmp.setQuantiteCommandee(4.0);
                    ligneCommandesRecette.add(lgnCommandeTmp);
@@ -88,7 +121,6 @@ public class AfficherProduitsManagedBean {
                    ligneCommandesRecette.add(lgnCommandeTmp);
                }
            }
-           
         } catch (Exception e) {
            e.printStackTrace();
         }
@@ -98,22 +130,20 @@ public class AfficherProduitsManagedBean {
         listePdts = businessCLient.recupererLesProduitsParCategorie(cat.getLibelle(), true);
         ligneComandesAffichables = new ArrayList<>();
         for (Produit pdt : listePdts) {
-            System.out.println("id produit " + pdt.getId());
+//            System.out.println("id produit " + pdt.getId());
             LigneCommande lc = new LigneCommande();
             lc.setProduit(pdt);
             ligneComandesAffichables.add(lc);
         }
     }
     public String ajouterRecetteAuPanier() {
-        System.out.println("TESSSTE" + ligneCommandesRecette.size());
-        
+//        System.out.println("TESSSTE" + ligneCommandesRecette.size());
         ligneComandes.addAll(ligneCommandesRecette);
-        
         return "pageCatalogue.jsf";
     }
     
     public String ajouterLigneCommandeEnBAse() throws AnarmorixException {
-        System.out.println("je cree une commande");
+        //System.out.println("je cree une commande");
       commande = businessCLient.ajouterListeLigneCommande(ligneComandes);
       
       return "paiement.jsf";
@@ -123,17 +153,26 @@ public class AfficherProduitsManagedBean {
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande/*Produit produitAjoute*/) {
         ligneComandes.add(ligneCommande);
         
-        for (LigneCommande ligneCmd : ligneComandes) {
-            
-            System.out.println("Commande qté: " + ligneCmd.getQuantiteCommandee());
-            System.out.println("Commande libelle: " + ligneCmd.getProduit().getType().getLibelle());
-        }
-        
-        System.out.println("taille " + ligneComandes.size());
+//        for (LigneCommande ligneCmd : ligneComandes) {
+//            
+//            System.out.println("Commande qté: " + ligneCmd.getQuantiteCommandee());
+//            System.out.println("Commande libelle: " + ligneCmd.getProduit().getType().getLibelle());
+//        }
+//        
+//        System.out.println("taille " + ligneComandes.size());
     }
     
     public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
-        return businessCLient.recupererCategoriesFilles(idCategorieMere);
+        categoriesFilles =  new ArrayList<>();
+        for (Categorie categorie : categories) {
+            if (categorie.getCategorieMere() != null) {
+                if (categorie.getCategorieMere().getId() == idCategorieMere) {
+                    categoriesFilles.add(categorie);
+                }
+            }
+        }
+        return categoriesFilles;
+       // return businessCLient.recupererCategoriesFilles(idCategorieMere);
     }
 
     public String getLibelleCategorie() {
