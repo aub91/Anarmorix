@@ -161,7 +161,7 @@ public class BusinessClient implements IBusinessClient {
                 if (categories != null) {
                     typeProduits = categories.get(0).getTypesProduits();
                     for (TypeProduit type : typeProduits) {
-                        System.out.println("business type " + type.getLibelle());
+                    //    System.out.println("business type " + type.getLibelle());
                         Integer idType  = type.getId();
                         produits.addAll(daoProduit.rechercherParIDTypeProduit(idType));
                     }

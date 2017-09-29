@@ -125,16 +125,51 @@ public class AfficherProduitsManagedBean {
         }
         try {
             categories = businessCLient.recupererToutesLesCategories();
-            categoriesPrimaires = businessCLient.recupererCategoriesPrimaires();
-            categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
-            categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            //categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
+            // categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
+            
+            //PRIMAIRES
+            for (Categorie categorie : categories) {
+                if (categorie.getCategorieMere() == null) {
+                    categoriesPrimaires.add(categorie);
+                }
+            }
+            
+            //SECONDAIRES
+            for (Categorie categorie : categories) {
+                int nbParents = 0;
+                Categorie categorieTemp = categorie.getCategorieMere();
+                while (categorieTemp != null) {
+                    categorieTemp = categorieTemp.getCategorieMere();
+                    nbParents++;
+                }
+                if (nbParents == 1) {
+                    categoriesSecondaires.add(categorie);
+                }
+            }
+
+            //TERTIAIRES
+            for (Categorie categorie : categories) {
+                int nbParents = 0;
+                Categorie categorieTemp = categorie.getCategorieMere();
+                while (categorieTemp != null) {
+                    categorieTemp = categorieTemp.getCategorieMere();
+                    nbParents++;
+                }
+                if (nbParents == 2) {
+                    categoriesTertiaires.add(categorie);
+                }
+            }
+            
+            //LIGNES COMMANDES AFFICHABLES
             listePdts = businessCLient.recupererTousLesProduits();
-           for (Produit pdt : listePdts) {
+            for (Produit pdt : listePdts) {
                LigneCommande lgnCommandeTmp = new LigneCommande();
                lgnCommandeTmp.setProduit(pdt);
                ligneComandesAffichables.add(lgnCommandeTmp);
-             //Ligne Commandes recettes
-               if (pdt.getType().getLibelle().equals("Filets de sole")) {
+
+             //LIGNE COMMANDE RECETTE
+               if(pdt.getType().getLibelle().equals("Filets de sole")){
                    lgnCommandeTmp.setQuantiteCommandee(4.0);
                    ligneCommandesRecette.add(lgnCommandeTmp);
                }
@@ -156,7 +191,7 @@ public class AfficherProduitsManagedBean {
         listePdts = businessCLient.recupererLesProduitsParCategorie(cat.getLibelle(), true);
         ligneComandesAffichables = new ArrayList<>();
         for (Produit pdt : listePdts) {
-            System.out.println("id produit " + pdt.getId());
+//            System.out.println("id produit " + pdt.getId());
             LigneCommande lc = new LigneCommande();
             lc.setProduit(pdt);
             ligneComandesAffichables.add(lc);
@@ -167,9 +202,11 @@ public class AfficherProduitsManagedBean {
      * @return chemin de retour
      */
     public String ajouterRecetteAuPanier() {
+//        System.out.println("TESSSTE" + ligneCommandesRecette.size());
         ligneComandes.addAll(ligneCommandesRecette);
         return "pageCatalogue.jsf";
     }
+    
     /**
      * Méthode d'ajout des ligne de commande en base de données.
      * @return le chemin de redirection
@@ -193,6 +230,7 @@ public class AfficherProduitsManagedBean {
      */
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande) {
         ligneComandes.add(ligneCommande);
+        
     }
     /**
      * Méthode de récupération des catégories filles.
@@ -200,9 +238,18 @@ public class AfficherProduitsManagedBean {
      * @return une lsite de catégorie
      * @throws AnarmorixException une exception
      */
-    public  List<Categorie> recupererCategorieFilles(Integer paramIdCategorieMere) throws AnarmorixException {
-        return businessCLient.recupererCategoriesFilles(paramIdCategorieMere);
+    public  List<Categorie> recupererCategorieFilles(Integer idCategorieMere) throws AnarmorixException {
+        categoriesFilles =  new ArrayList<>();
+        for (Categorie categorie : categories) {
+            if (categorie.getCategorieMere() != null) {
+                if (categorie.getCategorieMere().getId() == idCategorieMere) {
+                    categoriesFilles.add(categorie);
+                }
+            }
+        }
+        return categoriesFilles;
     }
+    
 
     /**
      * @return the businessCLient
