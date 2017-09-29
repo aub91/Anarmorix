@@ -2,7 +2,6 @@ package fr.afcepf.anarmorix.data.api;
 
 import java.util.List;
 
-import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -33,7 +32,7 @@ public interface IDaoProduit {
      * </ul>
      */
     List<Produit> rechercherParIDTypeProduit(Integer id) throws AnarmorixException;
-
+    
     /**
      * Implémentation méthode recherche de produits par libelle de categorie pour accordeon.
      * @param libelleCategorie le libelle de la categoire.
@@ -41,7 +40,7 @@ public interface IDaoProduit {
      * @throws AnarmorixException Le serveur ne répond pas.
      */
     List<Produit> rechercherParCategorie(String  libelleCategorie) throws AnarmorixException;
-
+    
     /**
      * Méthode qui retourne la liste de tous les produits.
      * @return une liste de produit.
@@ -61,15 +60,5 @@ public interface IDaoProduit {
      * </ul>
      */
     LigneCommande rechercherByLigneCommande(LigneCommande paramLigneCommande) throws AnarmorixException;
-    /**
-     * Méthode qui cherche les {@link Produit} associé à un {@link Catalogue}.
-     * @param paramCatalogue un {@link Catalogue} sans son produit.
-     * @return un {@link Catalogue} avec ses produits associés.
-     * @throws AnarmorixException
-     * <ul>
-     *  <li>Le serveur de données ne répond pas</li>
-     * </ul>
-     */
-    Catalogue rechercherByCatalogue(Catalogue paramCatalogue) throws AnarmorixException;
 
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
-import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 
@@ -49,12 +48,5 @@ public interface IDaoLigneCommande {
      * @throws AnarmorixException une exception levée
      */
     Tournee rechercherByTournee(Tournee paramTournee) throws AnarmorixException;
-    /**
-     * Méthode recherchant les lignes de commandes liées à un produit.
-     * @param paramProduit le produit à alimenter
-     * @return le produit avec sa liste de lignes de commande
-     * @throws AnarmorixException une exception levée
-     */
-    Produit rechercherByProduit(Produit paramProduit) throws AnarmorixException;
 
 }

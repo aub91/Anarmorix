@@ -252,6 +252,11 @@ public class TestDaoLigneCommande {
         List<LigneCommande> retour = dao.rechercher(COMMANDE);
         Assert.assertEquals(1, retour.size());
         Assert.assertEquals(LIGNE.getId(), retour.get(0).getId());
+//        Assert.assertEquals(LIGNE.getDateDebutPreparation(), retour.get(0).getDateDebutPreparation());
+//        Assert.assertEquals(LIGNE.getDateFinPreparation(), retour.get(0).getDateFinPreparation());
+//        Assert.assertEquals(LIGNE.getDateLivraisonPtRel(), retour.get(0).getDateLivraisonPtRel());
+//        Assert.assertEquals(LIGNE.getDateRetraitProducteur(), retour.get(0).getDateRetraitProducteur());
+//        Assert.assertEquals(LIGNE.getDateRetraitPtRel(), retour.get(0).getDateRetraitPtRel());
         Assert.assertEquals(LIGNE.getQuantiteCommandee(), retour.get(0).getQuantiteCommandee());
         Assert.assertEquals(LIGNE.getQuantiteDelivree(), retour.get(0).getQuantiteDelivree());
         Assert.assertEquals(LIGNE.getQuantiteLivree(), retour.get(0).getQuantiteLivree());
@@ -296,15 +301,6 @@ public class TestDaoLigneCommande {
         Assert.assertEquals(LIGNE_UPDATE.getQuantiteDelivree(), retour.getQuantiteDelivree());
         Assert.assertEquals(LIGNE_UPDATE.getQuantiteLivree(), retour.getQuantiteLivree());
         Assert.assertEquals(LIGNE_UPDATE.getQuantitePreparee(), retour.getQuantitePreparee());
-    }
-    /**
-     * Test nominal de la méthode rechercherByProduit.
-     * @throws AnarmorixException une exception non attendue
-     */
-    @Test
-    public void testNominalRechercherByProduit() throws AnarmorixException {
-        Produit retour = dao.rechercherByProduit(PRODUIT);
-        Assert.assertEquals(1, retour.getLignesCmd().size());
     }
     /**
      * Reset de la base de données.
