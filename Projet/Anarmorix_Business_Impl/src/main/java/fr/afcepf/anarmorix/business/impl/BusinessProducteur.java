@@ -1,72 +1,75 @@
 package fr.afcepf.anarmorix.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import fr.afcepf.anarmorix.business.api.IBusinessProducteur;
-import fr.afcepf.anarmorix.data.api.IDaoAlea;
 import fr.afcepf.anarmorix.data.api.IDaoCatalogue;
-import fr.afcepf.anarmorix.entity.Alea;
-import fr.afcepf.anarmorix.entity.Catalogue;
-import fr.afcepf.anarmorix.entity.Client;
+import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
+import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Producteur;
+import fr.afcepf.anarmorix.entity.Produit;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Implémentation de {@link IBusinessProducteur}.
  */
+@Remote(IBusinessProducteur.class)
+@Stateless
 public class BusinessProducteur implements IBusinessProducteur {
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public BusinessProducteur() {
     }
-
-
     /**
-     * 
+     * {@link IDaoCatalogue}.
      */
-    public IDaoAlea daoAlea;
-
+    @EJB
+    private IDaoCatalogue daoCatalogue;
     /**
-     * 
+     * {@link IDaoProduit}.
      */
-    public IDaoCatalogue daoCatalogue;
-
+    @EJB
+    private IDaoProduit daoProduit;
     /**
-     * @param ligneCommande 
-     * @return
+     * {@link IDaoLigneCommande}.
      */
-    public Boolean preparerLigneCommande(LigneCommande ligneCommande) {
-        // TODO implement here
-        return null;
-    }
+    @EJB
+    private IDaoLigneCommande daoLigneCommande;
 
-    /**
-     * @param alea 
-     * @return
-     */
-    public Alea declarerAlea(Alea alea) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param catalogue 
-     * @return
-     */
-    public Catalogue creerCatalogue(Catalogue catalogue) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param client Client 
-     * @return
-     */
     @Override
-    public List<LigneCommande> rechercherLigneCommande(Client paramClient) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Commande> rechercherCommandes(Producteur paramProducteur) throws AnarmorixException {
+        List<Commande> liste = new ArrayList<>();
+        List<LigneCommande> listeLignes = new ArrayList<>();
+        paramProducteur.getExploitation().setCatalogues(daoCatalogue.rechercherByExploitation(paramProducteur.getExploitation()));
+        paramProducteur.getExploitation().getCatalogues().set(0, daoProduit.rechercherByCatalogue(paramProducteur.getExploitation().getCatalogues().get(0)));
+        for (Produit pdt : paramProducteur.getExploitation().getCatalogues().get(0).getProduits()) {
+            pdt = daoLigneCommande.rechercherByProduit(pdt);
+            for (LigneCommande ligneCommande : pdt.getLignesCmd()) {
+                listeLignes.add(ligneCommande);
+            }
+        }
+        for (LigneCommande ligneCommande : listeLignes) {
+            boolean exist = false;
+            for (Commande commande : liste) {
+                if (commande.getId() == ligneCommande.getCommande().getId()) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                liste.add(ligneCommande.getCommande());
+            }
+        }
+        return liste;
     }
+
 
 }

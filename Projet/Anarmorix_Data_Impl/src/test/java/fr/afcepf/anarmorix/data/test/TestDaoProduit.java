@@ -8,6 +8,7 @@ import org.junit.Test;
 import fr.afcepf.anarmorix.data.api.IDaoCategorie;
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
 import fr.afcepf.anarmorix.data.api.IDaoTypeProduit;
+import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.Categorie;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
@@ -37,7 +38,7 @@ public class TestDaoProduit {
     /**
      * prix unitaire.
      */
-    private static final int PRIX_UNITAIRE = 25;
+    private static final int PRIX_UNITAIRE = 3;
     /**
      * methde rechercher produit par ID.
      */
@@ -59,44 +60,40 @@ public class TestDaoProduit {
      */
     private IDaoCategorie daoCategorie = (IDaoCategorie) CreateProxyEJB.getProxy(
             "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoCategorie!fr.afcepf.anarmorix.data.api.IDaoCategorie");
-    /*
-     *Test de recuperation des categories.
+    /**
+     * Test de recuperation des categories.
      */
     @Test
     public void testGetCategories() {
-        try { 
-        	List<Categorie> categories = daoCategorie.rechercherCategorieParLibelle("Fraise");
-        	  Assert.assertEquals(categories.size(), 1);
+        try {
+            List<Categorie> categories = daoCategorie.rechercherCategorieParLibelle("Fraise");
+            Assert.assertEquals(categories.size(), 1);
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
         }
     }
-    
     /**
      * dao créé par proxy.
      */
     private IDaoTypeProduit daoTypeProduit = (IDaoTypeProduit) CreateProxyEJB.getProxy(
             "Anarmorix_EAR-1.0/Anarmorix_Data_Impl-1.0/DaoTypeProduit!fr.afcepf.anarmorix.data.api.IDaoTypeProduit");
-    /*
-     *Test de recuperation des typeProduits.
+    /**
+     * Test de recuperation des typeProduits.
      */
     @Test
     public void testTypeProduits() {
         try {
-        	Categorie cat = new Categorie(11, "Fraise", daoCategorie.rechercherParId(8).get(0));
-        	System.out.println("categorie : " + cat.getTypesProduits());
-        	/*List<TypeProduit> typeProduits = daoTypeProduit.rechercher(cat);
-        	for (TypeProduit typeProduit : typeProduits) {
-        		System.out.println("type " + typeProduit.getLibelle());
-			}*/
-        	
-        	 // Assert.assertEquals(categories.size(), 1);
+            Categorie cat = new Categorie(11, "Fraise", daoCategorie.rechercherParId(8).get(0));
+            System.out.println("categorie : " + cat.getTypesProduits());
+            /*List<TypeProduit> typeProduits = daoTypeProduit.rechercher(cat);
+            for (TypeProduit typeProduit : typeProduits) {
+            System.out.println("type " + typeProduit.getLibelle());
+            }*/
+            // Assert.assertEquals(categories.size(), 1);
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
         }
     }
-    
-    
     /**
      * ID du  type produit.
      */
@@ -104,11 +101,11 @@ public class TestDaoProduit {
     /**
      * ID du produit a tester.
      */
-    private static final int ID_PRODUIT2 = 3;
+    private static final int ID_PRODUIT2 = 2;
     /**
      * prix unitaire.
      */
-    private static final int PRIX_UNITAIRE2 = 10;
+    private static final int PRIX_UNITAIRE2 = 25;
     /**
      * methode rechercher produit par ID du type produit.
      */
@@ -119,7 +116,6 @@ public class TestDaoProduit {
             Assert.assertEquals(produits.size(), 1);
             Assert.assertEquals(produits.get(0).getId().intValue(), ID_PRODUIT2);
             Assert.assertEquals(produits.get(0).getQuantiteEnStock().intValue(), QUANTITE_EN_STOCK);
-          //  Assert.assertEquals(produits.get(0).getPackaging().getLibelle(), "Vrac");
             Assert.assertEquals(produits.get(0).getPrixUnitaire().intValue(), PRIX_UNITAIRE2);
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.MYSQL_HS, e.getCodeErreur());
@@ -128,7 +124,7 @@ public class TestDaoProduit {
     /**
      * le nombre de produits dans la liste.
      */
-    private static final int TAILLE_LISTE = 3;
+    private static final int TAILLE_LISTE = 44;
     /**
      * test de recherche de tous les produits.
      */
@@ -153,7 +149,7 @@ public class TestDaoProduit {
     /**
      * Prix unitaire attendu pour produit nominal.
      */
-    private static final double PRIX_PRODUIT_NOMINAL = 25;
+    private static final double PRIX_PRODUIT_NOMINAL = 3;
     /**
      * Quantité en stock attendu pour produit nominal.
      */
@@ -203,5 +199,11 @@ public class TestDaoProduit {
         } catch (AnarmorixException e) {
             Assert.assertEquals(AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE, e.getCodeErreur());
         }
+    }
+    private Catalogue catalogueNominal = new Catalogue(1, null, null, null, null);
+    @Test
+    public void testNominalRechercherByCatalogue() throws AnarmorixException {
+        Catalogue retour = daoProduit.rechercherByCatalogue(catalogueNominal);
+        Assert.assertEquals(42, retour.getProduits().size());
     }
 }

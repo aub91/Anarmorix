@@ -11,7 +11,11 @@ import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 
 import fr.afcepf.anarmorix.exception.AnarmorixException;
-
+/**
+ * Fonctionnalités métier du consom
+ * @author Aubin
+ *
+ */
 
 public interface IBusinessConsommateur {
 	
@@ -19,11 +23,8 @@ public interface IBusinessConsommateur {
 	 Client afficherClient(Commande commande) throws AnarmorixException;
 	 LigneCommande mettreAJourLC(LigneCommande paramLigne)throws AnarmorixException;
 	 Commande mettreAJourCommande(Commande paramId)throws AnarmorixException;
-
-	
-	
 	 
-		
-	
+	 
+
 
 }

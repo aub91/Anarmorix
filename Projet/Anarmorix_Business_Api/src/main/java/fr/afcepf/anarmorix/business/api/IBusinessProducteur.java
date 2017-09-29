@@ -2,38 +2,21 @@ package fr.afcepf.anarmorix.business.api;
 
 import java.util.List;
 
-import fr.afcepf.anarmorix.entity.Alea;
-import fr.afcepf.anarmorix.entity.Catalogue;
-import fr.afcepf.anarmorix.entity.Client;
-import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Commande;
+import fr.afcepf.anarmorix.entity.Producteur;
+import fr.afcepf.anarmorix.exception.AnarmorixException;
 
 /**
- * 
+ * Fonctionnalités métier du producteur.
  */
 public interface IBusinessProducteur {
 
     /**
-     * @param ligneCommande 
-     * @return
+     * Méthode de recherche des commandes d'un producteur.
+     * @param paramProducteur producteur
+     * @return la liste des commandes
+     * @throws AnarmorixException une exception
      */
-    public Boolean preparerLigneCommande(LigneCommande ligneCommande);
-
-    /**
-     * @param alea 
-     * @return
-     */
-    public Alea declarerAlea(Alea alea);
-
-    /**
-     * @param catalogue 
-     * @return
-     */
-    public Catalogue creerCatalogue(Catalogue catalogue);
-
-    /**
-     * @param client Client 
-     * @return
-     */
-    public List <LigneCommande> rechercherLigneCommande(Client client);
+    List<Commande> rechercherCommandes(Producteur paramProducteur) throws AnarmorixException;
 
 }

@@ -181,6 +181,7 @@ public class AfficherProduitsManagedBean {
                 selectedPointRelais, (Client) cnxMb.getConnectedAdh(), Statut.EN_ATTENTE_DE_PREPARATION);
         commandeCree.setLignesCommande(ligneComandes);
         commandeCree = businessCLient.ajouterListeLigneCommande(commandeCree);
+        ligneComandes.clear();
     } catch (AnarmorixException e) {
         e.printStackTrace();
     }

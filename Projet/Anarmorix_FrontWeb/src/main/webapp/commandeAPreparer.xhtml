@@ -55,18 +55,11 @@
 
 			<form class="navbar-form" role="search">
 				<ul class="nav navbar-nav navbar-right">
-
-					<li class="dropdown dropdown-toggle"><a id="connexion"
-						href="#" data-toggle="dropdown">CONNEXION<strong class="caret"></strong></a>
-						<ul class="dropdown-menu"
-							style="background: url(resources/img/fondvioletlight.png); background-size: cover;">
-							<li id="spanlogin"><span>Nom d'utilisateur : </span><input
-								class="login" type="text" /></li>
-							<li id="spanmdp"><span> Mot de passe : </span><input
-								class="mdp" type="text" /></li>
-							<li id="bouton-validation-connexion"><button type="submit"
-									class="btn btn-default">Connectez-vous</button></li>
-						</ul></li>
+					<li>
+                      <h:form>
+                        <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
+                      </h:form> 
+                    </li>
 				</ul>
 			</form>
 		</div>
@@ -81,7 +74,7 @@
 				style="background: url(resources/img/fondvioletlight.png); background-size: cover;">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts"><a class="nav-link" href=""> <span
-						class="nav-link-text"> Tabealu de bord Producteur </span>
+						class="nav-link-text"> Tableau de bord Producteur </span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts"><a class="nav-link" href=""> <span
@@ -97,120 +90,38 @@
 				<h1>Liste des commandes à préparer</h1>
 			</div>
 			<div id="dateDebut"></div>
+            <ui:repeat var="cmd" value="#{mbProduit.listeCommande}">
 			<table class="table">
 				<h:form>
 					<thead  id="thead">
 						<tr>
 							<th>N° COMMANDE : <h:outputLabel
-									value="#{mbProduit.cmde.id}" />
-							</th>
-							<th>Nom du client: <h:outputText
-									value="#{mbProduit.cmde.client.nom}" /></th>
-							<th>Prenom d client : <h:outputText
-									value="#{mbProduit.cmde.client.prenom}" /></th>
-							<!-- pour modifier le statue de la commande -->
-							<th>Statue: <h:selectOneMenu value="#{mbProduit.statue}">
-									<f:selectItem id="item1" itemLabel="creee" itemValue="1" />
-									<f:selectItem id="item2" itemLabel="en cours de preparation"
-										itemValue="2" />
-									<f:selectItem id="item3" itemLabel="en cours de livraison"
-										itemValue="3" />
-									<f:selectItem id="item4" itemLabel="Disponible au Point relais"
-										itemValue="4" />
-									<f:selectItem id="item5" itemLabel="terminer" itemValue="5" />
-								</h:selectOneMenu> <h:commandButton
-									action="#{mbProduit.miseajourCommande(mbProduit.cmde.id)}"
-									value="Valider" class="btn" id="btn" style="color:white;"></h:commandButton>
+									value="#{cmd.id}" />
 							</th>
 						</tr>
 						<tr>
-							<th>IMAGE</th>
-							<th>DESCRIPTIF</th>
+							<th>Nom</th>
 							<th>QUANTITE COMMANDEE</th>
 							<th>QUANTITE PREPAREE</th>
 							<th></th>
 						</tr>
 					</thead>
-					<ui:repeat var="prodPrep" value="#{mbProduit.liste}">
-
-						<tr id="contenu" >
-							<td><img src="#{prodPrep.produit.image.chemin}" width="50px"
-								height="50px" /></td>
-							<td>#{prodPrep.produit.type.libelle}</td>
-							<td>#{prodPrep.quantiteCommandee} <h:outputLabel
-									value="#{prodPrep.produit.packaging.unite.unite}" />
-							</td>
-							<td><h:inputText id="quantiteProduit" type="number"
-									value="#{prodPrep.quantitePreparee}" style="width:40px" /> <h:commandButton
-									action="#{mbProduit.miseAjour(prodPrep.id)}" value="OK"
-									id="btnValider" class="btn" style="color:white;"></h:commandButton>
-								<h:outputLabel value="#{prodPrep.produit.packaging.unite.unite}" /></td>
-							<td></td>
-						</tr>
-						<div id="date">
-							Date de fin de préparation :
-							<h:inputText value="#{prodPrep.dateFinPreparation}">
-								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
-							</h:inputText>
-							jj/mm/aaaa
-							<h:commandButton action="#{mbProduit.miseAjour(prodPrep.id)}"
-								value="Valider" class="btn" id="btnVal" style="color:white;"></h:commandButton>
-						</div>
-
-					</ui:repeat>
+					<ui:repeat var="ligne" value="#{cmd.lignesCommande}">
+                      <tr>#{ligne.produit.type.libelle}</tr>
+                      <tr>#{ligne.quantiteCommandee}</tr>
+                      <tr>#{ligne.quantitePreparee}</tr>
+                      
+                    </ui:repeat>
 				</h:form>
 
 			</table>
+            </ui:repeat>
 
 			<div>
 				<h:commandButton value="Fin de prepartion" class="btn" id="btncomde"
 					style="color:white;"></h:commandButton>
 			</div>
-			<div id="CommandeALivrer">
-				
-				<h1>Commande pret pour la livraison</h1>
-				<table class="table">
-					<h:form>
-						<thead>
-							<tr>
-								<th>N° COMMANDE : <h:outputLabel
-										value="#{mbProduit.cmde.id}" />
-								</th>
-								<th>Nom du client: <h:outputText
-										value="#{mbProduit.cmde.client.nom}" /></th>
-								<th>Prenom d client : <h:outputText
-										value="#{mbProduit.cmde.client.prenom}" /></th>
-								<!-- pour modifier le statue de la commande -->
-								<th></th>
-							</tr>
-							<tr>
-								<th>IMAGE</th>
-								<th>DESCRIPTIF</th>
-								<th>QUANTITE COMMANDEE</th>
-								<th>QUANTITE PREPAREE</th>
-								<th></th>
-							</tr>
-						</thead>
-						<ui:repeat var="prodPrep" value="#{mbProduit.liste}">
-
-							<tr id="" style="background: #e6ffee;">
-								<td><img src="#{prodPrep.produit.image.chemin}"
-									width="50px" height="50px" /></td>
-								<td>#{prodPrep.produit.type.libelle}</td>
-								<td>#{prodPrep.quantiteCommandee} <h:outputLabel
-										value="#{prodPrep.produit.packaging.unite.unite}" />
-								</td>
-								<td></td>
-								<td></td>
-							</tr>
-
-
-						</ui:repeat>
-					</h:form>
-
-				</table>
-
-			</div>
+			
 
 		</div>
 	</div>

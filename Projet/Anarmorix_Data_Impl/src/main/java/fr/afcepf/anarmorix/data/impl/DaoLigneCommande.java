@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import fr.afcepf.anarmorix.data.api.IDaoLigneCommande;
 import fr.afcepf.anarmorix.entity.Commande;
 import fr.afcepf.anarmorix.entity.LigneCommande;
+import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.entity.Tournee;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
 import fr.afcepf.anarmorix.exception.AnarmorixExceptionEnum;
@@ -127,6 +128,22 @@ public class DaoLigneCommande implements IDaoLigneCommande {
             throw exc;
         }
         return paramTournee;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Produit rechercherByProduit(Produit paramProduit) throws AnarmorixException {
+        List<LigneCommande> liste = null;
+        try {
+            String hql = "SELECT p.lignesCmd FROM Produit p WHERE p.id = :paramId";
+            Query queryHql = em.createQuery(hql).setParameter("paramId", paramProduit.getId());
+            liste = queryHql.getResultList();
+            paramProduit.setLignesCmd(liste);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.MYSQL_HS);
+            throw exc;
+        }
+        return paramProduit;
     }
 
 }

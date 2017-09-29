@@ -1,5 +1,6 @@
 package fr.afcepf.anarmorix.data.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.anarmorix.data.api.IDaoProduit;
+import fr.afcepf.anarmorix.entity.Catalogue;
 import fr.afcepf.anarmorix.entity.LigneCommande;
 import fr.afcepf.anarmorix.entity.Produit;
 import fr.afcepf.anarmorix.exception.AnarmorixException;
@@ -81,7 +83,6 @@ public class DaoProduit implements IDaoProduit {
 	@Override
     public List<Produit> rechercherParCategorie(String  libelleCategorie) throws AnarmorixException {
         List<Produit> liste = null;
-        
         try {
         	liste = em.createQuery("SELECT all FROM Produit p"
 											 + "JOIN FETCH p.type t"
@@ -89,14 +90,6 @@ public class DaoProduit implements IDaoProduit {
 											 + "WHERE c.libelle = :plibelle")
 			.setParameter("plibelle", libelleCategorie)
 			.getResultList();
-		
-        	
-//        	liste = em.createQuery("SELECT p FROM Produit p JOIN p.image i"
-//        												 + "JOIN p.type t"
-//        												 + "JOIN t.categorie c"
-//        												 + "WHERE c.libelle = :plibelle")
-//        										.setParameter("plibelle", libelleCategorie)
-//        										.getResultList();
         } catch (Exception e) {
             AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.MYSQL_HS);
             throw exc;
@@ -132,6 +125,20 @@ public class DaoProduit implements IDaoProduit {
             throw exc;
         }
         return paramLigneCommande;
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public Catalogue rechercherByCatalogue(Catalogue paramCatalogue) throws AnarmorixException {
+        List<Produit> retour = new ArrayList<>();
+        try {
+            String hql = "SELECT c.produits FROM Catalogue c WHERE c.id = :pid";
+            retour = em.createQuery(hql).setParameter("pid", paramCatalogue.getId()).getResultList();
+            paramCatalogue.setProduits(retour);
+        } catch (Exception e) {
+            AnarmorixException exc = new AnarmorixException("", AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
+            throw exc;
+        }
+        return paramCatalogue;
     }
 
 
