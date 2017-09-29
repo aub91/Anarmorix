@@ -47,9 +47,6 @@
 							<div class="row"></div>
 							<span class="spCarte">Numero de la carte</span>
 							<div class="col-md-12">
-
-
-
 								<input type="text" class="champs"
 									onkeypress="return verif(event)"
 									placeholder="Inserez un numero de carte valide" maxlength="23" />
@@ -118,9 +115,9 @@
 
 
 							<div class="col-md-12 payerBtn">
-									<A href="http://localhost:18080/Anarmorix_FrontWeb/suivieDeCommande.jsf" class ="btn my-cart-btn text-center">
+									<A href="http://localhost:18080/Anarmorix_FrontWeb/pageCatalogue.jsf" class ="btn my-cart-btn text-center">
 											PAYER
-										</A>
+								    </A>
 								
 							</div>
 
@@ -137,7 +134,6 @@
         var keyCode = evt.which ? evt.which : evt.keyCode;
         var accept = '0123456789';
         if (accept.indexOf(String.fromCharCode(keyCode)) >= 0) {
-            
             return true;
         } else {
             alert("Saisissez un numero de carte valide!");

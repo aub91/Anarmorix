@@ -56,6 +56,13 @@
 				</ul>
 		  </li>
           </ui:fragment>
+          <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
+          <li>
+          <h:form>
+            <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
+          </h:form> 
+          </li>
+          </ui:fragment>
            
         </ul>
       </div>

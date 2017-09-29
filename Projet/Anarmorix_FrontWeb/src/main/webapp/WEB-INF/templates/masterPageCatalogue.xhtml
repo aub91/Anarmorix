@@ -65,10 +65,13 @@
 								</ul>
 							</li>
                             </ui:fragment>
-                            <h:panelGroup rendered="{#{mbConnexion.connectedAdh != null}">
-                               <li> Bonjour #{mbConnexion.connectedAdh.prenom}
-                                </li>
-                            </h:panelGroup>
+                            <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
+                              <li>
+                                <h:form>
+                                  <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
+                                </h:form> 
+                              </li>
+                            </ui:fragment>
 						</ul>
 						</form>
 					</div>
