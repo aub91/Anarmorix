@@ -38,12 +38,8 @@
 										<td>
  										<a href="#"> 
 										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/>
-<!-- 										<img src="#{prodCom.id}" alt="produit selectionné"></img> -->
 										</a>
 										</td>
-										
-<!-- 										<td><a href="#"><strong><U>carottes </U></strong>c'est -->
-<!-- 												bon</a></td> -->
 										<td><h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></td>
 										<td><input id="quantiteProduit" type="number" value="#{lgnCmd.quantiteCommandee}" class="form-control"></input></td>
                 						<td>#{lgnCmd.produit.packaging.libelle}</td>
@@ -67,19 +63,13 @@
 
 						<div class="box-footer">
 							<div class="pull-left">
-								<a href="pageCatalogue2.xhtml" class="btn btn-default"><i
+								<a href="pageCatalogue.xhtml" class="btn btn-default"><i
 									class="fa fa-chevron-left"></i> Continuer mes achats</a>
 							</div>
 							<div class="pull-right">
-							
-										<A href="http://localhost:18080/Anarmorix_FrontWeb/paiement.jsf">
-											<button type="button" class ="btn my-cart-btn text-center" >
-											commander</button>
-										</A>
-							
-<!-- 								<button type="submit" class="btn btn-primary"> -->
-<!-- 									commander<a href="paiement.xhtml"></a> <i class="fa fa-chevron-right"></i> -->
-<!-- 								</button> -->
+						      <h:form>
+							   <h:commandButton styleClass="btn" value="Commander" action="#{mbAfficheProduits.ajouterLigneCommandeEnBase}"/>
+							  </h:form>
 							</div>
 						</div>
 					</div>
@@ -89,8 +79,29 @@
 					<div class="box">
 						<div class="row">
 							<div class="pull-center">
-								<h3>Nom point relais</h3>
-								<span>Adresse</span><br /> <span>Horaires d'ouverture</span>
+                                <h3>Point-relais:</h3>
+								<h3>#{mbAfficheProduits.selectedPointRelais.raisonSociale}</h3>
+								<span>
+                                    #{mbAfficheProduits.selectedPointRelais.adresse.numero} #{mbAfficheProduits.selectedPointRelais.adresse.voie} 
+                                </span>
+                                <br /> 
+                                <span>
+                                    #{mbAfficheProduits.selectedPointRelais.adresse.codePostal.codePostal} #{mbAfficheProduits.selectedPointRelais.adresse.ville.nomVille} 
+                                </span>
+                                <br />
+                                <span>Horaires d'ouverture:</span>
+                                <ul class="list-group">
+                                  <ui:repeat var="jour" value="#{mbAfficheProduits.selectedPointRelais.joursOuverture}">
+                                    <li class="list-group-item">
+                                      #{jour.libelle}
+                                      <ul class="list-group">
+                                        <ui:repeat var="horaire" value="#{jour.horairesOuverture}">
+                                          <li class="list-group-item">#{horaire.heureOuverture}-#{horaire.heureFermeture}</li>
+                                        </ui:repeat>
+                                      </ul>
+                                    </li>
+                                  </ui:repeat>
+                                </ul>
 							</div>
 							<div class="row">
 								<div class="pull-center">
@@ -101,15 +112,9 @@
 						<div class="box-footer">
 							<div class="row">
 								<div class="pull-center">
-								
-								
-<!-- 							<A href="http://localhost:18080/Anarmorix_FrontWeb/paiement.jsf"> -->
 									<h:form>
-								    <h:commandButton styleClass="btn" value="Commander"
-								                     action="#{mbAfficheProduits.ajouterLigneCommandeEnBAse}"/>
-<!-- 											<button type="button" class ="btn my-cart-btn text-center" > -->
-<!-- 											commander</button> -->
-<!-- 										</A> -->
+								    <h:commandButton styleClass="btn" value="Commander" 
+                                      action="#{mbAfficheProduits.ajouterLigneCommandeEnBase}"/>
 									</h:form>
 								</div>
 							</div>
