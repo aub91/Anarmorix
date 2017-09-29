@@ -156,6 +156,19 @@ public class Catalogue implements Serializable {
     public void setExploitation(Exploitation paramExploitation) {
         exploitation = paramExploitation;
     }
+    /**
+     * @return the produits
+     */
+    public List<Produit> getProduits() {
+        return produits;
+    }
+    /**
+     * @param paramProduits the produits to set
+     */
+    public void setProduits(List<Produit> paramProduits) {
+        produits = paramProduits;
+    }
+    
 
 
 }

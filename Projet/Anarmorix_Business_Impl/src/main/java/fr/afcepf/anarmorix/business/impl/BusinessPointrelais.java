@@ -23,7 +23,7 @@ import fr.afcepf.anarmorix.exception.AnarmorixException;
 public class BusinessPointrelais implements IBusinessPointRelais {
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     public BusinessPointrelais() {
     }
@@ -34,39 +34,6 @@ public class BusinessPointrelais implements IBusinessPointRelais {
      */
     @EJB
     public IDaoCommande daoCommande;
-
-    /**
-     * 
-     */
-    @EJB
-    public IDaoAlea daoAlea;
-
-    /**
-     * @param commande 
-     * @return
-     */
-    public Commande receptionnerCommande(Commande commande) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param commande 
-     * @return
-     */
-    public Commande transmettreCommande(Commande commande) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param alea 
-     * @return
-     */
-    public Alea declareAlea(Alea alea) {
-        // TODO implement here
-        return null;
-    }
 
 	@Override
 	public List<Commande> afficherCommande(Adherent client) throws AnarmorixException {
@@ -81,5 +48,4 @@ public class BusinessPointrelais implements IBusinessPointRelais {
 		return daoAdherent.afficherAdherent(commande);
 	}
 
-	
 }

@@ -21,22 +21,4 @@ public interface IBusinessPointRelais {
      * @return
      */
 	 List<Commande> afficherCommande(Adherent client) throws AnarmorixException;
-    /**
-     * @param commande 
-     * @return
-     */
-    public Commande receptionnerCommande(Commande commande);
-
-    /**
-     * @param commande 
-     * @return
-     */
-    public Commande transmettreCommande(Commande commande);
-
-    /**
-     * @param alea 
-     * @return
-     */
-    public Alea declareAlea(Alea alea);
-
 }

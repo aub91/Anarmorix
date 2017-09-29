@@ -37,7 +37,7 @@ public class TestDaoProduit {
     /**
      * prix unitaire.
      */
-    private static final int PRIX_UNITAIRE = 25;
+    private static final int PRIX_UNITAIRE = 3;
     /**
      * methde rechercher produit par ID.
      */
@@ -104,11 +104,11 @@ public class TestDaoProduit {
     /**
      * ID du produit a tester.
      */
-    private static final int ID_PRODUIT2 = 3;
+    private static final int ID_PRODUIT2 = 2;
     /**
      * prix unitaire.
      */
-    private static final int PRIX_UNITAIRE2 = 10;
+    private static final int PRIX_UNITAIRE2 = 25;
     /**
      * methode rechercher produit par ID du type produit.
      */
@@ -128,7 +128,7 @@ public class TestDaoProduit {
     /**
      * le nombre de produits dans la liste.
      */
-    private static final int TAILLE_LISTE = 3;
+    private static final int TAILLE_LISTE = 44;
     /**
      * test de recherche de tous les produits.
      */
@@ -153,7 +153,7 @@ public class TestDaoProduit {
     /**
      * Prix unitaire attendu pour produit nominal.
      */
-    private static final double PRIX_PRODUIT_NOMINAL = 25;
+    private static final double PRIX_PRODUIT_NOMINAL = 3;
     /**
      * Quantité en stock attendu pour produit nominal.
      */

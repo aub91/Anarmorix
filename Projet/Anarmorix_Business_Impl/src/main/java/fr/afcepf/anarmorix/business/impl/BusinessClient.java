@@ -1,11 +1,13 @@
 package fr.afcepf.anarmorix.business.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedProperty;
 
 import fr.afcepf.anarmorix.business.api.IBusinessClient;
 import fr.afcepf.anarmorix.data.api.IDaoAdherent;
@@ -50,21 +52,25 @@ public class BusinessClient implements IBusinessClient {
     /**
      * Interface d'accès aux données {@link Horaire}.
      */
+    @EJB
     private IDaoHoraire daoHoraire;
 
     /**
      * Interface d'accès aux données {@link JourOuverture}.
      */
+    @EJB
     private IDaoJourOuverture daoJourOverture;
 
     /**
      * Interface d'accès aux données {@link Ville}.
      */
+    @EJB
     private IDaoVille daoVille;
 
     /**
      * Interface d'accès aux données {@link Commerce}.
      */
+    @EJB
     private IDaoCommerce daoCommerce;
 
     /**
@@ -85,54 +91,45 @@ public class BusinessClient implements IBusinessClient {
     /**
      * Interface d'accès aux données {@link LigneCommande}.
      */
+    @EJB
     private IDaoLigneCommande daoLignecommande;
 
     /**
      * Interface d'accès aux données {@link Commande}.
      */
+    @EJB
     private IDaoCommande daoCommande;
 
     /**
      * Interface d'accès aux données {@link Adresse}.
      */
+    @EJB
     private IDaoAdherent daoAdresse;
-
     /**
-     * Méthode permettant de de trouver la liste des {@link PointRelais} d'une {@link Ville}.
-     * @param ville 
-     * @return List<PointRelais>, la liste des poitns relais d'une ville.
+     * Liste de produits.
      */
+    private List<Produit> produits = new ArrayList<>();
+    @Override
     public List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException {
         return daoCommerce.rechercherPointsRelais(ville);
     }
 
-    /**
-     * Méthode permettant de créer une ligne de commande.
-     * @param produit 
-     * @param quantite 
-     * @return
-     */
+    @Override
     public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException {
         commande.setLignesCommande(daoLignecommande.rechercher(commande));
         return commande;
     }
-
-    /**
-     * @param produit 
-     * @param quantite 
-     * @return
-     */
-    public LigneCommande retirer(Produit produit, Double quantite) throws AnarmorixException  {
-        // TODO implement here
-        return null;
+    @Override
+    public Commande ajouterListeLigneCommande(Commande paramCommande) throws AnarmorixException {
+        paramCommande = daoCommande.ajouter(paramCommande);
+        for (LigneCommande ligne : paramCommande.getLignesCommande()) {
+            ligne.setCommande(paramCommande);
+            daoLignecommande.ajouter(ligne);
+        }
+        return paramCommande;
     }
 
-    /**
-     * @param commande 
-     * @return true si la commande est annulée.
-     * @throws AnarmorixException COMMANDE NON ANNULABLE si la préparation a commencé.
-     * @throws AnarmorixException ERREUR NON IDENTIFIEE dans les autres cas d'erreur.
-     */
+    @Override
     public Boolean annulerCommande(Commande commande) throws AnarmorixException {
         try {
             if (commande.getStatut() == Statut.CREEE || commande.getStatut() == Statut.EN_ATTENTE_DE_PREPARATION) {
@@ -153,55 +150,6 @@ public class BusinessClient implements IBusinessClient {
         }
     }
 
-    /**
-     * @param commande 
-     * @return
-     */
-    public Commande valider(Commande commande) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param prix 
-     * @return
-     */
-    public Boolean payer(Double prix) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param listeProduit 
-     * @return
-     */
-    public List<LigneCommande> ajouterProduitRecette(List<Produit> listeProduit) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param client 
-     * @return
-     */
-    public Client sinscrire(Client client) {
-        // TODO implement here
-        return client;
-    }
-
-    /**
-     * @param client 
-     * @return
-     */
-    public Client modifierProfil(Client client) {
-        // TODO implement here
-        return null;
-    }
-    /**
-     * Methode pour récupérer tous les produits.
-     * @return une liste de produits.
-     * @throws AnarmorixException exception serveur.
-     */
     @Override
     public List<Produit> recupererTousLesProduits() throws AnarmorixException {
         List<Produit> produits = null;
@@ -213,11 +161,6 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
-    /**
-     * Methode pour récupérer  les produits par type.
-     * @return une liste de produits.
-     * @throws AnarmorixException exception serveur.
-     */
     @Override
     public List<Produit> recupererLesProduitsParType(Integer idTypeProduit) throws AnarmorixException {
         List<Produit> produits = null;
@@ -230,12 +173,7 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
-    /**
-     * Methode pour récupérer  les produits par type.
-     * @return une liste de produits.
-     * @throws AnarmorixException exception serveur.
-     */
-    private List<Produit> produits = new ArrayList<>();
+
     @Override
     public List<Produit> recupererLesProduitsParCategorie(String libelleCategorie, boolean reset) throws AnarmorixException {
         if (reset) {
@@ -265,21 +203,11 @@ public class BusinessClient implements IBusinessClient {
         }
         return produits;
     }
-    
-    private boolean isCategorieFille(Categorie paramCategorie) {
-        if(paramCategorie.getCategoriesFilles().size() == 0) {
-            return true;
-        } else {
-            return false;
-        }
-    
+    @Override
+    public boolean isCategorieFille(Categorie paramCategorie) {
+        return paramCategorie.getCategoriesFilles().size() == 0;
     }
-    
-    /**
-     * Methode pour récupérer toutes les catégories.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
+
     @Override
     public List<Categorie> recupererToutesLesCategories() throws AnarmorixException {
         List<Categorie> categories = null;
@@ -291,11 +219,7 @@ public class BusinessClient implements IBusinessClient {
         }
         return categories;
     }
-    /**
-     * Methode pour récupérer les catégories primaires.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
+
     @Override
     public List<Categorie> recupererCategoriesPrimaires() throws AnarmorixException {
         List<Categorie> categories = recupererToutesLesCategories();
@@ -307,11 +231,7 @@ public class BusinessClient implements IBusinessClient {
         }
         return categoriesPrimaires;
     }
-    /**
-     * Methode pour récupérer toutes les catégories secondaires.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
+
     @Override
     public List<Categorie> recupererCategoriesSecondaires() throws AnarmorixException {
         List<Categorie> categories = recupererToutesLesCategories();
@@ -329,11 +249,7 @@ public class BusinessClient implements IBusinessClient {
         }
         return categoriesSecondaires;
     }
-    /**
-     * Methode pour récupérer toutes les catégories tertiaires.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
+
     @Override
     public List<Categorie> recupererCategoriesTertiaires() throws AnarmorixException {
         List<Categorie> categories = recupererToutesLesCategories();
@@ -351,11 +267,7 @@ public class BusinessClient implements IBusinessClient {
         }
         return categoriesTertiaires;
     }
-    /**
-     * Methode pour récupérer toutes les catégories t.
-     * @return une liste de catgégorie.
-     * @throws AnarmorixException exception serveur.
-     */
+
     @Override
     public List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException {
         List<Categorie> categories = recupererToutesLesCategories();
@@ -368,5 +280,159 @@ public class BusinessClient implements IBusinessClient {
             }
         }
         return categoriesFilles;
+    }
+
+    /**
+     * @return the daoHoraire
+     */
+    public IDaoHoraire getDaoHoraire() {
+        return daoHoraire;
+    }
+
+    /**
+     * @param paramDaoHoraire the daoHoraire to set
+     */
+    public void setDaoHoraire(IDaoHoraire paramDaoHoraire) {
+        daoHoraire = paramDaoHoraire;
+    }
+
+    /**
+     * @return the daoJourOverture
+     */
+    public IDaoJourOuverture getDaoJourOverture() {
+        return daoJourOverture;
+    }
+
+    /**
+     * @param paramDaoJourOverture the daoJourOverture to set
+     */
+    public void setDaoJourOverture(IDaoJourOuverture paramDaoJourOverture) {
+        daoJourOverture = paramDaoJourOverture;
+    }
+
+    /**
+     * @return the daoVille
+     */
+    public IDaoVille getDaoVille() {
+        return daoVille;
+    }
+
+    /**
+     * @param paramDaoVille the daoVille to set
+     */
+    public void setDaoVille(IDaoVille paramDaoVille) {
+        daoVille = paramDaoVille;
+    }
+
+    /**
+     * @return the daoCommerce
+     */
+    public IDaoCommerce getDaoCommerce() {
+        return daoCommerce;
+    }
+
+    /**
+     * @param paramDaoCommerce the daoCommerce to set
+     */
+    public void setDaoCommerce(IDaoCommerce paramDaoCommerce) {
+        daoCommerce = paramDaoCommerce;
+    }
+
+    /**
+     * @return the daoProduit
+     */
+    public IDaoProduit getDaoProduit() {
+        return daoProduit;
+    }
+
+    /**
+     * @param paramDaoProduit the daoProduit to set
+     */
+    public void setDaoProduit(IDaoProduit paramDaoProduit) {
+        daoProduit = paramDaoProduit;
+    }
+
+    /**
+     * @return the daoCategorie
+     */
+    public IDaoCategorie getDaoCategorie() {
+        return daoCategorie;
+    }
+
+    /**
+     * @param paramDaoCategorie the daoCategorie to set
+     */
+    public void setDaoCategorie(IDaoCategorie paramDaoCategorie) {
+        daoCategorie = paramDaoCategorie;
+    }
+
+    /**
+     * @return the daoTypeProduit
+     */
+    public IDaoTypeProduit getDaoTypeProduit() {
+        return daoTypeProduit;
+    }
+
+    /**
+     * @param paramDaoTypeProduit the daoTypeProduit to set
+     */
+    public void setDaoTypeProduit(IDaoTypeProduit paramDaoTypeProduit) {
+        daoTypeProduit = paramDaoTypeProduit;
+    }
+
+    /**
+     * @return the daoLignecommande
+     */
+    public IDaoLigneCommande getDaoLignecommande() {
+        return daoLignecommande;
+    }
+
+    /**
+     * @param paramDaoLignecommande the daoLignecommande to set
+     */
+    public void setDaoLignecommande(IDaoLigneCommande paramDaoLignecommande) {
+        daoLignecommande = paramDaoLignecommande;
+    }
+
+    /**
+     * @return the daoCommande
+     */
+    public IDaoCommande getDaoCommande() {
+        return daoCommande;
+    }
+
+    /**
+     * @param paramDaoCommande the daoCommande to set
+     */
+    public void setDaoCommande(IDaoCommande paramDaoCommande) {
+        daoCommande = paramDaoCommande;
+    }
+
+    /**
+     * @return the daoAdresse
+     */
+    public IDaoAdherent getDaoAdresse() {
+        return daoAdresse;
+    }
+
+    /**
+     * @param paramDaoAdresse the daoAdresse to set
+     */
+    public void setDaoAdresse(IDaoAdherent paramDaoAdresse) {
+        daoAdresse = paramDaoAdresse;
+    }
+
+    /**
+     * @return the produits
+     */
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    /**
+     * @param paramProduits the produits to set
+     */
+    public void setProduits(List<Produit> paramProduits) {
+        produits = paramProduits;
     }
 }
