@@ -24,22 +24,22 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th colspan="2">Produit</th>
+										<th>Produit</th>
 										<th>Quantité</th>
 										<th>Packaging</th>
 										<th>Prix unitaire <span> / €</span></th>
-										<th colspan="2">Total <span> / €</span></th>
+										<th>Total <span> / €</span></th>
 									</tr>
 								</thead>
 								<!-- partie a remplir dans le panier-->
 								<tbody>
 									<ui:repeat var="lgnCmd" value="#{mbAfficheProduits.ligneComandes}"> 
 									<tr class="ligneProduit">
-										<td>
- 										<a href="#"> 
-										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/>
-										</a>
-										</td>
+<!-- 										<td> -->
+<!--  										<a href="#">  -->
+<!-- 										<h:graphicImage value="#{lgnCmd.produit.image.chemin}"/> -->
+<!-- 										</a> -->
+<!-- 										</td> -->
 										<td><h:outputLabel value="#{lgnCmd.produit.type.libelle}"/></td>
 										<td><input id="quantiteProduit" type="number" value="#{lgnCmd.quantiteCommandee}" class="form-control"></input></td>
                 						<td>#{lgnCmd.produit.packaging.libelle}</td>
@@ -51,8 +51,8 @@
 								</tbody>
 								<tfoot  >
 									<tr>
-										<th colspan="5">Total<span> / €</span></th>
-										<th colspan="2"><i id="totaux"></i></th>
+										<th colspan="4">Total<span> / €</span></th>
+										<th><i id="totaux"></i></th>
 									</tr>
 								</tfoot>
 							</table>
