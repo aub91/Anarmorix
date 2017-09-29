@@ -127,14 +127,13 @@ public class AfficherProduitsManagedBean {
             categories = businessCLient.recupererToutesLesCategories();
             //categoriesTertiaires = businessCLient.recupererCategoriesTertiaires();
             // categoriesSecondaires = businessCLient.recupererCategoriesSecondaires();
-            
             //PRIMAIRES
             for (Categorie categorie : categories) {
                 if (categorie.getCategorieMere() == null) {
                     categoriesPrimaires.add(categorie);
                 }
             }
-            
+
             //SECONDAIRES
             for (Categorie categorie : categories) {
                 int nbParents = 0;
@@ -160,7 +159,7 @@ public class AfficherProduitsManagedBean {
                     categoriesTertiaires.add(categorie);
                 }
             }
-            
+
             //LIGNES COMMANDES AFFICHABLES
             listePdts = businessCLient.recupererTousLesProduits();
             for (Produit pdt : listePdts) {
@@ -169,7 +168,7 @@ public class AfficherProduitsManagedBean {
                ligneComandesAffichables.add(lgnCommandeTmp);
 
              //LIGNE COMMANDE RECETTE
-               if(pdt.getType().getLibelle().equals("Filets de sole")){
+               if (pdt.getType().getLibelle().equals("Filets de sole")) {
                    lgnCommandeTmp.setQuantiteCommandee(4.0);
                    ligneCommandesRecette.add(lgnCommandeTmp);
                }
@@ -206,7 +205,6 @@ public class AfficherProduitsManagedBean {
         ligneComandes.addAll(ligneCommandesRecette);
         return "pageCatalogue.jsf";
     }
-    
     /**
      * Méthode d'ajout des ligne de commande en base de données.
      * @return le chemin de redirection
@@ -214,14 +212,16 @@ public class AfficherProduitsManagedBean {
      */
     public String ajouterLigneCommandeEnBase() {
       try {
+        Client client = new Client();
+        client.setId(1);
         Commande commandeCree = new Commande(null, new Date(), new Date(), null,
-                selectedPointRelais, (Client) cnxMb.getConnectedAdh(), Statut.EN_ATTENTE_DE_PREPARATION);
+                selectedPointRelais, client, Statut.EN_ATTENTE_DE_PREPARATION);
         commandeCree.setLignesCommande(ligneComandes);
         commandeCree = businessCLient.ajouterListeLigneCommande(commandeCree);
     } catch (AnarmorixException e) {
         e.printStackTrace();
     }
-      return "paiement.jsf";
+      return "pageConnexionCommande.jsf";
 
     }
     /**
@@ -230,7 +230,6 @@ public class AfficherProduitsManagedBean {
      */
     public void ajouterProduitLigneCommande(LigneCommande ligneCommande) {
         ligneComandes.add(ligneCommande);
-        
     }
     /**
      * Méthode de récupération des catégories filles.
@@ -249,7 +248,6 @@ public class AfficherProduitsManagedBean {
         }
         return categoriesFilles;
     }
-    
 
     /**
      * @return the businessCLient

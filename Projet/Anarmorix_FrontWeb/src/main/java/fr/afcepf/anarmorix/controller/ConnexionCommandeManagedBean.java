@@ -70,9 +70,14 @@ public class ConnexionCommandeManagedBean {
             return forward;
         }
     }
-    
-    public String seDeconnecter() { HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-    request.getSession(true).invalidate(); return "/pageAccueilAnarmoriqueMap.jsf?faces-redirect=true"; }
+    /**
+     * Méthode de déconnexion.
+     * @return chemin de redirection.
+     */
+    public String seDeconnecter() {
+    HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    request.getSession(true).invalidate();
+    return "/pageAccueilAnarmoriqueMap.jsf?faces-redirect=true"; }
     /**
      * Méthode de connexion depuis page de connexion.
      * @return chemin de redirection
