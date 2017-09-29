@@ -3,6 +3,35 @@ body {
   font-family: Lato, sans-serif;
 }
 
+
+.nardineprenom {
+	color:  #fff;
+	margin-top: 7px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+.nardinebutton {
+	 border: 0;
+    font-size: 16px !important;
+	color : #fff;
+    margin-right: 30px;
+   margin-top : 10px;
+    color: #fff;
+    background-color: #6c5cb8;
+    text-transform: uppercase;
+   
+}
+.nardinebutton:hover {
+	 border: 0;
+    margin-right: 30px;
+  color : #b8b4aa;
+    background-color: #3d348b;
+    
+    color: #edebe6;
+    background-color: #3d348b;
+}
+
 #recapPanier {
 	 float: right;
 }

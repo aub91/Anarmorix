@@ -5,6 +5,7 @@ import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.anarmorix.business.api.IBusinessConnexion;
 import fr.afcepf.anarmorix.entity.Adherent;
@@ -69,6 +70,9 @@ public class ConnexionCommandeManagedBean {
             return forward;
         }
     }
+    
+    public String seDeconnecter() { HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    request.getSession(true).invalidate(); return "/pageAccueilAnarmoriqueMap.jsf?faces-redirect=true"; }
     /**
      * Méthode de connexion depuis page de connexion.
      * @return chemin de redirection

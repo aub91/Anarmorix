@@ -32,7 +32,7 @@
       </button>
         <a id = "putaindebrand" class="navbar-brand" href="#myPage">Anarmorix</a>
         <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
-          <h:outputText value="Bonjour #{mbConnexion.connectedAdh.prenom}" class="navbar-brand" />
+          <h:outputText value="Bonjour #{mbConnexion.connectedAdh.prenom}" class="navbar-brand nardineprenom" />
         </ui:fragment> 
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -59,7 +59,7 @@
           <ui:fragment rendered="#{mbConnexion.connectedAdh != null}">
           <li>
           <h:form>
-            <h:commandButton action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
+            <h:commandButton class="nardinebutton" action="#{mbConnexion.seDeconnecter()}" value="Déconnexion"/>
           </h:form> 
           </li>
           </ui:fragment>
