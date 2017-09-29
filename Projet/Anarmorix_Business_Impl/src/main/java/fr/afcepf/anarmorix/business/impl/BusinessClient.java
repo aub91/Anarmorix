@@ -113,12 +113,6 @@ public class BusinessClient implements IBusinessClient {
     public List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException {
         return daoCommerce.rechercherPointsRelais(ville);
     }
-
-    @Override
-    public Commande ajouterLigneCommande(Commande commande) throws AnarmorixException {
-        commande.setLignesCommande(daoLignecommande.rechercher(commande));
-        return commande;
-    }
     @Override
     public Commande ajouterListeLigneCommande(Commande paramCommande) throws AnarmorixException {
         paramCommande = daoCommande.ajouter(paramCommande);
@@ -129,26 +123,6 @@ public class BusinessClient implements IBusinessClient {
         return paramCommande;
     }
 
-    @Override
-    public Boolean annulerCommande(Commande commande) throws AnarmorixException {
-        try {
-            if (commande.getStatut() == Statut.CREEE || commande.getStatut() == Statut.EN_ATTENTE_DE_PREPARATION) {
-                daoCommande.supprimer(commande.getId());
-                return true;
-            } else {
-                AnarmorixException exc =
-                new AnarmorixException("La commande ne peut plus être annulée", AnarmorixExceptionEnum.COMMANDE_NON_ANNULABLE);
-                throw exc;
-            }
-        } catch (Exception e) {
-            if (e.getMessage() == "La commande ne peut plus être annulée") {
-                throw e;
-            } else {
-                AnarmorixException exc = new AnarmorixException(e.getMessage(), AnarmorixExceptionEnum.ERREUR_NON_IDENTIFIEE);
-                throw exc;
-            }
-        }
-    }
 
     @Override
     public List<Produit> recupererTousLesProduits() throws AnarmorixException {
@@ -218,68 +192,6 @@ public class BusinessClient implements IBusinessClient {
             throw exc;
         }
         return categories;
-    }
-
-    @Override
-    public List<Categorie> recupererCategoriesPrimaires() throws AnarmorixException {
-        List<Categorie> categories = recupererToutesLesCategories();
-        List<Categorie> categoriesPrimaires = new ArrayList<>();
-        for (Categorie categorie : categories) {
-            if (categorie.getCategorieMere() == null) {
-                categoriesPrimaires.add(categorie);
-            }
-        }
-        return categoriesPrimaires;
-    }
-
-    @Override
-    public List<Categorie> recupererCategoriesSecondaires() throws AnarmorixException {
-        List<Categorie> categories = recupererToutesLesCategories();
-        List<Categorie> categoriesSecondaires = new ArrayList<>();
-        for (Categorie categorie : categories) {
-            int nbParents = 0;
-            Categorie categorieTemp = categorie.getCategorieMere();
-            while (categorieTemp != null) {
-                categorieTemp = categorieTemp.getCategorieMere();
-                nbParents++;
-            }
-            if (nbParents == 1) {
-                categoriesSecondaires.add(categorie);
-            }
-        }
-        return categoriesSecondaires;
-    }
-
-    @Override
-    public List<Categorie> recupererCategoriesTertiaires() throws AnarmorixException {
-        List<Categorie> categories = recupererToutesLesCategories();
-        List<Categorie> categoriesTertiaires = new ArrayList<>();
-        for (Categorie categorie : categories) {
-            int nbParents = 0;
-            Categorie categorieTemp = categorie.getCategorieMere();
-            while (categorieTemp != null) {
-                categorieTemp = categorieTemp.getCategorieMere();
-                nbParents++;
-            }
-            if (nbParents == 2) {
-                categoriesTertiaires.add(categorie);
-            }
-        }
-        return categoriesTertiaires;
-    }
-
-    @Override
-    public List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException {
-        List<Categorie> categories = recupererToutesLesCategories();
-        List<Categorie> categoriesFilles = new ArrayList<>();
-        for (Categorie categorie : categories) {
-            if (categorie.getCategorieMere() != null) {
-                if (categorie.getCategorieMere().getId() == idCatgorieMere) {
-                    categoriesFilles.add(categorie);
-                }
-            }
-        }
-        return categoriesFilles;
     }
 
     /**

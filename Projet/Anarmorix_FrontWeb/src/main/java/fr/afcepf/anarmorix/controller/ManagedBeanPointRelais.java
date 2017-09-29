@@ -28,7 +28,7 @@ public class ManagedBeanPointRelais {
 	public void ajouterCommandes() {
 		
 		try {
-			client.setId(1);
+			client.setId(3);
 			liste = bu.afficherCommande(client);
 			for(Commande commande:liste) {
 				

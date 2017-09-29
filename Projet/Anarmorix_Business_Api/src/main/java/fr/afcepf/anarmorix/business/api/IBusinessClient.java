@@ -22,12 +22,6 @@ public interface IBusinessClient {
      * @throws AnarmorixException une exception
      */
     List<PointRelais> rechercherPointRelais(Ville ville) throws AnarmorixException;
-    /**
-     * @param commande commande dans laquelle il faut ajouter une ligne
-     * @return la commande avec sa ligne ajouté
-     * @throws AnarmorixException ne exception
-     */
-    Commande ajouterLigneCommande(Commande commande) throws AnarmorixException;
 
     /**
      * Méthode permettant d'ajouter une liste de lignes de commandes à une commande.
@@ -37,13 +31,6 @@ public interface IBusinessClient {
      */
     Commande ajouterListeLigneCommande(Commande paramCommande) throws AnarmorixException;
 
-    /**
-     * Méthode d'annulation d'une commande.
-     * @param commande la commande à annuler
-     * @return true si l'anulation est un succès
-     * @throws AnarmorixException une exception
-     */
-    Boolean annulerCommande(Commande commande) throws AnarmorixException;
     /**
      * Méthode de vérification de catégorie fille.
      * @param paramCategorie catégorie à examiner
@@ -74,25 +61,5 @@ public interface IBusinessClient {
      * @throws AnarmorixException exception serveur.
      */
     List<Categorie> recupererToutesLesCategories() throws AnarmorixException;
-    /**
-     * @return une liste de categories.
-     * @throws AnarmorixException exception serveur.
-     */
-    List<Categorie> recupererCategoriesPrimaires() throws AnarmorixException;
-    /**
-     * @return une liste de categories.
-     * @throws AnarmorixException exception serveur.
-     */
-    List<Categorie> recupererCategoriesSecondaires() throws AnarmorixException;
-    /**
-     * @return une liste de categories.
-     * @throws AnarmorixException exception serveur.
-     */
-    List<Categorie> recupererCategoriesTertiaires() throws AnarmorixException;
-    /**
-     * @param idCatgorieMere l'id de la catégorie mère.
-     * @return une liste de categories.
-     * @throws AnarmorixException exception serveur.
-     */
-    List<Categorie> recupererCategoriesFilles(Integer idCatgorieMere) throws AnarmorixException;
+    
 }

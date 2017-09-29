@@ -101,7 +101,7 @@ public class ProduitManagedBean {
 		//liste.add(P3);
 		try {
 		
-		cmde.setId(2);
+		cmde.setId(3);
 		cmde.setClient(bu.afficherClient(cmde));
 
 		liste=bu.afficherLigneCommande(cmde);
