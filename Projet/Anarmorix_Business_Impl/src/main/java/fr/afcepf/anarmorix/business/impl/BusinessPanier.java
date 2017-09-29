@@ -33,8 +33,4 @@ public class BusinessPanier implements IBusinessPanier {
 		  	List<LigneCommande> nbCommande = daoLigneCommande.rechercher(commande);
 	    	return nbCommande;
 	}
-    
-    
-    
-    
 }
